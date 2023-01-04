@@ -1,0 +1,16 @@
+{
+  "dockerComposeFile": ["../docker-compose.yml", "docker-compose.override.yml"],
+  "service": "frontend",
+  "workspaceFolder": "/app",
+  "settings": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "eslint.validate": ["astro", "javascript", "javascriptreact", "typescript", "typescriptreact"],
+    "prettier.documentSelectors": ["**/*.astro"]
+  },
+  "extensions": [
+    "EditorConfig.EditorConfig",
+    "astro-build.astro-vscode",
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode"
+  ]
+}
