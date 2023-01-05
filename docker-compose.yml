@@ -2,10 +2,11 @@ services:
   frontend:
     container_name: blog-frontend
     image: node:hydrogen-bullseye-slim
+    user: node
     tty: true
     ports:
       - 3000:3000
     volumes:
-      - ./frontend:/frontend
-    working_dir: /frontend
+      - ./frontend:/workspace:cached
+    working_dir: /workspace
     command: bash -c "npm install && npm run dev"
