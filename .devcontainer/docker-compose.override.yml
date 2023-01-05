@@ -1,5 +1,5 @@
 services:
   frontend:
     volumes:
-      - .:/workspace
+      - .:/workspace:cached
     command: sleep infinity
