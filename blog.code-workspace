@@ -1,46 +1,40 @@
 {
-    "folders": [
-        {
-            "name": "root",
-            "path": "."
-        },
-        {
-            "path": "frontend"
-        }
-    ],
-    "settings": {
-        "editor.codeActionsOnSave": {
-            "source.fixAll.eslint": true
-        },
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.formatOnSave": true,
-        "eslint.validate": [
-            "astro",
-            "javascript",
-            "javascriptreact",
-            "typescript",
-            "typescriptreact"
-        ],
-        "prettier.documentSelectors": ["**/*.astro"]
+  "folders": [
+    {
+      "name": "root",
+      "path": "."
     },
-    "extensions": {
-        "recommendations": [
-            "ms-vscode-remote.remote-containers",
-            "editorconfig.editorconfig",
-            "astro-build.astro-vscode",
-            "dbaeumer.vscode-eslint",
-            "esbenp.prettier-vscode"
-        ]
-    },
-    "launch": {
-        "version": "0.2.0",
-        "configurations": [
-            {
-                "command": "./node_modules/.bin/astro dev",
-                "name": "Development server",
-                "request": "launch",
-                "type": "node-terminal"
-            }
-        ]
+    {
+      "path": "frontend"
     }
+  ],
+  "settings": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "eslint.validate": ["astro", "javascript", "javascriptreact", "typescript", "typescriptreact"],
+    "prettier.documentSelectors": ["**/*.astro"]
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-vscode-remote.remote-containers",
+      "editorconfig.editorconfig",
+      "astro-build.astro-vscode",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode"
+    ]
+  },
+  "launch": {
+    "version": "0.2.0",
+    "configurations": [
+      {
+        "command": "./node_modules/.bin/astro dev",
+        "name": "Development server",
+        "request": "launch",
+        "type": "node-terminal"
+      }
+    ]
+  }
 }

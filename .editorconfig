@@ -13,7 +13,7 @@ trim_trailing_whitespace = true
 max_line_length = 0
 trim_trailing_whitespace = false
 
-[*.{yml,yaml,json}]
+[*.{yml,yaml,json,code-workspace}]
 indent_size = 2
 
 [Makefile]
