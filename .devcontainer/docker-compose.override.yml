@@ -1,5 +1,0 @@
-services:
-  frontend:
-    volumes:
-      - .:/workspace
-    command: sleep infinity
