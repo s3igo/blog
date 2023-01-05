@@ -3,7 +3,11 @@
   "service": "frontend",
   "workspaceFolder": "/workspace/frontend",
   "settings": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
     "eslint.validate": ["astro", "javascript", "javascriptreact", "typescript", "typescriptreact"],
     "prettier.documentSelectors": ["**/*.astro"]
   },
