@@ -9,4 +9,4 @@ services:
     volumes:
       - ./frontend:/workspace:cached
     working_dir: /workspace
-    command: bash -c "npm install && npm run dev"
+    command: npm run dev
