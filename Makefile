@@ -6,3 +6,6 @@ init:
 dev:
 	docker compose up frontend
 
+.PHONY: shell
+shell:
+	docker compose run --rm frontend bash
