@@ -9,3 +9,7 @@ dev:
 .PHONY: shell
 shell:
 	docker compose run --rm frontend bash
+
+.PHONY: clean
+clean:
+	docker compose down --rmi all --volumes --remove-orphans

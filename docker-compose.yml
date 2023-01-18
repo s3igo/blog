@@ -5,10 +5,10 @@ services:
     user: node
     tty: true
     ports:
-      - 3000:3000
+      - 127.0.0.1:3000:3000
     volumes:
       - ./frontend:/workspace:cached
     working_dir: /workspace
     environment:
       - NODE_ENV=development
-    command: npm run dev
+    command: npm run dev -- --host 0.0.0.0
