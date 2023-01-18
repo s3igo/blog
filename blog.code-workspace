@@ -18,6 +18,7 @@
     "prettier.documentSelectors": ["**/*.astro"],
     "eslint.workingDirectories": ["frontend"],
     "eslint.experimental.useFlatConfig": true,
+    "cSpell.words": ["astro", "dbaeumer", "esbenp", "tsconfigs"]
   },
   "extensions": {
     "recommendations": [
@@ -25,7 +26,8 @@
       "editorconfig.editorconfig",
       "astro-build.astro-vscode",
       "dbaeumer.vscode-eslint",
-      "esbenp.prettier-vscode"
+      "esbenp.prettier-vscode",
+      "streetsidesoftware.code-spell-checker"
     ]
   },
   "launch": {
