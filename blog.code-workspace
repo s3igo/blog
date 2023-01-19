@@ -15,15 +15,19 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     "eslint.validate": ["astro", "javascript", "javascriptreact", "typescript", "typescriptreact"],
-    "prettier.documentSelectors": ["**/*.astro"]
+    "prettier.documentSelectors": ["**/*.astro"],
+    "eslint.workingDirectories": ["frontend"],
+    "eslint.experimental.useFlatConfig": true,
+    "cSpell.words": ["astro", "dbaeumer", "esbenp", "tsconfigs"]
   },
   "extensions": {
     "recommendations": [
       "ms-vscode-remote.remote-containers",
       "editorconfig.editorconfig",
       "astro-build.astro-vscode",
-      "dbaeumer.vscode-eslint",
-      "esbenp.prettier-vscode"
+      "dbaeumer.vscode-eslint", // >=2.3.0 to support Flat Config
+      "esbenp.prettier-vscode",
+      "streetsidesoftware.code-spell-checker"
     ]
   },
   "launch": {
