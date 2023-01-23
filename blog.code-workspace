@@ -18,7 +18,8 @@
     "prettier.documentSelectors": ["**/*.astro"],
     "eslint.workingDirectories": ["frontend"],
     "eslint.experimental.useFlatConfig": true,
-    "cSpell.words": ["astro", "dbaeumer", "esbenp", "tsconfigs"]
+    "cSpell.ignorePaths": ["devcontainer.json", "*.code-workspace"],
+    "cSpell.words": ["astro", "tsconfigs"]
   },
   "extensions": {
     "recommendations": [
