@@ -1,7 +1,7 @@
 services:
   frontend:
     container_name: blog-frontend
-    image: node:hydrogen-bullseye-slim
+    image: node:gallium-bullseye-slim
     user: node
     tty: true
     ports:
