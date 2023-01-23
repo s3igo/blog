@@ -1,7 +1,9 @@
 services:
   frontend:
     container_name: blog-frontend
-    image: node:gallium-bullseye-slim
+    build:
+      context: .
+      dockerfile: ./infra/node/Dockerfile
     user: node
     tty: true
     ports:
@@ -11,4 +13,4 @@ services:
     working_dir: /workspace
     environment:
       - NODE_ENV=development
-    command: npm run dev -w frontend -- --host 0.0.0.0
+    command: npm run dev -w frontend
