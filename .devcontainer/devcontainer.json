@@ -1,0 +1,35 @@
+{
+  "name": "blog",
+  "dockerComposeFile": ["../docker-compose.yml", "./docker-compose.yml"],
+  "service": "frontend",
+  "workspaceFolder": "/workspace",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        /* ----------------------------- recommendations ---------------------------- */
+        "editorconfig.editorconfig",
+        "astro-build.astro-vscode",
+        "dbaeumer.vscode-eslint",
+        "esbenp.prettier-vscode",
+        "streetsidesoftware.code-spell-checker",
+        /* -------------------------------------------------------------------------- */
+        "jeff-hykin.code-eol",
+        "naumovs.color-highlight",
+        "ExodiusStudios.comment-anchors",
+        "stackbreak.comment-divider",
+        "mhutchie.git-graph",
+        "donjayamanne.githistory",
+        "GitHub.copilot",
+        "bierner.github-markdown-preview",
+        "eamodio.gitlens",
+        "vincaslt.highlight-matching-tag",
+        "kisstkondoros.vscode-gutter-preview",
+        "christian-kohler.path-intellisense",
+        "dbankier.vscode-quick-select",
+        "o175o.select-indentation",
+        "Tyriar.sort-lines",
+        "bradlc.vscode-tailwindcss"
+      ]
+    }
+  }
+}

@@ -1,14 +1,16 @@
 services:
   frontend:
     container_name: blog-frontend
-    image: node:hydrogen-bullseye-slim
+    build:
+      context: .
+      dockerfile: ./infra/node/Dockerfile
     user: node
     tty: true
     ports:
       - 127.0.0.1:3000:3000
     volumes:
-      - ./frontend:/workspace:cached
+      - .:/workspace:cached
     working_dir: /workspace
     environment:
       - NODE_ENV=development
-    command: npm run dev -- --host 0.0.0.0
+    command: npm run dev -w frontend
