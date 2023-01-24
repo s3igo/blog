@@ -18,7 +18,8 @@
     "prettier.documentSelectors": ["**/*.astro"],
     "eslint.workingDirectories": ["frontend"],
     "eslint.experimental.useFlatConfig": true,
-    "cSpell.words": ["astro", "dbaeumer", "esbenp", "tsconfigs"]
+    "cSpell.ignorePaths": ["devcontainer.json", "*.code-workspace"],
+    "cSpell.words": ["astro", "tsconfigs"]
   },
   "extensions": {
     "recommendations": [
@@ -28,17 +29,6 @@
       "dbaeumer.vscode-eslint", // >=2.3.0 to support Flat Config
       "esbenp.prettier-vscode",
       "streetsidesoftware.code-spell-checker"
-    ]
-  },
-  "launch": {
-    "version": "0.2.0",
-    "configurations": [
-      {
-        "command": "./node_modules/.bin/astro dev",
-        "name": "Development server",
-        "request": "launch",
-        "type": "node-terminal"
-      }
     ]
   }
 }
