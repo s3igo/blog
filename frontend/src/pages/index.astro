@@ -1,9 +1,23 @@
 ---
+import * as R from "remeda";
 import Layout from "../layouts/Layout.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("posts");
+// posts.map((post) => console.log(post));
+const firstPost = R.first(posts);
+const { Content, headings } = R.isDefined(firstPost)
+    ? await firstPost.render()
+    : { Content: () => null, headings: [] };
+
+console.log("headings:", headings);
+
+// const { Content, headings } = await ;
 ---
 
 <Layout title="hogeblog">
     <main>
         <a href="/">HOME</a>
+        <Content />
     </main>
 </Layout>
