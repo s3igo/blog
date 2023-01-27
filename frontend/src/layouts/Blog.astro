@@ -1,2 +1,16 @@
 ---
+import type { Post } from "~/content/config";
+import Layout from "./Layout.astro";
+
+interface Props {
+    frontmatter: Post;
+}
+const { frontmatter } = Astro.props;
+const { createdAt } = frontmatter;
+// console.log(frontmatter);
 ---
+
+<Layout title="post">
+    {createdAt}
+    <slot />
+</Layout>
