@@ -1,0 +1,21 @@
+---
+interface Props {
+    isTop?: boolean;
+}
+const { isTop = false } = Astro.props;
+const name = "tsukiyo-room";
+---
+
+<header
+    class="flex h-20 items-center rounded-full border-2 border-solid border-secondary bg-primary shadow-[3px_3px_4px_1px] shadow-shadow"
+>
+    {
+        isTop ? (
+            <h1 class="text-secondary pl-8 text-[40px]">{name}</h1>
+        ) : (
+            <a href="/" class="text-secondary pl-8 text-[40px]">
+                {name}
+            </a>
+        )
+    }
+</header>
