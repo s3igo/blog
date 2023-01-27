@@ -19,7 +19,7 @@
     "eslint.workingDirectories": ["frontend"],
     "eslint.experimental.useFlatConfig": true,
     "cSpell.ignorePaths": ["devcontainer.json", "*.code-workspace"],
-    "cSpell.words": ["astro", "tsconfigs", "astrojs"]
+    "cSpell.words": ["astro", "tsconfigs", "astrojs", "kaku", "remeda"]
   },
   "extensions": {
     "recommendations": [
