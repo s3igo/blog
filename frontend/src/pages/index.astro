@@ -1,23 +1,59 @@
 ---
 import * as R from "remeda";
+import { format } from "date-fns";
+import type { CollectionEntry } from "astro:content";
 import Layout from "../layouts/Layout.astro";
 import { getCollection } from "astro:content";
 
-const posts = await getCollection("posts");
-// posts.map((post) => console.log(post));
-const firstPost = R.first(posts);
-const { Content, headings } = R.isDefined(firstPost)
-    ? await firstPost.render()
-    : { Content: () => null, headings: [] };
+// postsを取得
+const posts: CollectionEntry<"posts">[] = await getCollection("posts");
 
-console.log("headings:", headings);
+// createdAtの降順にソート
+const sorted = R.sortBy(posts, (post) => -Number(post.data.createdAt));
 
-// const { Content, headings } = await ;
+// post.render()を解決してheadingsを取得
+const undefinedPost = async () => ({
+    Content: () => null,
+    headings: [],
+});
+const rendered = await Promise.all(
+    sorted.map((x) => (R.isDefined(x) ? x.render() : undefinedPost()))
+);
+
+// slug, body, createdAt, titleを取得
+const articles = R.zipWith(sorted, rendered, (s, r) => {
+    const {
+        slug,
+        body,
+        data: { createdAt },
+    } = s;
+    const { headings } = r;
+
+    return {
+        slug: slug,
+        body: body,
+        createdAt: format(createdAt, "yyyy-MM-dd"),
+        title: R.isDefined(headings[0]) ? headings[0].text : "",
+    };
+});
 ---
 
 <Layout title="hogeblog">
     <main>
         <a href="/">HOME</a>
-        <Content />
+        <h1>hogeblog</h1>
+        {
+            articles.map((article) => (
+                <article>
+                    slug: {article.slug}
+                    <br />
+                    createdAt: {article.createdAt}
+                    <br />
+                    title: {article.title}
+                    <br />
+                    body: {article.body}
+                </article>
+            ))
+        }
     </main>
 </Layout>
