@@ -1,8 +1,6 @@
 # build output
 dist/
 .output/
-## astro v2.0 でなくなる予定
-types.generated.d.ts
 
 # dependencies
 node_modules/
@@ -20,3 +18,6 @@ pnpm-debug.log*
 
 # macOS-specific files
 .DS_Store
+
+# content collection metadata
+.astro
