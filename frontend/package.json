@@ -6,11 +6,17 @@
   "scripts": {
     "dev": "astro dev --host 0.0.0.0",
     "start": "astro dev",
-    "build": "astro build",
+    "build": "astro check && tsc --noEmit && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
-    "astro": "^1.9.2"
+    "@astrojs/react": "^2.0.0",
+    "@astrojs/tailwind": "^3.0.0",
+    "@fontsource/nunito-sans": "^4.5.10",
+    "@fontsource/zen-kaku-gothic-new": "^4.5.17",
+    "astro": "^2.0.1",
+    "date-fns": "^2.29.3",
+    "remeda": "^1.6.0"
   }
 }
