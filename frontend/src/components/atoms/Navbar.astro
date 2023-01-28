@@ -6,16 +6,21 @@ const { isTop = false } = Astro.props;
 const name = "tsukiyo-room";
 ---
 
-<header
-    class="mt-8 grid h-20 items-center rounded-full border-2 border-solid border-secondary bg-primary shadow-[3px_3px_4px_1px] shadow-shadow"
+<nav
+    class="grid h-20 items-center rounded-full border-2 border-solid border-secondary bg-primary shadow-[3px_3px_4px_1px] shadow-shadow"
 >
     {
         isTop ? (
-            <h1 class="text-secondary pl-8 text-[40px]">{name}</h1>
+            <h1 class="local-text">{name}</h1>
         ) : (
-            <a href="/" class="text-secondary pl-8 text-[40px]">
+            <a href="/" class="local-text">
                 {name}
             </a>
         )
     }
-</header>
+</nav>
+<style>
+    .local-text {
+        @apply pl-8 text-[40px] text-secondary;
+    }
+</style>
