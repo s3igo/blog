@@ -4,7 +4,8 @@ module.exports = {
         colors: {
             primary: "#011627",
             secondary: "#FFEB95",
-            background: "#2F2F2F",
+            // background: "#2F2F2F", // 背景色検討中
+            background: "#383838",
             foreground: "#D6DEEB",
             shadow: "#575656",
         },
