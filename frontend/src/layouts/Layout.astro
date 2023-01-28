@@ -1,6 +1,7 @@
 ---
 import "@fontsource/nunito-sans";
 import "@fontsource/zen-kaku-gothic-new";
+import Header from "~/components/molecules/Header.astro";
 interface Props {
     title: string;
 }
@@ -18,17 +19,15 @@ const { title } = Astro.props;
         <title>{title}</title>
     </head>
     <body>
-        <h1>hello</h1>
-        <slot />
+        <div class="mx-auto px-8 xl:container">
+            <Header />
+            <slot />
+        </div>
     </body>
 </html>
 <style is:global>
-    :root {
-        --accent: 124, 58, 237;
-        --accent-gradient: linear-gradient(45deg, rgb(var(--accent)), #da62c4 30%, white 60%);
-    }
     html {
-        @apply font-sans;
+        @apply bg-background font-sans;
     }
     /* code {
         font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
