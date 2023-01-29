@@ -1,3 +1,11 @@
+.PHONY: dev
+dev:
+ifeq ($(shell whoami),node)
+	npm run dev -w frontend
+else
+	docker compose up frontend
+endif
+
 .PHONY: init
 init:
 	rm -rf ./node_modules
@@ -6,14 +14,6 @@ ifeq ($(shell whoami),node)
 	npm ci
 else
 	docker compose run --rm frontend npm ci
-endif
-
-.PHONY: dev
-dev:
-ifeq ($(shell whoami),node)
-	npm run dev -w frontend
-else
-	docker compose up frontend
 endif
 
 # --------------------------- 以下はDockerコンテナ外でのみ実行可能 -------------------------- #
