@@ -1,12 +1,14 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
-import remarkNormalizeHeadings from "remark-normalize-headings";
-import { remarkGetTitle } from "./src/plugins/remark-get-title";
+import normalizeHeadings from "remark-normalize-headings";
+import { setTitle } from "./src/utils/setTitle";
+import { injectDefaultLayout } from "./src/utils/remarkPlugins/injectDefaultLayout";
+import { validateFrontmatter } from "./src/utils/remarkPlugins/validateFrontmatter";
 
 // https://astro.build/config
 export default defineConfig({
     markdown: {
-        remarkPlugins: [remarkNormalizeHeadings, remarkGetTitle],
+        remarkPlugins: [normalizeHeadings, setTitle, injectDefaultLayout, validateFrontmatter],
         extendedDefaultPlugins: true,
     },
     integrations: [tailwind()],
