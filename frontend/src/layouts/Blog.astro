@@ -1,16 +1,17 @@
 ---
-import type { CollectionEntry } from "astro:content";
+// import type { CollectionEntry } from "astro:content";
 import Layout from "./Layout.astro";
 
-interface Props {
-    post: CollectionEntry<"posts">;
-}
-const { post } = Astro.props;
-const { createdAt } = post.data;
+// interface Props {
+//     post: CollectionEntry<"posts">;
+// }
+const props = Astro.props;
+// const { createdAt } = post.data;
+console.log(props);
 // console.log(frontmatter);
 ---
 
 <Layout title="post">
-    {createdAt}
+    <!-- {createdAt} -->
     <slot />
 </Layout>
