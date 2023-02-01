@@ -4,9 +4,6 @@ import { layouts } from "../types";
 // デフォルトのレイアウトを指定
 export const injectDefaultLayout: Plugin = () => {
     return (_, { data }) => {
-        let target = data.astro.frontmatter.layout;
-        if (target === undefined) {
-            target = layouts.Blog;
-        }
+        data.astro.frontmatter.layout ??= layouts.Blog;
     };
 };
