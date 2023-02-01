@@ -8,34 +8,38 @@ import Layout from "../layouts/Layout.astro";
 // postsを取得
 const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob<Frontmatter>("./posts/*.md");
 
-// createdAtの降順にソート
-const sorted = R.sortBy(posts, (post) => -Number(post.data.createdAt));
+// 使う情報だけ抽出
+type Article = {
+    title: string;
+    url: string;
+    body: string;
+    createdAt: string;
+};
+const articles: Article[] = R.pipe(
+    posts,
+    // createdAtの降順にソート
+    R.sortBy((x) => -Number(x.frontmatter.createdAt)),
+    // url, body, createdAt, titleを取得
+    R.map((x) => {
+        const {
+            url,
+            rawContent,
+            frontmatter: { title, createdAt },
+        } = x;
 
-// post.render()を解決してheadingsを取得
-const undefinedPost = async () => ({
-    Content: () => null,
-    headings: [],
-});
-const rendered = await Promise.all(
-    sorted.map((x) => (R.isDefined(x) ? x.render() : undefinedPost()))
+        return {
+            title: title,
+            // urlがない場合は1ページ目に飛ばす
+            url: url ?? "/page/1",
+            body: rawContent(),
+            // createdAtはもともとDate型のはずなのに、そのまま渡すと
+            // string型を渡すなってdate-fnsに怒られるので、インスタンス化してから渡す
+            createdAt: format(new Date(createdAt), "yyyy-MM-dd"),
+        };
+    })
 );
 
-// slug, body, createdAt, titleを取得
-const articles = R.zipWith(sorted, rendered, (s, r) => {
-    const {
-        slug,
-        body,
-        data: { createdAt },
-    } = s;
-    const { headings } = r;
-
-    return {
-        slug: slug,
-        body: body,
-        createdAt: format(createdAt, "yyyy-MM-dd"),
-        title: R.isDefined(headings[0]) ? headings[0].text : "",
-    };
-});
+console.log(articles);
 ---
 
 <Layout title="hogeblog">
@@ -45,7 +49,7 @@ const articles = R.zipWith(sorted, rendered, (s, r) => {
         {
             articles.map((article) => (
                 <article>
-                    slug: {article.slug}
+                    url: {article.url}
                     <br />
                     createdAt: {article.createdAt}
                     <br />
