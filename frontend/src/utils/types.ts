@@ -18,3 +18,5 @@ export const frontmatterSchema = z.object({
     createdAt: z.date(),
     updatedAt: z.date().optional(),
 });
+
+export type Frontmatter = z.infer<typeof frontmatterSchema>;
