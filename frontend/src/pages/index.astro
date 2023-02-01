@@ -18,25 +18,17 @@ type Article = {
 const articles: Article[] = R.pipe(
     posts,
     // createdAtの降順にソート
-    R.sortBy((x) => -Number(x.frontmatter.createdAt)),
+    R.sortBy(({ frontmatter: { createdAt } }) => -Number(createdAt)),
     // url, body, createdAt, titleを取得
-    R.map((x) => {
-        const {
-            url,
-            rawContent,
-            frontmatter: { title, createdAt },
-        } = x;
-
-        return {
-            title: title,
-            // urlがない場合は1ページ目に飛ばす
-            url: url ?? "/page/1",
-            body: rawContent(),
-            // createdAtはもともとDate型のはずなのに、そのまま渡すと
-            // string型を渡すなってdate-fnsに怒られるので、インスタンス化してから渡す
-            createdAt: format(new Date(createdAt), "yyyy-MM-dd"),
-        };
-    })
+    R.map(({ url, rawContent, frontmatter: { title, createdAt } }) => ({
+        title: title,
+        // urlがない場合は1ページ目に飛ばす
+        url: url ?? "/page/1",
+        body: rawContent(),
+        // createdAtはもともとDate型のはずなのに、そのまま渡すと
+        // string型を渡すなってdate-fnsに怒られるので、インスタンス化してから渡す
+        createdAt: format(new Date(createdAt), "yyyy-MM-dd"),
+    }))
 );
 
 console.log(articles);
