@@ -3,10 +3,7 @@ import { layouts } from "../types";
 
 // デフォルトのレイアウトを指定
 export const injectDefaultLayout: Plugin = () => {
-    return (_, { data }) => {
-        let target = data.astro.frontmatter.layout;
-        if (target === undefined) {
-            target = layouts.Blog;
-        }
+    return (_, { data: { astro: frontmatter } }) => {
+        frontmatter.layout ??= layouts.Blog;
     };
 };
