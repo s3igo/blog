@@ -1,0 +1,27 @@
+---
+interface Props {
+    title: string;
+    url: string;
+    tags: string[];
+    description: string;
+    created: string;
+    updated?: string;
+}
+
+const { title, url, tags, description, created, updated } = Astro.props;
+---
+
+<article>
+    <p class="text-shadow">
+        {created}{updated === undefined ? "" : `last updated on ${updated}`}
+    </p>
+    <div class="flex gap-3">
+        <a href={url}>
+            <h2 class="text-2xl text-secondary hover:underline">{title}</h2>
+        </a>
+        <p class="leading-8 text-shadow">
+            {tags.map((tag) => `#${tag}`).join(" ")}
+        </p>
+    </div>
+    <p class="text-lg line-clamp-5">{description}</p>
+</article>
