@@ -1,9 +1,9 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
 import normalizeHeadings from "remark-normalize-headings";
-import { setTitle } from "./src/utils/remarkPlugins/setTitle";
-import { injectDefaultLayout } from "./src/utils/remarkPlugins/injectDefaultLayout";
-import { validateFrontmatter } from "./src/utils/remarkPlugins/validateFrontmatter";
+import { setTitle } from "./src/remarkPlugins/setTitle";
+import { injectDefaultLayout } from "./src/remarkPlugins/injectDefaultLayout";
+import { validateFrontmatter } from "./src/remarkPlugins/validateFrontmatter";
 
 // https://astro.build/config
 export default defineConfig({
