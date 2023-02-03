@@ -17,7 +17,7 @@ const { title, url, tags, description, created, updated } = Astro.props;
     </p>
     <div class="flex gap-3">
         <a href={url}>
-            <h2 class="text-2xl text-secondary hover:underline">{title}</h2>
+            <h2 class="text-2xl text-primary hover:underline">{title}</h2>
         </a>
         <p class="leading-8 text-shadow">
             {tags.map((tag) => `#${tag}`).join(" ")}
