@@ -5,10 +5,8 @@ import type { MarkdownInstance } from "astro";
 import type { Frontmatter } from "~/utils/types";
 import Layout from "../layouts/Layout.astro";
 
-// postsを取得
 const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob<Frontmatter>("./posts/*.md");
 
-// 使う情報だけ抽出
 type Article = {
     title: string;
     url: string;
@@ -17,13 +15,10 @@ type Article = {
 };
 const articles: Article[] = R.pipe(
     posts,
-    // createdAtの降順にソート
-    R.sortBy(({ frontmatter: { createdAt } }) => -Number(createdAt)),
-    // url, body, createdAt, titleを取得
+    R.sortBy(({ frontmatter: { createdAt } }) => -Number(createdAt)), // createdAtの降順にソート
     R.map(({ url, rawContent, frontmatter: { title, createdAt } }) => ({
         title: title,
-        // urlがない場合は1ページ目に飛ばす
-        url: url ?? "/page/1",
+        url: url ?? "/",
         body: rawContent(),
         // createdAtはもともとDate型のはずなのに、そのまま渡すと
         // string型を渡すなってdate-fnsに怒られるので、インスタンス化してから渡す
