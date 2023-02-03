@@ -9,8 +9,9 @@ interface Props {
 }
 const { title, url, tags, description, created, updated } = Astro.props;
 
-const date: string = created + (updated === undefined ? "" : `last updated on ${updated}`);
-const tagList: string = tags.map((tag) => `#${tag}`).join(" ");
+const date: string = created + (updated !== undefined ? `last updated on ${updated}` : "");
+const tagList: string = tags.length ? " | " + tags.map((tag) => `#${tag}`).join(" ") : "";
+const metadata: string = date + tagList;
 // TODO: graphemeに基づく文字数カウントの後truncate
 // TODO: description内のheaderを削除
 ---
@@ -20,8 +21,8 @@ const tagList: string = tags.map((tag) => `#${tag}`).join(" ");
 >
     <!-- TODO: セパレータのアクセシビリティ -->
     <a href={url} class="block py-4 px-5">
-        <p class="text-subtxt">{date} | {tagList}</p>
-        <h2 class="pb-4 text-2xl text-primary underline underline-offset-4">{title}</h2>
+        <p class="text-subtxt">{metadata}</p>
+        <h2 class="pb-3 text-2xl text-primary underline underline-offset-4">{title}</h2>
         <p class="text-lg line-clamp-5">{description}</p>
     </a>
 </article>
