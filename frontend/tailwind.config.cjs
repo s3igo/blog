@@ -8,7 +8,7 @@ module.exports = {
             secondary: "#7fdbca",
             tertiary: "#82aaff",
             shadow: "#575656",
-            subtxt: "#7F848B",
+            subtxt: "#888888",
         },
         fontFamily: {
             sans: ["Nunito Sans", "Zen Kaku Gothic New", "system-ui", "sans-serif"],
