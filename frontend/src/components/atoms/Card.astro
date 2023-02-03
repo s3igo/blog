@@ -11,19 +11,17 @@ interface Props {
 const { title, url, tags, description, created, updated } = Astro.props;
 const date: string = created + (updated === undefined ? "" : `last updated on ${updated}`);
 const tagList: string = tags.map((tag) => `#${tag}`).join(" ");
+// TODO: graphemeに基づく文字数カウントの後truncate
+// TODO: description内のheaderを削除
 ---
 
-<article>
-    <p class="text-shadow">
-        {created}{updated === undefined ? "" : `last updated on ${updated}`}
-    </p>
-    <div class="flex gap-3">
-        <a href={url}>
-            <h2 class="text-2xl text-primary hover:underline">{title}</h2>
-        </a>
-        <p class="leading-8 text-shadow">
-            {tags.map((tag) => `#${tag}`).join(" ")}
-        </p>
-    </div>
-    <p class="text-lg line-clamp-5">{description}</p>
+<article
+    class="rounded-2xl border-solid border-secondary hover:border-2 hover:shadow-[3px_3px_4px_1px] hover:shadow-shadow"
+>
+    <!-- TODO: セパレータのアクセシビリティ -->
+    <a href={url} class="block py-4 px-5">
+        <p class="text-subtxt">{date} | {tagList}</p>
+        <h2 class="pb-4 text-2xl text-primary underline underline-offset-4">{title}</h2>
+        <p class="text-lg line-clamp-5">{description}</p>
+    </a>
 </article>
