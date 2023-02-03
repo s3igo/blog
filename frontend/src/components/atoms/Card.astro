@@ -9,6 +9,8 @@ interface Props {
 }
 
 const { title, url, tags, description, created, updated } = Astro.props;
+const date: string = created + (updated === undefined ? "" : `last updated on ${updated}`);
+const tagList: string = tags.map((tag) => `#${tag}`).join(" ");
 ---
 
 <article>
