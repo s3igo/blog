@@ -7,8 +7,8 @@ interface Props {
     created: string;
     updated?: string;
 }
-
 const { title, url, tags, description, created, updated } = Astro.props;
+
 const date: string = created + (updated === undefined ? "" : `last updated on ${updated}`);
 const tagList: string = tags.map((tag) => `#${tag}`).join(" ");
 // TODO: graphemeに基づく文字数カウントの後truncate
@@ -16,7 +16,7 @@ const tagList: string = tags.map((tag) => `#${tag}`).join(" ");
 ---
 
 <article
-    class="rounded-2xl border-solid border-secondary hover:border-2 hover:shadow-[3px_3px_4px_1px] hover:shadow-shadow"
+    class="rounded-2xl border-2 border-solid border-transparent hover:border-secondary hover:shadow-[3px_3px_4px_1px] hover:shadow-shadow"
 >
     <!-- TODO: セパレータのアクセシビリティ -->
     <a href={url} class="block py-4 px-5">
