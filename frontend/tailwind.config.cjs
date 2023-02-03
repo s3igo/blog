@@ -14,4 +14,5 @@ module.exports = {
             // code: ["Zen Kaku Gothic New", "sans-serif"],
         },
     },
+    plugins: [require("@tailwindcss/line-clamp")],
 };
