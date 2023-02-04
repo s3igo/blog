@@ -9,5 +9,11 @@ const { cards } = Astro.props;
 ---
 
 <main>
-    {cards.map((card) => <Card {...card} />)}
+    {
+        cards.map((card) => (
+            <div class="py-5">
+                <Card {...card} />
+            </div>
+        ))
+    }
 </main>
