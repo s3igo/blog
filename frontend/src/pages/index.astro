@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import type { MarkdownInstance } from "astro";
 import type { Frontmatter, Card } from "~/types";
 import Layout from "../layouts/Layout.astro";
-import Card from "~/components/atoms/Card.astro";
+import List from "~/components/molecules/List.astro";
 
 const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob<Frontmatter>("./posts/*.md");
 
@@ -25,15 +25,5 @@ const articles: Card[] = R.pipe(
 ---
 
 <Layout title="hogeblog">
-    <main>
-        <a href="/">HOME</a>
-        <h1>hogeblog</h1>
-        <Card
-            title={article.title}
-            url={article.url}
-            tags={["hoge", "fuga", "piyo"]}
-            description={article.body}
-            created={article.createdAt}
-        />
-    </main>
+    <List cards={articles} />
 </Layout>

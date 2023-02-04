@@ -1,0 +1,13 @@
+---
+import Card from "../atoms/Card.astro";
+import type { Card as CardType } from "~/types";
+
+type Props = {
+    cards: CardType[];
+};
+const { cards } = Astro.props;
+---
+
+<main>
+    {cards.map((card) => <Card {...card} />)}
+</main>
