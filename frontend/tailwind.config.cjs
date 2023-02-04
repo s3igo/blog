@@ -2,6 +2,7 @@ module.exports = {
     content: ["./src/**/*.{astro,html,js,jsx,ts,tsx}"],
     theme: {
         colors: {
+            transparent: "transparent",
             background: "#011627",
             foreground: "#D6DEEB",
             primary: "#FFEB95",
