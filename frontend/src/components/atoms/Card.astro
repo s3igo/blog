@@ -1,15 +1,10 @@
 ---
-interface Props {
-    title: string;
-    url: string;
-    tags: string[];
-    description: string;
-    created: string;
-    updated?: string;
-}
+import type { Card } from "~/types";
+
+type Props = Card;
 const { title, url, tags, description, created, updated } = Astro.props;
 
-const date: string = created + (updated !== undefined ? `last updated on ${updated}` : "");
+const date: string = created + (updated !== null ? `last updated on ${updated}` : "");
 const tagList: string = tags.length ? " | " + tags.map((tag) => `#${tag}`).join(" ") : "";
 const metadata: string = date + tagList;
 // TODO: graphemeに基づく文字数カウントの後truncate
