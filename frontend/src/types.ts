@@ -20,3 +20,13 @@ export const frontmatterSchema = z.object({
 });
 
 export type Frontmatter = z.infer<typeof frontmatterSchema>;
+
+// 記事をリスト表示する際のカードの型
+export type Card = {
+    title: string;
+    url: string;
+    tags: string[];
+    description: string;
+    created: string;
+    updated: string | null;
+};
