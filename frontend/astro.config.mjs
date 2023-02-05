@@ -7,6 +7,7 @@ import { validateFrontmatter } from "./src/remarkPlugins/validateFrontmatter";
 
 // https://astro.build/config
 export default defineConfig({
+    site: "https://blog.tsuki-yo.net",
     markdown: {
         remarkPlugins: [normalizeHeadings, setTitle, injectDefaultLayout, validateFrontmatter],
         extendedDefaultPlugins: true,
