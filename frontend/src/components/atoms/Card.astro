@@ -1,12 +1,15 @@
 ---
 import type { Card } from "~/types";
+import { formatDate } from "~/utils/formatDate";
+import { tagList } from "~/utils/tagList";
+import { updatedDate } from "~/utils/updatedDate";
 
 type Props = Card;
 const { title, url, tags, description, created, updated } = Astro.props;
 
-const date: string = created + (updated !== null ? `last updated on ${updated}` : "");
-const tagList: string = tags.length ? " | " + tags.map((tag) => `#${tag}`).join(" ") : "";
-const metadata: string = date + tagList;
+const date: string = formatDate(created) + (updated !== null ? updatedDate(created) : "");
+const tagStr: string = tags.length ? " | " + tagList(tags) : "";
+const metadata: string = date + tagStr;
 // TODO: graphemeに基づく文字数カウントの後truncate
 // TODO: description内のheaderを削除
 ---
