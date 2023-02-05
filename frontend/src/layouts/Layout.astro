@@ -6,8 +6,8 @@ interface Props {
     title: string;
     description?: string;
 }
-
 const { title, description = "tsukiyoの個人ブログ" } = Astro.props;
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -25,7 +25,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </head>
     <body>
         <div class="mx-auto px-8 xl:container">
-            <Header />
+            <div class="pt-8">
+                <Header />
+            </div>
             <slot />
         </div>
     </body>
