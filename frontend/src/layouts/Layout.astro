@@ -1,12 +1,14 @@
 ---
-import "@fontsource/nunito-sans";
-import "@fontsource/zen-kaku-gothic-new";
+import "@fontsource/nunito-sans/400.css";
+import "@fontsource/zen-kaku-gothic-new/400.css";
 import Header from "~/components/molecules/Header.astro";
 interface Props {
     title: string;
+    description?: string;
 }
 
-const { title } = Astro.props;
+const { title, description = "tsukiyoの個人ブログ" } = Astro.props;
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!DOCTYPE html>
@@ -15,8 +17,11 @@ const { title } = Astro.props;
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
-        <!-- <link rel="icon" type="image/svg+xml" href="/favicon.svg" /> -->
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalURL} />
     </head>
     <body>
         <div class="mx-auto px-8 xl:container">
