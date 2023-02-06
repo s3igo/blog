@@ -19,7 +19,9 @@ const metadata: string = date + tagStr;
     <!-- TODO: セパレータのアクセシビリティ -->
     <a href={url} class="block py-4 px-5">
         <p class="text-subtxt">{metadata}</p>
-        <h2 class="pb-3 text-2xl text-primary underline underline-offset-4">{title}</h2>
+        <h2 class="pb-3 text-2xl text-primary underline decoration-2 underline-offset-4">
+            {title}
+        </h2>
         <p class="text-lg line-clamp-5">{description}</p>
     </a>
 </article>
