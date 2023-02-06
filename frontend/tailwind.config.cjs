@@ -13,7 +13,7 @@ module.exports = {
         },
         fontFamily: {
             sans: ["Nunito Sans", "Zen Kaku Gothic New", "system-ui", "sans-serif"],
-            // code: ["Zen Kaku Gothic New", "sans-serif"],
+            code: ["JetBrains Mono", "BIZ UDGothic", "monospace", "sans-serif"],
         },
     },
     plugins: [require("@tailwindcss/line-clamp")],
