@@ -13,6 +13,8 @@
   "dependencies": {
     "@astrojs/react": "^2.0.0",
     "@astrojs/tailwind": "^3.0.0",
+    "@fontsource/biz-udgothic": "^4.5.7",
+    "@fontsource/jetbrains-mono": "^4.5.12",
     "@fontsource/nunito-sans": "^4.5.10",
     "@fontsource/zen-kaku-gothic-new": "^4.5.17",
     "@tailwindcss/line-clamp": "^0.4.2",

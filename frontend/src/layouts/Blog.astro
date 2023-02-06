@@ -1,17 +1,109 @@
 ---
-// import type { CollectionEntry } from "astro:content";
+import "@fontsource/nunito-sans/700.css";
+import "@fontsource/zen-kaku-gothic-new/700.css";
+import "@fontsource/jetbrains-mono/400.css";
+import "@fontsource/biz-udgothic/400.css";
+import type { Frontmatter } from "~/types";
+import { toStr } from "~/utils/tagArrayToString";
+import { embedCreated, embedUpdated } from "~/utils/dateToString";
 import Layout from "./Layout.astro";
 
-// interface Props {
-//     post: CollectionEntry<"posts">;
-// }
-// const props = Astro.props;
-// const { createdAt } = post.data;
-// console.log(props);
-// console.log(frontmatter);
+type Props = {
+    frontmatter: Frontmatter;
+};
+const {
+    frontmatter: { tags, createdAt, updatedAt },
+} = Astro.props;
+
+// const description =
+const created = embedCreated(createdAt);
+const updated = updatedAt ? embedUpdated(updatedAt) : null;
+const tagStr = tags?.length ? toStr(tags) : null;
 ---
 
 <Layout title="post">
-    <!-- {createdAt} -->
-    <slot />
+    <div class="text-foreground/50">
+        <span class="block">{created}</span>
+        {updated && <span class="block">{updated}</span>}
+        {tagStr && <span class="block">{tagStr}</span>}
+    </div>
+    <div class="blog">
+        <slot />
+    </div>
 </Layout>
+<style is:global lang="scss">
+    .blog {
+        @apply text-lg;
+
+        h1 {
+            @apply mb-4 border-b border-dashed border-tertiary pb-4 pt-4 text-4xl text-primary;
+        }
+
+        h2 {
+            @apply text-3xl;
+        }
+
+        h3 {
+            @apply text-2xl;
+        }
+
+        h4 {
+            @apply text-xl;
+        }
+
+        ul {
+            @apply list-disc;
+        }
+
+        ol {
+            @apply list-decimal;
+        }
+
+        a {
+            @apply text-secondary decoration-2 underline-offset-4 hover:underline;
+        }
+
+        em {
+            @apply px-1;
+        }
+
+        blockquote {
+            @apply border-l-4 border-tertiary pl-6;
+        }
+
+        code {
+            @apply font-code;
+
+            // インラインコード
+            &:not(pre > *) {
+                @apply mx-1 rounded-md bg-shadow/40 px-1 text-base text-foreground/60;
+            }
+        }
+
+        pre {
+            @apply my-4 rounded-xl bg-tertiary p-4 text-base;
+        }
+
+        :is(h2, h3, h4, h5) {
+            @apply pt-[72px] pb-3 underline decoration-primary decoration-2 underline-offset-4;
+        }
+
+        // header要素が連続する場合の余白調整
+        :is(h2 + h3, h3 + h4, h4 + h5) {
+            @apply pt-3;
+        }
+
+        :is(p, ul, ol) {
+            @apply py-4;
+        }
+
+        :is(ul, ol) {
+            @apply ml-6;
+        }
+
+        // list要素内でのインデント
+        :is(ul ul, ol ol) {
+            @apply ml-7 py-0;
+        }
+    }
+</style>

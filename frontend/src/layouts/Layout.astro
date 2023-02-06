@@ -6,8 +6,8 @@ interface Props {
     title: string;
     description?: string;
 }
-
 const { title, description = "tsukiyoの個人ブログ" } = Astro.props;
+
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
@@ -25,7 +25,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     </head>
     <body>
         <div class="mx-auto px-8 xl:container">
-            <Header />
+            <div class="py-8">
+                <Header />
+            </div>
             <slot />
         </div>
     </body>
@@ -34,8 +36,4 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     html {
         @apply bg-background font-sans text-foreground;
     }
-    /* code {
-        font-family: Menlo, Monaco, Lucida Console, Liberation Mono, DejaVu Sans Mono,
-            Bitstream Vera Sans Mono, Courier New, monospace;
-    } */
 </style>
