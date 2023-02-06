@@ -39,8 +39,8 @@ const tagStr = tags?.length ? toStr(tags) : null;
     }
     <slot />
 </Layout>
-<style>
-    :global(code) {
+<style is:global>
+    code {
         @apply font-code;
     }
 </style>
