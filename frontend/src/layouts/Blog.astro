@@ -1,4 +1,6 @@
 ---
+import "@fontsource/nunito-sans/700.css";
+import "@fontsource/zen-kaku-gothic-new/700.css";
 import "@fontsource/jetbrains-mono/400.css";
 import "@fontsource/biz-udgothic/400.css";
 import type { Frontmatter } from "~/types";
@@ -60,6 +62,12 @@ const tagStr = tags?.length ? toStr(tags) : null;
         @apply text-xl;
     }
 
+    .blog h2 + h3,
+    .blog h3 + h4,
+    .blog h4 + h5 {
+        @apply pt-3;
+    }
+
     .blog p,
     .blog ul,
     .blog ol {
@@ -74,8 +82,8 @@ const tagStr = tags?.length ? toStr(tags) : null;
         @apply list-inside list-decimal;
     }
 
-    .blog strong {
-        @apply font-bold;
+    .blog em {
+        @apply px-1;
     }
 
     /* TODO: li > li (再帰的に), pre, a, blockquote  */
