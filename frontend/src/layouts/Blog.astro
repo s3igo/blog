@@ -24,6 +24,7 @@ const tagStr = tags?.length ? toStr(tags) : null;
         <span class="tag is-light">{created}</span>
     </div>
     {
+        // TODO: style
         updated && (
             <div class="tags">
                 <span class="tag is-light">{updated}</span>
@@ -37,10 +38,58 @@ const tagStr = tags?.length ? toStr(tags) : null;
             </div>
         )
     }
-    <slot />
+    <div class="blog">
+        <slot />
+    </div>
 </Layout>
 <style is:global>
     code {
         @apply font-code;
     }
+
+    .blog {
+        @apply text-lg;
+    }
+
+    .blog h2,
+    .blog h3,
+    .blog h4,
+    .blog h5 {
+        @apply pt-9 pb-3 underline underline-offset-4;
+    }
+    .blog h1 {
+        @apply pb-12 text-4xl text-primary;
+    }
+
+    .blog h2 {
+        @apply text-3xl;
+    }
+
+    .blog h3 {
+        @apply text-2xl;
+    }
+
+    .blog h4 {
+        @apply text-xl;
+    }
+
+    .blog p,
+    .blog ul,
+    .blog ol {
+        @apply py-3;
+    }
+
+    .blog ul {
+        @apply list-inside list-disc;
+    }
+
+    .blog ol {
+        @apply list-inside list-decimal;
+    }
+
+    .blog strong {
+        @apply font-bold;
+    }
+
+    /* TODO: li > li (再帰的に), pre, a, blockquote  */
 </style>
