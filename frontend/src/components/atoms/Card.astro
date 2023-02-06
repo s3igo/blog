@@ -1,12 +1,14 @@
 ---
 import type { Card } from "~/types";
+import { toStr } from "~/utils/tagArrayToString";
+import { format, embedUpdated } from "~/utils/dateToString";
 
 type Props = Card;
 const { title, url, tags, description, created, updated } = Astro.props;
 
-const date: string = created + (updated !== null ? `last updated on ${updated}` : "");
-const tagList: string = tags.length ? " | " + tags.map((tag) => `#${tag}`).join(" ") : "";
-const metadata: string = date + tagList;
+const date: string = format(created) + (updated !== null ? embedUpdated(created) : "");
+const tagStr: string = tags.length ? " | " + toStr(tags) : "";
+const metadata: string = date + tagStr;
 // TODO: graphemeに基づく文字数カウントの後truncate
 // TODO: description内のheaderを削除
 ---
@@ -16,8 +18,10 @@ const metadata: string = date + tagList;
 >
     <!-- TODO: セパレータのアクセシビリティ -->
     <a href={url} class="block py-4 px-5">
-        <p class="text-subtxt">{metadata}</p>
-        <h2 class="pb-3 text-2xl text-primary underline underline-offset-4">{title}</h2>
+        <p class="text-foreground/50">{metadata}</p>
+        <h2 class="pb-3 text-2xl text-primary underline decoration-2 underline-offset-4">
+            {title}
+        </h2>
         <p class="text-lg line-clamp-5">{description}</p>
     </a>
 </article>

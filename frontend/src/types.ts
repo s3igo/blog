@@ -27,6 +27,6 @@ export type Card = {
     url: string;
     tags: string[];
     description: string;
-    created: string;
-    updated: string | null;
+    created: Date;
+    updated: Date | null;
 };

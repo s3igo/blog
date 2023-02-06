@@ -1,6 +1,5 @@
 ---
 import * as R from "remeda";
-import { format } from "date-fns";
 import type { MarkdownInstance } from "astro";
 import type { Frontmatter, Card } from "~/types";
 import Layout from "../layouts/Layout.astro";
@@ -16,14 +15,12 @@ const articles: Card[] = R.pipe(
         url: url ?? "/",
         tags: tags ?? [],
         description: rawContent(),
-        // createdAtはもともとDate型のはずなのに、そのまま渡すと
-        // string型を渡すなってdate-fnsに怒られるので、インスタンス化してから渡す
-        created: format(new Date(createdAt), "yyyy-MM-dd"),
-        updated: updatedAt !== undefined ? format(new Date(updatedAt), "yyyy-MM-dd") : null,
+        created: createdAt,
+        updated: updatedAt !== undefined ? updatedAt : null,
     }))
 );
 ---
 
-<Layout title="hogeblog">
+<Layout title="tsukiyo-room">
     <List cards={articles} />
 </Layout>
