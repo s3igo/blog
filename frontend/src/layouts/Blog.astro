@@ -44,10 +44,10 @@ const tagStr = tags?.length ? toStr(tags) : null;
     .blog h3,
     .blog h4,
     .blog h5 {
-        @apply pt-16 pb-3 underline decoration-primary decoration-2 underline-offset-4;
+        @apply pt-[72px] pb-3 underline decoration-primary decoration-2 underline-offset-4;
     }
     .blog h1 {
-        @apply mb-4 border-b border-dashed border-secondary pb-4 pt-4 text-4xl text-primary;
+        @apply mb-4 border-b border-dashed border-tertiary pb-4 pt-4 text-4xl text-primary;
     }
 
     .blog h2 {
@@ -71,20 +71,46 @@ const tagStr = tags?.length ? toStr(tags) : null;
     .blog p,
     .blog ul,
     .blog ol {
-        @apply py-3;
+        @apply py-4;
     }
 
     .blog ul {
-        @apply list-inside list-disc;
+        @apply list-inside list-disc pl-4;
+    }
+
+    .blog ul ul {
+        @apply ml-8;
+    }
+
+    .blog li > ul {
+        @apply py-0;
     }
 
     .blog ol {
         @apply list-inside list-decimal;
     }
 
+    .blog a {
+        @apply text-secondary decoration-2 underline-offset-4 hover:underline;
+    }
+
+    /* 斜体 */
     .blog em {
         @apply px-1;
     }
 
-    /* TODO: li > li (再帰的に), pre, a, blockquote  */
+    /* 引用 */
+    .blog blockquote {
+        @apply border-l-4 border-tertiary pl-6;
+    }
+
+    /* インラインコード */
+    .blog code:not(pre > *) {
+        @apply mx-1 rounded-md bg-shadow/40 px-1 text-base text-foreground/60;
+    }
+
+    /* コードブロック */
+    .blog pre {
+        @apply my-4 rounded-xl bg-tertiary p-4 text-base;
+    }
 </style>
