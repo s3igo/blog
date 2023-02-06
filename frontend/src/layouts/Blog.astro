@@ -1,8 +1,7 @@
 ---
 import type { Frontmatter } from "~/types";
-import { createdDate } from "~/utils/createdDate";
 import { tagList } from "~/utils/tagList";
-import { updatedDate } from "~/utils/updatedDate";
+import { embedCreated, embedUpdated } from "~/utils/dateToString";
 import Layout from "./Layout.astro";
 
 type Props = {
@@ -13,8 +12,8 @@ const {
 } = Astro.props;
 
 // const description =
-const created = createdDate(createdAt);
-const updated = updatedAt ? updatedDate(updatedAt) : null;
+const created = embedCreated(createdAt);
+const updated = updatedAt ? embedUpdated(updatedAt) : null;
 const tagStr = tags?.length ? tagList(tags) : null;
 ---
 

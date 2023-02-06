@@ -1,13 +1,12 @@
 ---
 import type { Card } from "~/types";
-import { formatDate } from "~/utils/formatDate";
 import { tagList } from "~/utils/tagList";
-import { updatedDate } from "~/utils/updatedDate";
+import { format, embedUpdated } from "~/utils/dateToString";
 
 type Props = Card;
 const { title, url, tags, description, created, updated } = Astro.props;
 
-const date: string = formatDate(created) + (updated !== null ? updatedDate(created) : "");
+const date: string = format(created) + (updated !== null ? embedUpdated(created) : "");
 const tagStr: string = tags.length ? " | " + tagList(tags) : "";
 const metadata: string = date + tagStr;
 // TODO: graphemeに基づく文字数カウントの後truncate
