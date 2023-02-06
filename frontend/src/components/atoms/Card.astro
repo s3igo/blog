@@ -1,13 +1,13 @@
 ---
 import type { Card } from "~/types";
-import { tagList } from "~/utils/tagList";
+import { toStr } from "~/utils/tagArrayToString";
 import { format, embedUpdated } from "~/utils/dateToString";
 
 type Props = Card;
 const { title, url, tags, description, created, updated } = Astro.props;
 
 const date: string = format(created) + (updated !== null ? embedUpdated(created) : "");
-const tagStr: string = tags.length ? " | " + tagList(tags) : "";
+const tagStr: string = tags.length ? " | " + toStr(tags) : "";
 const metadata: string = date + tagStr;
 // TODO: graphemeに基づく文字数カウントの後truncate
 // TODO: description内のheaderを削除

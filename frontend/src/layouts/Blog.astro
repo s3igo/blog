@@ -1,6 +1,6 @@
 ---
 import type { Frontmatter } from "~/types";
-import { tagList } from "~/utils/tagList";
+import { toStr } from "~/utils/tagArrayToString";
 import { embedCreated, embedUpdated } from "~/utils/dateToString";
 import Layout from "./Layout.astro";
 
@@ -14,7 +14,7 @@ const {
 // const description =
 const created = embedCreated(createdAt);
 const updated = updatedAt ? embedUpdated(updatedAt) : null;
-const tagStr = tags?.length ? tagList(tags) : null;
+const tagStr = tags?.length ? toStr(tags) : null;
 ---
 
 <Layout title="post">
