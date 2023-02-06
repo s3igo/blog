@@ -31,86 +31,79 @@ const tagStr = tags?.length ? toStr(tags) : null;
         <slot />
     </div>
 </Layout>
-<style is:global>
-    code {
-        @apply font-code;
-    }
-
+<style is:global lang="scss">
     .blog {
         @apply text-lg;
-    }
 
-    .blog h2,
-    .blog h3,
-    .blog h4,
-    .blog h5 {
-        @apply pt-[72px] pb-3 underline decoration-primary decoration-2 underline-offset-4;
-    }
-    .blog h1 {
-        @apply mb-4 border-b border-dashed border-tertiary pb-4 pt-4 text-4xl text-primary;
-    }
+        code {
+            @apply font-code;
+        }
 
-    .blog h2 {
-        @apply text-3xl;
-    }
+        :is(h2, h3, h4, h5) {
+            @apply pt-[72px] pb-3 underline decoration-primary decoration-2 underline-offset-4;
+        }
 
-    .blog h3 {
-        @apply text-2xl;
-    }
+        h1 {
+            @apply mb-4 border-b border-dashed border-tertiary pb-4 pt-4 text-4xl text-primary;
+        }
 
-    .blog h4 {
-        @apply text-xl;
-    }
+        h2 {
+            @apply text-3xl;
+        }
 
-    .blog h2 + h3,
-    .blog h3 + h4,
-    .blog h4 + h5 {
-        @apply pt-3;
-    }
+        h3 {
+            @apply text-2xl;
+        }
 
-    .blog p,
-    .blog ul,
-    .blog ol {
-        @apply py-4;
-    }
+        h4 {
+            @apply text-xl;
+        }
 
-    .blog ul {
-        @apply list-inside list-disc pl-4;
-    }
+        // header要素が連続する場合の余白調整
+        :is(h2 + h3, h3 + h4, h4 + h5) {
+            @apply pt-3;
+        }
 
-    .blog ul ul {
-        @apply ml-8;
-    }
+        :is(p, ul, ol) {
+            @apply py-4;
+        }
 
-    .blog li > ul {
-        @apply py-0;
-    }
+        :is(ul, ol) {
+            @apply ml-6;
+        }
 
-    .blog ol {
-        @apply list-inside list-decimal;
-    }
+        ul {
+            @apply list-disc;
+        }
 
-    .blog a {
-        @apply text-secondary decoration-2 underline-offset-4 hover:underline;
-    }
+        ol {
+            @apply list-decimal;
+        }
 
-    /* 斜体 */
-    .blog em {
-        @apply px-1;
-    }
+        // list内でのインデント
+        :is(ul ul, ol ol) {
+            @apply ml-7 py-0;
+        }
 
-    /* 引用 */
-    .blog blockquote {
-        @apply border-l-4 border-tertiary pl-6;
-    }
+        a {
+            @apply text-secondary decoration-2 underline-offset-4 hover:underline;
+        }
 
-    /* インラインコード */
-    .blog code:not(pre > *) {
-        @apply mx-1 rounded-md bg-shadow/40 px-1 text-base text-foreground/60;
-    }
+        em {
+            @apply px-1;
+        }
 
-    /* コードブロック */
-    .blog pre {
-        @apply my-4 rounded-xl bg-tertiary p-4 text-base;
+        blockquote {
+            @apply border-l-4 border-tertiary pl-6;
+        }
+
+        // インラインコード
+        code:not(pre > *) {
+            @apply mx-1 rounded-md bg-shadow/40 px-1 text-base text-foreground/60;
+        }
+
+        pre {
+            @apply my-4 rounded-xl bg-tertiary p-4 text-base;
+        }
     }
 </style>
