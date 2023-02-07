@@ -24,6 +24,7 @@ jobs:
         run: npm run eslint -w frontend
       - name: Run prettier
         run: npm run prettier -w frontend
-      - uses: stefanzweifel/git-auto-commit-action@v4
+      - name: Run commit files modified by Prettier
+        uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Apply Prettier Change
