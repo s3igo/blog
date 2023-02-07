@@ -11,7 +11,7 @@
     "astro": "astro",
     "check": "astro check",
     "eslint": "eslint ./src",
-    "prettier": "prettier --check ./src"
+    "prettier": "prettier --write ./src"
   },
   "dependencies": {
     "@astrojs/react": "^2.0.0",
