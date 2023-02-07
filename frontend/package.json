@@ -8,7 +8,10 @@
     "start": "astro dev",
     "build": "astro check && tsc --noEmit && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "astro check",
+    "eslint": "eslint ./src",
+    "prettier": "prettier --write ./src"
   },
   "dependencies": {
     "@astrojs/react": "^2.0.0",
