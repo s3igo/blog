@@ -24,6 +24,7 @@
     "astro": "^2.0.1",
     "date-fns": "^2.29.3",
     "mdast-util-to-string": "^3.1.1",
+    "night-owl": "github:sdras/night-owl-vscode-theme",
     "remark-normalize-headings": "^3.0.1",
     "remeda": "^1.6.0"
   }

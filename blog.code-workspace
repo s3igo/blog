@@ -28,7 +28,9 @@
       "mdast",
       "stefanzweifel",
       "udgothic",
-      "tsukiyo"
+      "tsukiyo",
+      "sdras",
+      "shiki"
     ]
   },
   "extensions": {

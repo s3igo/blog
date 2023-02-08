@@ -5,6 +5,7 @@ import { setTitle } from "./src/remarkPlugins/setTitle";
 import { setDescription } from "./src/remarkPlugins/setDescription";
 import { injectDefaultLayout } from "./src/remarkPlugins/injectDefaultLayout";
 import { validateFrontmatter } from "./src/remarkPlugins/validateFrontmatter";
+import * as nightOwl from "night-owl/themes/Night Owl-color-theme.json";
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,6 +19,9 @@ export default defineConfig({
             validateFrontmatter,
         ],
         extendedDefaultPlugins: true,
+        shikiConfig: {
+            theme: nightOwl,
+        },
     },
     integrations: [tailwind()],
 });
