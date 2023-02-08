@@ -4,6 +4,7 @@ import type { MarkdownInstance } from "astro";
 import type { Frontmatter, Card } from "~/types";
 import Layout from "../layouts/Layout.astro";
 import List from "~/components/molecules/List.astro";
+import { PAGE_TITLE } from "~/constants";
 
 const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob<Frontmatter>("./posts/*.md");
 
@@ -12,17 +13,17 @@ const articles: Card[] = R.pipe(
     // RemedaのsortByで"desc"を指定すると型情報壊れる(2023-02-07)ので、昇順にソートしてからreverseする
     R.sortBy(({ frontmatter: { createdAt } }) => createdAt),
     R.reverse(),
-    R.map(({ url, rawContent, frontmatter: { title, tags, createdAt, updatedAt } }) => ({
+    R.map(({ url, frontmatter: { title, tags, description, createdAt, updatedAt } }) => ({
         title: title,
         url: url ?? "/",
         tags: tags ?? [],
-        description: rawContent(),
+        description: description,
         created: createdAt,
         updated: updatedAt !== undefined ? updatedAt : null,
     }))
 );
 ---
 
-<Layout title="tsukiyo-room">
+<Layout title={PAGE_TITLE}>
     <List cards={articles} />
 </Layout>
