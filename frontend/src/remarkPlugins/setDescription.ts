@@ -1,3 +1,4 @@
+import * as R from "remeda";
 import { toString } from "mdast-util-to-string";
 import { truncate } from "../utils/string";
 import type { Plugin, Type, Value } from "./types";
@@ -13,12 +14,14 @@ export const setDescription: Plugin = () => {
     ) => {
         // TODO: 特にコメントは再帰的にフィルター掛ける必要があるかも
         // 重要性低いので問題でてきたら対応で十分
-        const withoutHeaderAndHtmlComment = children
-            .filter(({ type }: Type) => type !== "heading")
-            .filter(
-                ({ type, value }: Type & Value) => !(type === "html" && value.indexOf("<!--") === 0)
-            );
+        type Args = Type & Value;
+        const withoutHeaderAndHtmlComment = R.pipe(
+            children,
+            R.reject(({ type, value: _ }: Args) => type === "heading"),
+            R.reject(({ type, value }: Args) => type === "html" && value.indexOf("<!--") === 0)
+        );
         const content = toString(withoutHeaderAndHtmlComment);
+        // 先頭500文字で切る
         frontmatter.description = truncate(content, 500);
     };
 };
