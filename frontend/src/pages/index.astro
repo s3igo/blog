@@ -4,6 +4,7 @@ import type { MarkdownInstance } from "astro";
 import type { Frontmatter, Card } from "~/types";
 import Layout from "../layouts/Layout.astro";
 import List from "~/components/molecules/List.astro";
+import { PAGE_TITLE } from "~/constants";
 
 const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob<Frontmatter>("./posts/*.md");
 
@@ -23,6 +24,6 @@ const articles: Card[] = R.pipe(
 );
 ---
 
-<Layout title="tsukiyo-room">
+<Layout title={PAGE_TITLE}>
     <List cards={articles} />
 </Layout>
