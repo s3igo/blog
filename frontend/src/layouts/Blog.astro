@@ -32,7 +32,7 @@ const tagStr = tags?.length ? toStr(tags) : null;
         <slot />
     </div>
 </Layout>
-<style is:global lang="scss">
+<style is:global>
     .blog {
         @apply text-lg;
 
@@ -75,7 +75,7 @@ const tagStr = tags?.length ? toStr(tags) : null;
         code {
             @apply font-code;
 
-            // インラインコード
+            /* インラインコード */
             &:not(pre > *) {
                 @apply mx-1 rounded-md bg-shadow/40 px-1 text-base text-foreground/60;
             }
@@ -89,7 +89,7 @@ const tagStr = tags?.length ? toStr(tags) : null;
             @apply pt-[72px] pb-3 underline decoration-primary decoration-2 underline-offset-4;
         }
 
-        // header要素が連続する場合の余白調整
+        /* header要素が連続する場合の余白調整 */
         :is(h2 + h3, h3 + h4, h4 + h5) {
             @apply pt-3;
         }
@@ -102,7 +102,7 @@ const tagStr = tags?.length ? toStr(tags) : null;
             @apply ml-6;
         }
 
-        // list要素内でのインデント
+        /* list要素内でのインデント */
         :is(ul ul, ol ol) {
             @apply ml-7 py-0;
         }
