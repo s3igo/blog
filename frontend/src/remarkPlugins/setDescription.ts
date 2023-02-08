@@ -12,6 +12,7 @@ export const setDescription: Plugin = () => {
         }
     ) => {
         // TODO: 特にコメントは再帰的にフィルター掛ける必要があるかも
+        // 重要性低いので問題でてきたら対応で十分
         const withoutHeaderAndHtmlComment = children
             .filter(({ type }: Type) => type !== "heading")
             .filter(

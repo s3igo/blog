@@ -13,16 +13,15 @@ type Props = {
     frontmatter: Frontmatter;
 };
 const {
-    frontmatter: { title, tags, createdAt, updatedAt },
+    frontmatter: { title, tags, description, createdAt, updatedAt },
 } = Astro.props;
 
-// const description =
 const created = embedCreated(createdAt);
 const updated = updatedAt ? embedUpdated(updatedAt) : null;
 const tagStr = tags?.length ? toStr(tags) : null;
 ---
 
-<Layout title={`${title} | ${PAGE_TITLE}`}>
+<Layout title={`${title} | ${PAGE_TITLE}`} description={description}>
     <div class="text-foreground/50">
         <span class="block">{created}</span>
         {updated && <span class="block">{updated}</span>}
