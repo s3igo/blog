@@ -13,11 +13,11 @@ const articles: Card[] = R.pipe(
     // RemedaのsortByで"desc"を指定すると型情報壊れる(2023-02-07)ので、昇順にソートしてからreverseする
     R.sortBy(({ frontmatter: { createdAt } }) => createdAt),
     R.reverse(),
-    R.map(({ url, rawContent, frontmatter: { title, tags, createdAt, updatedAt } }) => ({
+    R.map(({ url, frontmatter: { title, tags, description, createdAt, updatedAt } }) => ({
         title: title,
         url: url ?? "/",
         tags: tags ?? [],
-        description: rawContent(),
+        description: description,
         created: createdAt,
         updated: updatedAt !== undefined ? updatedAt : null,
     }))
