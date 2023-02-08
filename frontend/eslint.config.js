@@ -3,6 +3,7 @@ import { fileURLToPath } from "url";
 import { FlatCompat } from "@eslint/eslintrc";
 import astroEslintParser from "astro-eslint-parser";
 import typescriptEslintParser from "@typescript-eslint/parser";
+import a11y from "eslint-plugin-jsx-a11y";
 
 // ESModuleでCommonJSの`__dirname`を使うためのハック
 const __filename = fileURLToPath(import.meta.url);
@@ -14,11 +15,14 @@ const compat = new FlatCompat({
 });
 
 export default [
-    ...compat.extends("plugin:astro/recommended", "prettier"),
+    ...compat.extends("plugin:astro/recommended", "plugin:jsx-a11y/recommended", "prettier"),
     {
         languageOptions: {
             ecmaVersion: 2022,
             sourceType: "module",
+        },
+        plugins: {
+            a11y,
         },
     },
     {

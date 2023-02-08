@@ -2,11 +2,12 @@
 import "@fontsource/nunito-sans/400.css";
 import "@fontsource/zen-kaku-gothic-new/400.css";
 import Header from "~/components/molecules/Header.astro";
+import { PAGE_DESCRIPTION } from "~/constants";
 interface Props {
     title: string;
     description?: string;
 }
-const { title, description = "tsukiyoの個人ブログ" } = Astro.props;
+const { title, description = PAGE_DESCRIPTION } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---

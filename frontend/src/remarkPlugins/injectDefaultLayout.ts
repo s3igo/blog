@@ -1,4 +1,4 @@
-import type { Plugin } from "../types";
+import type { Plugin } from "./types";
 import { layouts } from "../types";
 
 // デフォルトのレイアウトを指定
