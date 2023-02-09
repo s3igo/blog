@@ -35,8 +35,29 @@ const tagStr = tags?.length ? toStr(tags) : null;
     .blog {
         @apply text-lg;
 
+        p {
+            @apply py-4;
+        }
+
+        a {
+            @apply text-secondary decoration-2 underline-offset-4 hover:underline;
+        }
+
+        em {
+            @apply px-1;
+        }
+
+        blockquote {
+            @apply border-l-4 border-tertiary pl-6;
+        }
+
+        /* --------------------------------- header --------------------------------- */
         h1 {
             @apply mb-4 pb-4 pt-4 text-4xl text-primary underline decoration-tertiary decoration-2 underline-offset-8;
+        }
+
+        :is(h2, h3, h4, h5) {
+            @apply border-b border-dashed border-primary pt-[72px] pb-3 after:text-foreground/50;
         }
 
         h2 {
@@ -55,6 +76,16 @@ const tagStr = tags?.length ? toStr(tags) : null;
             @apply hover:after:content-["_#####"];
         }
 
+        /* header要素が連続する場合の余白調整 */
+        :is(h2 + h3, h3 + h4, h4 + h5) {
+            @apply pt-3;
+        }
+
+        /* ---------------------------------- list ---------------------------------- */
+        :is(ul, ol) {
+            @apply ml-6 py-4;
+        }
+
         ul {
             @apply list-disc;
         }
@@ -63,51 +94,24 @@ const tagStr = tags?.length ? toStr(tags) : null;
             @apply list-decimal;
         }
 
-        a {
-            @apply text-secondary decoration-2 underline-offset-4 hover:underline;
+        /* list要素内でのインデント */
+        :is(ul ul, ol ol) {
+            @apply ml-7 py-0;
         }
 
-        em {
-            @apply px-1;
-        }
-
-        blockquote {
-            @apply border-l-4 border-tertiary pl-6;
-        }
-
+        /* ---------------------------------- code ---------------------------------- */
         code {
             @apply font-code;
 
-            /* インラインコード */
+            /* inline */
             &:not(pre > *) {
                 @apply mx-1 rounded-md bg-shadow/40 px-1 text-base text-foreground/60;
             }
         }
 
+        /* block */
         pre {
             @apply my-4 rounded-xl border border-dashed border-tertiary p-4 text-base;
-        }
-
-        :is(h2, h3, h4, h5) {
-            @apply border-b border-dashed border-primary pt-[72px] pb-3 after:text-foreground/50;
-        }
-
-        /* header要素が連続する場合の余白調整 */
-        :is(h2 + h3, h3 + h4, h4 + h5) {
-            @apply pt-3;
-        }
-
-        :is(p, ul, ol) {
-            @apply py-4;
-        }
-
-        :is(ul, ol) {
-            @apply ml-6;
-        }
-
-        /* list要素内でのインデント */
-        :is(ul ul, ol ol) {
-            @apply ml-7 py-0;
         }
     }
 </style>
