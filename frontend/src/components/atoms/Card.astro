@@ -1,7 +1,7 @@
 ---
 import type { Card } from "~/types";
-import { toStr } from "~/utils/tagArrayToString";
 import { format, embedUpdated } from "~/utils/dateToString";
+import { toStr } from "~/utils/tagArrayToString";
 
 type Props = Card;
 const { title, url, tags, description, created, updated } = Astro.props;
@@ -17,7 +17,7 @@ const metadata: string = date + tagStr;
     <!-- TODO: セパレータのアクセシビリティ -->
     <a href={url} class="block py-4 px-5">
         <p class="text-foreground/50">{metadata}</p>
-        <h2 class="mb-2.5 border-b border-dashed border-tertiary pb-1.5 text-2xl text-primary">
+        <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-2xl text-primary">
             {title}
         </h2>
         <p
