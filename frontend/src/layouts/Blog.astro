@@ -40,15 +40,19 @@ const tagStr = tags?.length ? toStr(tags) : null;
         }
 
         h2 {
-            @apply text-3xl;
+            @apply text-3xl hover:after:content-["_##"];
         }
 
         h3 {
-            @apply text-2xl;
+            @apply text-2xl hover:after:content-["_###"];
         }
 
         h4 {
-            @apply text-xl;
+            @apply text-xl hover:after:content-["_####"];
+        }
+
+        h5 {
+            @apply hover:after:content-["_#####"];
         }
 
         ul {
@@ -85,7 +89,7 @@ const tagStr = tags?.length ? toStr(tags) : null;
         }
 
         :is(h2, h3, h4, h5) {
-            @apply border-b border-dashed border-primary pt-[72px] pb-3;
+            @apply border-b border-dashed border-primary pt-[72px] pb-3 after:text-foreground/50;
         }
 
         /* header要素が連続する場合の余白調整 */
