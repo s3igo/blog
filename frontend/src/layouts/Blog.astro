@@ -36,7 +36,7 @@ const tagStr = tags?.length ? toStr(tags) : null;
         @apply text-lg;
 
         h1 {
-            @apply mb-4 border-b border-dashed border-tertiary pb-4 pt-4 text-4xl text-primary;
+            @apply mb-4 pb-4 pt-4 text-4xl text-primary underline decoration-tertiary decoration-2 underline-offset-8;
         }
 
         h2 {
@@ -85,7 +85,7 @@ const tagStr = tags?.length ? toStr(tags) : null;
         }
 
         :is(h2, h3, h4, h5) {
-            @apply pt-[72px] pb-3 underline decoration-primary decoration-2 underline-offset-4;
+            @apply border-b border-dashed border-primary pt-[72px] pb-3;
         }
 
         /* header要素が連続する場合の余白調整 */
