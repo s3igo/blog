@@ -1,6 +1,10 @@
 ---
-import Icon from "../atoms/Icon.astro";
-import Navbar from "../atoms/Navbar.astro";
+import Icon from '../atoms/Icon.astro';
+import Navbar from '../atoms/Navbar.astro';
+import type { Props as NavbarProps } from '../atoms/Navbar.astro';
+
+type Props = NavbarProps;
+const { isTop } = Astro.props;
 ---
 
 <header class="flex gap-5">
@@ -8,6 +12,6 @@ import Navbar from "../atoms/Navbar.astro";
         <Icon />
     </div>
     <div class="w-full">
-        <Navbar />
+        <Navbar isTop={isTop} />
     </div>
 </header>

@@ -1,22 +1,16 @@
 ---
-import { PAGE_TITLE } from "~/constants";
+import { PAGE_TITLE } from '~/constants';
 
-type Props = {
-    isTop?: boolean;
+export type Props = {
+    isTop: boolean;
 };
-const { isTop = false } = Astro.props;
+const { isTop } = Astro.props;
+const Title = isTop ? 'h1' : 'a';
+// TODO: Titleタグがh1の場合にもhref属性を持っているのがちょっと気持ち悪い solid-componentに置き換えてもいいかも
 ---
 
 <nav
-    class="grid h-16 items-center rounded-full border-2 border-solid border-primary bg-background shadow-[3px_3px_4px_1px] shadow-shadow sm:h-20"
+    class="custom-shadow grid h-16 items-center rounded-full border-2 border-solid border-primary bg-background sm:h-20"
 >
-    {
-        isTop ? (
-            <h1 class="text-primary; pl-8 text-3xl text-primary sm:text-[40px]">{PAGE_TITLE}</h1>
-        ) : (
-            <a href="/" class="text-primary; pl-8 text-3xl text-primary sm:text-[40px]">
-                {PAGE_TITLE}
-            </a>
-        )
-    }
+    <Title class="text-primary pl-8 text-3xl sm:text-[40px]" href="/">{PAGE_TITLE}</Title>
 </nav>
