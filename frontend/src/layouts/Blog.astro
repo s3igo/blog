@@ -17,8 +17,8 @@ const {
 } = Astro.props;
 
 const created = embedCreated(createdAt);
-const updated = updatedAt ? embedUpdated(updatedAt) : null;
-const tagStr = tags?.length ? toStr(tags) : null;
+const updated = updatedAt ? embedUpdated(updatedAt) : "";
+const tagStr = tags?.length ? toStr(tags) : "";
 ---
 
 <Layout title={`${title} | ${PAGE_TITLE}`} description={description}>

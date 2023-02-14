@@ -4,10 +4,10 @@ import { format, embedUpdated } from "~/utils/dateToString";
 import { toStr } from "~/utils/tagArrayToString";
 
 type Props = Card;
-const { title, url, tags, description, created, updated } = Astro.props;
+const { title, url, tags, description, createdAt, updatedAt } = Astro.props;
 
-const date: string = format(created) + (updated !== null ? embedUpdated(created) : "");
-const tagStr: string = tags.length ? " | " + toStr(tags) : "";
+const date: string = format(createdAt) + (updatedAt != null ? embedUpdated(createdAt) : "");
+const tagStr: string = tags?.length ? " | " + toStr(tags) : "";
 const metadata: string = date + tagStr;
 ---
 
