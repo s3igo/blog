@@ -10,10 +10,9 @@ const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob<Frontmatter>("./
 
 const articles: Card[] = R.pipe(
     posts,
-    // RemedaのsortByで"desc"を指定すると型情報壊れる(2023-02-07)ので、昇順にソートしてからreverseする
-    R.sortBy(({ frontmatter: { createdAt } }) => createdAt),
-    R.reverse(),
-    R.map(({ url = "/", frontmatter }) => ({ url, ...frontmatter }))
+    R.map(({ url = "/", frontmatter }) => ({ url, ...frontmatter })),
+    R.sortBy(({ createdAt }) => createdAt),
+    R.reverse()
 );
 ---
 
