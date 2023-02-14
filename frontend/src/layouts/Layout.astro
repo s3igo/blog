@@ -1,14 +1,15 @@
 ---
 import "@fontsource/nunito-sans/400.css";
 import "@fontsource/zen-kaku-gothic-new/400.css";
+import type { Props as NavbarProps } from "~/components/atoms/Navbar.astro";
 import Header from "~/components/molecules/Header.astro";
 import { PAGE_DESCRIPTION } from "~/constants";
 
 type Props = {
     title: string;
     description?: string;
-};
-const { title, description = PAGE_DESCRIPTION } = Astro.props;
+} & Partial<NavbarProps>;
+const { title, description = PAGE_DESCRIPTION, isTop = false } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -28,7 +29,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <body>
         <div class="mx-auto px-8 xl:container">
             <div class="py-8">
-                <Header />
+                <Header isTop={isTop} />
             </div>
             <slot />
         </div>

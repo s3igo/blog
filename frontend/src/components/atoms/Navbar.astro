@@ -1,10 +1,10 @@
 ---
 import { PAGE_TITLE } from "~/constants";
 
-type Props = {
-    isTop?: boolean;
+export type Props = {
+    isTop: boolean;
 };
-const { isTop = false } = Astro.props;
+const { isTop } = Astro.props;
 ---
 
 <nav
