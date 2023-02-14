@@ -1,11 +1,11 @@
-import { defineConfig } from "astro/config";
-import tailwind from "@astrojs/tailwind";
-import normalizeHeadings from "remark-normalize-headings";
-import { setTitle } from "./src/remarkPlugins/setTitle";
-import { setDescription } from "./src/remarkPlugins/setDescription";
 import { injectDefaultLayout } from "./src/remarkPlugins/injectDefaultLayout";
+import { setDescription } from "./src/remarkPlugins/setDescription";
+import { setTitle } from "./src/remarkPlugins/setTitle";
 import { validateFrontmatter } from "./src/remarkPlugins/validateFrontmatter";
+import tailwind from "@astrojs/tailwind";
+import { defineConfig } from "astro/config";
 import nightOwl from "night-owl/themes/Night Owl-color-theme.json";
+import normalizeHeadings from "remark-normalize-headings";
 
 // https://astro.build/config
 export default defineConfig({
