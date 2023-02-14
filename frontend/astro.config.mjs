@@ -23,5 +23,11 @@ export default defineConfig({
             theme: nightOwl,
         },
     },
-    integrations: [tailwind()],
+    integrations: [
+        tailwind({
+            // カスタムクラスに`:hover`などのバリアントを適用するために必要
+            // ref: https://github.com/withastro/astro/issues/3844
+            config: { applyBaseStyles: false },
+        }),
+    ],
 });

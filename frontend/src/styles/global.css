@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    @apply bg-background font-sans text-foreground;
+}
+
+@layer utilities {
+    .custom-shadow {
+        @apply shadow-[3px_3px_4px_1px] shadow-shadow;
+    }
+}

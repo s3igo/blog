@@ -4,6 +4,7 @@ import "@fontsource/zen-kaku-gothic-new/400.css";
 import type { Props as NavbarProps } from "~/components/atoms/Navbar.astro";
 import Header from "~/components/molecules/Header.astro";
 import { PAGE_DESCRIPTION } from "~/constants";
+import "~/styles/global.css";
 
 type Props = {
     title: string;
@@ -35,8 +36,3 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         </div>
     </body>
 </html>
-<style is:global>
-    html {
-        @apply bg-background font-sans text-foreground;
-    }
-</style>
