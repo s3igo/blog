@@ -1,7 +1,7 @@
-import * as R from "remeda";
-import { toString } from "mdast-util-to-string";
 import { truncate } from "../utils/string";
 import type { Plugin, Type, Value } from "./types";
+import { toString } from "mdast-util-to-string";
+import * as R from "remeda";
 
 export const setDescription: Plugin = () => {
     return (
