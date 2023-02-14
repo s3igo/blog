@@ -14,7 +14,6 @@
     "prettier": "prettier --write ./src"
   },
   "dependencies": {
-    "@astrojs/react": "^2.0.0",
     "@astrojs/tailwind": "^3.0.0",
     "@fontsource/biz-udgothic": "^4.5.7",
     "@fontsource/jetbrains-mono": "^4.5.12",
