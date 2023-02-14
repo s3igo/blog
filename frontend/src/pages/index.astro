@@ -1,16 +1,16 @@
 ---
-import Layout from "../layouts/Layout.astro";
-import type { MarkdownInstance } from "astro";
-import * as R from "remeda";
-import List from "~/components/molecules/List.astro";
-import { PAGE_TITLE } from "~/constants";
-import type { Frontmatter, Card } from "~/types";
+import Layout from '../layouts/Layout.astro';
+import type { MarkdownInstance } from 'astro';
+import * as R from 'remeda';
+import List from '~/components/molecules/List.astro';
+import { PAGE_TITLE } from '~/constants';
+import type { Frontmatter, Card } from '~/types';
 
-const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob<Frontmatter>("./posts/*.md");
+const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob<Frontmatter>('./posts/*.md');
 
 const articles: Card[] = R.pipe(
     posts,
-    R.map(({ url = "/", frontmatter }) => ({ url, ...frontmatter })),
+    R.map(({ url = '/', frontmatter }) => ({ url, ...frontmatter })),
     R.sortBy(({ createdAt }) => createdAt),
     R.reverse()
 );

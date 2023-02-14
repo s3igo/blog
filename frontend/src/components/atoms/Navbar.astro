@@ -1,11 +1,11 @@
 ---
-import { PAGE_TITLE } from "~/constants";
+import { PAGE_TITLE } from '~/constants';
 
 export type Props = {
     isTop: boolean;
 };
 const { isTop } = Astro.props;
-const Title = isTop ? "h1" : "a";
+const Title = isTop ? 'h1' : 'a';
 // TODO: Titleタグがh1の場合にもhref属性を持っているのがちょっと気持ち悪い solid-componentに置き換えてもいいかも
 ---
 
