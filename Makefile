@@ -16,6 +16,22 @@ else
 	docker compose run --rm frontend npm ci
 endif
 
+.PHONY: lint
+lint:
+ifeq ($(shell whoami),node)
+	npm run eslint -w frontend
+else
+	docker compose run --rm frontend npm run eslint
+endif
+
+.PHONY: format
+format:
+ifeq ($(shell whoami),node)
+	npm run prettier -w frontend
+else
+	docker compose run --rm frontend npm run prettier
+endif
+
 # --------------------------- 以下はDockerコンテナ外でのみ実行可能 -------------------------- #
 .PHONY: shell
 shell:
