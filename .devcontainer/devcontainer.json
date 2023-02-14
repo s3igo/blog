@@ -28,7 +28,8 @@
         "dbankier.vscode-quick-select",
         "o175o.select-indentation",
         "Tyriar.sort-lines",
-        "bradlc.vscode-tailwindcss"
+        "bradlc.vscode-tailwindcss",
+        "csstools.postcss"
       ]
     }
   }

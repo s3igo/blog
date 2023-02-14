@@ -1,0 +1,30 @@
+---
+import Metadata from '../atoms/Metadata.astro';
+import type { Card } from '~/types';
+import { format, embedUpdated } from '~/utils/dateToString';
+import { toStr } from '~/utils/tagArrayToString';
+
+type Props = Card;
+const { title, url, tags, description, createdAt, updatedAt } = Astro.props;
+
+const date: string = format(createdAt) + (updatedAt != null ? embedUpdated(createdAt) : '');
+const tagStr: string = tags?.length ? ' | ' + toStr(tags) : '';
+const metadata: string = date + tagStr;
+---
+
+<article
+    class="hover:custom-shadow rounded-2xl border-2 border-solid border-transparent hover:border-secondary"
+>
+    <!-- TODO: セパレータのアクセシビリティ -->
+    <a href={url} class="block py-4 px-5">
+        <Metadata text={metadata} />
+        <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-xl text-primary sm:text-2xl">
+            {title}
+        </h2>
+        <p
+            class="bg-gradient-to-b from-foreground via-foreground/80 to-foreground/20 bg-clip-text text-transparent line-clamp-5 sm:text-lg"
+        >
+            {description}
+        </p>
+    </a>
+</article>
