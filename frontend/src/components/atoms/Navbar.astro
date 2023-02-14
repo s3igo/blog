@@ -12,11 +12,16 @@ const { isTop } = Astro.props;
 >
     {
         isTop ? (
-            <h1 class="text-primary; pl-8 text-3xl text-primary sm:text-[40px]">{PAGE_TITLE}</h1>
+            <h1 class="title">{PAGE_TITLE}</h1>
         ) : (
-            <a href="/" class="text-primary; pl-8 text-3xl text-primary sm:text-[40px]">
+            <a href="/" class="title">
                 {PAGE_TITLE}
             </a>
         )
     }
 </nav>
+<style>
+    .title {
+        @apply pl-8 text-3xl text-primary sm:text-[40px];
+    }
+</style>
