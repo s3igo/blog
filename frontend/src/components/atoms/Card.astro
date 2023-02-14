@@ -1,4 +1,5 @@
 ---
+import Metadata from "./Metadata.astro";
 import type { Card } from "~/types";
 import { format, embedUpdated } from "~/utils/dateToString";
 import { toStr } from "~/utils/tagArrayToString";
@@ -16,7 +17,7 @@ const metadata: string = date + tagStr;
 >
     <!-- TODO: セパレータのアクセシビリティ -->
     <a href={url} class="block py-4 px-5">
-        <p class="text-sm text-foreground/50 sm:text-base">{metadata}</p>
+        <Metadata text={metadata} />
         <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-xl text-primary sm:text-2xl">
             {title}
         </h2>
