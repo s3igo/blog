@@ -1,10 +1,10 @@
 ---
-import * as R from "remeda";
-import type { MarkdownInstance } from "astro";
-import type { Frontmatter, Card } from "~/types";
 import Layout from "../layouts/Layout.astro";
+import type { MarkdownInstance } from "astro";
+import * as R from "remeda";
 import List from "~/components/molecules/List.astro";
 import { PAGE_TITLE } from "~/constants";
+import type { Frontmatter, Card } from "~/types";
 
 const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob<Frontmatter>("./posts/*.md");
 

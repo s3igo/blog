@@ -8,6 +8,6 @@ type Props = {
 const { cards } = Astro.props;
 ---
 
-<main class="flex flex-col gap-6">
+<main class="flex flex-col gap-4 sm:gap-6">
     {cards.map((card) => <Card {...card} />)}
 </main>
