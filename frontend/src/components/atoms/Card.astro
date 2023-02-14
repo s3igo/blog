@@ -16,12 +16,12 @@ const metadata: string = date + tagStr;
 >
     <!-- TODO: セパレータのアクセシビリティ -->
     <a href={url} class="block py-4 px-5">
-        <p class="text-foreground/50">{metadata}</p>
-        <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-2xl text-primary">
+        <p class="text-sm text-foreground/50 sm:text-base">{metadata}</p>
+        <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-xl text-primary sm:text-2xl">
             {title}
         </h2>
         <p
-            class="bg-gradient-to-b from-foreground via-foreground/80 to-foreground/20 bg-clip-text text-lg text-transparent line-clamp-5"
+            class="bg-gradient-to-b from-foreground via-foreground/80 to-foreground/20 bg-clip-text text-transparent line-clamp-5 sm:text-lg"
         >
             {description}
         </p>

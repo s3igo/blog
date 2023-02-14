@@ -23,9 +23,9 @@ const tagStr = tags?.length ? toStr(tags) : null;
 
 <Layout title={`${title} | ${PAGE_TITLE}`} description={description}>
     <div class="text-foreground/50">
-        <span class="block">{created}</span>
-        {updated && <span class="block">{updated}</span>}
-        {tagStr && <span class="block">{tagStr}</span>}
+        <span class="block text-sm sm:text-base">{created}</span>
+        {updated && <span class="block text-sm sm:text-base">{updated}</span>}
+        {tagStr && <span class="block text-sm sm:text-base">{tagStr}</span>}
     </div>
     <div class="blog">
         <slot />
@@ -33,7 +33,7 @@ const tagStr = tags?.length ? toStr(tags) : null;
 </Layout>
 <style is:global>
     .blog {
-        @apply text-lg;
+        @apply sm:text-lg;
 
         p {
             @apply py-4;
@@ -53,23 +53,23 @@ const tagStr = tags?.length ? toStr(tags) : null;
 
         /* --------------------------------- header --------------------------------- */
         h1 {
-            @apply mb-4 pb-4 pt-4 text-4xl text-primary underline decoration-tertiary decoration-2 underline-offset-8;
+            @apply mb-4 text-3xl leading-relaxed text-primary underline decoration-tertiary decoration-2 underline-offset-8 sm:text-4xl;
         }
 
         :is(h2, h3, h4, h5) {
-            @apply border-b border-dashed border-primary pt-[72px] pb-3 after:text-foreground/50;
+            @apply border-b border-dashed border-primary pb-3 pt-12 after:text-foreground/50 sm:pt-[72px];
         }
 
         h2 {
-            @apply text-3xl hover:after:content-["_##"];
+            @apply text-2xl hover:after:content-["_##"] sm:text-3xl;
         }
 
         h3 {
-            @apply text-2xl hover:after:content-["_###"];
+            @apply text-xl hover:after:content-["_###"] sm:text-2xl;
         }
 
         h4 {
-            @apply text-xl hover:after:content-["_####"];
+            @apply text-lg hover:after:content-["_####"] sm:text-xl;
         }
 
         h5 {
