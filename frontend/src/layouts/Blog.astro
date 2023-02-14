@@ -1,13 +1,13 @@
 ---
+import Layout from "./Layout.astro";
+import "@fontsource/biz-udgothic/400.css";
+import "@fontsource/jetbrains-mono/400.css";
 import "@fontsource/nunito-sans/700.css";
 import "@fontsource/zen-kaku-gothic-new/700.css";
-import "@fontsource/jetbrains-mono/400.css";
-import "@fontsource/biz-udgothic/400.css";
-import type { Frontmatter } from "~/types";
-import { toStr } from "~/utils/tagArrayToString";
-import { embedCreated, embedUpdated } from "~/utils/dateToString";
-import Layout from "./Layout.astro";
 import { PAGE_TITLE } from "~/constants";
+import type { Frontmatter } from "~/types";
+import { embedCreated, embedUpdated } from "~/utils/dateToString";
+import { toStr } from "~/utils/tagArrayToString";
 
 type Props = {
     frontmatter: Frontmatter;
