@@ -1,3 +1,4 @@
+import type { Prettify } from "./utils/types";
 import { z } from "astro/zod";
 
 // レイアウトの種類
@@ -19,11 +20,4 @@ export const frontmatterSchema = z.object({
 export type Frontmatter = z.infer<typeof frontmatterSchema>;
 
 // 記事をリスト表示する際のカードの型
-export type Card = {
-    title: string;
-    url: string;
-    tags: string[];
-    description: string;
-    created: Date;
-    updated: Date | null;
-};
+export type Card = Prettify<Omit<Frontmatter, "draft" | "layout"> & { url: string }>;
