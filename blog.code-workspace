@@ -1,0 +1,53 @@
+{
+  "folders": [
+    {
+      "name": "root",
+      "path": "."
+    },
+    {
+      "path": "app"
+    },
+    {
+      "path": "contents"
+    }
+  ],
+  "settings": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    "[markdown]": {
+      "editor.formatOnSave": false
+    },
+    "eslint.validate": ["astro", "javascript", "javascriptreact", "typescript", "typescriptreact"],
+    "prettier.documentSelectors": ["**/*.astro"],
+    "eslint.workingDirectories": ["app"],
+    "eslint.experimental.useFlatConfig": true,
+    "cSpell.ignorePaths": ["devcontainer.json", "*.code-workspace"],
+    "cSpell.words": [
+      "astro",
+      "tsconfigs",
+      "astrojs",
+      "kaku",
+      "remeda",
+      "mdast",
+      "stefanzweifel",
+      "udgothic",
+      "tsukiyo",
+      "sdras",
+      "shiki",
+      "trivago"
+    ]
+  },
+  "extensions": {
+    "recommendations": [
+      "ms-vscode-remote.remote-containers",
+      "editorconfig.editorconfig",
+      "astro-build.astro-vscode",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "streetsidesoftware.code-spell-checker"
+    ]
+  }
+}

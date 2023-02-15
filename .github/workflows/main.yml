@@ -1,0 +1,30 @@
+name: lint & format
+
+on:
+  push:
+    paths-ignore:
+      - "**/*.md"
+
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    name: CI
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: "npm"
+      - name: Install Dependencies
+        run: npm ci
+      - name: Run astro check
+        run: npm run check -w app
+      - name: Run eslint
+        run: npm run eslint -w app
+      - name: Run prettier
+        run: npm run prettier -w app
+      - name: Run commit files modified by Prettier
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Apply Prettier Change

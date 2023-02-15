@@ -1,0 +1,27 @@
+services:
+  root:
+    container_name: blog-root
+    build:
+      context: .
+      dockerfile: ./infra/node/Dockerfile
+    user: node
+    volumes:
+      - .:/workspace:cached
+    working_dir: /workspace
+    command: npm run sync
+
+  app:
+    container_name: blog-app
+    build:
+      context: .
+      dockerfile: ./infra/node/Dockerfile
+    user: node
+    tty: true
+    ports:
+      - 127.0.0.1:3000:3000
+    volumes:
+      - .:/workspace:cached
+    working_dir: /workspace
+    environment:
+      - NODE_ENV=development
+    command: npm run dev -w app

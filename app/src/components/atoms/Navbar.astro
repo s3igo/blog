@@ -1,0 +1,27 @@
+---
+import { PAGE_TITLE } from '~/constants';
+
+export type Props = {
+    isTop: boolean;
+};
+const { isTop } = Astro.props;
+---
+
+<nav
+    class="custom-shadow grid h-16 items-center rounded-full border-2 border-solid border-primary bg-background sm:h-20"
+>
+    {
+        isTop ? (
+            <h1 class="title">{PAGE_TITLE}</h1>
+        ) : (
+            <a class="title" href="/">
+                {PAGE_TITLE}
+            </a>
+        )
+    }
+</nav>
+<style>
+    .title {
+        @apply pl-8 text-3xl text-primary sm:text-[40px];
+    }
+</style>

@@ -1,0 +1,40 @@
+---
+import '@fontsource/nunito-sans/400.css';
+import '@fontsource/zen-kaku-gothic-new/400.css';
+import Footer from '~/components/atoms/Footer.astro';
+import type { Props as NavbarProps } from '~/components/atoms/Navbar.astro';
+import Header from '~/components/molecules/Header.astro';
+import { PAGE_DESCRIPTION } from '~/constants';
+import '~/styles/global.css';
+
+type Props = {
+    title: string;
+    description?: string;
+} & Partial<NavbarProps>;
+const { title, description = PAGE_DESCRIPTION, isTop = false } = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="icon" type="image/png" href="/favicon.png" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
+        <link rel="canonical" href={canonicalURL} />
+    </head>
+    <body>
+        <div class="mx-auto px-8 xl:container">
+            <div class="py-8">
+                <Header isTop={isTop} />
+            </div>
+            <slot />
+            <Footer />
+        </div>
+    </body>
+</html>
