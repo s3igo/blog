@@ -41,6 +41,14 @@ else
 	docker compose run --rm --service-ports frontend bash
 endif
 
+.PHONY: down
+down:
+ifeq ($(shell whoami),node)
+	@echo "You can't run this command in the container."
+else
+	docker compose down
+endif
+
 .PHONY: clean
 clean:
 ifeq ($(shell whoami),node)

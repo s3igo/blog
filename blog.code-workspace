@@ -45,7 +45,7 @@
       "ms-vscode-remote.remote-containers",
       "editorconfig.editorconfig",
       "astro-build.astro-vscode",
-      "dbaeumer.vscode-eslint", // >=2.3.0 to support Flat Config
+      "dbaeumer.vscode-eslint",
       "esbenp.prettier-vscode",
       "streetsidesoftware.code-spell-checker"
     ]
