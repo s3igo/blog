@@ -1,10 +1,9 @@
 {
   "name": "blog",
   "version": "0.1.0",
-  "description": "個人用ブログ",
+  "description": "個人ブログ",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "sync": "syncdir ./contents/posts ./frontend/src/pages/posts -w"
   },
   "repository": {
