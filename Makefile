@@ -3,7 +3,7 @@ dev:
 ifeq ($(shell whoami),node)
 	npm run dev -w frontend
 else
-	docker compose up frontend
+	docker compose up
 endif
 
 .PHONY: init

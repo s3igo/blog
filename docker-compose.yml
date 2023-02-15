@@ -1,4 +1,15 @@
 services:
+  root:
+    container_name: blog-root
+    build:
+      context: .
+      dockerfile: ./infra/node/Dockerfile
+    user: node
+    volumes:
+      - .:/workspace:cached
+    working_dir: /workspace
+    command: npm run sync
+
   frontend:
     container_name: blog-frontend
     build:
