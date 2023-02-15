@@ -1,7 +1,7 @@
 {
   "name": "blog",
   "dockerComposeFile": ["../docker-compose.yml", "./docker-compose.yml"],
-  "service": "frontend",
+  "service": "app",
   "workspaceFolder": "/workspace",
   "customizations": {
     "vscode": {

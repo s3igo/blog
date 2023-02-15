@@ -5,7 +5,7 @@
       "path": "."
     },
     {
-      "path": "frontend"
+      "path": "app"
     },
     {
       "path": "contents"
@@ -22,7 +22,7 @@
     },
     "eslint.validate": ["astro", "javascript", "javascriptreact", "typescript", "typescriptreact"],
     "prettier.documentSelectors": ["**/*.astro"],
-    "eslint.workingDirectories": ["frontend"],
+    "eslint.workingDirectories": ["app"],
     "eslint.experimental.useFlatConfig": true,
     "cSpell.ignorePaths": ["devcontainer.json", "*.code-workspace"],
     "cSpell.words": [

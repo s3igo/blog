@@ -1,5 +1,5 @@
 {
-  "name": "frontend",
+  "name": "app",
   "type": "module",
   "version": "0.1.0",
   "private": true,

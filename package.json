@@ -4,7 +4,7 @@
   "description": "個人ブログ",
   "private": true,
   "scripts": {
-    "sync": "syncdir ./contents/posts ./frontend/src/pages/posts -w"
+    "sync": "syncdir ./contents/posts ./app/src/pages/posts -w"
   },
   "repository": {
     "type": "git",
@@ -18,7 +18,7 @@
   },
   "homepage": "https://github.com/s3igo/blog#readme",
   "workspaces": [
-    "frontend"
+    "app"
   ],
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
