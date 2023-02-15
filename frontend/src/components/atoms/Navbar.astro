@@ -5,12 +5,23 @@ export type Props = {
     isTop: boolean;
 };
 const { isTop } = Astro.props;
-const Title = isTop ? 'h1' : 'a';
-// TODO: Titleタグがh1の場合にもhref属性を持っているのがちょっと気持ち悪い solid-componentに置き換えてもいいかも
 ---
 
 <nav
     class="custom-shadow grid h-16 items-center rounded-full border-2 border-solid border-primary bg-background sm:h-20"
 >
-    <Title class="text-primary pl-8 text-3xl sm:text-[40px]" href="/">{PAGE_TITLE}</Title>
+    {
+        isTop ? (
+            <h1 class="title">{PAGE_TITLE}</h1>
+        ) : (
+            <a class="title" href="/">
+                {PAGE_TITLE}
+            </a>
+        )
+    }
 </nav>
+<style>
+    .title {
+        @apply pl-8 text-3xl text-primary sm:text-[40px];
+    }
+</style>
