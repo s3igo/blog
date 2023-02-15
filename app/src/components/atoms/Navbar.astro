@@ -8,7 +8,7 @@ const { isTop } = Astro.props;
 ---
 
 <nav
-    class="custom-shadow grid h-16 items-center rounded-full border-2 border-solid border-primary bg-background sm:h-20"
+    class="custom-shadow grid h-14 items-center rounded-full border-2 border-solid border-primary bg-background xs:h-16 sm:h-20"
 >
     {
         isTop ? (
@@ -22,6 +22,6 @@ const { isTop } = Astro.props;
 </nav>
 <style>
     .title {
-        @apply pl-8 text-3xl text-primary sm:text-[40px];
+        @apply pl-5 text-2xl text-primary xs:pl-6 xs:text-3xl sm:pl-8 sm:text-[40px];
     }
 </style>
