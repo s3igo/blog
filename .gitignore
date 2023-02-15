@@ -21,3 +21,6 @@ pnpm-debug.log*
 
 # content collection metadata
 .astro
+
+# temporary files
+tmp/
