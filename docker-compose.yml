@@ -10,8 +10,8 @@ services:
     working_dir: /workspace
     command: npm run sync
 
-  frontend:
-    container_name: blog-frontend
+  app:
+    container_name: blog-app
     build:
       context: .
       dockerfile: ./infra/node/Dockerfile
@@ -24,4 +24,4 @@ services:
     working_dir: /workspace
     environment:
       - NODE_ENV=development
-    command: npm run dev -w frontend
+    command: npm run dev -w app
