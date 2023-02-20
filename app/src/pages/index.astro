@@ -10,7 +10,7 @@ const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob<Frontmatter>('./
 
 const articles: Card[] = R.pipe(
     posts,
-    R.map(({ url = '/', frontmatter }) => ({ url, ...frontmatter })),
+    R.map(({ url = '/', frontmatter }) => ({ url, ...frontmatter })), // flatten
     R.sortBy(({ createdAt }) => createdAt),
     R.reverse()
 );

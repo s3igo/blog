@@ -1,12 +1,10 @@
 import type { Prettify } from './utils/types';
 import { z } from 'astro/zod';
 
-// レイアウトの種類
 export const layouts = {
     blog: '~/layouts/Blog.astro',
 } as const;
 
-// frontmatterの型定義
 export const frontmatterSchema = z.object({
     layout: z.literal(layouts.blog), // 複数になったらz.union()にする
     title: z.string(),
