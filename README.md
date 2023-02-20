@@ -11,6 +11,16 @@
 プログラミングのこと日常のこと問わず、アウトプットの場が欲しかったので作りました。
 詳しくは[こちら](https://blog.tsuki-yo.net/posts/first-post/)へ。
 
+##  技術選定
+
+- 言語: TypeScript
+- レンダリングフレームワーク: Astro
+- CSSフレームワーク: tailwindCSS(PostCSS)
+- リンター: ESLint
+- フォーマッター: Prettier
+- ドメイン・デプロイ・CDN: Cloudflare
+- CI/CD: GitHub Actions
+
 ## ディレクトリ構成
 
 ### ルート
@@ -57,16 +67,6 @@ flowchart TB
 また、TemplateとPageはコンポーネントとして扱わず、
 Templateは`./app/src/layouts`に、Pageは`./app/src/pages`に配置しています。
 これは、Astroにはデフォルトで`layouts`ディレクトリと`pages`ディレクトリが用意されているためです。
-
-##  技術選定
-
-- 言語: TypeScript
-- レンダリングフレームワーク: Astro
-- CSSフレームワーク: tailwindCSS(PostCSS)
-- リンター: ESLint
-- フォーマッター: Prettier
-- ドメイン・デプロイ・CDN: Cloudflare
-- CI/CD: GitHub Actions
 
 ## 開発
 
