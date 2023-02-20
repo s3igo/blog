@@ -14,6 +14,7 @@
 ##  技術選定
 
 - 言語: TypeScript
+- パッケージマネージャー: npm
 - レンダリングフレームワーク: Astro
 - CSSフレームワーク: tailwindCSS(PostCSS)
 - リンター: ESLint
@@ -44,9 +45,9 @@ npm workspacesを使ってルートから動かず作業するようにしてい
 ```shell
 $ tree ./app/src/components -d
 ./app/src/components
-├── atoms
-├── molecules
-└── organisms
+├── atoms      # Atom
+├── molecules  # Molecule
+└── organisms  # Organism
 
 4 directories
 ```
@@ -73,11 +74,13 @@ Templateは`./app/src/layouts`に、Pageは`./app/src/pages`に配置してい�
 ### 環境
 
 Git、Docker、GNU makeが必要です。
-コンテナの内外どちらでも開発できるようにしてありますが、VSCodeのDev Containerを使うのが最も手っ取り早いです。
-VSCodeを使う場合は、workspace機能を利用することを想定しているため、ディレクトリではなく`./blog.code-workspace`を開きます。
+エディタとコンテナの内外を問わずに開発できるようにしてありますが、
+LSPや拡張機能などの開発支援ツールが設定済みであるVSCodeのDev Containerを使うのがベターだと思います。
+VSCodeを使う場合は、Multi-root Workspaces機能を利用することを想定しているため、
+プロジェクトフォルダの代わりに`./blog.code-workspace`を開きます。
 
 ### 手法
 
-Issue駆動で開発し、1つのIssueに対して1つのPRを対応させています。
-PRは、squash and mergeでマージします。
+Issue駆動で開発し、PRの`close`コメントでIssueを閉じます。
+また、PRは`squash and merge`でマージします。
 ブランチ戦略はGit-flowで、releaseブランチは省いています。
