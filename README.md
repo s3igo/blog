@@ -11,7 +11,7 @@
 プログラミングのこと日常のこと問わず、アウトプットの場が欲しかったので作りました。
 詳しくは[こちら](https://blog.tsuki-yo.net/posts/first-post/)へ。
 
-##  技術選定
+## 技術スタック
 
 - 言語: TypeScript
 - パッケージマネージャー: npm
@@ -39,6 +39,7 @@ $ tree -ad -L 1 -I node_modules -I .git
 ```
 
 npm workspacesを使ってルートから動かず作業するようにしています。
+記事を書くときのみ`./contents`に移動して作業します。
 
 ### コンポーネント
 
@@ -74,6 +75,7 @@ Templateは`./app/src/layouts`に、Pageは`./app/src/pages`に配置してい�
 ### 環境
 
 Git、Docker、GNU makeが必要です。
+コンテナ外で記事を書く場合は、[zk](https://github.com/mickael-menu/zk)が必要です。
 エディタとコンテナの内外を問わずに開発できるようにしてありますが、
 LSPや拡張機能などの開発支援ツールが設定済みであるVSCodeのDev Containerを使うのがベターだと思います。
 VSCodeを使う場合は、Multi-root Workspaces機能を利用することを想定しているため、
@@ -82,5 +84,6 @@ VSCodeを使う場合は、Multi-root Workspaces機能を利用することを�
 ### 手法
 
 Issue駆動で開発し、PRの`close`コメントでIssueを閉じます。
+軽微な変更の場合、Issueを立てずにPRを作成することもあります。
 また、PRは`squash and merge`でマージします。
 ブランチ戦略はGit-flowで、releaseブランチは省いています。
