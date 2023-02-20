@@ -10,7 +10,7 @@ export const layouts = {
 export const frontmatterSchema = z.object({
     layout: z.literal(layouts.Blog), // 複数になったらz.union()にする
     title: z.string(),
-    tags: z.array(z.string()).optional(),
+    tags: z.array(z.string()).nonempty().optional(),
     description: z.string(),
     draft: z.literal(true).optional(),
     createdAt: z.date(),
