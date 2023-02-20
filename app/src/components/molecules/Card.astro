@@ -7,9 +7,9 @@ import { toStr } from '~/utils/tagArrayToString';
 type Props = Card;
 const { title, url, tags, description, createdAt, updatedAt } = Astro.props;
 
-const date: string = format(createdAt) + (updatedAt != null ? embedUpdated(createdAt) : '');
-const tagStr: string = tags?.length ? ' | ' + toStr(tags) : '';
-const metadata: string = date + tagStr;
+const date = format(createdAt) + (updatedAt !== undefined ? embedUpdated(createdAt) : '');
+const tagStr = tags !== undefined ? ' | ' + toStr(tags) : '';
+const metadata = date + tagStr;
 ---
 
 <article
