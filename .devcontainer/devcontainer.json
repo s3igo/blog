@@ -12,6 +12,8 @@
         "dbaeumer.vscode-eslint",
         "esbenp.prettier-vscode",
         "streetsidesoftware.code-spell-checker",
+        "bradlc.vscode-tailwindcss",
+        "csstools.postcss",
         /* -------------------------------------------------------------------------- */
         "jeff-hykin.code-eol",
         "naumovs.color-highlight",
@@ -27,9 +29,7 @@
         "christian-kohler.path-intellisense",
         "dbankier.vscode-quick-select",
         "o175o.select-indentation",
-        "Tyriar.sort-lines",
-        "bradlc.vscode-tailwindcss",
-        "csstools.postcss"
+        "Tyriar.sort-lines"
       ]
     }
   }
