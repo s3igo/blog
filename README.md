@@ -2,16 +2,14 @@
 
 私の個人ブログです。
 
-<ul>
-    <li>ブログ本体: <a href="https://blog.tsuki-yo.net" target="_blank">https://blog.tsuki-yo.net</a></li>
-    <li>タスク管理: <a href="https://github.com/s3igo/blog/issues" target="_blank">https://github.com/s3igo/blog/issues</a></li>
-    <li>プロジェクト管理: <a href="https://github.com/users/s3igo/projects/1/views/1" target="_blank">https://github.com/users/s3igo/projects/1/views/1</a></li>
-</ul>
+- ブログ本体: https://blog.tsuki-yo.net
+- タスク管理: https://github.com.s3igo/blog/issues
+- プロジェクト管理: https://github.com/users/s3igo/projects/1/views/1
 
 ## 背景・方針
 
 プログラミングのこと日常のこと問わず、アウトプットの場が欲しかったので作りました。
-詳しくは<a href="https://blog.tsuki-yo.net/posts/first-post/" target="_blank">こちら</a>へ。
+詳しくは[こちら](https://blog.tsuki-yo.net/posts/first-post/)へ。
 
 ## ディレクトリ構成
 
