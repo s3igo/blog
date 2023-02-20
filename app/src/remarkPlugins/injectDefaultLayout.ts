@@ -11,6 +11,6 @@ export const injectDefaultLayout: Plugin = () => {
             },
         }
     ) => {
-        frontmatter.layout ??= layouts.Blog;
+        frontmatter.layout ??= layouts.blog;
     };
 };
