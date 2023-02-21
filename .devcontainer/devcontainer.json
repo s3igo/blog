@@ -4,6 +4,9 @@
   "service": "app",
   "workspaceFolder": "/workspace",
   "postCreateCommand": "git config --global --add safe.directory /workspace", // git操作がコケるため
+  "containerEnv": {
+    "EDITOR": "code"
+  },
   "customizations": {
     "vscode": {
       "settings": {
