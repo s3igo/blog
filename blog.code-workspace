@@ -21,7 +21,7 @@
     "prettier.documentSelectors": ["**/*.astro"],
     "eslint.workingDirectories": ["app"],
     "eslint.experimental.useFlatConfig": true,
-    "cSpell.ignorePaths": ["devcontainer.json", "*.code-workspace", "*.md"],
+    "cSpell.ignorePaths": ["devcontainer.json", "*.code-workspace", "*.md", "package-lock.json"],
     "cSpell.words": [
       "astro",
       "tsconfigs",
