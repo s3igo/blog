@@ -17,14 +17,11 @@
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
-    "[markdown]": {
-      "editor.formatOnSave": false
-    },
     "eslint.validate": ["astro", "javascript", "javascriptreact", "typescript", "typescriptreact"],
     "prettier.documentSelectors": ["**/*.astro"],
     "eslint.workingDirectories": ["app"],
     "eslint.experimental.useFlatConfig": true,
-    "cSpell.ignorePaths": ["devcontainer.json", "*.code-workspace"],
+    "cSpell.ignorePaths": ["devcontainer.json", "*.code-workspace", "*.md"],
     "cSpell.words": [
       "astro",
       "tsconfigs",
@@ -37,7 +34,8 @@
       "tsukiyo",
       "sdras",
       "shiki",
-      "trivago"
+      "trivago",
+      "nocjsp"
     ]
   },
   "extensions": {
