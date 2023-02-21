@@ -24,3 +24,6 @@ pnpm-debug.log*
 
 # temporary files
 tmp/
+
+# zk database
+notebook.db

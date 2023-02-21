@@ -1,0 +1,9 @@
+[note]
+filename = "{{slug title}}"
+
+[alias]
+new = 'zk new "$ZK_NOTEBOOK_DIR/posts" --title=${*:-"new-post"}'
+edit = 'zk edit "$ZK_NOTEBOOK_DIR/posts" --interactive'
+
+[tool]
+fzf-preview = "bat -p --color always {-1}"

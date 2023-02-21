@@ -16,11 +16,15 @@ createdAt: 2023-01-01
 デザインがころころ変わってレイアウト崩れたり、頻繁にサーバー落ちたりするかもしれません。
 そこらへんは生温かく見守っていただけるとありがたいです。
 
+<!-- textlint-disable preset-ja-technical-writing/no-doubled-joshi -->
+
 日常のことについては、140字でおさまらないことを発信したいときにこのブログを使っていきたいと思っています。
 また、時々書く個人的なノートは書いたきりになりがちですが、
 それを人目に触れるに足る体裁でまとめ直すことで
 [PKM(Personal knowledge management)](https://en.wikipedia.org/wiki/Personal_knowledge_management)
 に役立てたいという思惑もあります。
+
+<!-- textlint-enable preset-ja-technical-writing/no-doubled-joshi -->
 
 ## 方針
 
@@ -32,4 +36,3 @@ createdAt: 2023-01-01
 また、GitHubで記事の内容を含むこのブログのソースコードを公開しているため、
 どうしても編集履歴を遡りたい場合は（そんな方がいるかどうかはさておき）そちらからお願いします。
 質問や指摘もGitHubのIssueに頂けるとありがたいです。
-

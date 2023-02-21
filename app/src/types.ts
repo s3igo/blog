@@ -1,5 +1,6 @@
-import type { Prettify } from './utils/types';
 import { z } from 'astro/zod';
+
+import type { Prettify } from './utils/types';
 
 export const layouts = {
     blog: '~/layouts/Blog.astro',

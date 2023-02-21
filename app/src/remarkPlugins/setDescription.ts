@@ -1,7 +1,8 @@
-import { truncate } from '../utils/string';
-import type { Plugin, Type, Value } from './types';
 import { toString } from 'mdast-util-to-string';
 import * as R from 'remeda';
+
+import { truncate } from '../utils/string';
+import type { Plugin, Type, Value } from './types';
 
 export const setDescription: Plugin = () => {
     return ({ children }, { data }) => {

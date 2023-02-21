@@ -1,8 +1,9 @@
 ---
-import Metadata from '../atoms/Metadata.astro';
 import type { Card } from '~/types';
-import { format, embedUpdated } from '~/utils/dateToString';
+import { embedUpdated, format } from '~/utils/dateToString';
 import { toStr } from '~/utils/tagArrayToString';
+
+import Metadata from '../atoms/Metadata.astro';
 
 type Props = Card;
 const { title, url, tags, description, createdAt, updatedAt } = Astro.props;
