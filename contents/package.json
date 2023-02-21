@@ -10,8 +10,5 @@
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-rule-preset-ja-technical-writing": "^7.0.0"
-  },
-  "devDependencies": {
-    "prettier-plugin-md-nocjsp": "^1.5.1"
   }
 }
