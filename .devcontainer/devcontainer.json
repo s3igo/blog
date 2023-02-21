@@ -3,6 +3,7 @@
   "dockerComposeFile": ["../docker-compose.yml", "./docker-compose.yml"],
   "service": "app",
   "workspaceFolder": "/workspace",
+  "postCreateCommand": "git config --global --add safe.directory /workspace",
   "customizations": {
     "vscode": {
       "extensions": [

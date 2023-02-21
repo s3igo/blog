@@ -76,8 +76,9 @@ Templateは`./app/src/layouts`に、Pageは`./app/src/pages`に配置してい�
 
 Git、Docker、GNU makeが必要です。
 コンテナ外で記事を書く場合は、[zk](https://github.com/mickael-menu/zk)が必要です。
+また、`zk edit`コマンドは[fzf](https://github.com/junegunn/fzf)と[bat](https://github.com/sharkdp/bat)に依存しています。
 エディタとコンテナの内外を問わずに開発できるようにしてありますが、
-LSPや拡張機能などの開発支援ツールが設定済みであるVSCodeのDev Containerを使うのがベターだと思います。
+LSPや拡張機能などの開発支援ツールが設定済みであるVSCodeのDev Containerを使うのがベターです。
 VSCodeを使う場合は、Multi-root Workspaces機能を利用することを想定しているため、
 プロジェクトフォルダの代わりに`./blog.code-workspace`を開きます。
 

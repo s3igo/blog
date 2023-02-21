@@ -6,4 +6,5 @@ RUN cd zk && make
 FROM node:gallium-bullseye-slim
 
 COPY --from=builder /go/zk/zk /usr/local/bin/zk
-RUN apt update && apt install -y git make
+RUN apt update && apt install -y git make bat fzf
+RUN ln -s /usr/bin/batcat /usr/local/bin/bat
