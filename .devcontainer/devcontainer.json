@@ -3,9 +3,12 @@
   "dockerComposeFile": ["../docker-compose.yml", "./docker-compose.yml"],
   "service": "app",
   "workspaceFolder": "/workspace",
-  "postCreateCommand": "git config --global --add safe.directory /workspace",
+  "postCreateCommand": "git config --global --add safe.directory /workspace", // git操作がコケるため
   "customizations": {
     "vscode": {
+      "settings": {
+        "textlint.configPath": "/workspace/contents/.textlintrc.json"
+      },
       "extensions": [
         /* ----------------------------- recommendations ---------------------------- */
         "editorconfig.editorconfig",
@@ -15,6 +18,7 @@
         "streetsidesoftware.code-spell-checker",
         "bradlc.vscode-tailwindcss",
         "csstools.postcss",
+        "taichi.vscode-textlint",
         /* -------------------------------------------------------------------------- */
         "jeff-hykin.code-eol",
         "naumovs.color-highlight",

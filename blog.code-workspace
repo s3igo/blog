@@ -47,7 +47,10 @@
       "astro-build.astro-vscode",
       "dbaeumer.vscode-eslint",
       "esbenp.prettier-vscode",
-      "streetsidesoftware.code-spell-checker"
+      "streetsidesoftware.code-spell-checker",
+      "bradlc.vscode-tailwindcss",
+      "csstools.postcss",
+      "taichi.vscode-textlint"
     ]
   }
 }
