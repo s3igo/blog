@@ -4,6 +4,7 @@ import * as R from 'remeda';
 import { truncate } from '../utils/string';
 import type { Plugin, Type, Value } from './types';
 
+// 本文先頭500文字をfrontmatter.descriptionにセットする
 export const setDescription: Plugin = () => {
     return ({ children }, { data }) => {
         // TODO: 特にコメントは再帰的にフィルター掛ける必要があるかも
