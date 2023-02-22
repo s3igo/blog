@@ -4,10 +4,13 @@
   "service": "app",
   "workspaceFolder": "/workspace",
   "postCreateCommand": "git config --global --add safe.directory /workspace", // git操作がコケるため
+  "containerEnv": {
+    "EDITOR": "code"
+  },
   "customizations": {
     "vscode": {
       "settings": {
-        "textlint.configPath": "/workspace/contents/.textlintrc.json"
+        "textlint.configPath": "/workspace/contents/.textlintrc"
       },
       "extensions": [
         /* ----------------------------- recommendations ---------------------------- */
