@@ -3,20 +3,19 @@ import '@fontsource/biz-udgothic/400.css';
 import '@fontsource/jetbrains-mono/400.css';
 import '@fontsource/nunito-sans/700.css';
 import '@fontsource/zen-kaku-gothic-new/700.css';
-
 import Metadata from '~/components/atoms/Metadata.astro';
 import { PAGE_TITLE } from '~/constants';
 import type { Frontmatter } from '~/types';
 import { embedCreated, embedUpdated } from '~/utils/dateToString';
+import { first3Sentences } from '~/utils/string';
 import { toStr } from '~/utils/tagArrayToString';
-
 import Layout from './Layout.astro';
 
 type Props = {
     frontmatter: Frontmatter;
 };
 const {
-    frontmatter: { title, tags, description, createdAt, updatedAt },
+    frontmatter: { title, tags, preview, pubDate, updatedAt },
 } = Astro.props;
 
 const created = embedCreated(pubDate);
@@ -24,7 +23,7 @@ const updated = updatedAt ? embedUpdated(updatedAt) : '';
 const tagStr = tags !== undefined ? toStr(tags) : '';
 ---
 
-<Layout title={`${title} | ${PAGE_TITLE}`} description={description}>
+<Layout title={`${title} | ${PAGE_TITLE}`} description={first3Sentences(preview)}>
     <div>
         <Metadata text={created} />
         {updated && <Metadata text={updated} />}

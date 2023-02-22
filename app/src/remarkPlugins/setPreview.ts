@@ -4,7 +4,7 @@ import { truncate } from '../utils/string';
 import type { Plugin, Type, Value } from './types';
 
 // 本文先頭500文字をfrontmatter.previewにセットする
-export const setDescription: Plugin = () => {
+export const setPreview: Plugin = () => {
     return ({ children }, { data }) => {
         // TODO: 特にコメントは再帰的にフィルター掛ける必要があるかも
         // 重要性低いので問題でてきたら対応で十分
