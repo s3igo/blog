@@ -11,6 +11,10 @@
 プログラミングのこと日常のこと問わず、アウトプットの場が欲しかったので作りました。
 詳しくは[こちら](https://blog.tsuki-yo.net/posts/first-post/)へ。
 
+
+## 設計思想
+
+
 ## 技術スタック
 
 - 言語: TypeScript
@@ -55,7 +59,7 @@ $ tree ./app/src/components -d
 
 Atomic Designを参考にしています。
 しかし、コンポーネントの粒度が曖昧になりがちな部分を解消するため、
-以下のような基準を設け、振り分けるべきディレクトリが明確になるようにしています。
+以下のような基準を設け、振り分けるべきディレクトリを明確にしています。
 
 ```mermaid
 flowchart TB
@@ -77,7 +81,7 @@ Templateは`./app/src/layouts`に、Pageは`./app/src/pages`に配置してい�
 Git、Docker、GNU makeが必要です。
 コンテナ外で記事を書く場合は、[zk](https://github.com/mickael-menu/zk)が必要です。
 また、`zk edit`コマンドは[fzf](https://github.com/junegunn/fzf)と[bat](https://github.com/sharkdp/bat)に依存しています。
-エディタとコンテナの内外を問わずに開発できるようにしてありますが、
+エディタとコンテナの内外を問わず開発できるようにしてありますが、
 LSPや拡張機能などの開発支援ツールが設定済みであるVSCodeのDev Containerを使うのがベターです。
 VSCodeを使う場合は、Multi-root Workspaces機能を利用することを想定しているため、
 プロジェクトフォルダの代わりに`./blog.code-workspace`を開きます。
