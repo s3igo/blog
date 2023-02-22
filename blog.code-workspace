@@ -51,7 +51,8 @@
       "streetsidesoftware.code-spell-checker",
       "bradlc.vscode-tailwindcss",
       "csstools.postcss",
-      "taichi.vscode-textlint"
+      "taichi.vscode-textlint",
+      "tamasfe.even-better-toml"
     ]
   }
 }

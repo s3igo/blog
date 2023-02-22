@@ -22,6 +22,7 @@
         "bradlc.vscode-tailwindcss",
         "csstools.postcss",
         "taichi.vscode-textlint",
+        "tamasfe.even-better-toml",
         /* -------------------------------------------------------------------------- */
         "jeff-hykin.code-eol",
         "naumovs.color-highlight",
