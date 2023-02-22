@@ -1,20 +1,23 @@
-import { injectDefaultLayout } from "./src/remarkPlugins/injectDefaultLayout";
-import { setDescription } from "./src/remarkPlugins/setDescription";
-import { setTitle } from "./src/remarkPlugins/setTitle";
-import { validateFrontmatter } from "./src/remarkPlugins/validateFrontmatter";
-import tailwind from "@astrojs/tailwind";
-import { defineConfig } from "astro/config";
-import nightOwl from "night-owl/themes/Night Owl-color-theme.json";
-import normalizeHeadings from "remark-normalize-headings";
+import tailwind from '@astrojs/tailwind';
+import { defineConfig } from 'astro/config';
+import nightOwl from 'night-owl/themes/Night Owl-color-theme.json';
+import normalizeHeadings from 'remark-normalize-headings';
+
+import { injectDefaultLayout } from './src/remarkPlugins/injectDefaultLayout';
+import { setCreatedDate } from './src/remarkPlugins/setCreatedDate';
+import { setDescription } from './src/remarkPlugins/setDescription';
+import { setTitle } from './src/remarkPlugins/setTitle';
+import { validateFrontmatter } from './src/remarkPlugins/validateFrontmatter';
 
 // https://astro.build/config
 export default defineConfig({
-    site: "https://blog.tsuki-yo.net",
+    site: 'https://blog.tsuki-yo.net',
     markdown: {
         remarkPlugins: [
             normalizeHeadings,
             setTitle,
             setDescription,
+            setCreatedDate,
             injectDefaultLayout,
             validateFrontmatter,
         ],

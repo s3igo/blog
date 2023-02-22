@@ -1,8 +1,5 @@
 ---
-createdAt: 2023-02-04
-tags:
-    - JavaScript
-    - programming
+tags: [JavaScript programming]
 ---
 
 # JavaScriptの引用符は'と"と`のどれを使うべきか

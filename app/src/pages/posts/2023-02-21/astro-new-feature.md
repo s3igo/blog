@@ -1,5 +1,4 @@
 ---
-createdAt: 2023-02-21
 tags: [programming]
 ---
 
