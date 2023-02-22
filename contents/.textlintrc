@@ -7,7 +7,7 @@
   "rules": {
     "preset-ja-technical-writing": {
       "sentence-length": {
-        "max": 120
+        "max": 130
       },
       "ja-no-weak-phrase": false,
       "no-exclamation-question-mark": false
