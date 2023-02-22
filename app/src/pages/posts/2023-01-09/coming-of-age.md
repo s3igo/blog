@@ -1,8 +1,5 @@
 ---
-createdAt: 2023-01-09
-title: 成人式に行ってきた
-tags:
-    - report
+tags: [report]
 ---
 
 # 成人式に行ってきた

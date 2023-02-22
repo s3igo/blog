@@ -8,7 +8,7 @@ import type { Card, Frontmatter } from '~/types';
 
 import Layout from '../layouts/Layout.astro';
 
-const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob<Frontmatter>('./posts/*.md');
+const posts: MarkdownInstance<Frontmatter>[] = await Astro.glob<Frontmatter>('./posts/*/*.md');
 
 const articles: Card[] = R.pipe(
     posts,

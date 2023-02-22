@@ -9,7 +9,7 @@
 ## 背景・方針
 
 プログラミングのこと日常のこと問わず、アウトプットの場が欲しかったので作りました。
-詳しくは[こちら](https://blog.tsuki-yo.net/posts/first-post/)へ。
+詳しくは[こちら](https://blog.tsuki-yo.net/posts/2023-01-01/first-post)へ。
 
 
 ## 設計思想
