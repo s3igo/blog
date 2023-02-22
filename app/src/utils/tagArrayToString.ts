@@ -1,3 +1,5 @@
-type Func = (tags: string[]) => string;
+import type { NonEmptyArray } from './types';
 
-export const toStr: Func = (tags) => (tags.length ? tags.map((tag) => `#${tag}`).join(' ') : '');
+type Func = (tags: NonEmptyArray<string>) => string;
+
+export const toStr: Func = (tags) => tags.map((tag) => `#${tag}`).join(' ');

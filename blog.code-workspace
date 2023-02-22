@@ -24,7 +24,7 @@
     "prettier.documentSelectors": ["**/*.astro"],
     "eslint.workingDirectories": ["app"],
     "eslint.experimental.useFlatConfig": true,
-    "cSpell.ignorePaths": ["devcontainer.json", "*.code-workspace"],
+    "cSpell.ignorePaths": ["devcontainer.json", "*.code-workspace", "*.md", "package-lock.json"],
     "cSpell.words": [
       "astro",
       "tsconfigs",
@@ -37,7 +37,8 @@
       "tsukiyo",
       "sdras",
       "shiki",
-      "trivago"
+      "trivago",
+      "nocjsp"
     ]
   },
   "extensions": {
@@ -47,7 +48,10 @@
       "astro-build.astro-vscode",
       "dbaeumer.vscode-eslint",
       "esbenp.prettier-vscode",
-      "streetsidesoftware.code-spell-checker"
+      "streetsidesoftware.code-spell-checker",
+      "bradlc.vscode-tailwindcss",
+      "csstools.postcss",
+      "taichi.vscode-textlint"
     ]
   }
 }

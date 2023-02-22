@@ -1,0 +1,16 @@
+[note]
+filename = "{{slug title}}"
+template = "default.md"
+
+[format.markdown]
+link-format = "markdown"
+hashtags = false
+colon-tags = false
+multiword-tags = false
+
+[tool]
+fzf-preview = "bat -p --color always {-1}"
+
+[alias]
+new = 'zk new "$ZK_NOTEBOOK_DIR/posts" --title=${*:-"new-post"}'
+edit = 'zk edit "$ZK_NOTEBOOK_DIR/posts" --interactive'
