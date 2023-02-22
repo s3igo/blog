@@ -2,13 +2,12 @@
 import type { Card } from '~/types';
 import { embedUpdated, format } from '~/utils/dateToString';
 import { toStr } from '~/utils/tagArrayToString';
-
 import Metadata from '../atoms/Metadata.astro';
 
 type Props = Card;
-const { title, url, tags, description, createdAt, updatedAt } = Astro.props;
+const { title, url, tags, preview, pubDate, updatedAt } = Astro.props;
 
-const date = format(createdAt) + (updatedAt !== undefined ? embedUpdated(createdAt) : '');
+const date = format(pubDate) + (updatedAt !== undefined ? embedUpdated(pubDate) : '');
 const tagStr = tags !== undefined ? ' | ' + toStr(tags) : '';
 const metadata = date + tagStr;
 ---
@@ -25,7 +24,7 @@ const metadata = date + tagStr;
         <p
             class="bg-gradient-to-b from-foreground via-foreground/80 to-foreground/20 bg-clip-text text-transparent line-clamp-5 sm:text-lg"
         >
-            {description}
+            {preview}
         </p>
     </a>
 </article>
