@@ -1,5 +1,4 @@
 import { z } from 'astro/zod';
-
 import type { Prettify } from './utils/types';
 
 export const layouts = {
@@ -10,9 +9,9 @@ export const frontmatterSchema = z.object({
     layout: z.literal(layouts.blog), // 複数になったらz.union()にする
     title: z.string(),
     tags: z.array(z.string()).nonempty().optional(),
-    description: z.string(),
+    preview: z.string(),
     draft: z.literal(true).optional(),
-    createdAt: z.date(),
+    pubDate: z.date(),
     updatedAt: z.date().optional(),
 });
 

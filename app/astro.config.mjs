@@ -2,10 +2,9 @@ import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
 import nightOwl from 'night-owl/themes/Night Owl-color-theme.json';
 import normalizeHeadings from 'remark-normalize-headings';
-
 import { injectDefaultLayout } from './src/remarkPlugins/injectDefaultLayout';
-import { setCreatedDate } from './src/remarkPlugins/setCreatedDate';
-import { setDescription } from './src/remarkPlugins/setDescription';
+import { setPreview } from './src/remarkPlugins/setPreview';
+import { setPubDate } from './src/remarkPlugins/setPubDate';
 import { setTitle } from './src/remarkPlugins/setTitle';
 import { validateFrontmatter } from './src/remarkPlugins/validateFrontmatter';
 
@@ -16,8 +15,8 @@ export default defineConfig({
         remarkPlugins: [
             normalizeHeadings,
             setTitle,
-            setDescription,
-            setCreatedDate,
+            setPreview,
+            setPubDate,
             injectDefaultLayout,
             validateFrontmatter,
         ],

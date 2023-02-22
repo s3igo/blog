@@ -1,11 +1,10 @@
 import { toString } from 'mdast-util-to-string';
 import * as R from 'remeda';
-
 import { truncate } from '../utils/string';
 import type { Plugin, Type, Value } from './types';
 
-// 本文先頭500文字をfrontmatter.descriptionにセットする
-export const setDescription: Plugin = () => {
+// 本文先頭500文字をfrontmatter.previewにセットする
+export const setPreview: Plugin = () => {
     return ({ children }, { data }) => {
         // TODO: 特にコメントは再帰的にフィルター掛ける必要があるかも
         // 重要性低いので問題でてきたら対応で十分
@@ -17,6 +16,6 @@ export const setDescription: Plugin = () => {
         );
         const content = toString(withoutHeaderAndHtmlComment);
         // 先頭500文字で切る
-        data.astro.frontmatter.description = truncate(content, 500);
+        data.astro.frontmatter.preview = truncate(content, 500);
     };
 };
