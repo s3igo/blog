@@ -111,7 +111,7 @@ Content Collectionは、`getCollection()`と`getEntryBySlug()`というコンテ
 このように、Content Collectionは得られる恩恵とRemark Pluginとの相性が微妙でAstroの柔軟性を犠牲にするため、
 私は使っていません。
 もちろん、リリースされたばかりの新機能なので、どんどん改善されていくことになるとは思いますし、
-複数のコンテンツタイプがある場合は依然有力な選択肢になると思います。
+複数のコンテンツタイプがある場合やurlを動的に割り当てたい場合は有効な方法だと思っています。
 
 ### じゃあどうするか
 
@@ -149,4 +149,4 @@ export const validateFrontmatter = () => {
 ```
 
 この`validateFrontmatter`を`astro.config.mjs`にてRemark Pluginの配列の末尾に追加することで、
-動的に追加したプロパティを含むfrontmatterのバリデーションを行なうことができます。
+ビルド時にはなりますが、動的に追加したプロパティを含むfrontmatterのバリデーションを行なうことができます。

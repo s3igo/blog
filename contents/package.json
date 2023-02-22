@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "lint": "textlint ./posts/*.md"
+    "lint": "textlint ./posts/*/*.md"
   },
   "dependencies": {
     "textlint": "^13.3.0",
