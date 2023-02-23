@@ -10,6 +10,9 @@ export default getViteConfig({
             all: true,
             reporter: ['text'],
         },
+        typecheck: {
+            include: ['src/**/*.{js,ts,jsx,tsx}'],
+        },
     },
     define: {
         vitest: undefined,
