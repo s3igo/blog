@@ -34,6 +34,7 @@
     "vitest": "^0.28.5"
   },
   "devDependencies": {
+    "@playwright/test": "^1.31.1",
     "@vitest/coverage-c8": "^0.28.5"
   }
 }

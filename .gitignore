@@ -27,3 +27,8 @@ tmp/
 
 # zk database
 notebook.db
+
+# Playwright
+/test-results/
+/playwright-report/
+/playwright/.cache/
