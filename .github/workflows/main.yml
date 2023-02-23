@@ -47,6 +47,7 @@ jobs:
           commit_message: Apply Prettier Change
 
   test:
+    name: Test
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
