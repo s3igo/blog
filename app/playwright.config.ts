@@ -1,6 +1,10 @@
 import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
+    webServer: {
+        command: 'npm -w app run preview',
+        port: 3000,
+    },
     use: {
         baseURL: 'http://localhost:3000',
     },
