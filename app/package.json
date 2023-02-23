@@ -11,7 +11,9 @@
     "astro": "astro",
     "check": "astro check",
     "eslint": "eslint ./src",
-    "prettier": "prettier --write ./src"
+    "prettier": "prettier --write ./src",
+    "test": "vitest",
+    "coverage": "vitest run --coverage"
   },
   "dependencies": {
     "@astrojs/rss": "^2.1.1",
@@ -27,6 +29,10 @@
     "night-owl": "github:sdras/night-owl-vscode-theme",
     "remark-normalize-headings": "^3.0.1",
     "remeda": "^1.6.0",
-    "sanitize-html": "^2.10.0"
+    "sanitize-html": "^2.10.0",
+    "vitest": "^0.28.5"
+  },
+  "devDependencies": {
+    "@vitest/coverage-c8": "^0.28.5"
   }
 }

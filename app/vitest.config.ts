@@ -1,0 +1,17 @@
+/// <reference types="vitest" />
+import { getViteConfig } from 'astro/config';
+
+export default getViteConfig({
+    test: {
+        globals: true,
+        includeSource: ['src/**/*.{js,ts,jsx,tsx}'],
+        coverage: {
+            include: ['src/**/*.{js,ts,jsx,tsx}'],
+            all: true,
+            reporter: ['text'],
+        },
+    },
+    define: {
+        vitest: undefined,
+    },
+});
