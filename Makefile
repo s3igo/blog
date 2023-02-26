@@ -12,8 +12,11 @@ init:
 	rm -rf ./app/node_modules
 ifeq ($(shell whoami),node)
 	npm ci
+	cd contents && zk index
 else
 	docker compose run --rm app npm ci
+	docker compose run --rm root cd contents && zk index
+	# TODO: rootコンテナで実行するの適切? textlint導入まで検討しない
 endif
 
 .PHONY: lint
