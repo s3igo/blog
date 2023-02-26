@@ -3,6 +3,7 @@
 私の個人ブログです。
 
 - ブログ本体: https://blog.tsuki-yo.net
+- RSS: https://blog.tsuki-yo.net/rss.xml
 - タスク管理: https://github.com.s3igo/blog/issues
 - プロジェクト管理: https://github.com/users/s3igo/projects/1/views/1
 
