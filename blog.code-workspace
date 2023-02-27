@@ -8,7 +8,7 @@
       "path": "app"
     },
     {
-      "path": "contents"
+      "path": "app/src/data"
     }
   ],
   "settings": {

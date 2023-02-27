@@ -15,7 +15,7 @@
     "test": "vitest",
     "typecheck": "vitest typecheck",
     "coverage": "vitest run --coverage",
-    "lint": "textlint ./posts/*/*.md"
+    "lint": "textlint ./src/data/posts/*.md"
   },
   "dependencies": {
     "@astrojs/rss": "^2.1.1",
