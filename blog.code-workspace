@@ -38,7 +38,8 @@
       "sdras",
       "shiki",
       "trivago",
-      "nocjsp"
+      "nocjsp",
+      "Vitest"
     ]
   },
   "extensions": {
