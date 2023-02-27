@@ -3,9 +3,6 @@
   "version": "0.1.0",
   "description": "個人ブログ",
   "private": true,
-  "scripts": {
-    "sync": "syncdir ./contents/posts ./app/src/pages/posts -w"
-  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/s3igo/blog.git"
