@@ -27,3 +27,11 @@ tmp/
 
 # zk database
 notebook.db
+
+# Vitest
+coverage/
+
+# Playwright
+test-results/
+playwright-report/
+playwright/.cache/
