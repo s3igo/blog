@@ -10,7 +10,7 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "textlint.configPath": "/workspace/app/.textlintrc"
+        "textlint.configPath": "/workspace/.textlintrc"
       },
       "extensions": [
         /* ----------------------------- recommendations ---------------------------- */
