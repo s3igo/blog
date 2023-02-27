@@ -2,8 +2,8 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
     webServer: {
-        command: 'npm -w app run preview',
-        port: 3000,
+        command: 'npm run preview',
+        url: 'http://localhost:3000/',
         reuseExistingServer: !process.env.CI,
         timeout: 120 * 1000,
     },
