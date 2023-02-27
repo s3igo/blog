@@ -5,19 +5,19 @@ import { toStr } from '~/utils/tagArrayToString';
 import Metadata from '../atoms/Metadata.astro';
 
 type Props = Card;
-const { title, url, tags, preview, pubDate, updatedAt } = Astro.props;
+const { title, slug, tags, preview, pubDate, updatedAt } = Astro.props;
 
-const date = format(pubDate) + (updatedAt !== undefined ? embedUpdated(pubDate) : '');
+const publishedAt = format(pubDate);
+const date = publishedAt + (updatedAt !== undefined ? embedUpdated(pubDate) : '');
 const tagStr = tags !== undefined ? ' | ' + toStr(tags) : '';
-const metadata = date + tagStr;
 ---
 
 <article
     class="hover:custom-shadow rounded-2xl border-2 border-solid border-transparent hover:border-secondary"
 >
     <!-- TODO: セパレータのアクセシビリティ -->
-    <a href={url} class="block py-4 px-2 sm:px-5">
-        <Metadata text={metadata} />
+    <a href={`/posts/${publishedAt}/${slug}`} class="block py-4 px-2 sm:px-5">
+        <Metadata text={date + tagStr} />
         <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-xl text-primary sm:text-2xl">
             {title}
         </h2>
