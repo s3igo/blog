@@ -22,7 +22,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          # cache: "npm"
+          cache: "npm"
       - name: Install dependencies
         run: npm ci
       - name: Run astro check
@@ -41,7 +41,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          # cache: "npm"
+          cache: "npm"
       - name: Install dependencies
         run: npm ci
       - name: Run prettier
@@ -62,7 +62,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-          # cache: "npm"
+          cache: "npm"
       - name: Install dependencies
         run: npm ci
       - name: Install Playwright Browsers
