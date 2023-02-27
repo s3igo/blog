@@ -1,7 +1,7 @@
 .PHONY: dev
 dev:
 ifeq ($(shell whoami),node)
-	cd app && npm start
+	npm -w app start
 else
 	docker compose up
 endif
@@ -9,13 +9,13 @@ endif
 .PHONY: init
 init:
 	# `npm ci`は毎回新しいnode_modulesを作成するので、この記述意味ないかも
-	rm -rf ./node_modules
-	rm -rf ./app/node_modules
+	# rm -rf ./node_modules
+	# rm -rf ./app/node_modules
 ifeq ($(shell whoami),node)
-	cd app && npm ci
+	npm ci
 	# cd contents && zk index
 else
-	docker compose run --rm app bash -c "cd app && npm ci"
+	docker compose run --rm app make init
 	# docker compose run --rm root cd contents && zk index
 	# TODO: rootコンテナで実行するの適切? textlint導入まで検討しない
 endif
@@ -23,7 +23,7 @@ endif
 .PHONY: lint
 lint:
 ifeq ($(shell whoami),node)
-	cd app && npm run eslint
+	npm -w app run lint
 else
 	docker compose run --rm app make lint
 endif
@@ -31,7 +31,7 @@ endif
 .PHONY: format
 format:
 ifeq ($(shell whoami),node)
-	cd app && npm run prettier
+	npm -w app run
 else
 	docker compose run --rm app make format
 endif
