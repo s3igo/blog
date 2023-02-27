@@ -13,4 +13,4 @@ services:
     working_dir: /workspace
     environment:
       - NODE_ENV=development
-    command: npm run dev -w app
+    command: make dev

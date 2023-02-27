@@ -5,6 +5,11 @@ on:
     paths-ignore:
       - "**/*.md"
 
+defaults:
+  run:
+    shell: bash
+    working-directory: ./app
+
 jobs:
   lint:
     name: Lint
@@ -21,9 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run astro check
-        run: npm run check -w app
+        run: npm run check
       - name: Run eslint
-        run: npm run eslint -w app
+        run: npm run eslint
 
   format:
     name: Format
@@ -40,7 +45,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run prettier
-        run: npm run prettier -w app
+        run: npm run prettier
       - name: Run commit files modified by Prettier
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -61,9 +66,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Install Playwright Browsers
-        run: npx -w app playwright install --with-deps
+        run: npx playwright install --with-deps
       - name: Run Playwright tests
-        run: npx -w app playwright test index.spec.ts
+        run: npx playwright test index.spec.ts
       - uses: actions/upload-artifact@v3
         if: always()
         with:
