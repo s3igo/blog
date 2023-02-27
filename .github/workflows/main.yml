@@ -64,6 +64,8 @@ jobs:
         run: npm ci
       - name: Install Playwright Browsers
         run: npx playwright install --with-deps
+      - name: Run Astro build
+        run: npm run build
       - name: Run Playwright tests
         run: npx playwright test index.spec.ts
       - uses: actions/upload-artifact@v3
