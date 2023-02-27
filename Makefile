@@ -8,6 +8,7 @@ endif
 
 .PHONY: init
 init:
+	# `npm ci`は毎回新しいnode_modulesを作成するので、この記述意味ないかも
 	rm -rf ./node_modules
 	rm -rf ./app/node_modules
 ifeq ($(shell whoami),node)
