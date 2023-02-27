@@ -1,7 +1,7 @@
 .PHONY: dev
 dev:
 ifeq ($(shell whoami),node)
-	cd app && npm run dev
+	cd app && npm start
 else
 	docker compose up
 endif

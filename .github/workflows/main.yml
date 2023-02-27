@@ -27,7 +27,7 @@ jobs:
       - name: Run astro check
         run: npm run check
       - name: Run eslint
-        run: npm run eslint
+        run: npm run lint
 
   format:
     name: Format
@@ -43,14 +43,14 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run prettier
-        run: npm run prettier
+        run: npm run format
       - name: Run commit files modified by Prettier
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
           commit_message: Apply Prettier Change
 
-  test:
-    name: Test
+  test-e2e:
+    name: E2E Test
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
@@ -67,7 +67,7 @@ jobs:
       - name: Run Astro build
         run: npm run build
       - name: Run Playwright tests
-        run: npx playwright test index.spec.ts
+        run: npm run test:e2e
       - uses: actions/upload-artifact@v3
         if: always()
         with:
