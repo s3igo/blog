@@ -1,4 +1,5 @@
 ---
+slug: coming-of-age
 tags: [report]
 ---
 

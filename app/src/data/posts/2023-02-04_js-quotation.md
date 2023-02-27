@@ -1,4 +1,5 @@
 ---
+slug: js-quotation
 tags: [JavaScript, programming]
 ---
 

@@ -1,4 +1,5 @@
 ---
+slug: astro-new-feature
 tags: [programming]
 ---
 

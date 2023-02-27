@@ -1,4 +1,5 @@
 ---
+slug: first-post
 ---
 
 # ブログ作った
