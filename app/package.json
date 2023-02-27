@@ -7,7 +7,7 @@
     "dev": "astro dev --host 0.0.0.0",
     "start": "astro dev",
     "build": "astro build",
-    "preview": "astro preview",
+    "preview": "astro preview --host 0.0.0.0",
     "astro": "astro",
     "check": "astro check",
     "eslint": "eslint ./src",
