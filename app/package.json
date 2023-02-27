@@ -14,7 +14,8 @@
     "prettier": "prettier --write ./src",
     "test": "vitest",
     "typecheck": "vitest typecheck",
-    "coverage": "vitest run --coverage"
+    "coverage": "vitest run --coverage",
+    "lint": "textlint ./src/data/posts/*.md"
   },
   "dependencies": {
     "@astrojs/rss": "^2.1.1",
@@ -35,6 +36,10 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.31.1",
-    "@vitest/coverage-c8": "^0.28.5"
+    "@vitest/coverage-c8": "^0.28.5",
+    "textlint": "^13.3.1",
+    "textlint-filter-rule-allowlist": "^4.0.0",
+    "textlint-filter-rule-comments": "^1.2.2",
+    "textlint-rule-preset-ja-technical-writing": "^7.0.0"
   }
 }

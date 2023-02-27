@@ -40,14 +40,13 @@ $ tree -ad -L 1 -I node_modules -I .git
 ├── .devcontainer  # devcontainerの設定
 ├── .github        # GitHub Actionsの設定
 ├── app            # ソースコード
-├── contents       # ブログ記事
 └── infra          # 開発環境のDockerfile
 
-6 directories
+5 directories
 ```
 
 npm workspacesを使ってルートから動かず作業するようにしています。
-記事を書くときのみ`./contents`に移動して作業します。
+記事を書くときのみ、記事実体がある`./app/src/data`に移動して作業します。
 
 ### コンポーネント
 

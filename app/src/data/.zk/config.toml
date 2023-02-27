@@ -1,5 +1,5 @@
 [note]
-filename = "{{format-date now '%Y-%m-%d'}}/{{slug title}}"
+filename = "{{format-date now '%Y%m%d%H%M%S'}}"
 template = "default.md"
 
 [format.markdown]
