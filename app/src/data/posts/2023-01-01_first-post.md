@@ -1,5 +1,6 @@
 ---
 slug: first-post
+pubDate: 2021-01-01
 ---
 
 # ブログ作った

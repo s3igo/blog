@@ -3,9 +3,10 @@ import { defineConfig } from 'astro/config';
 import nightOwl from 'night-owl/themes/Night Owl-color-theme.json';
 import normalizeHeadings from 'remark-normalize-headings';
 import { injectDefaultLayout } from './src/remarkPlugins/injectDefaultLayout';
+import { injectPubDate } from './src/remarkPlugins/injectPubDate';
 import { setPreview } from './src/remarkPlugins/setPreview';
-import { setPubDate } from './src/remarkPlugins/setPubDate';
 import { setTitle } from './src/remarkPlugins/setTitle';
+import { test } from './src/remarkPlugins/test';
 import { validateFrontmatter } from './src/remarkPlugins/validateFrontmatter';
 
 // https://astro.build/config
@@ -16,8 +17,9 @@ export default defineConfig({
             normalizeHeadings,
             setTitle,
             setPreview,
-            setPubDate,
+            injectPubDate,
             injectDefaultLayout,
+            test,
             validateFrontmatter,
         ],
         extendedDefaultPlugins: true,

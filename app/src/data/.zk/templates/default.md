@@ -1,6 +1,8 @@
 ---
+slug: 
+pubDate: 
 ---
 
-# 
+# {{title}}
 
 {{content}}
