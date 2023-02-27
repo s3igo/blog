@@ -9,8 +9,8 @@ endif
 .PHONY: init
 init:
 	# `npm ci`は毎回新しいnode_modulesを作成するので、この記述意味ないかも
-	rm -rf ./node_modules
-	rm -rf ./app/node_modules
+	# rm -rf ./node_modules
+	# rm -rf ./app/node_modules
 ifeq ($(shell whoami),node)
 	npm ci
 	# cd contents && zk index
@@ -31,7 +31,7 @@ endif
 .PHONY: format
 format:
 ifeq ($(shell whoami),node)
-	npm -w app run format
+	npm -w app run
 else
 	docker compose run --rm app make format
 endif
