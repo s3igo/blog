@@ -2,6 +2,7 @@
 import type { Card } from '~/types';
 import { embedUpdated, format } from '~/utils/dateToString';
 import { toStr } from '~/utils/tagArrayToString';
+import { construct } from '~/utils/url';
 import Metadata from '../atoms/Metadata.astro';
 
 type Props = Card;
@@ -16,7 +17,7 @@ const tagStr = tags !== undefined ? ' | ' + toStr(tags) : '';
     class="hover:custom-shadow rounded-2xl border-2 border-solid border-transparent hover:border-secondary"
 >
     <!-- TODO: セパレータのアクセシビリティ -->
-    <a href={`/posts/${publishedAt}/${slug}`} class="block py-4 px-2 sm:px-5">
+    <a href={construct(publishedAt, slug)} class="block py-4 px-2 sm:px-5">
         <Metadata text={date + tagStr} />
         <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-xl text-primary sm:text-2xl">
             {title}
