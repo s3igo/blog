@@ -19,4 +19,4 @@ export const frontmatterSchema = z.object({
 export type Frontmatter = z.infer<typeof frontmatterSchema>;
 
 // 記事をリスト表示する際のカードの型
-export type Card = Prettify<Omit<Frontmatter, 'draft' | 'layout'> & { url: string }>;
+export type Card = Prettify<Omit<Frontmatter, 'draft' | 'layout'>>;
