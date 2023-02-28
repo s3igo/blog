@@ -1,6 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": ["config:base", ":timezone(Asia/Tokyo)", ":prHourlyLimitNone", ":automergePatch"],
+  "extends": [
+    "config:base",
+    ":timezone(Asia/Tokyo)",
+    ":prHourlyLimitNone",
+    ":automergePatch",
+    "label(renovate)",
+    "schedule:automergeDaily",
+    "schedule:daily"
+  ],
   "labels": ["dependencies"],
   "packageRules": [
     {
@@ -9,7 +17,7 @@
     },
     {
       "matchPackageNames": ["node"],
-      "allowedVersions": "<=16"
+      "allowedVersions": "<17"
     }
   ]
 }
