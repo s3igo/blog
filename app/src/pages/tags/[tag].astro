@@ -1,0 +1,34 @@
+---
+import type { MarkdownInstance } from 'astro';
+import * as R from 'remeda';
+import List from '~/components/molecules/List.astro';
+import Layout from '~/layouts/Layout.astro';
+import type { Card, Frontmatter } from '~/types';
+import { pageTitle } from '~/utils/toString';
+
+export const getStaticPaths = async () => {
+    const posts = await Astro.glob<Frontmatter>('../../data/posts/*.md');
+    const uniqueTags = [...new Set(posts.flatMap(({ frontmatter: { tags } }) => tags))];
+    return uniqueTags.map((tag) => {
+        const filteredPosts = posts.filter(({ frontmatter: { tags } }) => tags.includes(tag));
+        return {
+            params: { tag },
+            props: { posts: filteredPosts },
+        };
+    });
+};
+
+const { tag } = Astro.params;
+const { posts } = Astro.props;
+const articles: Card[] = R.pipe(
+    posts as MarkdownInstance<Frontmatter>[], // Astro.propsの型注釈が効かないため
+    R.map(({ frontmatter }) => frontmatter),
+    R.sortBy(({ pubDate }) => Number(pubDate)),
+    R.reverse()
+);
+---
+
+<Layout title={pageTitle(`tag: ${tag}`)} isTop={true}>
+    {tag}
+    <List cards={articles} />
+</Layout>
