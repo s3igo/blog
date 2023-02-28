@@ -11,16 +11,14 @@ import { first3Sentences } from '~/utils/string';
 import { toStr } from '~/utils/tagArrayToString';
 import Layout from './Layout.astro';
 
-type Props = {
-    frontmatter: Frontmatter;
-};
+type Props = { frontmatter: Frontmatter };
 const {
     frontmatter: { title, tags, preview, pubDate, updatedAt },
 } = Astro.props;
 
 const created = embedCreated(pubDate);
 const updated = updatedAt ? embedUpdated(updatedAt) : '';
-const tagStr = tags !== undefined ? toStr(tags) : '';
+const tagStr = tags.length ? toStr(tags) : '';
 ---
 
 <Layout title={`${title} | ${PAGE_TITLE}`} description={first3Sentences(preview)}>

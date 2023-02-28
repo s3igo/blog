@@ -10,7 +10,7 @@ const { title, slug, tags, preview, pubDate, updatedAt } = Astro.props;
 
 const publishedAt = format(pubDate);
 const date = publishedAt + (updatedAt !== undefined ? embedUpdated(pubDate) : '');
-const tagStr = tags !== undefined ? ' | ' + toStr(tags) : '';
+const tagStr = tags.length ? ' | ' + toStr(tags) : '';
 ---
 
 <article
