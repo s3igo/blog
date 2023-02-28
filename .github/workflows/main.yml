@@ -64,7 +64,7 @@ jobs:
         run: npm -w app run test:unit
 
   test-unit:
-    name: Unit test
+    name: Unit Test
     timeout-minutes: 10
     runs-on: ubuntu-latest
     steps:
@@ -81,7 +81,7 @@ jobs:
         run: npm -w app run test:unit
 
   test-e2e:
-    name: E2E test
+    name: E2E Test
     timeout-minutes: 60
     runs-on: ubuntu-latest
     steps:
