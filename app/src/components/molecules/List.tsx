@@ -1,6 +1,6 @@
 import type { Component } from 'solid-js';
-import type { Props as CardProps } from './Card';
-import { Card } from './Card';
+import type { Props as CardProps } from '../organisms/Card';
+import { Card } from '../organisms/Card';
 
 export type Props = {
     cards: CardProps[];

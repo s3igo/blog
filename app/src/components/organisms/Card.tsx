@@ -4,12 +4,10 @@ import { createSignal } from 'solid-js';
 import type { Frontmatter } from '~/types';
 import { postUrl } from '~/utils/constructString';
 import { embedUpdated, format } from '~/utils/dateToString';
-import type { Prettify } from '~/utils/types';
 import { Metadata } from '../atoms/Metadata';
-import { Tag } from './Tag';
+import { Tag } from '../molecules/Tag';
 
-export type Props = Prettify<Omit<Frontmatter, 'draft' | 'layout'>>;
-
+export type Props = Omit<Frontmatter, 'draft' | 'layout'>;
 export const Card: Component<Props> = ({ title, slug, tags, preview, pubDate, updatedAt }) => {
     const publishedAt = format(pubDate);
     const date = publishedAt + (updatedAt !== undefined ? embedUpdated(pubDate) : '');
