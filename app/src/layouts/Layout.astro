@@ -11,7 +11,7 @@ type Props = {
     title: string;
     description?: string;
 } & Partial<NavbarProps>;
-const { title, description = PAGE_DESCRIPTION, isTop = false } = Astro.props;
+const { title, description = PAGE_DESCRIPTION, isH1 = false } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -31,7 +31,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <body>
         <div class="mx-auto px-5 xl:container sm:px-8">
             <div class="py-8">
-                <Header isTop={isTop} />
+                <Header isH1={isH1} />
             </div>
             <slot />
             <Footer />
