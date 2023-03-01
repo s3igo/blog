@@ -5,6 +5,9 @@
     "paths": {
       "~/*": ["./src/*"],
       "@public/*": ["./public/*"]
-    }
+    },
+    "types": ["vitest/globals", "vitest/importMeta"],
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js"
   }
 }

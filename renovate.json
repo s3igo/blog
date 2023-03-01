@@ -1,0 +1,30 @@
+{
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    ":timezone(Asia/Tokyo)",
+    ":prHourlyLimitNone",
+    ":automergePatch",
+    "schedule:automergeDaily",
+    "schedule:daily"
+  ],
+  "labels": ["bot: dependencies"],
+  "packageRules": [
+    {
+      "matchUpdateTypes": "major",
+      "addLabels": ["bot.dependencies: 1.major"]
+    },
+    {
+      "matchUpdateTypes": "minor",
+      "addLabels": ["bot.dependencies: 2.minor"]
+    },
+    {
+      "matchUpdateTypes": "patch",
+      "addLabels": ["bot.dependencies: 3.patch"]
+    },
+    {
+      "matchPackageNames": ["node"],
+      "allowedVersions": "<17"
+    }
+  ]
+}

@@ -3,31 +3,28 @@ import '@fontsource/biz-udgothic/400.css';
 import '@fontsource/jetbrains-mono/400.css';
 import '@fontsource/nunito-sans/700.css';
 import '@fontsource/zen-kaku-gothic-new/700.css';
-import Metadata from '~/components/atoms/Metadata.astro';
-import { PAGE_TITLE } from '~/constants';
+import { Metadata } from '~/components/atoms/Metadata';
+import { Tag } from '~/components/molecules/Tag';
 import type { Frontmatter } from '~/types';
+import { pageTitle } from '~/utils/constructString';
 import { embedCreated, embedUpdated } from '~/utils/dateToString';
 import { first3Sentences } from '~/utils/string';
-import { toStr } from '~/utils/tagArrayToString';
 import Layout from './Layout.astro';
 
-type Props = {
-    frontmatter: Frontmatter;
-};
+type Props = { frontmatter: Frontmatter };
 const {
     frontmatter: { title, tags, preview, pubDate, updatedAt },
 } = Astro.props;
 
 const created = embedCreated(pubDate);
 const updated = updatedAt ? embedUpdated(updatedAt) : '';
-const tagStr = tags !== undefined ? toStr(tags) : '';
 ---
 
-<Layout title={`${title} | ${PAGE_TITLE}`} description={first3Sentences(preview)}>
-    <div>
+<Layout title={pageTitle(title)} description={first3Sentences(preview)}>
+    <div class="flex flex-col">
         <Metadata text={created} />
         {updated && <Metadata text={updated} />}
-        {tagStr && <Metadata text={tagStr} />}
+        {tags.map((tag) => <Tag name={tag} />)}
     </div>
     <div class="blog">
         <slot />
@@ -55,7 +52,7 @@ const tagStr = tags !== undefined ? toStr(tags) : '';
 
         /* --------------------------------- header --------------------------------- */
         h1 {
-            @apply mb-4 text-2xl leading-relaxed text-primary underline decoration-tertiary decoration-2 underline-offset-8 xs:text-3xl sm:text-4xl;
+            @apply my-2 text-2xl leading-relaxed text-tertiary xs:text-3xl sm:text-4xl;
         }
 
         :is(h2, h3, h4, h5) {

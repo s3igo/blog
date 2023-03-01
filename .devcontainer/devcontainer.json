@@ -1,6 +1,6 @@
 {
   "name": "blog",
-  "dockerComposeFile": ["../docker-compose.yml", "./docker-compose.yml"],
+  "dockerComposeFile": ["../docker-compose.yaml", "./docker-compose.yaml"],
   "service": "app",
   "workspaceFolder": "/workspace",
   "postCreateCommand": "git config --global --add safe.directory /workspace", // git操作がコケるため
@@ -10,7 +10,7 @@
   "customizations": {
     "vscode": {
       "settings": {
-        "textlint.configPath": "/workspace/contents/.textlintrc"
+        "textlint.configPath": "/workspace/.textlintrc"
       },
       "extensions": [
         /* ----------------------------- recommendations ---------------------------- */
