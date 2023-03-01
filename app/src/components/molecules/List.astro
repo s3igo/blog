@@ -1,9 +1,9 @@
 ---
-import type { Card as CardType } from '~/types';
-import Card from './Card.astro';
+import type { Props as CardProps } from './Card';
+import { Card } from './Card';
 
-type Props = {
-    cards: CardType[];
+export type Props = {
+    cards: CardProps[];
 };
 const { cards } = Astro.props;
 ---
