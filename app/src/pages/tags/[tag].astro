@@ -28,7 +28,7 @@ const articles: Card[] = R.pipe(
 );
 ---
 
-<Layout title={pageTitle(`tag: ${tag}`)} isH1={true}>
-    {tag}
+<Layout title={pageTitle(`tag: ${tag}`)}>
+    <h1 class="pl-5 pt-8 pb-5 text-3xl text-tertiary sm:text-4xl">#{tag}の記事一覧</h1>
     <List cards={articles} />
 </Layout>
