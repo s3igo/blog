@@ -1,31 +1,37 @@
 ---
 import type { Card } from '~/types';
+import { tagUrl } from '~/utils/constructString';
 import { embedUpdated, format } from '~/utils/dateToString';
-import { toStr } from '~/utils/tagArrayToString';
 import { construct } from '~/utils/url';
 import Metadata from '../atoms/Metadata.astro';
+import Tag from './Tag.astro';
 
 type Props = Card;
 const { title, slug, tags, preview, pubDate, updatedAt } = Astro.props;
 
 const publishedAt = format(pubDate);
 const date = publishedAt + (updatedAt !== undefined ? embedUpdated(pubDate) : '');
-const tagStr = tags.length ? ' | ' + toStr(tags) : '';
+const separator = tags.length ? '|' : '';
 ---
 
 <article
     class="hover:custom-shadow rounded-2xl border-2 border-solid border-transparent hover:border-secondary"
 >
-    <!-- TODO: セパレータのアクセシビリティ -->
-    <a href={construct(publishedAt, slug)} class="block py-4 px-2 sm:px-5">
-        <Metadata text={date + tagStr} />
-        <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-xl text-primary sm:text-2xl">
-            {title}
-        </h2>
-        <p
-            class="bg-gradient-to-b from-foreground via-foreground/80 to-foreground/20 bg-clip-text text-transparent line-clamp-5 sm:text-lg"
-        >
-            {preview}
-        </p>
-    </a>
+    <div class="py-4 px-2 sm:px-5">
+        <div class="flex">
+            <Metadata text={date} />
+            <Metadata text={separator} />
+            {tags.map((tag) => <Tag name={tag} url={tagUrl(tag)} />)}
+        </div>
+        <a href={construct(publishedAt, slug)}>
+            <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-xl text-primary sm:text-2xl">
+                {title}
+            </h2>
+            <p
+                class="bg-gradient-to-b from-foreground via-foreground/80 to-foreground/20 bg-clip-text text-transparent line-clamp-5 sm:text-lg"
+            >
+                {preview}
+            </p>
+        </a>
+    </div>
 </article>
