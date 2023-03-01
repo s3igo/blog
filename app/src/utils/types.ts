@@ -52,18 +52,3 @@ if (import.meta.vitest) {
         });
     });
 }
-
-export type NonEmptyArray<T> = [T, ...T[]];
-
-if (import.meta.vitest) {
-    const { test, expectTypeOf, describe } = import.meta.vitest;
-    describe('空を許容しない配列', () => {
-        test('string', () => {
-            expectTypeOf<NonEmptyArray<string>>().toEqualTypeOf<[string, ...string[]]>();
-        });
-
-        test('number', () => {
-            expectTypeOf<NonEmptyArray<number>>().toEqualTypeOf<[number, ...number[]]>();
-        });
-    });
-}

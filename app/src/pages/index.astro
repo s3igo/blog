@@ -6,11 +6,10 @@ import type { Card, Frontmatter } from '~/types';
 import Layout from '../layouts/Layout.astro';
 
 const posts = await Astro.glob<Frontmatter>('../data/posts/*.md');
-
 const articles: Card[] = R.pipe(
     posts,
-    R.map(({ url = '/', frontmatter }) => ({ url, ...frontmatter })), // flatten
-    R.sortBy(({ pubDate }) => pubDate),
+    R.map(({ frontmatter }) => frontmatter),
+    R.sortBy(({ pubDate }) => Number(pubDate)),
     R.reverse()
 );
 ---

@@ -3,9 +3,9 @@ import type { APIContext, MarkdownInstance } from 'astro';
 import sanitizeHtml from 'sanitize-html';
 import { PAGE_DESCRIPTION, PAGE_TITLE } from '~/constants';
 import type { Frontmatter } from '~/types';
+import { postUrl } from '~/utils/constructString';
 import { format } from '~/utils/dateToString';
 import { first3Sentences } from '~/utils/string';
-import { construct } from '~/utils/url';
 
 export const get = (context: APIContext) => {
     const site = context.site?.toString() ?? '';
@@ -17,7 +17,7 @@ export const get = (context: APIContext) => {
         description: PAGE_DESCRIPTION,
         site,
         items: posts.map(({ compiledContent, frontmatter }) => ({
-            link: construct(format(frontmatter.pubDate), frontmatter.slug) ?? site,
+            link: postUrl(format(frontmatter.pubDate), frontmatter.slug) ?? site,
             content: sanitizeHtml(compiledContent()),
             description: first3Sentences(frontmatter.preview),
             ...frontmatter,
