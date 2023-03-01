@@ -1,5 +1,6 @@
 import { Separator } from '@kobalte/core';
 import type { Component } from 'solid-js';
+import { createSignal } from 'solid-js';
 import type { Frontmatter } from '~/types';
 import { postUrl } from '~/utils/constructString';
 import { embedUpdated, format } from '~/utils/dateToString';
@@ -13,17 +14,29 @@ export const Card: Component<Props> = ({ title, slug, tags, preview, pubDate, up
     const publishedAt = format(pubDate);
     const date = publishedAt + (updatedAt !== undefined ? embedUpdated(pubDate) : '');
 
+    const [tagHovered, setTagHovered] = createSignal(false);
+
     return (
-        <article class="hover:custom-shadow rounded-2xl border-2 border-solid border-transparent hover:border-secondary">
+        <article
+            data-tagHovered={tagHovered()}
+            class="hover:custom-shadow rounded-2xl border-2 border-solid border-transparent hover:border-secondary data-[tagHovered=true]:border-transparent data-[tagHovered=true]:shadow-none"
+        >
             <div class="py-4 px-2 sm:px-5">
                 <div class="flex gap-1 items-center">
                     <Metadata text={date} />
-                    <Separator.Root
-                        orientation="vertical"
-                        class="h-4 w-px border-none bg-foreground/60 mx-1"
-                    />
+                    {tags.length !== 0 && (
+                        <Separator.Root
+                            orientation="vertical"
+                            class="h-4 w-px border-none bg-foreground/60 mx-1"
+                        />
+                    )}
                     {tags.map((tag) => (
-                        <Tag name={tag} />
+                        <div
+                            onMouseEnter={() => setTagHovered(true)}
+                            onMouseLeave={() => setTagHovered(false)}
+                        >
+                            <Tag name={tag} />
+                        </div>
                     ))}
                 </div>
                 <a href={postUrl(publishedAt, slug)}>

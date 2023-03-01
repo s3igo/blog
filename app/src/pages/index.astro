@@ -10,5 +10,5 @@ const articles = postsToArticles(posts.map(({ frontmatter }) => frontmatter));
 ---
 
 <Layout title={PAGE_TITLE} isTop={true}>
-    <List cards={articles} />
+    <List client:load cards={articles} />
 </Layout>
