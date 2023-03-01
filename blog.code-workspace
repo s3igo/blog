@@ -39,7 +39,8 @@
       "shiki",
       "trivago",
       "nocjsp",
-      "Vitest"
+      "Vitest",
+      "kobalte"
     ]
   },
   "extensions": {
