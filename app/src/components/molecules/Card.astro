@@ -1,8 +1,7 @@
 ---
 import type { Card } from '~/types';
-import { tagUrl } from '~/utils/constructString';
+import { postUrl, tagUrl } from '~/utils/constructString';
 import { embedUpdated, format } from '~/utils/dateToString';
-import { construct } from '~/utils/url';
 import Metadata from '../atoms/Metadata.astro';
 import Tag from './Tag.astro';
 
@@ -23,7 +22,7 @@ const separator = tags.length ? '|' : '';
             <Metadata text={separator} />
             {tags.map((tag) => <Tag name={tag} url={tagUrl(tag)} />)}
         </div>
-        <a href={construct(publishedAt, slug)}>
+        <a href={postUrl(publishedAt, slug)}>
             <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-xl text-primary sm:text-2xl">
                 {title}
             </h2>
