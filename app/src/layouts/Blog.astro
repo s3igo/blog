@@ -5,10 +5,10 @@ import '@fontsource/nunito-sans/700.css';
 import '@fontsource/zen-kaku-gothic-new/700.css';
 import Metadata from '~/components/atoms/Metadata.astro';
 import type { Frontmatter } from '~/types';
+import { pageTitle } from '~/utils/constructString';
 import { embedCreated, embedUpdated } from '~/utils/dateToString';
 import { first3Sentences } from '~/utils/string';
 import { toStr } from '~/utils/tagArrayToString';
-import { pageTitle } from '~/utils/toString';
 import Layout from './Layout.astro';
 
 type Props = { frontmatter: Frontmatter };

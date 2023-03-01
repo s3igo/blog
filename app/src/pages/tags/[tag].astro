@@ -4,7 +4,7 @@ import * as R from 'remeda';
 import List from '~/components/molecules/List.astro';
 import Layout from '~/layouts/Layout.astro';
 import type { Card, Frontmatter } from '~/types';
-import { pageTitle } from '~/utils/toString';
+import { pageTitle } from '~/utils/constructString';
 
 export const getStaticPaths = async () => {
     const posts = await Astro.glob<Frontmatter>('../../data/posts/*.md');
