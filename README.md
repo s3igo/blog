@@ -24,10 +24,13 @@
 - 言語: TypeScript
 - パッケージマネージャー: npm
 - レンダリングフレームワーク: Astro
+- フロントエンドフレームワーク: solid-js
 - CSSフレームワーク: tailwindCSS(PostCSS)
 - リンター: ESLint
 - フォーマッター: Prettier
 - ドメイン・デプロイ・CDN: Cloudflare
+- 単体テスト: Vitest
+- E2Eテスト: Playwright
 - CI/CD: GitHub Actions
 
 ## ディレクトリ構成
