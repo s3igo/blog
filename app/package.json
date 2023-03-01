@@ -19,6 +19,7 @@
   },
   "dependencies": {
     "@astrojs/rss": "^2.1.1",
+    "@astrojs/solid-js": "^2.0.2",
     "@astrojs/tailwind": "^3.0.0",
     "@fontsource/biz-udgothic": "^4.5.7",
     "@fontsource/jetbrains-mono": "^4.5.12",
@@ -32,6 +33,7 @@
     "remark-normalize-headings": "^3.0.1",
     "remeda": "^1.6.0",
     "sanitize-html": "^2.10.0",
+    "solid-js": "^1.6.11",
     "vitest": "^0.29.0"
   },
   "devDependencies": {
