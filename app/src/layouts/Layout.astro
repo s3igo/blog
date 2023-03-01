@@ -2,7 +2,7 @@
 import '@fontsource/nunito-sans/400.css';
 import '@fontsource/zen-kaku-gothic-new/400.css';
 import Footer from '~/components/atoms/Footer.astro';
-import type { Props as NavbarProps } from '~/components/atoms/Navbar.astro';
+import type { Props as HeaderProps } from '~/components/molecules/Header.astro';
 import Header from '~/components/molecules/Header.astro';
 import { PAGE_DESCRIPTION } from '~/constants';
 import '~/styles/global.css';
@@ -10,8 +10,10 @@ import '~/styles/global.css';
 type Props = {
     title: string;
     description?: string;
-} & Partial<NavbarProps>;
-const { title, description = PAGE_DESCRIPTION, isH1 = false } = Astro.props;
+    isTop?: boolean;
+};
+const { title, description = PAGE_DESCRIPTION, isTop = false } = Astro.props;
+const headerProps: HeaderProps = { isH1: isTop };
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -31,7 +33,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
     <body>
         <div class="mx-auto px-5 xl:container sm:px-8">
             <div class="py-8">
-                <Header isH1={isH1} />
+                <Header {...headerProps} />
             </div>
             <slot />
             <Footer />
