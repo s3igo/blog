@@ -1,6 +1,6 @@
 ---
 import type { Card } from '~/types';
-import { postUrl, tagUrl } from '~/utils/constructString';
+import { postUrl } from '~/utils/constructString';
 import { embedUpdated, format } from '~/utils/dateToString';
 import Metadata from '../atoms/Metadata.astro';
 import Tag from './Tag.astro';
@@ -17,10 +17,10 @@ const separator = tags.length ? '|' : '';
     class="hover:custom-shadow rounded-2xl border-2 border-solid border-transparent hover:border-secondary"
 >
     <div class="py-4 px-2 sm:px-5">
-        <div class="flex">
+        <div class="flex gap-1">
             <Metadata text={date} />
             <Metadata text={separator} />
-            {tags.map((tag) => <Tag name={tag} url={tagUrl(tag)} />)}
+            {tags.map((tag) => <Tag name={tag} />)}
         </div>
         <a href={postUrl(publishedAt, slug)}>
             <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-xl text-primary sm:text-2xl">

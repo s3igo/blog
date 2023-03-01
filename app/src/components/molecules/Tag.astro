@@ -1,14 +1,16 @@
 ---
 import Metadata from '../atoms/Metadata.astro';
 
-type Props = { name: string; url: string };
-const { name, url } = Astro.props;
+type Props = { name: string };
+const { name } = Astro.props;
+
+export const tagUrl = (name: string): string => `/tags/${name}`;
 ---
 
 <a
-    href={url}
+    href={tagUrl(name)}
     target="_blank"
-    class="hover:custom-shadow rounded-md border-2 border-transparent px-1 hover:border-secondary"
+    class="hover:custom-shadow ml-[-6px] w-max rounded-md border-2 border-transparent px-1 hover:border-secondary"
 >
     <Metadata text={`#${name}`} />
 </a>

@@ -4,11 +4,11 @@ import '@fontsource/jetbrains-mono/400.css';
 import '@fontsource/nunito-sans/700.css';
 import '@fontsource/zen-kaku-gothic-new/700.css';
 import Metadata from '~/components/atoms/Metadata.astro';
+import Tag from '~/components/molecules/Tag.astro';
 import type { Frontmatter } from '~/types';
 import { pageTitle } from '~/utils/constructString';
 import { embedCreated, embedUpdated } from '~/utils/dateToString';
 import { first3Sentences } from '~/utils/string';
-import { toStr } from '~/utils/tagArrayToString';
 import Layout from './Layout.astro';
 
 type Props = { frontmatter: Frontmatter };
@@ -18,14 +18,13 @@ const {
 
 const created = embedCreated(pubDate);
 const updated = updatedAt ? embedUpdated(updatedAt) : '';
-const tagStr = tags.length ? toStr(tags) : '';
 ---
 
 <Layout title={pageTitle(title)} description={first3Sentences(preview)}>
-    <div>
+    <div class="flex flex-col">
         <Metadata text={created} />
         {updated && <Metadata text={updated} />}
-        {tagStr && <Metadata text={tagStr} />}
+        {tags.map((tag) => <Tag name={tag} />)}
     </div>
     <div class="blog">
         <slot />
