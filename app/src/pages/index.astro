@@ -1,17 +1,12 @@
 ---
-import * as R from 'remeda';
-import List from '~/components/molecules/List.astro';
+import { List } from '~/components/molecules/List';
 import { PAGE_TITLE } from '~/constants';
-import type { Card, Frontmatter } from '~/types';
+import type { Frontmatter } from '~/types';
+import { postsToArticles } from '~/utils/process';
 import Layout from '../layouts/Layout.astro';
 
 const posts = await Astro.glob<Frontmatter>('../data/posts/*.md');
-const articles: Card[] = R.pipe(
-    posts,
-    R.map(({ frontmatter }) => frontmatter),
-    R.sortBy(({ pubDate }) => Number(pubDate)),
-    R.reverse()
-);
+const articles = postsToArticles(posts.map(({ frontmatter }) => frontmatter));
 ---
 
 <Layout title={PAGE_TITLE} isTop={true}>
