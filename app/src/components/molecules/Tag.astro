@@ -1,0 +1,14 @@
+---
+import Metadata from '../atoms/Metadata.astro';
+
+type Props = { name: string; url: string };
+const { name, url } = Astro.props;
+---
+
+<a
+    href={url}
+    target="_blank"
+    class="hover:custom-shadow rounded-md border-2 border-transparent px-1 hover:border-secondary"
+>
+    <Metadata text={`#${name}`} />
+</a>
