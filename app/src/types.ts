@@ -1,5 +1,4 @@
 import { z } from 'astro/zod';
-import type { Prettify } from './utils/types';
 
 export const layouts = {
     blog: '~/layouts/Blog.astro',
@@ -17,6 +16,3 @@ export const frontmatterSchema = z.object({
 });
 
 export type Frontmatter = z.infer<typeof frontmatterSchema>;
-
-// 記事をリスト表示する際のカードの型
-export type Card = Prettify<Omit<Frontmatter, 'draft' | 'layout'>>;
