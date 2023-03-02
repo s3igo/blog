@@ -8,11 +8,11 @@ import { Tag } from '../molecules/Tag';
 
 export type Props = Omit<Frontmatter, 'draft' | 'layout'>;
 type PrivateProps = {
-    publishedAt: string;
     date: string;
+    url: string;
     tagHovered: Accessor<boolean>;
     setTagHovered: Setter<boolean>;
-} & Omit<Props, 'pubDate' | 'updatedAt'>;
+} & Omit<Props, 'pubDate' | 'updatedAt' | 'slug'>;
 
 const PrivateCard: Component<PrivateProps> = (props) => (
     <article
@@ -39,7 +39,7 @@ const PrivateCard: Component<PrivateProps> = (props) => (
                     )}
                 </For>
             </div>
-            <a href={postUrl(props.publishedAt, props.slug)}>
+            <a href={props.url}>
                 <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-xl text-primary sm:text-2xl">
                     {props.title}
                 </h2>
@@ -53,8 +53,9 @@ const PrivateCard: Component<PrivateProps> = (props) => (
 
 export const Card: Component<Props> = ({ title, slug, tags, preview, pubDate, updatedAt }) => {
     const publishedAt = format(pubDate);
-    const date = publishedAt + (updatedAt !== undefined ? embedUpdated(pubDate) : '');
-    const props = { publishedAt, date, title, slug, tags, preview };
+    const date = publishedAt + (updatedAt !== undefined ? ' ' + embedUpdated(updatedAt) : '');
+    const url = postUrl(publishedAt, slug);
+    const props = { url, date, title, tags, preview };
     const [tagHovered, setTagHovered] = createSignal(false);
     return <PrivateCard {...props} tagHovered={tagHovered} setTagHovered={setTagHovered} />;
 };
