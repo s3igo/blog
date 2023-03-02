@@ -5,13 +5,13 @@ export const layouts = {
 } as const;
 
 export const frontmatterSchema = z.object({
+    draft: z.literal(true).optional(),
     layout: z.literal(layouts.blog), // 複数になったらz.union()にする
-    title: z.string(),
+    preview: z.string(),
+    pubDate: z.date(),
     slug: z.string(),
     tags: z.array(z.string()),
-    preview: z.string(),
-    draft: z.literal(true).optional(),
-    pubDate: z.date(),
+    title: z.string(),
     updatedAt: z.date().optional(),
 });
 

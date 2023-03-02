@@ -1,4 +1,4 @@
-import { fireEvent, logDOM, render, screen } from 'solid-testing-library';
+import { fireEvent, render, screen } from 'solid-testing-library';
 import { embedUpdated } from '~/utils/dateToString';
 import { Card, Props } from './Card';
 

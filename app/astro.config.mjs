@@ -2,7 +2,6 @@ import solidJs from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
 import nightOwl from 'night-owl/themes/Night Owl-color-theme.json';
-import normalizeHeadings from 'remark-normalize-headings';
 import { injectDefaultLayout } from './src/remarkPlugins/injectDefaultLayout';
 import { setPreview } from './src/remarkPlugins/setPreview';
 import { setTitle } from './src/remarkPlugins/setTitle';
@@ -23,7 +22,7 @@ export default defineConfig({
     markdown: {
         extendedDefaultPlugins: true,
         remarkPlugins: [
-            normalizeHeadings,
+            'remark-normalize-headings',
             'remark-code-titles',
             setTitle,
             setPreview,
