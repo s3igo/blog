@@ -14,7 +14,7 @@ import Layout from './Layout.astro';
 
 type Props = { frontmatter: Frontmatter };
 const {
-    frontmatter: { title, tags, preview, pubDate, updatedAt },
+    frontmatter: { preview, pubDate, tags, title, updatedAt },
 } = Astro.props;
 
 const created = embedCreated(pubDate);

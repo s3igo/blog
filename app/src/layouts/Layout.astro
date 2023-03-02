@@ -12,7 +12,7 @@ type Props = {
     description?: string;
     isTop?: boolean;
 };
-const { title, description = PAGE_DESCRIPTION, isTop = false } = Astro.props;
+const { description = PAGE_DESCRIPTION, isTop = false, title } = Astro.props;
 const headerProps: HeaderProps = { isH1: isTop };
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
