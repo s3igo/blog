@@ -20,6 +20,7 @@
     "test:type": "vitest typecheck",
     "test:e2e": "playwright test",
     "lint": "eslint ./src",
+    "lint:fix": "eslint ./src --fix",
     "lint:text": "textlint ./src/data/posts/*.md",
     "clean": "rm -rf ./node_modules"
   },
