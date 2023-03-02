@@ -1,0 +1,22 @@
+{
+  "root": true,
+  "env": {
+    "es2021": true
+  },
+  "extends": ["plugin:astro/recommended", "plugin:jsx-a11y/recommended", "prettier"],
+  "plugins": ["jsx-a11y"],
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "sourceType": "module"
+  },
+  "overrides": [
+    {
+      "files": ["*.astro"],
+      "parser": "astro-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser",
+        "extraFileExtensions": [".astro"]
+      }
+    }
+  ]
+}
