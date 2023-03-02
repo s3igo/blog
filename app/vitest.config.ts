@@ -7,9 +7,8 @@ export default getViteConfig({
         includeSource: ['src/**/*.{js,ts,jsx,tsx}'],
         exclude: ['node_modules', 'dist', '.git', '.cache', '**/*.spec.{js,ts,jsx,tsx}'],
         coverage: {
-            include: ['src/**/*.{js,ts,jsx,tsx}'],
             all: true,
-            reporter: ['text'],
+            reporter: ['text', 'json'],
         },
         typecheck: {
             include: ['src/**/*.{js,ts,jsx,tsx}'],

@@ -40,7 +40,8 @@
       "trivago",
       "nocjsp",
       "Vitest",
-      "kobalte"
+      "kobalte",
+      "codecov"
     ]
   },
   "extensions": {

@@ -10,10 +10,10 @@
     "preview": "astro preview",
     "format": "prettier --write ./src",
     "check": "astro check",
-    "test:unit": "npm test -- run",
-    "test:type": "npm test -- typecheck",
+    "coverage": "vitest run --coverage",
+    "test:unit": "vitest run",
+    "test:type": "vitest typecheck",
     "test:e2e": "playwright test",
-    "test:coverage": "npm test -- run --coverage",
     "lint": "eslint ./src",
     "lint:text": "textlint ./src/data/posts/*.md"
   },
