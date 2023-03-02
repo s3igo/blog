@@ -131,8 +131,6 @@ jobs:
         run: npm -w app run build
       - name: Run Playwright tests
         run: npm -w app run test:e2e
-<<<<<<< HEAD
-=======
 
   coverage:
     name: Coverage
@@ -154,4 +152,3 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           files: ./app/coverage/coverage-final.json
->>>>>>> develop
