@@ -37,8 +37,7 @@
     "remeda": "^1.6.0",
     "sanitize-html": "^2.10.0",
     "solid-icons": "^1.0.4",
-    "solid-js": "^1.6.11",
-    "vitest": "^0.29.0"
+    "solid-js": "^1.6.11"
   },
   "devDependencies": {
     "@playwright/test": "^1.31.1",
@@ -53,6 +52,7 @@
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "prettier": "^2.8.3",
     "prettier-plugin-astro": "^0.8.0",
-    "prettier-plugin-tailwindcss": "^0.2.2"
+    "prettier-plugin-tailwindcss": "^0.2.2",
+    "vitest": "^0.29.2"
   }
 }
