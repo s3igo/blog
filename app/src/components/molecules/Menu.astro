@@ -1,0 +1,14 @@
+---
+import type { Frontmatter } from '~/types';
+import { Tag } from './Tag';
+
+const posts = await Astro.glob<Frontmatter>('../../data/posts/*.md');
+const sortedUniqueTags = [...new Set(posts.flatMap(({ frontmatter: { tags } }) => tags))].sort();
+---
+
+<div class="">
+    <h2 class="text-2xl text-tertiary">Tags</h2>
+    <div class="flex flex-wrap">
+        {sortedUniqueTags.map((tag) => <Tag name={tag} truncate />)}
+    </div>
+</div>
