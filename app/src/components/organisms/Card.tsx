@@ -21,7 +21,7 @@ const PrivateCard: Component<PrivateProps> = (props) => (
         class="hover:custom-shadow rounded-2xl border-2 border-solid border-transparent hover:border-secondary data-[tagHovered=true]:border-transparent data-[tagHovered=true]:shadow-none"
     >
         <div class="py-4 px-2 sm:px-5">
-            <div class="flex gap-1 items-center overflow-x-auto overflow-y-hidden">
+            <div class="flex gap-1 items-center flex-wrap">
                 <Metadata text={props.date} />
                 {props.tags.length !== 0 && (
                     <Separator.Root
