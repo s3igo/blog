@@ -13,15 +13,18 @@ export default defineConfig({
     projects: [
         {
             name: 'chromium',
+            testDir: './tests',
             use: { ...devices['Desktop Chrome'] },
         },
-        // {
-        //     name: 'firefox',
-        //     use: { ...devices['Desktop Firefox'] },
-        // },
-        // {
-        //     name: 'webkit',
-        //     use: { ...devices['Desktop Safari'] },
-        // },
+        {
+            name: 'firefox',
+            testDir: './tests',
+            use: { ...devices['Desktop Firefox'] },
+        },
+        {
+            name: 'webkit',
+            testDir: './tests',
+            use: { ...devices['Desktop Safari'] },
+        },
     ],
 });
