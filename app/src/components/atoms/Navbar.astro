@@ -1,5 +1,6 @@
 ---
 import { PAGE_TITLE } from '~/constants';
+import RssIcon from './RssIcon.astro';
 
 export type Props = { isH1: boolean };
 const { isH1 } = Astro.props;
@@ -11,7 +12,7 @@ const { isH1 } = Astro.props;
     <a class="pl-5 text-2xl text-primary xs:pl-6 xs:text-3xl sm:pl-8 sm:text-[40px]" href="/">
         {isH1 ? <h1>{PAGE_TITLE}</h1> : PAGE_TITLE}
     </a>
-    <a href="/rss.xml" class="mr-6 block h-4 w-4 invert-[.50] sm:mr-7 sm:h-6 sm:w-6">
-        <img src="/rss-solid.svg" alt="rss icon" />
+    <a href="/rss.xml" class="mr-3 block invert-[.40] xs:mr-4 sm:mr-6">
+        <RssIcon />
     </a>
 </nav>
