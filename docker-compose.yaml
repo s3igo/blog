@@ -9,7 +9,7 @@ services:
     ports:
       - 127.0.0.1:3000:3000
     volumes:
-      - .:/workspace:cached
+      - .:/workspace:delegated
     working_dir: /workspace
     environment:
       - NODE_ENV=development
