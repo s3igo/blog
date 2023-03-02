@@ -1,5 +1,7 @@
 # blog
 
+[![codecov](https://codecov.io/gh/s3igo/blog/branch/develop/graph/badge.svg?token=P01847QGIK)](https://codecov.io/gh/s3igo/blog)
+
 私の個人ブログです。
 
 - ブログ本体: https://blog.tsuki-yo.net
