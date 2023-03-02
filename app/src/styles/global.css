@@ -2,12 +2,30 @@
 @tailwind components;
 @tailwind utilities;
 
-html {
-    @apply bg-background font-sans text-foreground;
+@layer base {
+    @font-face {
+        font-family: 'Nunito Sans';
+        font-style: normal;
+        font-display: optional;
+        font-weight: 400;
+        src: url('@fontsource/nunito-sans/files/nunito-sans-latin-400-normal.woff2') format('woff2');
+    }
+    @font-face {
+        font-family: 'Zen Kaku Gothic New';
+        font-style: normal;
+        font-display: optional;
+        font-weight: 400;
+        src: url('@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-japanese-400-normal.woff2')
+            format('woff2');
+    }
 }
 
 @layer utilities {
     .custom-shadow {
         @apply shadow-[3px_3px_4px_1px] shadow-shadow;
     }
+}
+
+html {
+    @apply bg-background font-sans text-foreground;
 }
