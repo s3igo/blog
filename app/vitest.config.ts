@@ -15,6 +15,7 @@ export default getViteConfig({
             exclude: ['node_modules', 'dist', '.git', '.cache', '**/*.spec.{js,ts,jsx,tsx}'],
         },
         environment: 'jsdom',
+        setupFiles: ['./vitest.setup.ts'],
         transformMode: {
             web: [/\.[jt]sx?$/],
         },

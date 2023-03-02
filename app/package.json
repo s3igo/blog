@@ -47,6 +47,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.31.1",
+    "@testing-library/jest-dom": "^5.16.5",
     "@trivago/prettier-plugin-sort-imports": "^4.0.0",
     "@types/sanitize-html": "^2.8.0",
     "@typescript-eslint/parser": "^5.48.2",
