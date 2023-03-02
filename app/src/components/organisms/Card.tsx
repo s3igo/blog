@@ -21,12 +21,12 @@ const PrivateCard: Component<PrivateProps> = (props) => (
         class="hover:custom-shadow rounded-2xl border-2 border-solid border-transparent hover:border-secondary data-[tagHovered=true]:border-transparent data-[tagHovered=true]:shadow-none"
     >
         <div class="py-4 px-2 sm:px-5">
-            <div class="flex gap-1 items-center">
+            <div class="flex gap-1 items-center overflow-x-auto overflow-y-hidden">
                 <Metadata text={props.date} />
                 {props.tags.length !== 0 && (
                     <Separator.Root
                         orientation="vertical"
-                        class="h-4 w-px border-none bg-foreground/60 mx-1"
+                        class="h-4 pr-px border-none bg-foreground/60 mx-1"
                     />
                 )}
                 {props.tags.map((tag) => (
