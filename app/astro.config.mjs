@@ -10,20 +10,6 @@ import { validateFrontmatter } from './src/remarkPlugins/validateFrontmatter';
 
 // https://astro.build/config
 export default defineConfig({
-    site: 'https://blog.tsuki-yo.net',
-    markdown: {
-        remarkPlugins: [
-            normalizeHeadings,
-            setTitle,
-            setPreview,
-            injectDefaultLayout,
-            validateFrontmatter,
-        ],
-        extendedDefaultPlugins: true,
-        shikiConfig: {
-            theme: nightOwl,
-        },
-    },
     integrations: [
         tailwind({
             // カスタムクラスに`:hover`などのバリアントを適用するために必要
@@ -34,4 +20,18 @@ export default defineConfig({
         }),
         solidJs(),
     ],
+    markdown: {
+        extendedDefaultPlugins: true,
+        remarkPlugins: [
+            normalizeHeadings,
+            setTitle,
+            setPreview,
+            injectDefaultLayout,
+            validateFrontmatter,
+        ],
+        shikiConfig: {
+            theme: nightOwl,
+        },
+    },
+    site: 'https://blog.tsuki-yo.net',
 });
