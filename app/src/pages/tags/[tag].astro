@@ -21,11 +21,7 @@ export const getStaticPaths = async () => {
 const { tag } = Astro.params;
 type Props = { posts: MarkdownInstance<Frontmatter>[] };
 const { posts } = Astro.props as Props; // Astro.propsの型が効かないためアサーション
-<<<<<<< HEAD
-const articles = postsToArticles(posts.map(({ frontmatter }) => frontmatter));
-=======
 const articles = cardsToDescending(posts.map(({ frontmatter }) => frontmatter));
->>>>>>> develop
 ---
 
 <Layout title={pageTitle(`tag: ${tag}`)}>
