@@ -25,6 +25,25 @@ jobs:
       - name: Run ESLint
         run: npm -w app run lint
 
+  lint-text:
+    name: Textlint
+    timeout-minutes: 3
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Run `astro check`
+        run: npm -w app run check
+      - name: Run ESLint
+        run: npm -w app run lint:text
+
   format:
     name: Format
     timeout-minutes: 3
