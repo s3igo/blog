@@ -7,16 +7,21 @@
     "start": "astro dev --host 0.0.0.0",
     "test": "vitest",
     "build": "astro build",
+    "build:clean": "rm -rf ./dist",
+    "prepreview": "npm run build",
     "preview": "astro preview --host 0.0.0.0",
+    "postpreview": "npm run build:clean",
     "preview:e2e": "astro preview",
     "check": "astro check",
     "format": "prettier --write ./src",
     "coverage": "vitest run --coverage",
+    "coverage:clean": "rm -rf ./coverage",
     "test:unit": "vitest run",
     "test:type": "vitest typecheck",
     "test:e2e": "playwright test",
     "lint": "eslint ./src",
-    "lint:text": "textlint ./src/data/posts/*.md"
+    "lint:text": "textlint ./src/data/posts/*.md",
+    "clean": "rm -rf ./node_modules"
   },
   "dependencies": {
     "@astrojs/rss": "^2.1.1",
