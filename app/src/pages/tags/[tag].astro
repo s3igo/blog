@@ -4,7 +4,7 @@ import { List } from '~/components/molecules/List';
 import Layout from '~/layouts/Layout.astro';
 import type { Frontmatter } from '~/types';
 import { pageTitle } from '~/utils/constructString';
-import { postsToArticles } from '~/utils/process';
+import { cardsToDescending } from '~/utils/process';
 
 export const getStaticPaths = async () => {
     const posts = await Astro.glob<Frontmatter>('../../data/posts/*.md');
@@ -21,7 +21,11 @@ export const getStaticPaths = async () => {
 const { tag } = Astro.params;
 type Props = { posts: MarkdownInstance<Frontmatter>[] };
 const { posts } = Astro.props as Props; // Astro.propsの型が効かないためアサーション
+<<<<<<< HEAD
 const articles = postsToArticles(posts.map(({ frontmatter }) => frontmatter));
+=======
+const articles = cardsToDescending(posts.map(({ frontmatter }) => frontmatter));
+>>>>>>> develop
 ---
 
 <Layout title={pageTitle(`tag: ${tag}`)}>

@@ -1,5 +1,7 @@
 # blog
 
+[![codecov](https://codecov.io/gh/s3igo/blog/branch/develop/graph/badge.svg?token=P01847QGIK)](https://codecov.io/gh/s3igo/blog)
+
 私の個人ブログです。
 
 - ブログ本体: https://blog.tsuki-yo.net
@@ -24,10 +26,13 @@
 - 言語: TypeScript
 - パッケージマネージャー: npm
 - レンダリングフレームワーク: Astro
+- フロントエンドフレームワーク: solid-js
 - CSSフレームワーク: tailwindCSS(PostCSS)
 - リンター: ESLint
 - フォーマッター: Prettier
 - ドメイン・デプロイ・CDN: Cloudflare
+- 単体テスト: Vitest
+- E2Eテスト: Playwright
 - CI/CD: GitHub Actions
 
 ## ディレクトリ構成
