@@ -39,6 +39,7 @@
     "date-fns": "^2.29.3",
     "mdast-util-to-string": "^3.1.1",
     "night-owl": "github:sdras/night-owl-vscode-theme",
+    "remark-code-titles": "^0.1.2",
     "remark-normalize-headings": "^3.0.1",
     "remeda": "^1.6.0",
     "sanitize-html": "^2.10.0",

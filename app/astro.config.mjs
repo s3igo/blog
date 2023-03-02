@@ -24,6 +24,7 @@ export default defineConfig({
         extendedDefaultPlugins: true,
         remarkPlugins: [
             normalizeHeadings,
+            'remark-code-titles',
             setTitle,
             setPreview,
             injectDefaultLayout,
