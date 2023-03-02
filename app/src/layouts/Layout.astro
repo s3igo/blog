@@ -21,6 +21,16 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <!DOCTYPE html>
 <html lang="ja">
     <head>
+        <meta
+            http-equiv="content-security-policy"
+            content="
+                default-src 'self';
+                script-src 'self' 'unsafe-inline';
+                style-src 'self' 'unsafe-inline';
+                font-src 'self' data:;
+                object-src 'none';
+            "
+        />
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
@@ -44,6 +54,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonicalURL} />
+        <slot name="head" />
     </head>
     <body>
         <div class="mx-auto px-5 xl:container sm:px-8">
