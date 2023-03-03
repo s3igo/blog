@@ -18,26 +18,11 @@
     "unused-imports"
   ],
   "rules": {
-    "sort-destructure-keys/sort-destructure-keys": [2, { "caseSensitive": false }],
-    "sort-keys": [2, "asc", { "caseSensitive": false, "natural": true }],
-    "import/order": [
-      2,
-      {
-        "groups": [
-          "builtin",
-          "external",
-          "internal",
-          "parent",
-          "sibling",
-          "index",
-          "object",
-          "type"
-        ],
-        "alphabetize": { "order": "asc", "caseInsensitive": true },
-        "pathGroups": [{ "pattern": "~/**", "group": "parent", "position": "before" }],
-        "pathGroupsExcludedImportTypes": ["builtin"]
-      }
-    ],
+    "sort-destructure-keys/sort-destructure-keys": ["error", { "caseSensitive": false }],
+    "sort-keys": ["error", "asc", { "caseSensitive": false, "natural": true }],
+    "import/first": "error",
+    "import/newline-after-import": "error",
+    "import/no-duplicates": "error",
     "unused-imports/no-unused-imports": "error",
     "@typescript-eslint/no-unused-vars": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
