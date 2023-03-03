@@ -21,9 +21,7 @@
     "[markdown]": {
       "editor.formatOnSave": false
     },
-    "eslint.validate": ["astro", "javascript", "javascriptreact", "typescript", "typescriptreact"],
     "prettier.documentSelectors": ["**/*.astro"],
-    "eslint.workingDirectories": ["app"],
     "cSpell.ignorePaths": ["devcontainer.json", "*.code-workspace", "*.md", "package-lock.json"],
     "cSpell.words": [
       "astro",
