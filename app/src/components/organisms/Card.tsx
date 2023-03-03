@@ -51,11 +51,11 @@ const PrivateCard: Component<PrivateProps> = (props) => (
     </article>
 );
 
-export const Card: Component<Props> = ({ title, slug, tags, preview, pubDate, updatedAt }) => {
+export const Card: Component<Props> = ({ preview, pubDate, slug, tags, title, updatedAt }) => {
     const publishedAt = format(pubDate);
-    const date = publishedAt + (updatedAt !== undefined ? ' ' + embedUpdated(updatedAt) : '');
+    const date = publishedAt + (updatedAt !== null ? ' ' + embedUpdated(updatedAt) : '');
     const url = postUrl(publishedAt, slug);
-    const props = { url, date, title, tags, preview };
+    const props = { date, preview, tags, title, url };
     const [tagHovered, setTagHovered] = createSignal(false);
     return <PrivateCard {...props} tagHovered={tagHovered} setTagHovered={setTagHovered} />;
 };

@@ -12,7 +12,7 @@ export const frontmatterSchema = z.object({
     slug: z.string(),
     tags: z.array(z.string()),
     title: z.string(),
-    updatedAt: z.date().optional(),
+    updatedAt: z.date().nullable(),
 });
 
 export type Frontmatter = z.infer<typeof frontmatterSchema>;
