@@ -21,6 +21,7 @@ export default defineConfig({
     ],
     markdown: {
         extendedDefaultPlugins: true,
+        rehypePlugins: ['rehype-slug', 'rehype-autolink-headings', 'rehype-toc'],
         remarkPlugins: [
             'remark-normalize-headings',
             'remark-code-titles',

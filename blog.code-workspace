@@ -39,7 +39,8 @@
       "nocjsp",
       "Vitest",
       "kobalte",
-      "codecov"
+      "codecov",
+      "rehype"
     ]
   },
   "extensions": {
