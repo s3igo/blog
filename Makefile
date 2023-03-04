@@ -1,11 +1,14 @@
 # docker compose
 COMPOSE := docker compose
 SELF = $(COMPOSE) run --rm app make $@
+
 # npm
 RUN := npm run
 RUN_APP := $(RUN) -w app
-# error message
-ERROR := @echo "You can't run this command in the container." && exit 1
+
+# error
+ERROR = $(error You can't run this command in the container)
+
 
 .PHONY: dev
 dev:
@@ -27,7 +30,7 @@ endif
 init:
 ifeq ($(shell whoami),node)
 	npm ci
-	make index
+	$(MAKE) index
 else
 	$(SELF)
 endif
