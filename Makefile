@@ -18,20 +18,20 @@ else
 	$(COMPOSE) up
 endif
 
-.PHONY: build
-build:
-ifeq ($(shell whoami),node)
-	$(RUN_APP) build
-else
-	$(SELF)
-endif
-
 .PHONY: preview
 preview:
 ifeq ($(shell whoami),node)
 	bash -c "trap '$(RUN_APP) build:clean' SIGINT; $(RUN_APP) preview:local"
 else
 	$(COMPOSE) run --rm --service-ports app make preview
+endif
+
+.PHONY: test
+test:
+ifeq ($(shell whoami),node)
+	$(RUN_APP) test
+else
+	$(SELF)
 endif
 
 .PHONY: index
@@ -42,27 +42,22 @@ else
 	$(SELF)
 endif
 
+.PHONY: clean
+clean:
+ifeq ($(shell whoami),node)
+	$(RUN) clean
+	$(RUN_APP) clean
+	$(RUN_APP) build:clean
+	$(RUN_APP) coverage:clean
+else
+	$(SELF)
+endif
+
 .PHONY: init
 init:
 ifeq ($(shell whoami),node)
 	npm ci
 	$(MAKE) index
-else
-	$(SELF)
-endif
-
-.PHONY: lint
-lint:
-ifeq ($(shell whoami),node)
-	$(RUN_APP) lint
-else
-	$(SELF)
-endif
-
-.PHONY: format
-format:
-ifeq ($(shell whoami),node)
-	$(RUN_APP) format
 else
 	$(SELF)
 endif
@@ -84,8 +79,8 @@ else
 	$(COMPOSE) down
 endif
 
-.PHONY: clean
-clean:
+.PHONY: remove
+remove:
 ifeq ($(shell whoami),node)
 	$(ERROR)
 else
