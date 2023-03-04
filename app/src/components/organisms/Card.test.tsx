@@ -1,36 +1,39 @@
 import { fireEvent, render, screen } from 'solid-testing-library';
-import { embedUpdated } from '~/utils/dateToString';
 import { Card, Props } from './Card';
+import { embedUpdated } from '~/utils/dateToString';
 
 const mockProps: Props[] = [
     {
-        title: 'title',
-        slug: 'slug',
-        tags: ['tag1'],
         preview: 'preview',
         pubDate: new Date('2021-08-08'),
+        slug: 'slug',
+        tags: ['tag1'],
+        title: 'title',
+        updatedAt: null,
     },
     {
-        title: 'title',
+        preview: 'preview',
+        pubDate: new Date('2021-08-08'),
         slug: 'slug',
         tags: ['tag1', 'tag2'],
-        preview: 'preview',
-        pubDate: new Date('2021-08-08'),
+        title: 'title',
+        updatedAt: null,
     },
     {
-        title: 'title',
-        slug: 'slug',
-        tags: ['tag1'],
         preview: 'preview',
         pubDate: new Date('2021-08-08'),
+        slug: 'slug',
+        tags: ['tag1'],
+        title: 'title',
         updatedAt: new Date('2021-08-09'),
     },
     {
-        title: 'title',
-        slug: 'slug',
-        tags: [],
         preview: 'preview',
         pubDate: new Date('2021-08-08'),
+        slug: 'slug',
+        tags: [],
+        title: 'title',
+        updatedAt: null,
     },
 ];
 
