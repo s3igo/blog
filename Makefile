@@ -1,15 +1,16 @@
 # docker compose
 COMPOSE := docker compose
-RUN_APP := $(COMPOSE) run --rm app
-SELF = $(RUN_APP) make $@
-
+SELF = $(COMPOSE) run --rm app make $@
+# npm
+RUN := npm run
+RUN_APP := $(RUN) -w app
 # error message
 ERROR := @echo "You can't run this command in the container." && exit 1
 
 .PHONY: dev
 dev:
 ifeq ($(shell whoami),node)
-	npm -w app start
+	$(RUN_APP) start
 else
 	$(COMPOSE) up
 endif
@@ -17,7 +18,7 @@ endif
 .PHONY: index
 index:
 ifeq ($(shell whoami),node)
-	npm -w app run index
+	$(RUN_APP) index
 else
 	$(SELF)
 endif
@@ -34,7 +35,7 @@ endif
 .PHONY: lint
 lint:
 ifeq ($(shell whoami),node)
-	npm -w app run lint
+	$(RUN_APP) lint
 else
 	$(SELF)
 endif
@@ -42,7 +43,7 @@ endif
 .PHONY: format
 format:
 ifeq ($(shell whoami),node)
-	npm -w app run
+	$(RUN_APP) format
 else
 	$(SELF)
 endif
