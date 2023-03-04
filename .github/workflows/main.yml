@@ -65,7 +65,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
       - name: Run Vitest typecheck
-        run: npm -w app run test:unit
+        run: npm -w app run test:type
 
   test-unit:
     name: Unit Test

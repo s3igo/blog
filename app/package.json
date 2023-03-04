@@ -17,7 +17,7 @@
     "lint:text": "textlint ./src/data/posts/*.md",
     "test": "vitest",
     "test:unit": "vitest run",
-    "test:type": "vitest typecheck",
+    "test:type": "vitest typecheck --run",
     "test:e2e": "playwright test",
     "coverage": "vitest run --coverage",
     "coverage:clean": "rm -rf ./coverage",
