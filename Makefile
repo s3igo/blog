@@ -18,6 +18,22 @@ else
 	$(COMPOSE) up
 endif
 
+.PHONY: build
+build:
+ifeq ($(shell whoami),node)
+	$(RUN_APP) build
+else
+	$(SELF)
+endif
+
+.PHONY: preview
+preview:
+ifeq ($(shell whoami),node)
+	bash -c "trap '$(RUN_APP) build:clean' SIGINT; $(RUN_APP) preview:local"
+else
+	$(COMPOSE) run --rm --service-ports app make preview
+endif
+
 .PHONY: index
 index:
 ifeq ($(shell whoami),node)
