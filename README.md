@@ -1,5 +1,6 @@
 # blog
 
+[![CI](https://github.com/s3igo/blog/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/s3igo/blog/actions/workflows/main.yml)
 [![codecov](https://codecov.io/gh/s3igo/blog/branch/develop/graph/badge.svg?token=P01847QGIK)](https://codecov.io/gh/s3igo/blog)
 
 私の個人ブログです。
@@ -8,6 +9,7 @@
 - RSS: https://blog.tsuki-yo.net/rss.xml
 - タスク管理: https://github.com.s3igo/blog/issues
 - プロジェクト管理: https://github.com/users/s3igo/projects/1/views/1
+- カバレッジ: https://app.codecov.io/gh/s3igo/blog
 
 ## 背景・方針
 
@@ -31,7 +33,7 @@
 - リンター: ESLint
 - フォーマッター: Prettier
 - ドメイン・デプロイ・CDN: Cloudflare
-- 単体テスト: Vitest
+- 単体テスト: Vitest・solid-testing-library
 - E2Eテスト: Playwright
 - CI/CD: GitHub Actions
 

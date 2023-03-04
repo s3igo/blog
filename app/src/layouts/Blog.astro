@@ -4,21 +4,21 @@ import '@fontsource/jetbrains-mono/latin-400.css';
 import '@fontsource/nunito-sans/latin-400-italic.css';
 import '@fontsource/nunito-sans/latin-700.css';
 import '@fontsource/zen-kaku-gothic-new/japanese-700.css';
+import Layout from './Layout.astro';
 import { Metadata } from '~/components/atoms/Metadata';
 import { Tag } from '~/components/molecules/Tag';
 import type { Frontmatter } from '~/types';
 import { pageTitle } from '~/utils/constructString';
 import { embedCreated, embedUpdated } from '~/utils/dateToString';
 import { first3Sentences } from '~/utils/string';
-import Layout from './Layout.astro';
 
 type Props = { frontmatter: Frontmatter };
 const {
-    frontmatter: { title, tags, preview, pubDate, updatedAt },
+    frontmatter: { preview, pubDate, tags, title, updatedAt },
 } = Astro.props;
 
 const created = embedCreated(pubDate);
-const updated = updatedAt ? embedUpdated(updatedAt) : '';
+const updated = updatedAt !== null ? embedUpdated(updatedAt) : '';
 ---
 
 <Layout title={pageTitle(title)} description={first3Sentences(preview)}>
@@ -112,6 +112,11 @@ const updated = updatedAt ? embedUpdated(updatedAt) : '';
         /* block */
         pre {
             @apply my-4 rounded-xl border border-dashed border-tertiary p-4 text-base;
+        }
+
+        /* filename */
+        .remark-code-title {
+            @apply mb-[-16px] pl-2 font-code text-base text-tertiary;
         }
     }
 </style>

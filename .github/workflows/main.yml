@@ -6,9 +6,9 @@ on:
       - "**/*.md"
 
 jobs:
-  lint:
-    name: Lint
-    timeout-minutes: 3
+  build:
+    name: Format and Lint
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
@@ -22,8 +22,18 @@ jobs:
         run: npm ci
       - name: Run `astro check`
         run: npm -w app run check
-      - name: Run ESLint
-        run: npm -w app run lint
+      - name: Run Prettier
+        run: npm -w app run format
+      - name: Commit files modified by Prettier
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Apply Prettier Change
+      - name: Run ESLint with fix options
+        run: npm -w app run lint:fix
+      - name: Commit files modified by ESLint
+        uses: stefanzweifel/git-auto-commit-action@v4
+        with:
+          commit_message: Apply ESLint Change
 
   lint-text:
     name: Textlint
@@ -43,27 +53,6 @@ jobs:
         run: npm -w app run check
       - name: Run ESLint
         run: npm -w app run lint:text
-
-  format:
-    name: Format
-    timeout-minutes: 3
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Run Prettier
-        run: npm -w app run format
-      - name: Run commit files modified by Prettier
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Apply Prettier Change
 
   test-type:
     name: Typecheck

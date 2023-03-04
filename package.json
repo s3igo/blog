@@ -2,9 +2,15 @@
   "name": "blog",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "<17"
+  },
   "workspaces": [
     "app"
   ],
+  "scripts": {
+    "clean": "rm -rf ./node_modules"
+  },
   "dependencies": {
     "textlint": "^13.3.1",
     "textlint-filter-rule-allowlist": "^4.0.0",

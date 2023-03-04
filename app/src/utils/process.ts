@@ -10,111 +10,43 @@ export const cardsToDescending = (cards: CardProps[]): CardProps[] => {
 };
 
 if (import.meta.vitest) {
-    const { test, expect, describe } = import.meta.vitest;
+    const { describe, expect, test } = import.meta.vitest;
     describe('Cardの配列を降順に並び替える', () => {
-        const expectedCase: CardProps[] = [
-            {
-                title: 'title3',
-                slug: 'slug3',
-                tags: ['tag3', 'tag4', 'tag5'],
-                preview: 'preview3',
-                pubDate: new Date('2021-01-03'),
-            },
-            {
-                title: 'title2',
-                slug: 'slug2',
-                tags: ['tag1', 'tag2'],
-                preview: 'preview2',
-                pubDate: new Date('2021-01-02'),
-                updatedAt: new Date('2021-01-02'),
-            },
-            {
-                title: 'title1',
-                slug: 'slug1',
-                tags: ['tag1'],
-                preview: 'preview1',
-                pubDate: new Date('2021-01-01'),
-            },
-        ];
+        const card1: CardProps = {
+            preview: 'preview1',
+            pubDate: new Date('2021-01-01'),
+            slug: 'slug1',
+            tags: ['tag1'],
+            title: 'title1',
+            updatedAt: null,
+        };
+        const card2: CardProps = {
+            preview: 'preview2',
+            pubDate: new Date('2021-01-02'),
+            slug: 'slug2',
+            tags: ['tag1', 'tag2'],
+            title: 'title2',
+            updatedAt: new Date('2021-01-02'),
+        };
+        const card3: CardProps = {
+            preview: 'preview3',
+            pubDate: new Date('2021-01-03'),
+            slug: 'slug3',
+            tags: ['tag3', 'tag4', 'tag5'],
+            title: 'title3',
+            updatedAt: null,
+        };
+        const expectedCase: CardProps[] = [card3, card2, card1];
         test('pubDateが新しい順に並んでいる', () => {
-            const testCase: CardProps[] = [
-                {
-                    title: 'title1',
-                    slug: 'slug1',
-                    tags: ['tag1'],
-                    preview: 'preview1',
-                    pubDate: new Date('2021-01-01'),
-                },
-                {
-                    title: 'title2',
-                    slug: 'slug2',
-                    tags: ['tag1', 'tag2'],
-                    preview: 'preview2',
-                    pubDate: new Date('2021-01-02'),
-                    updatedAt: new Date('2021-01-02'),
-                },
-                {
-                    title: 'title3',
-                    slug: 'slug3',
-                    tags: ['tag3', 'tag4', 'tag5'],
-                    preview: 'preview3',
-                    pubDate: new Date('2021-01-03'),
-                },
-            ];
+            const testCase: CardProps[] = [card1, card2, card3];
             expect(cardsToDescending(testCase)).toEqual(expectedCase);
         });
         test('pubDateが古い順に並んでいる', () => {
-            const testCase: CardProps[] = [
-                {
-                    title: 'title3',
-                    slug: 'slug3',
-                    tags: ['tag3', 'tag4', 'tag5'],
-                    preview: 'preview3',
-                    pubDate: new Date('2021-01-03'),
-                },
-                {
-                    title: 'title2',
-                    slug: 'slug2',
-                    tags: ['tag1', 'tag2'],
-                    preview: 'preview2',
-                    pubDate: new Date('2021-01-02'),
-                    updatedAt: new Date('2021-01-02'),
-                },
-                {
-                    title: 'title1',
-                    slug: 'slug1',
-                    tags: ['tag1'],
-                    preview: 'preview1',
-                    pubDate: new Date('2021-01-01'),
-                },
-            ];
+            const testCase: CardProps[] = [card3, card2, card1];
             expect(cardsToDescending(testCase)).toEqual(expectedCase);
         });
         test('pubDateが混在している', () => {
-            const testCase: CardProps[] = [
-                {
-                    title: 'title3',
-                    slug: 'slug3',
-                    tags: ['tag3', 'tag4', 'tag5'],
-                    preview: 'preview3',
-                    pubDate: new Date('2021-01-03'),
-                },
-                {
-                    title: 'title1',
-                    slug: 'slug1',
-                    tags: ['tag1'],
-                    preview: 'preview1',
-                    pubDate: new Date('2021-01-01'),
-                },
-                {
-                    title: 'title2',
-                    slug: 'slug2',
-                    tags: ['tag1', 'tag2'],
-                    preview: 'preview2',
-                    pubDate: new Date('2021-01-02'),
-                    updatedAt: new Date('2021-01-02'),
-                },
-            ];
+            const testCase: CardProps[] = [card1, card3, card2];
             expect(cardsToDescending(testCase)).toEqual(expectedCase);
         });
     });

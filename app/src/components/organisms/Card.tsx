@@ -1,6 +1,5 @@
 import { Separator } from '@kobalte/core';
-import type { Accessor, Component, Setter } from 'solid-js';
-import { createSignal } from 'solid-js';
+import { Accessor, Component, createSignal, For, Setter, Show } from 'solid-js';
 import type { Frontmatter } from '~/types';
 import { postUrl } from '~/utils/constructString';
 import { embedUpdated, format } from '~/utils/dateToString';
@@ -9,11 +8,11 @@ import { Tag } from '../molecules/Tag';
 
 export type Props = Omit<Frontmatter, 'draft' | 'layout'>;
 type PrivateProps = {
-    publishedAt: string;
     date: string;
+    url: string;
     tagHovered: Accessor<boolean>;
     setTagHovered: Setter<boolean>;
-} & Omit<Props, 'pubDate' | 'updatedAt'>;
+} & Omit<Props, 'pubDate' | 'updatedAt' | 'slug'>;
 
 const PrivateCard: Component<PrivateProps> = (props) => (
     <article
@@ -21,24 +20,26 @@ const PrivateCard: Component<PrivateProps> = (props) => (
         class="hover:custom-shadow rounded-2xl border-2 border-solid border-transparent hover:border-secondary data-[tagHovered=true]:border-transparent data-[tagHovered=true]:shadow-none"
     >
         <div class="py-4 px-2 sm:px-5">
-            <div class="flex gap-1 items-center overflow-x-auto overflow-y-hidden">
+            <div class="flex gap-1 items-center flex-wrap">
                 <Metadata text={props.date} />
-                {props.tags.length !== 0 && (
+                <Show when={props.tags.length !== 0}>
                     <Separator.Root
                         orientation="vertical"
                         class="h-4 pr-px border-none bg-foreground/60 mx-1"
                     />
-                )}
-                {props.tags.map((tag) => (
-                    <div
-                        onMouseEnter={() => props.setTagHovered(true)}
-                        onMouseLeave={() => props.setTagHovered(false)}
-                    >
-                        <Tag name={tag} />
-                    </div>
-                ))}
+                </Show>
+                <For each={props.tags}>
+                    {(tag) => (
+                        <div
+                            onMouseEnter={() => props.setTagHovered(true)}
+                            onMouseLeave={() => props.setTagHovered(false)}
+                        >
+                            <Tag name={tag} />
+                        </div>
+                    )}
+                </For>
             </div>
-            <a href={postUrl(props.publishedAt, props.slug)}>
+            <a href={props.url}>
                 <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-xl text-primary sm:text-2xl">
                     {props.title}
                 </h2>
@@ -50,10 +51,11 @@ const PrivateCard: Component<PrivateProps> = (props) => (
     </article>
 );
 
-export const Card: Component<Props> = ({ title, slug, tags, preview, pubDate, updatedAt }) => {
+export const Card: Component<Props> = ({ preview, pubDate, slug, tags, title, updatedAt }) => {
     const publishedAt = format(pubDate);
-    const date = publishedAt + (updatedAt !== undefined ? embedUpdated(pubDate) : '');
-    const props = { publishedAt, date, title, slug, tags, preview };
+    const date = publishedAt + (updatedAt !== null ? ' ' + embedUpdated(updatedAt) : '');
+    const url = postUrl(publishedAt, slug);
+    const props = { date, preview, tags, title, url };
     const [tagHovered, setTagHovered] = createSignal(false);
     return <PrivateCard {...props} tagHovered={tagHovered} setTagHovered={setTagHovered} />;
 };

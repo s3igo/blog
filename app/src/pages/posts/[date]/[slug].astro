@@ -5,10 +5,10 @@ import { format } from '~/utils/dateToString';
 
 export const getStaticPaths = async () => {
     const posts = await Astro.glob<Frontmatter>('../../../data/posts/*.md');
-    return posts.map(({ frontmatter: { slug, pubDate }, Content }) => ({
+    return posts.map(({ Content, frontmatter: { pubDate, slug } }) => ({
         params: {
-            slug,
             date: format(pubDate),
+            slug,
         },
         props: { Content },
     }));
