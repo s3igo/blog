@@ -18,6 +18,7 @@ export default defineConfig({
             use: { ...devices['Desktop Safari'] },
         },
     ],
+    testDir: './tests/e2e',
     use: {
         baseURL: 'http://localhost:3000',
     },
