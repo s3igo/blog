@@ -23,7 +23,7 @@ preview:
 ifeq ($(shell whoami),node)
 	bash -c "trap '$(RUN_APP) build:clean' SIGINT; $(RUN_APP) preview:local"
 else
-	$(COMPOSE) run --rm --service-ports app make preview
+	$(COMPOSE) run --rm --service-ports app make $@
 endif
 
 .PHONY: test
