@@ -23,7 +23,7 @@ export default defineConfig({
         baseURL: 'http://localhost:3000',
     },
     webServer: {
-        command: 'npm run preview:e2e',
+        command: 'npm run preview',
         reuseExistingServer: !process.env.CI,
         timeout: 120 * 1000,
         url: 'http://localhost:3000/',
