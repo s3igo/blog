@@ -7,6 +7,9 @@ dev:
 ifeq ($(shell whoami),node)
 	npm -w app start
 else
+	$(COMPOSE) up
+endif
+
 .PHONY: index
 index:
 ifeq ($(shell whoami),node)
@@ -29,7 +32,7 @@ lint:
 ifeq ($(shell whoami),node)
 	npm -w app run lint
 else
-	docker compose run --rm app make lint
+	$(SELF)
 endif
 
 .PHONY: format
@@ -37,7 +40,7 @@ format:
 ifeq ($(shell whoami),node)
 	npm -w app run
 else
-	docker compose run --rm app make format
+	$(SELF)
 endif
 
 # --------------------------- 以下はDockerコンテナ外でのみ実行可能 -------------------------- #
@@ -46,7 +49,7 @@ shell:
 ifeq ($(shell whoami),node)
 	@echo "You can't run this command in the container."
 else
-	docker compose run --rm --service-ports app bash
+	$(COMPOSE) run --rm --service-ports app bash
 endif
 
 .PHONY: down
@@ -54,7 +57,7 @@ down:
 ifeq ($(shell whoami),node)
 	@echo "You can't run this command in the container."
 else
-	docker compose down
+	$(COMPOSE) down
 endif
 
 .PHONY: clean
@@ -62,5 +65,5 @@ clean:
 ifeq ($(shell whoami),node)
 	@echo "You can't run this command in the container."
 else
-	docker compose down --rmi all --volumes --remove-orphans
+	$(COMPOSE) down --rmi all --volumes --remove-orphans
 endif
