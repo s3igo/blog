@@ -2,31 +2,31 @@
 import { getViteConfig } from 'astro/config';
 
 export default getViteConfig({
-    test: {
-        globals: true,
-        includeSource: ['src/**/*.{js,ts,jsx,tsx}'],
-        exclude: ['node_modules', 'dist', '.git', '.cache', '**/*.spec.{js,ts,jsx,tsx}'],
-        coverage: {
-            all: true,
-            reporter: ['text', 'json'],
-        },
-        typecheck: {
-            include: ['src/**/*.{js,ts,jsx,tsx}'],
-            exclude: ['node_modules', 'dist', '.git', '.cache', '**/*.spec.{js,ts,jsx,tsx}'],
-        },
-        environment: 'jsdom',
-        setupFiles: ['./vitest.setup.ts'],
-        transformMode: {
-            web: [/\.[jt]sx?$/],
-        },
-        deps: {
-            inline: [/solid-js/, /solid-testing-library/],
-        },
+    define: {
+        vitest: undefined,
     },
     resolve: {
         conditions: ['development', 'browser'],
     },
-    define: {
-        vitest: undefined,
+    test: {
+        coverage: {
+            all: true,
+            reporter: ['text', 'json'],
+        },
+        deps: {
+            inline: [/solid-js/, /solid-testing-library/],
+        },
+        environment: 'jsdom',
+        exclude: ['node_modules', 'dist', '.git', '.cache', '**/*.spec.{js,ts,jsx,tsx}'],
+        globals: true,
+        includeSource: ['src/**/*.{js,ts,jsx,tsx}'],
+        setupFiles: ['./vitest.setup.ts'],
+        transformMode: {
+            web: [/\.[jt]sx?$/],
+        },
+        typecheck: {
+            exclude: ['node_modules', 'dist', '.git', '.cache', '**/*.spec.{js,ts,jsx,tsx}'],
+            include: ['src/**/*.{js,ts,jsx,tsx}'],
+        },
     },
 });
