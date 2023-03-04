@@ -2,6 +2,10 @@
 COMPOSE := docker compose
 RUN_APP := $(COMPOSE) run --rm app
 SELF = $(RUN_APP) make $@
+
+# error message
+ERROR := @echo "You can't run this command in the container." && exit 1
+
 .PHONY: dev
 dev:
 ifeq ($(shell whoami),node)
@@ -47,7 +51,7 @@ endif
 .PHONY: shell
 shell:
 ifeq ($(shell whoami),node)
-	@echo "You can't run this command in the container."
+	$(ERROR)
 else
 	$(COMPOSE) run --rm --service-ports app bash
 endif
@@ -55,7 +59,7 @@ endif
 .PHONY: down
 down:
 ifeq ($(shell whoami),node)
-	@echo "You can't run this command in the container."
+	$(ERROR)
 else
 	$(COMPOSE) down
 endif
@@ -63,7 +67,7 @@ endif
 .PHONY: clean
 clean:
 ifeq ($(shell whoami),node)
-	@echo "You can't run this command in the container."
+	$(ERROR)
 else
 	$(COMPOSE) down --rmi all --volumes --remove-orphans
 endif
