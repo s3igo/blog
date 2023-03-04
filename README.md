@@ -33,7 +33,7 @@
 - リンター: ESLint
 - フォーマッター: Prettier
 - ドメイン・デプロイ・CDN: Cloudflare
-- 単体テスト: Vitest
+- 単体テスト: Vitest・solid-testing-library
 - E2Eテスト: Playwright
 - CI/CD: GitHub Actions
 

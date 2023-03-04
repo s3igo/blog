@@ -9,7 +9,7 @@ export const embedCreated: Func = (date) => `created on ${format(date)}`;
 export const embedUpdated: Func = (date) => `last updated on ${format(date)}`;
 
 if (import.meta.vitest) {
-    const { test, expect, describe } = import.meta.vitest;
+    const { describe, expect, test } = import.meta.vitest;
     describe('dateToString', () => {
         test('yyyy-MM-dd', () => {
             expect(format(new Date('2021-01-01'))).toBe('2021-01-01');

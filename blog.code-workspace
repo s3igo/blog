@@ -13,6 +13,7 @@
   ],
   "settings": {
     "editor.codeActionsOnSave": {
+      "source.addMissingImports": true,
       "source.fixAll.eslint": true
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -20,10 +21,7 @@
     "[markdown]": {
       "editor.formatOnSave": false
     },
-    "eslint.validate": ["astro", "javascript", "javascriptreact", "typescript", "typescriptreact"],
     "prettier.documentSelectors": ["**/*.astro"],
-    "eslint.workingDirectories": ["app"],
-    "eslint.experimental.useFlatConfig": true,
     "cSpell.ignorePaths": ["devcontainer.json", "*.code-workspace", "*.md", "package-lock.json"],
     "cSpell.words": [
       "astro",
@@ -41,7 +39,9 @@
       "nocjsp",
       "Vitest",
       "kobalte",
-      "codecov"
+      "codecov",
+      "rehype",
+      "tsup"
     ]
   },
   "extensions": {

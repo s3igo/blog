@@ -13,15 +13,15 @@ export const get = (context: APIContext) => {
     const posts = Object.values(postImportResult) as MarkdownInstance<Frontmatter>[];
 
     return rss({
-        title: PAGE_TITLE,
+        customData: '<language>ja</language>',
         description: PAGE_DESCRIPTION,
-        site,
         items: posts.map(({ compiledContent, frontmatter }) => ({
-            link: postUrl(format(frontmatter.pubDate), frontmatter.slug) ?? site,
             content: sanitizeHtml(compiledContent()),
             description: first3Sentences(frontmatter.preview),
+            link: postUrl(format(frontmatter.pubDate), frontmatter.slug) ?? site,
             ...frontmatter,
         })),
-        customData: '<language>ja</language>',
+        site,
+        title: PAGE_TITLE,
     });
 };

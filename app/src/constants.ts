@@ -1,2 +1,2 @@
-export const PAGE_TITLE: string = 'tsukiyo-room';
-export const PAGE_DESCRIPTION: string = 'tsukiyoの個人ブログ';
+export const PAGE_TITLE = 'tsukiyo-room';
+export const PAGE_DESCRIPTION = 'tsukiyoの個人ブログ';

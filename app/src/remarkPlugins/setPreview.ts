@@ -1,7 +1,7 @@
-import { toString } from 'mdast-util-to-string';
 import * as R from 'remeda';
-import { truncate } from '../utils/string';
+import { toString } from 'mdast-util-to-string';
 import type { Plugin, Type, Value } from './types';
+import { truncate } from '../utils/string';
 
 // 本文先頭500文字をfrontmatter.previewにセットする
 export const setPreview: Plugin = () => {
