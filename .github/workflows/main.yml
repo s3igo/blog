@@ -24,16 +24,12 @@ jobs:
         run: npm -w app run check
       - name: Run Prettier
         run: npm -w app run format
-      - name: Commit files modified by Prettier
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Apply Prettier Change
       - name: Run ESLint with fix options
         run: npm -w app run lint:fix
       - name: Commit files modified by ESLint
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Apply ESLint Change
+          commit_message: Apply changes
 
   lint-text:
     name: Textlint
