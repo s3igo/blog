@@ -22,6 +22,7 @@
     "lint": "eslint ./src",
     "lint:fix": "eslint ./src --fix",
     "lint:text": "textlint ./src/data/posts/*.md",
+    "index": "cd ./src/data && zk index",
     "clean": "rm -rf ./node_modules"
   },
   "dependencies": {

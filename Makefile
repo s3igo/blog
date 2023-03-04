@@ -1,23 +1,27 @@
+# docker compose
+COMPOSE := docker compose
+RUN_APP := $(COMPOSE) run --rm app
+SELF = $(RUN_APP) make $@
 .PHONY: dev
 dev:
 ifeq ($(shell whoami),node)
 	npm -w app start
 else
-	docker compose up
+.PHONY: index
+index:
+ifeq ($(shell whoami),node)
+	npm -w app run index
+else
+	$(SELF)
 endif
 
 .PHONY: init
 init:
-	# `npm ci`は毎回新しいnode_modulesを作成するので、この記述意味ないかも
-	# rm -rf ./node_modules
-	# rm -rf ./app/node_modules
 ifeq ($(shell whoami),node)
 	npm ci
-	# cd contents && zk index
+	make index
 else
-	docker compose run --rm app make init
-	# docker compose run --rm root cd contents && zk index
-	# TODO: rootコンテナで実行するの適切? textlint導入まで検討しない
+	$(SELF)
 endif
 
 .PHONY: lint
