@@ -14,12 +14,13 @@
     "@typescript-eslint",
     "jsx-a11y",
     "sort-destructure-keys",
+    "sort-keys-fix",
     "import",
     "unused-imports"
   ],
   "rules": {
     "sort-destructure-keys/sort-destructure-keys": ["error", { "caseSensitive": false }],
-    "sort-keys": ["error", "asc", { "caseSensitive": false, "natural": true }],
+    "sort-keys-fix/sort-keys-fix": ["error", "asc", { "caseSensitive": false, "natural": true }],
     "import/first": "error",
     "import/newline-after-import": "error",
     "import/no-duplicates": "error",
