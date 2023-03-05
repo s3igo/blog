@@ -51,6 +51,7 @@
   },
   "devDependencies": {
     "@playwright/test": "^1.31.1",
+    "@solidjs/testing-library": "^0.6.1",
     "@testing-library/jest-dom": "^5.16.5",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@types/sanitize-html": "^2.8.0",
@@ -71,7 +72,6 @@
     "prettier-plugin-astro": "^0.8.0",
     "prettier-plugin-sort-json": "^1.0.0",
     "prettier-plugin-tailwindcss": "^0.2.2",
-    "solid-testing-library": "^0.5.1",
     "vitest": "^0.29.2"
   }
 }
