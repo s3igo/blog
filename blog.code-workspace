@@ -56,7 +56,8 @@
       "codecov",
       "rehype",
       "tsup",
-      "solidjs"
+      "solidjs",
+      "Labelledby"
     ]
   }
 }
