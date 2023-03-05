@@ -16,3 +16,48 @@ export const frontmatterSchema = z.object({
 });
 
 export type Frontmatter = z.infer<typeof frontmatterSchema>;
+
+if (import.meta.vitest) {
+    const { describe, expect, test } = import.meta.vitest;
+    describe('keyが不足するときにエラーを投げる', () => {
+        test('previewがない', () => {
+            expect(() => {
+                frontmatterSchema.parse({
+                    draft: true,
+                    layout: layouts.blog,
+                    pubDate: new Date(),
+                    slug: 'slug',
+                    tags: ['tag'],
+                    title: 'title',
+                    updatedAt: new Date(),
+                });
+            }).toThrowError('Required');
+        });
+        test('slugがない', () => {
+            expect(() => {
+                frontmatterSchema.parse({
+                    draft: true,
+                    layout: layouts.blog,
+                    preview: 'preview',
+                    pubDate: new Date(),
+                    tags: ['tag'],
+                    title: 'title',
+                    updatedAt: new Date(),
+                });
+            }).toThrowError('Required');
+        });
+        test('updatedAtがない', () => {
+            expect(() => {
+                frontmatterSchema.parse({
+                    draft: true,
+                    layout: layouts.blog,
+                    preview: 'preview',
+                    pubDate: new Date(),
+                    slug: 'slug',
+                    tags: ['tag'],
+                    title: 'title',
+                });
+            }).toThrowError('Required');
+        });
+    });
+}

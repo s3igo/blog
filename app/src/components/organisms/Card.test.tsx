@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from 'solid-testing-library';
+import { fireEvent, render, screen } from '@solidjs/testing-library';
 import { Card, Props } from './Card';
 import { embedUpdated } from '~/utils/dateToString';
 

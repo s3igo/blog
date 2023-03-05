@@ -1,4 +1,18 @@
 {
+  "extensions": {
+    "recommendations": [
+      "ms-vscode-remote.remote-containers",
+      "editorconfig.editorconfig",
+      "astro-build.astro-vscode",
+      "dbaeumer.vscode-eslint",
+      "esbenp.prettier-vscode",
+      "streetsidesoftware.code-spell-checker",
+      "bradlc.vscode-tailwindcss",
+      "csstools.postcss",
+      "taichi.vscode-textlint",
+      "tamasfe.even-better-toml"
+    ]
+  },
   "folders": [
     {
       "name": "root",
@@ -41,21 +55,8 @@
       "kobalte",
       "codecov",
       "rehype",
-      "tsup"
-    ]
-  },
-  "extensions": {
-    "recommendations": [
-      "ms-vscode-remote.remote-containers",
-      "editorconfig.editorconfig",
-      "astro-build.astro-vscode",
-      "dbaeumer.vscode-eslint",
-      "esbenp.prettier-vscode",
-      "streetsidesoftware.code-spell-checker",
-      "bradlc.vscode-tailwindcss",
-      "csstools.postcss",
-      "taichi.vscode-textlint",
-      "tamasfe.even-better-toml"
+      "tsup",
+      "solidjs"
     ]
   }
 }

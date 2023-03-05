@@ -6,6 +6,10 @@ SELF = $(COMPOSE) run --rm app make $@
 RUN := npm run
 RUN_APP := $(RUN) -w app
 
+# GitHub
+USER := s3igo
+REPO := blog
+
 # error
 ERROR = $(error You can't run this command in the container)
 
@@ -55,6 +59,7 @@ endif
 
 .PHONY: init
 init:
+	$(MAKE) clean
 ifeq ($(shell whoami),node)
 	npm ci
 	$(MAKE) index
@@ -85,4 +90,14 @@ ifeq ($(shell whoami),node)
 	$(ERROR)
 else
 	$(COMPOSE) down --rmi all --volumes --remove-orphans
+endif
+
+.PHONY: clear-cache
+clear-cache:
+ifeq ($(shell whoami),node)
+	$(ERROR)
+else
+	gh api -X GET repos/$(USER)/$(REPO)/actions/caches \
+		| jq '.actions_caches[].id' \
+		| xargs -I{} gh api -X DELETE repos/$(USER)/$(REPO)/actions/caches/{}
 endif
