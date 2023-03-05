@@ -16,7 +16,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version-file: .node-version
           cache: npm
       - name: Install dependencies
         run: npm ci
@@ -41,7 +41,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version-file: .node-version
           cache: npm
       - name: Install dependencies
         run: npm ci
@@ -60,7 +60,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version-file: .node-version
           cache: npm
       - name: Install dependencies
         run: npm ci
@@ -77,7 +77,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version-file: .node-version
           cache: npm
       - name: Install dependencies
         run: npm ci
@@ -94,7 +94,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version-file: .node-version
           cache: npm
       - name: Install dependencies
         run: npm ci
@@ -115,7 +115,7 @@ jobs:
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version-file: .node-version
           cache: npm
       - name: Install dependencies
         run: npm ci
