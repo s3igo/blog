@@ -25,14 +25,15 @@ jobs:
           path: |
             node_modules
             app/node_modules
-            ~/.cache/ms-playwright
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
       - name: Install dependencies
         if: steps.cache-primes.outputs.cache-hit != 'true'
         run: npm ci
       - name: Install Playwright browsers
         if: steps.cache-primes.outputs.cache-hit != 'true'
-        run: npx -w app playwright install --with-deps
+        run: npx -w app playwright install
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: 0
 
   format-lint:
     name: Format and Lint
@@ -158,12 +159,15 @@ jobs:
           path: |
             node_modules
             app/node_modules
-            ~/.cache/ms-playwright
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+      - name: Install Additional Dependencies
+        run: npx -w app playwright install-deps
       - name: Build app
         run: npm -w app run build
       - name: Run Playwright tests
         run: npm -w app run test:e2e
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: 0
 
   coverage:
     name: Coverage
