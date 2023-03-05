@@ -69,7 +69,7 @@ jobs:
 
   lint-text:
     name: Textlint
-    timeout-minutes: 3
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     needs:
       - build
@@ -93,7 +93,7 @@ jobs:
 
   test-type:
     name: Typecheck
-    timeout-minutes: 3
+    timeout-minutes: 5
     runs-on: ubuntu-latest
     needs:
       - build
@@ -141,7 +141,7 @@ jobs:
 
   test-e2e:
     name: E2E Test
-    timeout-minutes: 60
+    timeout-minutes: 15
     runs-on: ubuntu-latest
     needs:
       - build
