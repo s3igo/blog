@@ -1,5 +1,5 @@
 import { Separator } from '@kobalte/core';
-import { Accessor, Component, createSignal, For, Setter, Show } from 'solid-js';
+import { Accessor, Component, createSignal, For, Setter, Show, splitProps } from 'solid-js';
 import type { Frontmatter } from '~/types';
 import { postUrl } from '~/utils/constructString';
 import { embedUpdated, format } from '~/utils/dateToString';
@@ -51,11 +51,13 @@ const PrivateCard: Component<PrivateProps> = (props) => (
     </article>
 );
 
-export const Card: Component<Props> = ({ preview, pubDate, slug, tags, title, updatedAt }) => {
-    const publishedAt = format(pubDate);
-    const date = publishedAt + (updatedAt !== null ? ' ' + embedUpdated(updatedAt) : '');
-    const url = postUrl(publishedAt, slug);
-    const props = { date, preview, tags, title, url };
+export const Card: Component<Props> = (props) => {
+    const [local, others] = splitProps(props, ['pubDate', 'slug', 'updatedAt']);
+    const publishedAt = format(local.pubDate);
+    const date =
+        publishedAt + (local.updatedAt !== null ? ' ' + embedUpdated(local.updatedAt) : '');
+    const url = postUrl(publishedAt, local.slug);
     const [tagHovered, setTagHovered] = createSignal(false);
-    return <PrivateCard {...props} tagHovered={tagHovered} setTagHovered={setTagHovered} />;
+    const privateProps = { ...others, date, url };
+    return <PrivateCard {...privateProps} tagHovered={tagHovered} setTagHovered={setTagHovered} />;
 };
