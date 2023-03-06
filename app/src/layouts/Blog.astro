@@ -43,7 +43,7 @@ const updated = updatedAt !== null ? embedUpdated(updatedAt) : '';
         }
 
         a {
-            @apply text-secondary decoration-2 underline-offset-4 hover:underline;
+            @apply link;
         }
 
         em {
@@ -86,7 +86,7 @@ const updated = updatedAt !== null ? embedUpdated(updatedAt) : '';
 
         /* ---------------------------------- list ---------------------------------- */
         :is(ul, ol) {
-            @apply ml-6 py-4;
+            @apply list-inside py-4;
         }
 
         ul {
