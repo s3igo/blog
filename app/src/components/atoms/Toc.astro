@@ -1,0 +1,26 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+export type Props = { headings: MarkdownHeading[] };
+const { headings } = Astro.props;
+---
+
+<nav aria-label="Local navigation">
+    <ul class="list-inside list-disc">
+        {
+            headings
+                .filter(({ depth }) => depth !== 1)
+                .map(({ depth, slug, text }) => {
+                    const indent = depth - 2;
+                    const padding = `ml-${indent * 7}`;
+                    return (
+                        <li class={padding}>
+                            <a href={`#${slug}`} class="link">
+                                {text}
+                            </a>
+                        </li>
+                    );
+                })
+        }
+    </ul>
+</nav>

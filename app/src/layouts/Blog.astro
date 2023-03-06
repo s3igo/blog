@@ -4,17 +4,19 @@ import '@fontsource/jetbrains-mono/latin-400.css';
 import '@fontsource/nunito-sans/latin-400-italic.css';
 import '@fontsource/nunito-sans/latin-700.css';
 import '@fontsource/zen-kaku-gothic-new/japanese-700.css';
-import Layout from './Layout.astro';
 import { Metadata } from '~/components/atoms/Metadata';
+import Toc, { type Props as TocProps } from '~/components/atoms/Toc.astro';
 import { Tag } from '~/components/molecules/Tag';
 import type { Frontmatter } from '~/types';
 import { pageTitle } from '~/utils/constructString';
 import { embedCreated, embedUpdated } from '~/utils/dateToString';
 import { first3Sentences } from '~/utils/string';
+import Layout from './Layout.astro';
 
-type Props = { frontmatter: Frontmatter };
+type Props = { frontmatter: Frontmatter } & TocProps;
 const {
     frontmatter: { preview, pubDate, tags, title, updatedAt },
+    headings,
 } = Astro.props;
 
 const created = embedCreated(pubDate);
@@ -27,6 +29,7 @@ const updated = updatedAt !== null ? embedUpdated(updatedAt) : '';
         {updated && <Metadata text={updated} />}
         {tags.map((tag) => <Tag name={tag} />)}
     </div>
+    <Toc headings={headings} />
     <div class="blog">
         <slot />
     </div>

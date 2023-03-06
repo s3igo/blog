@@ -2,7 +2,6 @@ import solidJs from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
 import nightOwl from 'night-owl/themes/Night Owl-color-theme.json';
-import { addARIA } from './src/rehypePlugins/toc';
 import { injectDefaultLayout } from './src/remarkPlugins/injectDefaultLayout';
 import { setPreview } from './src/remarkPlugins/setPreview';
 import { setTitle } from './src/remarkPlugins/setTitle';
@@ -22,11 +21,6 @@ export default defineConfig({
     ],
     markdown: {
         extendedDefaultPlugins: true,
-        rehypePlugins: [
-            'rehype-slug',
-            'rehype-autolink-headings',
-            ['rehype-toc', { customizeTOC: addARIA, headings: ['h2', 'h3', 'h4', 'h5', 'h6'] }],
-        ],
         remarkPlugins: [
             'remark-normalize-headings',
             'remark-code-titles',
