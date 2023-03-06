@@ -61,7 +61,7 @@ endif
 init:
 	$(MAKE) clean
 ifeq ($(shell whoami),node)
-	npm ci
+	npm install
 	$(MAKE) index
 else
 	$(SELF)

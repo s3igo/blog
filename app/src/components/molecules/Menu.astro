@@ -1,6 +1,6 @@
 ---
-import { Tag } from './Tag';
 import type { Frontmatter } from '~/types';
+import { Tag } from './Tag';
 
 const posts = await Astro.glob<Frontmatter>('../../data/posts/*.md');
 const sortedUniqueTags = [...new Set(posts.flatMap(({ frontmatter: { tags } }) => tags))].sort();

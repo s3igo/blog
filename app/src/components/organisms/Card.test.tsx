@@ -1,6 +1,6 @@
 import { fireEvent, render, screen } from '@solidjs/testing-library';
-import { Card, Props } from './Card';
 import { embedUpdated } from '~/utils/dateToString';
+import { Card, Props } from './Card';
 
 const mockProps: Props[] = [
     {

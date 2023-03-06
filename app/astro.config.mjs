@@ -21,7 +21,6 @@ export default defineConfig({
     ],
     markdown: {
         extendedDefaultPlugins: true,
-        rehypePlugins: ['rehype-slug', 'rehype-autolink-headings', 'rehype-toc'],
         remarkPlugins: [
             'remark-normalize-headings',
             'remark-code-titles',
@@ -32,6 +31,7 @@ export default defineConfig({
         ],
         shikiConfig: {
             theme: nightOwl,
+            wrap: true,
         },
     },
     site: 'https://blog.tsuki-yo.net',
