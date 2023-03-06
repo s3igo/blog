@@ -34,6 +34,17 @@ export default getViteConfig({
         transformMode: {
             web: [/\.[jt]sx?$/],
         },
+        deps: {
+            inline: [/solid-js/, /solid-testing-library/],
+        },
+        environment: 'jsdom',
+        exclude: ['./tests/e2e/**', ...defaultExcludes],
+        globals: true,
+        includeSource: ['src/**/*.{js,ts,jsx,tsx}', ...defaultIncludes],
+        setupFiles: ['./vitest.setup.ts'],
+        transformMode: {
+            web: [/\.[jt]sx?$/],
+        },
         typecheck: {
             include: ['src/**/*.{js,ts,jsx,tsx}'],
         },
