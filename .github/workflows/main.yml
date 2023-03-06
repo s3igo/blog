@@ -9,7 +9,7 @@ jobs:
   build:
     name: Setup
     timeout-minutes: 5
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -38,7 +38,7 @@ jobs:
   format-lint:
     name: Format and Lint
     timeout-minutes: 5
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs:
       - build
     steps:
@@ -70,7 +70,7 @@ jobs:
   lint-text:
     name: Textlint
     timeout-minutes: 5
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs:
       - build
     steps:
@@ -94,7 +94,7 @@ jobs:
   test-type:
     name: Typecheck
     timeout-minutes: 5
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs:
       - build
     steps:
@@ -118,7 +118,7 @@ jobs:
   test-unit:
     name: Unit Test
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs:
       - build
     steps:
@@ -142,7 +142,7 @@ jobs:
   test-e2e:
     name: E2E Test
     timeout-minutes: 15
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs:
       - build
     steps:
@@ -172,7 +172,7 @@ jobs:
   coverage:
     name: Coverage
     timeout-minutes: 3
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     needs:
       - build
       - test-unit
