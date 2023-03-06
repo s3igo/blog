@@ -11,10 +11,10 @@ const { headings } = Astro.props;
             headings
                 .filter(({ depth }) => depth !== 1)
                 .map(({ depth, slug, text }) => {
-                    const indent = depth - 2;
-                    const padding = `ml-${indent * 7}`;
+                    const degree = depth - 2;
+                    const indent = `ml-${degree * 7}`;
                     return (
-                        <li class={padding}>
+                        <li class={indent}>
                             <a href={`#${slug}`} class="link">
                                 {text}
                             </a>
