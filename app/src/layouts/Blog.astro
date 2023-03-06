@@ -24,14 +24,23 @@ const updated = updatedAt !== null ? embedUpdated(updatedAt) : '';
 ---
 
 <Layout title={pageTitle(title)} description={first3Sentences(preview)}>
-    <div class="flex flex-col">
-        <Metadata text={created} />
-        {updated && <Metadata text={updated} />}
-        {tags.map((tag) => <Tag name={tag} />)}
-    </div>
-    <Toc headings={headings} />
-    <div class="blog">
-        <slot />
+    <div class="flex flex-col gap-5 md:flex-row-reverse">
+        <div class="pt-12 md:w-52">
+            <div class="sticky top-12 flex shrink-0 flex-col gap-4">
+                <div class="flex flex-col">
+                    <Metadata text={created} />
+                    {updated && <Metadata text={updated} />}
+                    {tags.map((tag) => <Tag name={tag} />)}
+                </div>
+                <div>
+                    <h2 class="decoration text-xl text-primary">目次</h2>
+                    <Toc headings={headings} />
+                </div>
+            </div>
+        </div>
+        <div class="blog">
+            <slot />
+        </div>
     </div>
 </Layout>
 <style is:global>
