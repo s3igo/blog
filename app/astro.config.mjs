@@ -31,6 +31,7 @@ export default defineConfig({
         ],
         shikiConfig: {
             theme: nightOwl,
+            wrap: true,
         },
     },
     site: 'https://blog.tsuki-yo.net',
