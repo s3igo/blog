@@ -3,7 +3,7 @@ import { Accessor, Component, createSignal, For, Setter, Show, splitProps } from
 import type { Frontmatter } from '~/types';
 import { postUrl } from '~/utils/constructString';
 import { embedUpdated, format } from '~/utils/dateToString';
-import { type EmptyObject, isNever } from '~/utils/types';
+import { isNever } from '~/utils/types';
 import { Metadata } from '../atoms/Metadata';
 import { Tag } from '../molecules/Tag';
 
@@ -63,7 +63,7 @@ const View: Component<ViewProps> = (props) => {
         infoConsumes,
         contentConsumes
     );
-    others satisfies EmptyObject; // exhaustiveness check
+    others satisfies Record<string, never>; // exhaustiveness check
     return (
         <article
             data-tagHovered={local.tagHovered()}
