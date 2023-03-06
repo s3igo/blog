@@ -7,134 +7,192 @@ on:
 
 jobs:
   build:
-    name: Format and Lint
+    name: Setup
     timeout-minutes: 5
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version-file: .node-version
           cache: npm
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        id: cache-primes
+        with:
+          path: |
+            node_modules
+            app/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
       - name: Install dependencies
+        if: steps.cache-primes.outputs.cache-hit != 'true'
         run: npm ci
+      - name: Install Playwright browsers
+        if: steps.cache-primes.outputs.cache-hit != 'true'
+        run: npx -w app playwright install
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: 0
+
+  format-lint:
+    name: Format and Lint
+    timeout-minutes: 5
+    runs-on: ubuntu-22.04
+    needs:
+      - build
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            app/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
       - name: Run `astro check`
         run: npm -w app run check
       - name: Run Prettier
         run: npm -w app run format
-      - name: Commit files modified by Prettier
-        uses: stefanzweifel/git-auto-commit-action@v4
-        with:
-          commit_message: Apply Prettier Change
       - name: Run ESLint with fix options
         run: npm -w app run lint:fix
       - name: Commit files modified by ESLint
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Apply ESLint Change
+          commit_message: Apply changes
 
   lint-text:
     name: Textlint
-    timeout-minutes: 3
-    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    runs-on: ubuntu-22.04
+    needs:
+      - build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version-file: .node-version
           cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Run `astro check`
-        run: npm -w app run check
-      - name: Run ESLint
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            app/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+      - name: Run Textlint
         run: npm -w app run lint:text
 
   test-type:
     name: Typecheck
-    timeout-minutes: 3
-    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    runs-on: ubuntu-22.04
+    needs:
+      - build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version-file: .node-version
           cache: npm
-      - name: Install dependencies
-        run: npm ci
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            app/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
       - name: Run Vitest typecheck
-        run: npm -w app run test:unit
+        run: npm -w app run test:type
 
   test-unit:
     name: Unit Test
     timeout-minutes: 10
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
+    needs:
+      - build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version-file: .node-version
           cache: npm
-      - name: Install dependencies
-        run: npm ci
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            app/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
       - name: Run Vitest
         run: npm -w app run test:unit
 
   test-e2e:
     name: E2E Test
-    timeout-minutes: 60
-    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    runs-on: ubuntu-22.04
+    needs:
+      - build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version-file: .node-version
           cache: npm
-      - name: Install dependencies
-        run: npm ci
-      - name: Store Playwright's version
-        run: |
-          PLAYWRIGHT_VERSION=$(npm ls @playwright/test | grep @playwright | sed 's/.*@//')
-          echo "Playwright's version: $PLAYWRIGHT_VERSION"
-          echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
-      - name: Cache Playwright browsers for Playwright's version
-        id: cache-playwright-browsers
+      - name: Cache npm dependencies
         uses: actions/cache@v3
         with:
-          path: ~/.cache/ms-playwright
-          key: playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}
-      - name: Install Playwright browsers
-        if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
-        run: npx -w app playwright install --with-deps
+          path: |
+            node_modules
+            app/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+      - name: Install Additional Dependencies
+        run: npx -w app playwright install-deps
       - name: Build app
         run: npm -w app run build
       - name: Run Playwright tests
         run: npm -w app run test:e2e
+        env:
+          PLAYWRIGHT_BROWSERS_PATH: 0
 
   coverage:
     name: Coverage
     timeout-minutes: 3
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-22.04
+    needs:
+      - build
+      - test-unit
+      - test-type
+      - test-e2e
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
-          node-version: 16
+          node-version-file: .node-version
           cache: npm
-      - name: Install dependencies
-        run: npm ci
+      - name: Cache npm dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            node_modules
+            app/node_modules
+          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
       - name: Generate coverage file
         run: npm -w app run coverage
       - name: Upload coverage reports to Codecov

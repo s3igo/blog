@@ -1,7 +1,8 @@
 {
-  "singleQuote": true,
-  "importOrder": ["^@(.*)$", "<THIRD_PARTY_MODULES>", "^./(.*)$", "^../(.*)$", "^~(.*)$"],
-  "importOrderSortSpecifiers": true,
+  "importOrder": ["^@(.*)$", "<THIRD_PARTY_MODULES>", "^~(.*)$", "^../(.*)$", "^./(.*)$"],
+  "importOrderCaseInsensitive": true,
   "importOrderGroupNamespaceSpecifiers": true,
-  "importOrderCaseInsensitive": true
+  "importOrderSortSpecifiers": true,
+  "jsonRecursiveSort": true,
+  "singleQuote": true
 }

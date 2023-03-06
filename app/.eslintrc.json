@@ -1,5 +1,4 @@
 {
-  "root": true,
   "env": {
     "es2021": true
   },
@@ -10,6 +9,22 @@
     "plugin:jsx-a11y/recommended",
     "prettier"
   ],
+  "overrides": [
+    {
+      "files": ["*.astro"],
+      "parser": "astro-eslint-parser",
+      "parserOptions": {
+        "extraFileExtensions": [".astro"],
+        "parser": "@typescript-eslint/parser"
+      }
+    }
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2022,
+    "project": "./tsconfig.json",
+    "sourceType": "module"
+  },
   "plugins": [
     "@typescript-eslint",
     "jsx-a11y",
@@ -18,32 +33,17 @@
     "import",
     "unused-imports"
   ],
+  "root": true,
   "rules": {
-    "sort-destructure-keys/sort-destructure-keys": ["error", { "caseSensitive": false }],
-    "sort-keys-fix/sort-keys-fix": ["error", "asc", { "caseSensitive": false, "natural": true }],
+    "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
+    "@typescript-eslint/no-non-null-assertion": "off",
+    "@typescript-eslint/no-unused-vars": "off",
+    "@typescript-eslint/triple-slash-reference": "off",
     "import/first": "error",
     "import/newline-after-import": "error",
-    "import/no-duplicates": "error",
-    "unused-imports/no-unused-imports": "error",
-    "@typescript-eslint/no-unused-vars": "off",
-    "@typescript-eslint/no-non-null-assertion": "off",
-    "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
-    "@typescript-eslint/triple-slash-reference": "off"
-  },
-  "parser": "@typescript-eslint/parser",
-  "parserOptions": {
-    "ecmaVersion": 2022,
-    "sourceType": "module",
-    "project": "./tsconfig.json"
-  },
-  "overrides": [
-    {
-      "files": ["*.astro"],
-      "parser": "astro-eslint-parser",
-      "parserOptions": {
-        "parser": "@typescript-eslint/parser",
-        "extraFileExtensions": [".astro"]
-      }
-    }
-  ]
+    "import/no-duplicates": ["error", { "prefer-inline": true }],
+    "sort-destructure-keys/sort-destructure-keys": ["error", { "caseSensitive": false }],
+    "sort-keys-fix/sort-keys-fix": ["error", "asc", { "caseSensitive": false, "natural": true }],
+    "unused-imports/no-unused-imports": "error"
+  }
 }

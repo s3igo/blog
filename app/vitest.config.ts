@@ -21,6 +21,7 @@ export default getViteConfig({
         coverage: {
             all: true,
             reporter: ['text', 'json'],
+            src: ['./src'],
         },
         deps: {
             inline: [/solid-js/, /solid-testing-library/],

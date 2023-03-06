@@ -1,62 +1,103 @@
+# docker compose
+COMPOSE := docker compose
+SELF = $(COMPOSE) run --rm app make $@
+
+# npm
+RUN := npm run
+RUN_APP := $(RUN) -w app
+
+# GitHub
+USER := s3igo
+REPO := blog
+
+# error
+ERROR = $(error You can't run this command in the container)
+
+
 .PHONY: dev
 dev:
 ifeq ($(shell whoami),node)
-	npm -w app start
+	$(RUN_APP) start
 else
-	docker compose up
+	$(COMPOSE) up
+endif
+
+.PHONY: preview
+preview:
+ifeq ($(shell whoami),node)
+	bash -c "trap '$(RUN_APP) build:clean' SIGINT; $(RUN_APP) preview:local"
+else
+	$(COMPOSE) run --rm --service-ports app make $@
+endif
+
+.PHONY: test
+test:
+ifeq ($(shell whoami),node)
+	$(RUN_APP) test
+else
+	$(SELF)
+endif
+
+.PHONY: index
+index:
+ifeq ($(shell whoami),node)
+	$(RUN_APP) index
+else
+	$(SELF)
+endif
+
+.PHONY: clean
+clean:
+ifeq ($(shell whoami),node)
+	$(RUN) clean
+	$(RUN_APP) clean
+	$(RUN_APP) build:clean
+	$(RUN_APP) coverage:clean
+else
+	$(SELF)
 endif
 
 .PHONY: init
 init:
-	# `npm ci`は毎回新しいnode_modulesを作成するので、この記述意味ないかも
-	# rm -rf ./node_modules
-	# rm -rf ./app/node_modules
+	$(MAKE) clean
 ifeq ($(shell whoami),node)
-	npm ci
-	# cd contents && zk index
+	npm install
+	$(MAKE) index
 else
-	docker compose run --rm app make init
-	# docker compose run --rm root cd contents && zk index
-	# TODO: rootコンテナで実行するの適切? textlint導入まで検討しない
-endif
-
-.PHONY: lint
-lint:
-ifeq ($(shell whoami),node)
-	npm -w app run lint
-else
-	docker compose run --rm app make lint
-endif
-
-.PHONY: format
-format:
-ifeq ($(shell whoami),node)
-	npm -w app run
-else
-	docker compose run --rm app make format
+	$(SELF)
 endif
 
 # --------------------------- 以下はDockerコンテナ外でのみ実行可能 -------------------------- #
 .PHONY: shell
 shell:
 ifeq ($(shell whoami),node)
-	@echo "You can't run this command in the container."
+	$(ERROR)
 else
-	docker compose run --rm --service-ports app bash
+	$(COMPOSE) run --rm --service-ports app bash
 endif
 
 .PHONY: down
 down:
 ifeq ($(shell whoami),node)
-	@echo "You can't run this command in the container."
+	$(ERROR)
 else
-	docker compose down
+	$(COMPOSE) down
 endif
 
-.PHONY: clean
-clean:
+.PHONY: remove
+remove:
 ifeq ($(shell whoami),node)
-	@echo "You can't run this command in the container."
+	$(ERROR)
 else
-	docker compose down --rmi all --volumes --remove-orphans
+	$(COMPOSE) down --rmi all --volumes --remove-orphans
+endif
+
+.PHONY: clear-cache
+clear-cache:
+ifeq ($(shell whoami),node)
+	$(ERROR)
+else
+	gh api -X GET repos/$(USER)/$(REPO)/actions/caches \
+		| jq '.actions_caches[].id' \
+		| xargs -I{} gh api -X DELETE repos/$(USER)/$(REPO)/actions/caches/{}
 endif
