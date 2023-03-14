@@ -97,7 +97,7 @@ clear-cache:
 ifeq ($(shell whoami),node)
 	$(ERROR)
 else
-	gh api -X GET repos/$(USER)/$(REPO)/actions/caches \
+	gh api repos/$(USER)/$(REPO)/actions/caches \
 		| jq '.actions_caches[].id' \
 		| xargs -I{} gh api -X DELETE repos/$(USER)/$(REPO)/actions/caches/{}
 endif
