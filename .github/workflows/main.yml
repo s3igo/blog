@@ -65,7 +65,7 @@ jobs:
       - name: Commit files modified by ESLint
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
-          commit_message: Apply changes
+          commit_message: Apply Format and Lint changes
 
   lint-text:
     name: Textlint
