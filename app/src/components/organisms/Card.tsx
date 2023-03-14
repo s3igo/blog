@@ -1,5 +1,13 @@
 import { Separator } from '@kobalte/core';
-import { type Accessor, type Component, createSignal, For, type Setter, Show, splitProps } from 'solid-js';
+import {
+    type Accessor,
+    type Component,
+    createSignal,
+    For,
+    type Setter,
+    Show,
+    splitProps,
+} from 'solid-js';
 import type { Frontmatter } from '~/types';
 import { postUrl } from '~/utils/constructString';
 import { embedUpdated, format } from '~/utils/dateToString';
