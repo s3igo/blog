@@ -16,7 +16,6 @@ const View: Component<ViewProps> = (props) => (
 
 export const Tag: Component<Props> = (props) => {
     const local = mergeProps({ truncate: false }, props);
-    const tagUrl = (name: string): string => `/tags/${name}`;
-    const view = { ...local, url: tagUrl(local.name) };
+    const view = { ...local, url: `/tags/${local.name}` };
     return <View {...view} />;
 };
