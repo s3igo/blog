@@ -72,11 +72,11 @@ Atomic Designを参考にしています。
 
 ```mermaid
 flowchart TB
-    A[コンポーネント] --> B[状態を持ってる?]
-    B --Yes--> C[Organism]
-    B --No--> D[他のコンポーネントに依存してる?]
-    D --Yes--> E[Molecule]
-    D --No--> F[Atom]
+    A([コンポーネント]) --> B[状態を持ってる?]
+    B -->|Yes| C([Organism])
+    B -->|No| D[他のコンポーネントに依存してる?]
+    D -->|Yes| E([Molecule])
+    D -->|No| F([Atom])
 ```
 
 また、TemplateとPageはコンポーネントとして扱わず、

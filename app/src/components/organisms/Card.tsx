@@ -92,6 +92,6 @@ export const Card: Component<Props> = (props) => {
         publishedAt + (local.updatedAt !== null ? ' ' + embedUpdated(local.updatedAt) : '');
     const url = postUrl(publishedAt, local.slug);
     const [tagHovered, setTagHovered] = createSignal(false);
-    const pass = { ...others, date, url };
-    return <View {...pass} tagHovered={tagHovered} setTagHovered={setTagHovered} />;
+    const view = { ...others, date, url };
+    return <View {...view} tagHovered={tagHovered} setTagHovered={setTagHovered} />;
 };
