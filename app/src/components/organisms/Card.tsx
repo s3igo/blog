@@ -15,7 +15,7 @@ import { isNever } from '~/utils/types';
 import { Metadata } from '../atoms/Metadata';
 import { Tag } from '../molecules/Tag';
 
-export type Props = Omit<Frontmatter, 'draft' | 'layout'>;
+export type Props = Omit<Frontmatter, 'layout'>;
 const cardConsumes = ['pubDate', 'slug', 'updatedAt'] as const;
 type ViewProps = {
     date: string;

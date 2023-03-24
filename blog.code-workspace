@@ -35,8 +35,19 @@
     "[markdown]": {
       "editor.formatOnSave": false
     },
-    "prettier.documentSelectors": ["**/*.astro"],
-    "cSpell.ignorePaths": ["devcontainer.json", "*.code-workspace", "*.md", "package-lock.json"],
+    "prettier.documentSelectors": [
+      "**/*.astro"
+    ],
+    "cSpell.allowCompoundWords": true,
+    "cSpell.ignoreRegExpList": [
+      "[０-９Ａ-Ｚａ-ｚぁ-んァ-ヶ亜-熙纊-黑]+"
+    ],
+    "cSpell.ignorePaths": [
+      "devcontainer.json",
+      "*.code-workspace",
+      "*.md",
+      "package-lock.json"
+    ],
     "cSpell.words": [
       "astro",
       "tsconfigs",
