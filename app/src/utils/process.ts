@@ -10,6 +10,22 @@ export const globPosts = (): Post[] => {
     return posts.filter(({ frontmatter }) => !frontmatter.tags.includes('draft'));
 };
 
+if (import.meta.vitest) {
+    const { describe, expect, test } = import.meta.vitest;
+    describe('投稿の一覧を取得する', () => {
+        test('投稿が3つ以上存在する', () => {
+            const posts = globPosts();
+            expect(posts.length).toBeGreaterThanOrEqual(3);
+        });
+        test('投稿の中にdraftが含まれていない', () => {
+            const posts = globPosts();
+            posts.forEach(({ frontmatter }) => {
+                expect(frontmatter.tags).not.toContain('draft');
+            });
+        });
+    });
+}
+
 export const cardsToDescending = (cards: CardProps[]): CardProps[] => {
     return R.pipe(
         cards,
