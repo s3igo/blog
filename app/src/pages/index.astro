@@ -2,11 +2,10 @@
 import { List } from '~/components/molecules/List';
 import Menu from '~/components/molecules/Menu.astro';
 import { PAGE_TITLE } from '~/constants';
-import { cardsToDescending, globPosts } from '~/utils/process';
+import { globPosts, postsToCards } from '~/utils/process';
 import Layout from '../layouts/Layout.astro';
 
-const posts = globPosts();
-const articles = cardsToDescending(posts.map(({ frontmatter }) => frontmatter));
+const articles = postsToCards(globPosts());
 ---
 
 <Layout title={PAGE_TITLE} isTop={true}>

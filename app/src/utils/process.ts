@@ -26,6 +26,14 @@ if (import.meta.vitest) {
     });
 }
 
+export const postsToCards = (posts: ReturnType<typeof globPosts>): CardProps[] =>
+    R.pipe(
+        posts,
+        R.map(({ frontmatter }) => R.omit(frontmatter, ['layout'])),
+        R.sortBy(({ pubDate }) => Number(pubDate)),
+        R.reverse()
+    );
+
 export const cardsToDescending = (cards: CardProps[]): CardProps[] => {
     return R.pipe(
         cards,

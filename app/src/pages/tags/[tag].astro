@@ -2,7 +2,7 @@
 import { List } from '~/components/molecules/List';
 import Layout from '~/layouts/Layout.astro';
 import { pageTitle } from '~/utils/constructString';
-import { cardsToDescending, globPosts, type Post } from '~/utils/process';
+import { globPosts, type Post, postsToCards } from '~/utils/process';
 
 export const getStaticPaths = async () => {
     const posts = globPosts();
@@ -19,7 +19,7 @@ export const getStaticPaths = async () => {
 const { tag } = Astro.params;
 type Props = { posts: Post[] };
 const { posts } = Astro.props as Props; // Astro.propsの型が効かないためアサーション
-const articles = cardsToDescending(posts.map(({ frontmatter }) => frontmatter));
+const articles = postsToCards(posts);
 ---
 
 <Layout title={pageTitle(`tag: ${tag}`)}>
