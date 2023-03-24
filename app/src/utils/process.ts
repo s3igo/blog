@@ -3,9 +3,10 @@ import type { MarkdownInstance } from 'astro';
 import type { Props as CardProps } from '~/components/organisms/Card';
 import type { Frontmatter } from '~/types';
 
-export const globPosts = (): MarkdownInstance<Frontmatter>[] => {
+export type Post = MarkdownInstance<Frontmatter>;
+export const globPosts = (): Post[] => {
     const postImportResult = import.meta.glob('../data/posts/*.md', { eager: true });
-    const posts = Object.values(postImportResult) as MarkdownInstance<Frontmatter>[];
+    const posts = Object.values(postImportResult) as Post[];
     return posts.filter(({ frontmatter }) => !frontmatter.tags.includes('draft'));
 };
 

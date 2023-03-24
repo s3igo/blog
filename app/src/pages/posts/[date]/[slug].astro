@@ -1,8 +1,6 @@
 ---
-import type { MarkdownInstance } from 'astro';
-import type { Frontmatter } from '~/types';
 import { format } from '~/utils/dateToString';
-import { globPosts } from '~/utils/process';
+import { globPosts, Post } from '~/utils/process';
 
 export const getStaticPaths = async () => {
     const posts = await globPosts();
@@ -15,7 +13,7 @@ export const getStaticPaths = async () => {
     }));
 };
 
-type Props = MarkdownInstance<Frontmatter>;
+type Props = Post;
 const { Content } = Astro.props;
 ---
 
