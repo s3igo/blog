@@ -6,7 +6,7 @@ import type { Frontmatter } from '~/types';
 export const globPosts = (): MarkdownInstance<Frontmatter>[] => {
     const postImportResult = import.meta.glob('../data/posts/*.md', { eager: true });
     const posts = Object.values(postImportResult) as MarkdownInstance<Frontmatter>[];
-    return posts;
+    return posts.filter(({ frontmatter }) => !frontmatter.tags.includes('draft'));
 };
 
 export const cardsToDescending = (cards: CardProps[]): CardProps[] => {
