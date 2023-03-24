@@ -1,6 +1,6 @@
 ---
 import { format } from '~/utils/dateToString';
-import { globPosts, Post } from '~/utils/process';
+import { globPosts, type Post } from '~/utils/process';
 
 export const getStaticPaths = async () => {
     const posts = await globPosts();
