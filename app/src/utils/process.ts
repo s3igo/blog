@@ -1,5 +1,13 @@
 import * as R from 'remeda';
+import type { MarkdownInstance } from 'astro';
 import type { Props as CardProps } from '~/components/organisms/Card';
+import type { Frontmatter } from '~/types';
+
+export const globPosts = (): MarkdownInstance<Frontmatter>[] => {
+    const postImportResult = import.meta.glob('../data/posts/*.md', { eager: true });
+    const posts = Object.values(postImportResult) as MarkdownInstance<Frontmatter>[];
+    return posts;
+};
 
 export const cardsToDescending = (cards: CardProps[]): CardProps[] => {
     return R.pipe(
