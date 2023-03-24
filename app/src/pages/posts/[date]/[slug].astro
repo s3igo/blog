@@ -2,9 +2,10 @@
 import type { MarkdownInstance } from 'astro';
 import type { Frontmatter } from '~/types';
 import { format } from '~/utils/dateToString';
+import { globPosts } from '~/utils/process';
 
 export const getStaticPaths = async () => {
-    const posts = await Astro.glob<Frontmatter>('../../../data/posts/*.md');
+    const posts = await globPosts();
     return posts.map(({ Content, frontmatter: { pubDate, slug } }) => ({
         params: {
             date: format(pubDate),
