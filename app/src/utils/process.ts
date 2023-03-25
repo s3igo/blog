@@ -30,7 +30,7 @@ export const postsToCards = (posts: ReturnType<typeof globPosts>): CardProps[] =
     R.pipe(
         posts,
         R.map(({ frontmatter }) => R.omit(frontmatter, ['layout'])),
-        R.sortBy(({ pubDate }) => Number(pubDate)),
+        R.sortBy(({ pubDate }) => pubDate),
         R.reverse()
     );
 
