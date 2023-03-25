@@ -1,6 +1,9 @@
 {
   "name": "blog",
-  "dockerComposeFile": ["../docker-compose.yaml", "./docker-compose.yaml"],
+  "dockerComposeFile": [
+    "../docker-compose.yaml",
+    "./docker-compose.yaml"
+  ],
   "service": "app",
   "workspaceFolder": "/workspace",
   "postCreateCommand": "git config --global --add safe.directory /workspace", // git操作がコケるため
@@ -23,6 +26,7 @@
         "csstools.postcss",
         "taichi.vscode-textlint",
         "tamasfe.even-better-toml",
+        "yusukehirao.vscode-markuplint",
         /* -------------------------------------------------------------------------- */
         "jeff-hykin.code-eol",
         "naumovs.color-highlight",

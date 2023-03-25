@@ -68,7 +68,8 @@
       "rehype",
       "tsup",
       "solidjs",
-      "Labelledby"
+      "Labelledby",
+      "rdfa"
     ]
   }
 }
