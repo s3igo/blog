@@ -8,6 +8,7 @@ const View: Component<ViewProps> = (props) => (
     <a
         href={props.url}
         target="_blank"
+        rel="noopener"
         class="hover:custom-shadow ml-[-6px] rounded-md border-2 border-transparent px-1 hover:border-secondary w-min max-w-full"
     >
         <Metadata text={`#${props.name}`} block={props.truncate} />
