@@ -6,11 +6,9 @@
     "markuplint:rdfa"
   ],
   "parser": {
-    ".astro$": "@markuplint/astro-parser",
-    ".tsx$": "@markuplint/jsx-parser"
+    ".astro$": "@markuplint/astro-parser"
   },
   "rules": {
-    "no-hard-code-id": true,
-    "invalid-attr": false
+    "no-hard-code-id": true
   }
 }

@@ -1,14 +1,13 @@
 ---
-import { globPosts } from '~/utils/process';
 import { Tag } from './Tag';
 
-const posts = globPosts();
-const sortedUniqueTags = [...new Set(posts.flatMap(({ frontmatter: { tags } }) => tags))].sort();
+type Props = { tags: string[] };
+const { tags } = Astro.props;
 ---
 
 <div class="">
     <h2 class="text-2xl text-tertiary">Tags</h2>
     <div class="flex flex-wrap">
-        {sortedUniqueTags.map((tag) => <Tag name={tag} truncate />)}
+        {tags.map((tag) => <Tag name={tag} truncate />)}
     </div>
 </div>

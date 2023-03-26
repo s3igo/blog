@@ -5,14 +5,16 @@ import { PAGE_TITLE } from '~/constants';
 import { globPosts, postsToCards } from '~/utils/process';
 import Layout from '../layouts/Layout.astro';
 
-const articles = postsToCards(globPosts());
+const posts = globPosts();
+const articles = postsToCards(posts);
+const sortedUniqueTags = [...new Set(posts.flatMap(({ frontmatter: { tags } }) => tags))].sort();
 ---
 
 <Layout title={PAGE_TITLE} isTop={true}>
     <div class="flex flex-col-reverse gap-5 md:flex-row">
         <List client:load cards={articles} />
         <div class="shrink-0 max-sm:px-[10px] sm:max-md:px-[22px] md:w-48">
-            <Menu />
+            <Menu tags={sortedUniqueTags} />
         </div>
     </div>
 </Layout>
