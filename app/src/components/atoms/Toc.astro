@@ -6,17 +6,18 @@ const { headings } = Astro.props;
 ---
 
 <nav aria-label="Local navigation">
-    <ul class="list-inside list-disc">
+    <ul>
         {
             headings
                 .filter(({ depth }) => depth !== 1)
-                .map(({ depth, slug, text }) => {
+                .map(({ depth, slug, text }, idx, self) => {
                     const degree = depth - 2;
-                    const indent = `ml-${degree * 7}`;
+                    const isLast = idx === self.length - 1;
+                    const bullet = isLast ? '└' : '├' + '─'.repeat(degree);
                     return (
-                        <li class={indent}>
+                        <li>
                             <a href={`#${slug}`} class="link">
-                                {text}
+                                {`${bullet} ${text}`}
                             </a>
                         </li>
                     );
