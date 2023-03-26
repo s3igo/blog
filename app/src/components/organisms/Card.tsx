@@ -15,7 +15,7 @@ import { isNever } from '~/utils/types';
 import { Metadata } from '../atoms/Metadata';
 import { Tag } from '../molecules/Tag';
 
-export type Props = Omit<Frontmatter, 'draft' | 'layout'>;
+export type Props = Omit<Frontmatter, 'layout'>;
 const cardConsumes = ['pubDate', 'slug', 'updatedAt'] as const;
 type ViewProps = {
     date: string;
@@ -92,6 +92,6 @@ export const Card: Component<Props> = (props) => {
         publishedAt + (local.updatedAt !== null ? ' ' + embedUpdated(local.updatedAt) : '');
     const url = postUrl(publishedAt, local.slug);
     const [tagHovered, setTagHovered] = createSignal(false);
-    const pass = { ...others, date, url };
-    return <View {...pass} tagHovered={tagHovered} setTagHovered={setTagHovered} />;
+    const view = { ...others, date, url };
+    return <View {...view} tagHovered={tagHovered} setTagHovered={setTagHovered} />;
 };

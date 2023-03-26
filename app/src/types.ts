@@ -5,7 +5,6 @@ export const layouts = {
 } as const;
 
 export const frontmatterSchema = z.object({
-    draft: z.literal(true).optional(),
     layout: z.literal(layouts.blog), // 複数になったらz.union()にする
     preview: z.string(),
     pubDate: z.date(),

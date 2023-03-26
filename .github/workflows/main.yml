@@ -58,6 +58,8 @@ jobs:
           key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
       - name: Run `astro check`
         run: npm -w app run check
+      - name: Run Markuplint on Astro files
+        run: npm -w app run lint:astro
       - name: Run Prettier
         run: npm -w app run format
       - name: Run ESLint with fix options

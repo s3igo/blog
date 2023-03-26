@@ -13,7 +13,7 @@ trim_trailing_whitespace = true
 max_line_length = off
 trim_trailing_whitespace = false
 
-[{.textlintrc,*.{yml,yaml,json,code-workspace}}]
+[{.textlintrc,.markuplintrc,*.{yml,yaml,json,code-workspace}}]
 indent_size = 2
 
 [{Makefile,*.svg}]

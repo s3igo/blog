@@ -6,7 +6,8 @@
     ":prHourlyLimitNone",
     ":automergePatch",
     "schedule:automergeDaily",
-    "schedule:daily"
+    "schedule:weekly",
+    "group:allNonMajor"
   ],
   "labels": ["bot: dependencies"],
   "packageRules": [
@@ -26,5 +27,6 @@
       "matchPackageNames": ["node"],
       "allowedVersions": "<17"
     }
-  ]
+  ],
+  "prConcurrentLimit": 3
 }
