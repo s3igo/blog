@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "markuplint:a11y",
+    "markuplint:html-standard",
+    "markuplint:performance",
+    "markuplint:rdfa"
+  ],
+  "parser": {
+    ".astro$": "@markuplint/astro-parser"
+  },
+  "rules": {
+    "no-hard-code-id": true
+  }
+}
