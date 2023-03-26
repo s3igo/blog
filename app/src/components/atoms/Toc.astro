@@ -13,7 +13,7 @@ const { headings } = Astro.props;
                 const isLast = idx === self.length - 1;
                 const bullet = isLast ? '└' : '├' + '─'.repeat(degree);
                 return (
-                    <li>
+                    <li class="ml-[20px] before:ml-[-20px]">
                         <a href={`#${slug}`} class="link">
                             {`${bullet} ${text}`}
                         </a>
