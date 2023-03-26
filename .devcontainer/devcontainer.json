@@ -1,12 +1,4 @@
 {
-  "name": "blog",
-  "dockerComposeFile": [
-    "../docker-compose.yaml",
-    "./docker-compose.yaml"
-  ],
-  "service": "app",
-  "workspaceFolder": "/workspace",
-  "postCreateCommand": "git config --global --add safe.directory /workspace", // git操作がコケるため
   "containerEnv": {
     "EDITOR": "code"
   },
@@ -26,7 +18,6 @@
         "csstools.postcss",
         "taichi.vscode-textlint",
         "tamasfe.even-better-toml",
-        "yusukehirao.vscode-markuplint",
         /* -------------------------------------------------------------------------- */
         "jeff-hykin.code-eol",
         "naumovs.color-highlight",
@@ -45,5 +36,10 @@
         "Tyriar.sort-lines"
       ]
     }
-  }
+  },
+  "dockerComposeFile": ["../docker-compose.yaml", "./docker-compose.yaml"],
+  "name": "blog",
+  "postCreateCommand": "git config --global --add safe.directory /workspace", // git操作がコケるため
+  "service": "app",
+  "workspaceFolder": "/workspace"
 }

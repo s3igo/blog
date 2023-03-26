@@ -51,8 +51,6 @@
     "tailwindcss": "^3.2.7"
   },
   "devDependencies": {
-    "@markuplint/astro-parser": "^3.4.0",
-    "@markuplint/jsx-parser": "^3.4.0",
     "@playwright/test": "^1.31.1",
     "@solidjs/testing-library": "^0.7.0",
     "@testing-library/jest-dom": "^5.16.5",
