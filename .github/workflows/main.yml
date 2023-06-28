@@ -171,33 +171,33 @@ jobs:
         env:
           PLAYWRIGHT_BROWSERS_PATH: 0
 
-  coverage:
-    name: Coverage
-    timeout-minutes: 3
-    runs-on: ubuntu-22.04
-    needs:
-      - build
-      # - test-unit
-      - test-type
-      - test-e2e
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: .node-version
-          cache: npm
-      - name: Cache npm dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            app/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-      - name: Generate coverage file
-        run: npm -w app run coverage
-      - name: Upload coverage reports to Codecov
-        uses: codecov/codecov-action@v3
-        with:
-          files: ./app/coverage/coverage-final.json
+  # coverage:
+  #   name: Coverage
+  #   timeout-minutes: 3
+  #   runs-on: ubuntu-22.04
+  #   needs:
+  #     - build
+  #     - test-unit
+  #     - test-type
+  #     - test-e2e
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v3
+  #     - name: Setup Node
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version-file: .node-version
+  #         cache: npm
+  #     - name: Cache npm dependencies
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: |
+  #           node_modules
+  #           app/node_modules
+  #         key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+  #     - name: Generate coverage file
+  #       run: npm -w app run coverage
+  #     - name: Upload coverage reports to Codecov
+  #       uses: codecov/codecov-action@v3
+  #       with:
+  #         files: ./app/coverage/coverage-final.json
