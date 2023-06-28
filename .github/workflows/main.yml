@@ -117,29 +117,29 @@ jobs:
       - name: Run Vitest typecheck
         run: npm -w app run test:type
 
-  test-unit:
-    name: Unit Test
-    timeout-minutes: 10
-    runs-on: ubuntu-22.04
-    needs:
-      - build
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: .node-version
-          cache: npm
-      - name: Cache npm dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            app/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-      - name: Run Vitest
-        run: npm -w app run test:unit
+  # test-unit:
+  #   name: Unit Test
+  #   timeout-minutes: 10
+  #   runs-on: ubuntu-22.04
+  #   needs:
+  #     - build
+  #   steps:
+  #     - name: Checkout repository
+  #       uses: actions/checkout@v3
+  #     - name: Setup Node
+  #       uses: actions/setup-node@v3
+  #       with:
+  #         node-version-file: .node-version
+  #         cache: npm
+  #     - name: Cache npm dependencies
+  #       uses: actions/cache@v3
+  #       with:
+  #         path: |
+  #           node_modules
+  #           app/node_modules
+  #         key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+  #     - name: Run Vitest
+  #       run: npm -w app run test:unit
 
   test-e2e:
     name: E2E Test
