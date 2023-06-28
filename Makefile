@@ -1,7 +1,3 @@
-# docker compose
-COMPOSE := docker compose
-SELF = $(COMPOSE) run --rm app make $@
-
 # npm
 RUN := npm run
 RUN_APP := $(RUN) -w app
@@ -10,17 +6,9 @@ RUN_APP := $(RUN) -w app
 USER := s3igo
 REPO := blog
 
-# error
-ERROR = $(error You can't run this command in the container)
-
-
 .PHONY: dev
 dev:
-ifeq ($(shell whoami),node)
-	$(RUN_APP) start
-else
-	$(COMPOSE) up
-endif
+	npm run dev
 
 .PHONY: preview
 preview:
