@@ -6,9 +6,6 @@
   "engines": {
     "node": "<17"
   },
-  "workspaces": [
-    "app"
-  ],
   "scripts": {
     "start": "astro dev --host 0.0.0.0",
     "build": "astro build",
