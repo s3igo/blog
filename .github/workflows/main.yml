@@ -88,6 +88,12 @@ jobs:
     name: E2E Test
     timeout-minutes: 15
     runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        browser:
+          - chromium
+          - firefox
+          - webkit
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -98,14 +104,27 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
-      - name: Install Playwright browsers
-        run: npx playwright install
+      - name: Store Playwright's version
+        run: |
+          PLAYWRIGHT_VERSION=$(npm ls @playwright/test | grep @playwright | sed 's/.*@//')
+          echo "Playwright's Version: $PLAYWRIGHT_VERSION"
+          echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
+      - name: Cache Playwright Browsers for Playwright's Version
+        id: cache-playwright-browsers
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/ms-playwright
+          key: playwright-browsers-${{ env.PLAYWRIGHT_VERSION }}-${{ matrix.browser }}
+      - name: Setup Playwright
+        if: steps.cache-playwright-browsers.outputs.cache-hit != 'true'
+        run: npx playwright install --with-deps ${{ matrix.browser }}
       - name: Install Additional Dependencies
-        run: npx playwright install-deps
+        if: steps.cache-playwright-browsers.outputs.cache-hit == 'true'
+        run: npx playwright install-deps ${{ matrix.browser }}
       - name: Build app
         run: npm run build
       - name: Run Playwright tests
-        run: npm run test:e2e
+        run: npx playwright test --project=${{ matrix.browser }}
 
   # coverage:
   #   name: Coverage
