@@ -13,13 +13,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: .node-version
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
+      - name: Setup
+        uses: ./.github/actions/setup
       - name: Run `astro check`
         run: npm run check
       - name: Run Markuplint on Astro files
@@ -40,13 +35,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: .node-version
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
+      - name: Setup
+        uses: ./.github/actions/setup
       - name: Run Textlint
         run: npm run lint:text
 
@@ -57,13 +47,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: .node-version
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
+      - name: Setup
+        uses: ./.github/actions/setup
       - name: Run Vitest typecheck
         run: npm run test:type
 
@@ -74,13 +59,8 @@ jobs:
   #   steps:
   #     - name: Checkout repository
   #       uses: actions/checkout@v3
-  #     - name: Setup Node
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version-file: .node-version
-  #         cache: npm
-  #      - name: Install dependencies
-  #        run: npm ci
+  #     - name: Setup
+  #       uses: ./.github/actions/setup
   #     - name: Run Vitest
   #       run: npm run test:unit
 
@@ -91,17 +71,10 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: .node-version
-          cache: npm
-      - name: Install dependencies
-        run: npm ci
+      - name: Setup
+        uses: ./.github/actions/setup
       - name: Install Playwright browsers
-        run: npx playwright install
-      - name: Install Additional Dependencies
-        run: npx playwright install-deps
+        run: npx playwright install --with-deps
       - name: Build app
         run: npm run build
       - name: Run Playwright tests
@@ -118,13 +91,8 @@ jobs:
   #   steps:
   #     - name: Checkout repository
   #       uses: actions/checkout@v3
-  #     - name: Setup Node
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version-file: .node-version
-  #         cache: npm
-  #      - name: Install dependencies
-  #        run: npm ci
+  #     - name: Setup
+  #       uses: ./.github/actions/setup
   #     - name: Generate coverage file
   #       run: npm run coverage
   #     - name: Upload coverage reports to Codecov
