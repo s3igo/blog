@@ -1,7 +1,6 @@
 {
   "extensions": {
     "recommendations": [
-      "ms-vscode-remote.remote-containers",
       "editorconfig.editorconfig",
       "astro-build.astro-vscode",
       "dbaeumer.vscode-eslint",
