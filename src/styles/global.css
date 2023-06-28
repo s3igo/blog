@@ -24,9 +24,9 @@
     .custom-shadow {
         @apply shadow-[3px_3px_4px_1px] shadow-shadow;
     }
-    .link {
+    /* .link {
         @apply text-secondary decoration-2 underline-offset-2 hover:underline;
-    }
+    } */
 }
 
 html {

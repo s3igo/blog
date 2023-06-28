@@ -3,44 +3,13 @@ name: CI
 on:
   push:
     paths-ignore:
-      - "**/*.md"
+      - '**/*.md'
 
 jobs:
   build:
-    name: Setup
-    timeout-minutes: 5
-    runs-on: ubuntu-22.04
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-      - name: Setup Node
-        uses: actions/setup-node@v3
-        with:
-          node-version-file: .node-version
-          cache: npm
-      - name: Cache npm dependencies
-        uses: actions/cache@v3
-        id: cache-primes
-        with:
-          path: |
-            node_modules
-            app/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
-      - name: Install dependencies
-        if: steps.cache-primes.outputs.cache-hit != 'true'
-        run: npm ci
-      - name: Install Playwright browsers
-        if: steps.cache-primes.outputs.cache-hit != 'true'
-        run: npx -w app playwright install
-        env:
-          PLAYWRIGHT_BROWSERS_PATH: 0
-
-  format-lint:
     name: Format and Lint
     timeout-minutes: 5
     runs-on: ubuntu-22.04
-    needs:
-      - build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -49,21 +18,16 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
-      - name: Cache npm dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            app/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci
       - name: Run `astro check`
-        run: npm -w app run check
+        run: npm run check
       - name: Run Markuplint on Astro files
-        run: npm -w app run lint:astro
+        run: npm run lint:astro
       - name: Run Prettier
-        run: npm -w app run format
+        run: npm run format
       - name: Run ESLint with fix options
-        run: npm -w app run lint:fix
+        run: npm run lint:fix
       - name: Commit files modified by ESLint
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -73,8 +37,6 @@ jobs:
     name: Textlint
     timeout-minutes: 5
     runs-on: ubuntu-22.04
-    needs:
-      - build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -83,22 +45,15 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
-      - name: Cache npm dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            app/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci
       - name: Run Textlint
-        run: npm -w app run lint:text
+        run: npm run lint:text
 
   test-type:
     name: Typecheck
     timeout-minutes: 5
     runs-on: ubuntu-22.04
-    needs:
-      - build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -107,22 +62,15 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
-      - name: Cache npm dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            app/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci
       - name: Run Vitest typecheck
-        run: npm -w app run test:type
+        run: npm run test:type
 
   # test-unit:
   #   name: Unit Test
   #   timeout-minutes: 10
   #   runs-on: ubuntu-22.04
-  #   needs:
-  #     - build
   #   steps:
   #     - name: Checkout repository
   #       uses: actions/checkout@v3
@@ -131,22 +79,15 @@ jobs:
   #       with:
   #         node-version-file: .node-version
   #         cache: npm
-  #     - name: Cache npm dependencies
-  #       uses: actions/cache@v3
-  #       with:
-  #         path: |
-  #           node_modules
-  #           app/node_modules
-  #         key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+  #      - name: Install dependencies
+  #        run: npm ci
   #     - name: Run Vitest
-  #       run: npm -w app run test:unit
+  #       run: npm run test:unit
 
   test-e2e:
     name: E2E Test
     timeout-minutes: 15
     runs-on: ubuntu-22.04
-    needs:
-      - build
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
@@ -155,28 +96,22 @@ jobs:
         with:
           node-version-file: .node-version
           cache: npm
-      - name: Cache npm dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            node_modules
-            app/node_modules
-          key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+      - name: Install dependencies
+        run: npm ci
+      - name: Install Playwright browsers
+        run: npx playwright install
       - name: Install Additional Dependencies
-        run: npx -w app playwright install-deps
+        run: npx playwright install-deps
       - name: Build app
-        run: npm -w app run build
+        run: npm run build
       - name: Run Playwright tests
-        run: npm -w app run test:e2e
-        env:
-          PLAYWRIGHT_BROWSERS_PATH: 0
+        run: npm run test:e2e
 
   # coverage:
   #   name: Coverage
   #   timeout-minutes: 3
   #   runs-on: ubuntu-22.04
   #   needs:
-  #     - build
   #     - test-unit
   #     - test-type
   #     - test-e2e
@@ -188,15 +123,10 @@ jobs:
   #       with:
   #         node-version-file: .node-version
   #         cache: npm
-  #     - name: Cache npm dependencies
-  #       uses: actions/cache@v3
-  #       with:
-  #         path: |
-  #           node_modules
-  #           app/node_modules
-  #         key: ${{ runner.os }}-node-${{ hashFiles('package-lock.json') }}
+  #      - name: Install dependencies
+  #        run: npm ci
   #     - name: Generate coverage file
-  #       run: npm -w app run coverage
+  #       run: npm run coverage
   #     - name: Upload coverage reports to Codecov
   #       uses: codecov/codecov-action@v3
   #       with:

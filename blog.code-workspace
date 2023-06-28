@@ -18,10 +18,7 @@
       "path": "."
     },
     {
-      "path": "app"
-    },
-    {
-      "path": "app/src/data"
+      "path": "src/data"
     }
   ],
   "settings": {
