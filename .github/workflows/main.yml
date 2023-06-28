@@ -3,7 +3,7 @@ name: CI
 on:
   push:
     paths-ignore:
-      - "**/*.md"
+      - '**/*.md'
 
 jobs:
   build:
@@ -106,8 +106,6 @@ jobs:
         run: npm run build
       - name: Run Playwright tests
         run: npm run test:e2e
-        env:
-          PLAYWRIGHT_BROWSERS_PATH: 0
 
   # coverage:
   #   name: Coverage
