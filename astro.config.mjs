@@ -1,7 +1,6 @@
 import solidJs from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
-import nightOwl from 'night-owl/themes/Night Owl-color-theme.json';
 import { injectDefaultLayout } from './src/remarkPlugins/injectDefaultLayout';
 import { setPreview } from './src/remarkPlugins/setPreview';
 import { setTitle } from './src/remarkPlugins/setTitle';
@@ -30,7 +29,6 @@ export default defineConfig({
             validateFrontmatter,
         ],
         shikiConfig: {
-            theme: nightOwl,
             wrap: true,
         },
     },

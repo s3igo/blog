@@ -4,9 +4,12 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "<17"
+    "node": "<17",
+    "pnpm": ">=8"
   },
+  "packageManager": "pnpm@8.6.2",
   "scripts": {
+    "preinstall": "npx only-allow pnpm",
     "start": "astro dev --host 0.0.0.0",
     "build": "astro build",
     "build:clean": "rm -rf ./dist",
@@ -44,7 +47,6 @@
     "astro": "^2.0.1",
     "date-fns": "^2.29.3",
     "mdast-util-to-string": "^3.1.1",
-    "night-owl": "github:sdras/night-owl-vscode-theme",
     "remark-code-titles": "^0.1.2",
     "remark-normalize-headings": "^3.0.1",
     "remeda": "^1.6.0",
