@@ -7,22 +7,22 @@ import '@fontsource/zen-kaku-gothic-new/japanese-700.css';
 import { Metadata } from '~/components/atoms/Metadata';
 import Toc from '~/components/atoms/Toc.astro';
 import { Tag } from '~/components/molecules/Tag';
-// import type { Frontmatter } from '~/types';
 import { pageTitle } from '~/utils/constructString';
 import { embedCreated, embedUpdated } from '~/utils/dateToString';
 import { first3Sentences } from '~/utils/string';
 import Layout from './Layout.astro';
-// import type { MarkdownLayoutProps } from 'astro';
-// import type { Schema } from '~/content/config';
+import type { MarkdownHeading } from 'astro';
 
-// type Props = MarkdownLayoutProps<Schema>;
-// const {
-//     frontmatter: { published, tags, updated },
-//     headings,
-//     rawContent,
-// } = Astro.props;
+type Props = {
+    rawContent: string;
+    published: Date;
+    updated: Date | null;
+    tags: string[];
+    headings: MarkdownHeading[];
+};
 
-const [_, ...textStartWithTitle] = rawContent().split('#');
+const { rawContent, published, updated, tags, headings } = Astro.props;
+const [_, ...textStartWithTitle] = rawContent.split('#');
 const [title, ...body] = textStartWithTitle.join('').split('\n');
 
 const createdStatement = embedCreated(published);
@@ -30,7 +30,6 @@ const updatedStatement = updated !== null ? embedUpdated(updated) : '';
 ---
 
 <Layout title={pageTitle(title ?? 'No title')} description={first3Sentences(body.join(''))}>
-    <!-- <Layout title={pageTitle('hoge')} description={first3Sentences('preview')}> -->
     <div class="flex flex-col gap-5 md:flex-row-reverse">
         <div class="pt-12 md:w-52">
             <div class="sticky top-12 flex shrink-0 flex-col gap-4">

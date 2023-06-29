@@ -1,5 +1,4 @@
 ---
-# layout: ~/layouts/Blog.astro
 published: 2023-01-09
 updated:
 tags: [report]
