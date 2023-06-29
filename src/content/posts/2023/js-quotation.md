@@ -1,7 +1,7 @@
 ---
 layout: ~/layouts/Blog.astro
-pubDate: 2023-02-04
-updatedAt:
+published: 2023-02-04
+updated:
 tags: [JavaScript, programming]
 ---
 
