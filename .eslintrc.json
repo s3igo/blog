@@ -11,10 +11,14 @@
   ],
   "overrides": [
     {
-      "files": ["*.astro"],
+      "files": [
+        "*.astro"
+      ],
       "parser": "astro-eslint-parser",
       "parserOptions": {
-        "extraFileExtensions": [".astro"],
+        "extraFileExtensions": [
+          ".astro"
+        ],
         "parser": "@typescript-eslint/parser"
       }
     }
@@ -37,7 +41,10 @@
   "rules": {
     "@typescript-eslint/consistent-type-imports": [
       "error",
-      { "fixStyle": "inline-type-imports", "prefer": "type-imports" }
+      {
+        "fixStyle": "inline-type-imports",
+        "prefer": "type-imports"
+      }
     ],
     "@typescript-eslint/no-non-null-asserted-optional-chain": "off",
     "@typescript-eslint/no-non-null-assertion": "off",
@@ -45,9 +52,27 @@
     "@typescript-eslint/triple-slash-reference": "off",
     "import/first": "error",
     "import/newline-after-import": "error",
-    "import/no-duplicates": ["error", { "prefer-inline": true }],
-    "sort-destructure-keys/sort-destructure-keys": ["error", { "caseSensitive": false }],
-    "sort-keys-fix/sort-keys-fix": ["error", "asc", { "caseSensitive": false, "natural": true }],
-    "unused-imports/no-unused-imports": "error"
+    "import/no-duplicates": [
+      "error",
+      {
+        "prefer-inline": true
+      }
+    ],
+    "sort-destructure-keys/sort-destructure-keys": [
+      "error",
+      {
+        "caseSensitive": false
+      }
+    ],
+    "sort-keys-fix/sort-keys-fix": [
+      "error",
+      "asc",
+      {
+        "caseSensitive": false,
+        "natural": true
+      }
+    ],
+    "unused-imports/no-unused-imports": "error",
+    "jsx-a11y/aria-activedescendant-has-tabindex": "off"
   }
 }
