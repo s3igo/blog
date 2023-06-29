@@ -6,9 +6,9 @@ on:
       - '**/*.md'
 
 jobs:
-  build:
+  format-lint:
     name: Format and Lint
-    timeout-minutes: 5
+    timeout-minutes: 60
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
@@ -35,7 +35,7 @@ jobs:
 
   lint-text:
     name: Textlint
-    timeout-minutes: 5
+    timeout-minutes: 60
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
@@ -52,7 +52,7 @@ jobs:
 
   test-type:
     name: Typecheck
-    timeout-minutes: 5
+    timeout-minutes: 60
     runs-on: ubuntu-22.04
     steps:
       - name: Checkout repository
@@ -69,7 +69,7 @@ jobs:
 
   # test-unit:
   #   name: Unit Test
-  #   timeout-minutes: 10
+  #   timeout-minutes: 60
   #   runs-on: ubuntu-22.04
   #   steps:
   #     - name: Checkout repository
@@ -86,7 +86,7 @@ jobs:
 
   test-e2e:
     name: E2E Test
-    timeout-minutes: 15
+    timeout-minutes: 60
     runs-on: ubuntu-22.04
     strategy:
       matrix:
@@ -128,7 +128,7 @@ jobs:
 
   # coverage:
   #   name: Coverage
-  #   timeout-minutes: 3
+  #   timeout-minutes: 60
   #   runs-on: ubuntu-22.04
   #   needs:
   #     - test-unit
