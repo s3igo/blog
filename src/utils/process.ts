@@ -1,14 +1,10 @@
-import * as R from 'remeda';
-import type { MarkdownInstance } from 'astro';
-import type { Props as CardProps } from '~/components/organisms/Card';
-import type { Frontmatter } from '~/types';
+// import type { Props as CardProps } from '~/components/organisms/Card';
 
-export type Post = MarkdownInstance<Frontmatter>;
-export const globPosts = (): Post[] => {
-    const postImportResult = import.meta.glob('../data/posts/*.md', { eager: true });
-    const posts = Object.values(postImportResult) as Post[];
-    return posts.filter(({ frontmatter }) => !frontmatter.tags.includes('draft'));
-};
+// export const globPosts = (): Post[] => {
+//     const postImportResult = import.meta.glob('../data/posts/*.md', { eager: true });
+//     const posts = Object.values(postImportResult) as Post[];
+//     return posts.filter(({ frontmatter }) => !frontmatter.tags.includes('draft'));
+// };
 
 // if (import.meta.vitest) {
 //     const { describe, expect, test } = import.meta.vitest;
@@ -26,13 +22,13 @@ export const globPosts = (): Post[] => {
 //     });
 // }
 
-export const postsToCards = (posts: ReturnType<typeof globPosts>): CardProps[] =>
-    R.pipe(
-        posts,
-        R.map(({ frontmatter }) => R.omit(frontmatter, ['layout'])),
-        R.sortBy(({ pubDate }) => pubDate),
-        R.reverse()
-    );
+// export const postsToCards = (posts: ReturnType<typeof globPosts>): CardProps[] =>
+//     R.pipe(
+//         posts,
+//         R.map(({ frontmatter }) => R.omit(frontmatter, ['layout'])),
+//         R.sortBy(({ pubDate }) => pubDate),
+//         R.reverse()
+//     );
 
 // if (import.meta.vitest) {
 //     const { describe, expect, test } = import.meta.vitest;

@@ -18,7 +18,9 @@ export const List: Component<Props> = (props) => {
         R.pick(data, ['tags', 'published', 'updated'])
     );
     const needed = R.map(sorted, ({ body, slug }: Post) => ({ body, slug }));
+
     const cards = R.zipWith(picked, needed, (a, b) => ({ ...a, ...b }));
+
     return (
         <main class="flex flex-col gap-4 sm:gap-6">
             <For each={cards}>{(card) => <Card {...card} />}</For>
