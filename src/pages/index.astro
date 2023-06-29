@@ -3,12 +3,9 @@ import { getCollection } from 'astro:content';
 import { List } from '~/components/molecules/List';
 import Menu from '~/components/molecules/Menu.astro';
 import { PAGE_TITLE } from '~/constants';
-// import { globPosts, postsToCards } from '~/utils/process';
 import Layout from '../layouts/Layout.astro';
 
 const posts = await getCollection('posts');
-// console.log(posts[0].id);
-// const articles = postsToCards(posts);
 const sortedUniqueTags = [...new Set(posts.flatMap(({ data: { tags } }) => tags))].sort();
 ---
 

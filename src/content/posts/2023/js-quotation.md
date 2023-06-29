@@ -1,5 +1,5 @@
 ---
-layout: ~/layouts/Blog.astro
+# layout: ~/layouts/Blog.astro
 published: 2023-02-04
 updated:
 tags: [JavaScript, programming]

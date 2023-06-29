@@ -5,7 +5,6 @@ import { truncate } from '~/utils/string';
 import { Metadata } from '../atoms/Metadata';
 import { Tag } from '../molecules/Tag';
 
-// export type Props = Omit<Frontmatter, 'layout'>;
 type Props = {
     tags: string[];
     published: Date;
@@ -18,8 +17,8 @@ export const Card: Component<Props> = (props) => {
     const [name] = props.slug.split('/').slice(-1);
     const publishedAt = format(props.published);
     const updatedAt = props.updated && format(props.updated);
+    // TODO: タイトルがdescriptionに含まれる
     const url = name ? `/posts/${publishedAt}/${name}` : '/';
-    console.log(props.body.split('\n'));
     const [h1] = props.body.split('\n').filter((line) => line.startsWith('# '));
     // TODO: エラーを返す
     const title = h1 ? h1.replace('# ', '') : 'No title';

@@ -5,31 +5,38 @@ import '@fontsource/nunito-sans/latin-400-italic.css';
 import '@fontsource/nunito-sans/latin-700.css';
 import '@fontsource/zen-kaku-gothic-new/japanese-700.css';
 import { Metadata } from '~/components/atoms/Metadata';
-import Toc, { type Props as TocProps } from '~/components/atoms/Toc.astro';
+import Toc from '~/components/atoms/Toc.astro';
 import { Tag } from '~/components/molecules/Tag';
-import type { Frontmatter } from '~/types';
+// import type { Frontmatter } from '~/types';
 import { pageTitle } from '~/utils/constructString';
 import { embedCreated, embedUpdated } from '~/utils/dateToString';
 import { first3Sentences } from '~/utils/string';
 import Layout from './Layout.astro';
+// import type { MarkdownLayoutProps } from 'astro';
+// import type { Schema } from '~/content/config';
 
-type Props = { frontmatter: Frontmatter } & TocProps;
-const {
-    frontmatter: { preview, pubDate, tags, title, updatedAt },
-    headings,
-} = Astro.props;
+// type Props = MarkdownLayoutProps<Schema>;
+// const {
+//     frontmatter: { published, tags, updated },
+//     headings,
+//     rawContent,
+// } = Astro.props;
 
-const created = embedCreated(pubDate);
-const updated = updatedAt !== null ? embedUpdated(updatedAt) : '';
+const [_, ...textStartWithTitle] = rawContent().split('#');
+const [title, ...body] = textStartWithTitle.join('').split('\n');
+
+const createdStatement = embedCreated(published);
+const updatedStatement = updated !== null ? embedUpdated(updated) : '';
 ---
 
-<Layout title={pageTitle(title)} description={first3Sentences(preview)}>
+<Layout title={pageTitle(title ?? 'No title')} description={first3Sentences(body.join(''))}>
+    <!-- <Layout title={pageTitle('hoge')} description={first3Sentences('preview')}> -->
     <div class="flex flex-col gap-5 md:flex-row-reverse">
         <div class="pt-12 md:w-52">
             <div class="sticky top-12 flex shrink-0 flex-col gap-4">
                 <div class="flex flex-col">
-                    <Metadata text={created} />
-                    {updated && <Metadata text={updated} />}
+                    <Metadata text={createdStatement} />
+                    {updated && <Metadata text={updatedStatement} />}
                     {tags.map((tag) => <Tag name={tag} />)}
                 </div>
                 <div>

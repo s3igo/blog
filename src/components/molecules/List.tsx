@@ -4,7 +4,7 @@ import { type Component, For } from 'solid-js';
 import { Card } from '../organisms/Card';
 
 type Post = CollectionEntry<'posts'>;
-export type Props = {
+type Props = {
     posts: Post[];
 };
 
