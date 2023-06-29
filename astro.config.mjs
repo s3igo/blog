@@ -17,14 +17,6 @@ export default defineConfig({
     ],
     markdown: {
         extendedDefaultPlugins: true,
-        remarkPlugins: [
-            // 'remark-normalize-headings',
-            // 'remark-code-titles',
-            // setTitle,
-            // setPreview,
-            // injectDefaultLayout,
-            // validateFrontmatter,
-        ],
         shikiConfig: {
             theme: nightOwl,
             wrap: true,
