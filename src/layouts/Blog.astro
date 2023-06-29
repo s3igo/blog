@@ -21,7 +21,7 @@ type Props = {
     headings: MarkdownHeading[];
 };
 
-const { rawContent, published, updated, tags, headings } = Astro.props;
+const { headings, published, rawContent, tags, updated } = Astro.props;
 const [_, ...textStartWithTitle] = rawContent.split('# ');
 const [title, ...body] = textStartWithTitle.join('').split('\n');
 
