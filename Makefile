@@ -3,7 +3,7 @@ REPO := blog
 
 .PHONY: dev
 dev:
-	npm run dev
+	npm start
 
 .PHONY: preview
 preview:

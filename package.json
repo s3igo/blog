@@ -7,7 +7,7 @@
     "node": "<17"
   },
   "scripts": {
-    "start": "astro dev --host 0.0.0.0",
+    "start": "astro dev",
     "build": "astro build",
     "build:clean": "rm -rf ./dist",
     "preview": "astro preview",
