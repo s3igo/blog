@@ -1,5 +1,5 @@
 ---
-slug: first-post
+layout: ~/layouts/Blog.astro
 pubDate: 2023-01-01
 updatedAt:
 tags: []

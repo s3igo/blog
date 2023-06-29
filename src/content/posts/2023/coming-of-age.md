@@ -1,5 +1,5 @@
 ---
-slug: coming-of-age
+layout: ~/layouts/Blog.astro
 pubDate: 2023-01-09
 updatedAt:
 tags: [report]

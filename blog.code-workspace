@@ -18,7 +18,7 @@
       "path": "."
     },
     {
-      "path": "src/data"
+      "path": "src/content/posts"
     }
   ],
   "settings": {

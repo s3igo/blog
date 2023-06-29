@@ -1,5 +1,5 @@
 ---
-slug: js-quotation
+layout: ~/layouts/Blog.astro
 pubDate: 2023-02-04
 updatedAt:
 tags: [JavaScript, programming]
