@@ -22,7 +22,7 @@ type Props = {
 };
 
 const { rawContent, published, updated, tags, headings } = Astro.props;
-const [_, ...textStartWithTitle] = rawContent.split('#');
+const [_, ...textStartWithTitle] = rawContent.split('# ');
 const [title, ...body] = textStartWithTitle.join('').split('\n');
 
 const createdStatement = embedCreated(published);

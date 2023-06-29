@@ -17,12 +17,12 @@ export const Card: Component<Props> = (props) => {
     const [name] = props.slug.split('/').slice(-1);
     const publishedAt = format(props.published);
     const updatedAt = props.updated && format(props.updated);
-    // TODO: タイトルがdescriptionに含まれる
     const url = name ? `/posts/${publishedAt}/${name}` : '/';
-    const [h1] = props.body.split('\n').filter((line) => line.startsWith('# '));
+    const [_, ...textStartWithTitle] = props.body.split('# ');
+    const [title, ...content] = textStartWithTitle.join('').split('\n');
+
     // TODO: エラーを返す
-    const title = h1 ? h1.replace('# ', '') : 'No title';
-    const preview = truncate(props.body, 500);
+    const preview = truncate(content.join(''), 500);
     const date = publishedAt + updatedAt && ` last updated on ${updatedAt}`;
     const [tagHovered, setTagHovered] = createSignal(false);
     return (
@@ -52,7 +52,7 @@ export const Card: Component<Props> = (props) => {
                 </div>
                 <a href={url}>
                     <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-xl text-primary sm:text-2xl">
-                        {title}
+                        {title ?? 'No title'}
                     </h2>
                     <p class="bg-gradient-to-b from-foreground via-foreground/80 to-foreground/20 bg-clip-text text-transparent line-clamp-5 sm:text-lg">
                         {preview}
