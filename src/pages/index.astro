@@ -1,18 +1,20 @@
 ---
-import { List } from '~/components/molecules/List';
+import { getCollection } from 'astro:content';
+// import { List } from '~/components/molecules/List';
 import Menu from '~/components/molecules/Menu.astro';
 import { PAGE_TITLE } from '~/constants';
-import { globPosts, postsToCards } from '~/utils/process';
+// import { globPosts, postsToCards } from '~/utils/process';
 import Layout from '../layouts/Layout.astro';
 
-const posts = globPosts();
-const articles = postsToCards(posts);
-const sortedUniqueTags = [...new Set(posts.flatMap(({ frontmatter: { tags } }) => tags))].sort();
+const posts = await getCollection('posts');
+// console.log(posts[0].id);
+// const articles = postsToCards(posts);
+const sortedUniqueTags = [...new Set(posts.flatMap(({ data: { tags } }) => tags))].sort();
 ---
 
 <Layout title={PAGE_TITLE} isTop={true}>
     <div class="flex flex-col-reverse gap-5 md:flex-row">
-        <List client:load cards={articles} />
+        <!-- <List client:load cards={articles} /> -->
         <div class="shrink-0 max-sm:px-[10px] sm:max-md:px-[22px] md:w-48">
             <Menu tags={sortedUniqueTags} />
         </div>

@@ -5,7 +5,7 @@ const posts = defineCollection({
         layout: z.literal('~/layouts/Blog.astro'),
         pubDate: z.date(),
         tags: z.array(z.string()),
-        updatedAt: z.date().optional(),
+        updatedAt: z.date().nullable(),
     }),
     type: 'content',
 });
