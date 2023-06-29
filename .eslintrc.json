@@ -6,7 +6,6 @@
     "eslint:recommended",
     "plugin:@typescript-eslint/recommended",
     "plugin:astro/recommended",
-    "plugin:jsx-a11y/recommended",
     "prettier"
   ],
   "overrides": [
@@ -31,7 +30,6 @@
   },
   "plugins": [
     "@typescript-eslint",
-    "jsx-a11y",
     "sort-destructure-keys",
     "sort-keys-fix",
     "import",
@@ -73,6 +71,5 @@
       }
     ],
     "unused-imports/no-unused-imports": "error",
-    "jsx-a11y/aria-activedescendant-has-tabindex": "off"
   }
 }
