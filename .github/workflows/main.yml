@@ -21,7 +21,7 @@ jobs:
           node-version-file: .node-version
           cache: pnpm
       - name: Install dependencies
-        run: pnpm insatll --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: Run `astro check`
         run: pnpm run check
       - name: Run Markuplint on Astro files
@@ -50,7 +50,7 @@ jobs:
           node-version-file: .node-version
           cache: pnpm
       - name: Install dependencies
-        run: pnpm insatll --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: Run Textlint
         run: pnpm run lint:text
 
@@ -69,7 +69,7 @@ jobs:
           node-version-file: .node-version
           cache: pnpm
       - name: Install dependencies
-        run: pnpm insatll --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: Run Vitest typecheck
         run: pnpm run test:type
 
@@ -111,7 +111,7 @@ jobs:
           node-version-file: .node-version
           cache: pnpm
       - name: Install dependencies
-        run: pnpm insatll --frozen-lockfile
+        run: pnpm install --frozen-lockfile
       - name: Store Playwright's version
         run: |
           PLAYWRIGHT_VERSION=$(npm ls @playwright/test | grep @playwright | sed 's/.*@//')
