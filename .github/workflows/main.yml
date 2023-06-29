@@ -13,13 +13,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version-file: .node-version
           cache: pnpm
-      - name: Enable corepack
-        run: corepack enable
       - name: Install dependencies
         run: pnpm insatll --frozen-lockfile
       - name: Run `astro check`
@@ -42,13 +42,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version-file: .node-version
           cache: pnpm
-      - name: Enable corepack
-        run: corepack enable
       - name: Install dependencies
         run: pnpm insatll --frozen-lockfile
       - name: Run Textlint
@@ -61,13 +61,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version-file: .node-version
           cache: pnpm
-      - name: Enable corepack
-        run: corepack enable
       - name: Install dependencies
         run: pnpm insatll --frozen-lockfile
       - name: Run Vitest typecheck
@@ -103,13 +103,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v2
       - name: Setup Node
         uses: actions/setup-node@v3
         with:
           node-version-file: .node-version
           cache: pnpm
-      - name: Enable corepack
-        run: corepack enable
       - name: Install dependencies
         run: pnpm insatll --frozen-lockfile
       - name: Store Playwright's version
