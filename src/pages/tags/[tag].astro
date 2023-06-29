@@ -1,28 +1,25 @@
 ---
+import { type CollectionEntry, getCollection } from 'astro:content';
 import { List } from '~/components/molecules/List';
 import Layout from '~/layouts/Layout.astro';
 import { pageTitle } from '~/utils/constructString';
-import { globPosts, type Post, postsToCards } from '~/utils/process';
+// import { globPosts, type Post, postsToCards } from '~/utils/process';
 
 export const getStaticPaths = async () => {
-    const posts = globPosts();
-    const uniqueTags = [...new Set(posts.flatMap(({ frontmatter: { tags } }) => tags))];
-    return uniqueTags.map((tag) => {
-        const filteredPosts = posts.filter(({ frontmatter: { tags } }) => tags.includes(tag));
-        return {
-            params: { tag },
-            props: { posts: filteredPosts },
-        };
-    });
+    const posts = await getCollection('posts');
+    const uniqueTags = [...new Set(posts.flatMap(({ data: { tags } }) => tags))].sort();
+    return uniqueTags.map((tag) => ({
+        params: { tag },
+        props: { posts: posts.filter(({ data: { tags } }) => tags.includes(tag)) },
+    }));
 };
 
 const { tag } = Astro.params;
-type Props = { posts: Post[] };
-const { posts } = Astro.props as Props; // Astro.propsの型が効かないためアサーション
-const articles = postsToCards(posts);
+type Props = { posts: CollectionEntry<'posts'>[] };
+const { posts } = Astro.props;
 ---
 
 <Layout title={pageTitle(`tag: ${tag}`)}>
     <h1 class="pb-5 pl-5 pt-8 text-3xl text-tertiary sm:text-4xl">#{tag}の記事一覧</h1>
-    <List client:load cards={articles} />
+    <List client:load {posts} />
 </Layout>

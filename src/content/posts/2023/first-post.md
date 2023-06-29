@@ -1,7 +1,6 @@
 ---
-slug: first-post
-pubDate: 2023-01-01
-updatedAt:
+published: 2023-01-01
+updated:
 tags: []
 ---
 

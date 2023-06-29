@@ -1,7 +1,6 @@
 ---
-slug: astro-new-feature
-pubDate: 2023-02-21
-updatedAt: 2023-03-03
+published: 2023-02-21
+updated: 2023-03-03
 tags: [programming]
 ---
 
@@ -129,7 +128,7 @@ zodのバリデーションは、remarkPluginによって実現します。
 import { z } from 'astro/zod';
 
 export const frontmatterSchema = z.object({
-    layout: z.literal('~/layouts/Blog.astro'),
+    layout: z.literal('~/layouts/.astro'),
     title: z.string(),
     tags: z.array(z.string()).nonempty().optional(),
     description: z.string(),

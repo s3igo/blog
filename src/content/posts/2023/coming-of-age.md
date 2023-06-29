@@ -1,7 +1,6 @@
 ---
-slug: coming-of-age
-pubDate: 2023-01-09
-updatedAt:
+published: 2023-01-09
+updated:
 tags: [report]
 ---
 
