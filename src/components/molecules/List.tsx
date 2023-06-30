@@ -14,12 +14,10 @@ export const List: Component<Props> = (props) => {
         R.sortBy(({ data }: Post) => data.published),
         R.reverse()
     );
-    const picked = R.map(sorted, ({ data }: Post) =>
-        R.pick(data, ['tags', 'published', 'updated'])
-    );
+    const frontmatter = R.map(sorted, ({ data }: Post) => data);
     const needed = R.map(sorted, ({ body, slug }: Post) => ({ body, slug }));
 
-    const cards = R.zipWith(picked, needed, (a, b) => ({ ...a, ...b }));
+    const cards = R.zipWith(frontmatter, needed, (a, b) => ({ ...a, ...b }));
 
     return (
         <main class="flex flex-col gap-4 sm:gap-6">
