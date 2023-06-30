@@ -126,27 +126,27 @@ jobs:
       - name: Run Playwright tests
         run: npx playwright test --project=${{ matrix.browser }}
 
-  # coverage:
-  #   name: Coverage
-  #   timeout-minutes: 60
-  #   runs-on: ubuntu-22.04
-  #   needs:
-  #     - test-unit
-  #     - test-type
-  #     - test-e2e
-  #   steps:
-  #     - name: Checkout repository
-  #       uses: actions/checkout@v3
-  #     - name: Setup Node
-  #       uses: actions/setup-node@v3
-  #       with:
-  #         node-version-file: .node-version
-  #         cache: npm
-  #      - name: Install dependencies
-  #        run: npm ci
-  #     - name: Generate coverage file
-  #       run: npm run coverage
-  #     - name: Upload coverage reports to Codecov
-  #       uses: codecov/codecov-action@v3
-  #       with:
-  #         files: ./app/coverage/coverage-final.json
+  coverage:
+    name: Coverage
+    timeout-minutes: 60
+    runs-on: ubuntu-22.04
+    needs:
+      - test-unit
+      - test-type
+      - test-e2e
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+      - name: Setup Node
+        uses: actions/setup-node@v3
+        with:
+          node-version-file: .node-version
+          cache: npm
+      - name: Install dependencies
+        run: npm ci
+      - name: Generate coverage file
+        run: npm run coverage
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
+        with:
+          files: ./coverage/coverage-final.json
