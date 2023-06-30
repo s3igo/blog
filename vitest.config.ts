@@ -23,14 +23,9 @@ export default getViteConfig({
             reporter: ['text', 'json'],
             src: ['./src'],
         },
-        deps: {
-            inline: [/solid-js/, /solid-testing-library/],
-        },
-        environment: 'jsdom',
         exclude: ['./tests/e2e/**', ...defaultExcludes],
         globals: true,
         includeSource: ['src/**/*.{js,ts,jsx,tsx}', ...defaultIncludes],
-        setupFiles: ['./vitest.setup.ts'],
         transformMode: {
             web: [/\.[jt]sx?$/],
         },
