@@ -1,7 +1,7 @@
 # blog
 
 [![CI](https://github.com/s3igo/blog/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/s3igo/blog/actions/workflows/main.yml)
-<!-- [![codecov](https://codecov.io/gh/s3igo/blog/branch/develop/graph/badge.svg?token=P01847QGIK)](https://codecov.io/gh/s3igo/blog) -->
+[![codecov](https://codecov.io/gh/s3igo/blog/branch/develop/graph/badge.svg?token=P01847QGIK)](https://codecov.io/gh/s3igo/blog)
 
 私の個人ブログです。
 
@@ -20,7 +20,6 @@
 
 任意のエディタで編集できることとロックインを避けることを意識してCMSを使わず、
 素のMarkdownで記事を作成しています。
-記事の管理は[zk](https://github.com/mickael-menu/zk)を利用しています。
 
 ## 技術スタック
 
@@ -88,8 +87,6 @@ Templateは`./app/src/layouts`に、Pageは`./app/src/pages`に配置してい�
 ### 環境
 
 Git、Docker、GNU makeが必要です。
-コンテナ外で記事を書く場合は[zk](https://github.com/mickael-menu/zk)が必要です。
-また、`zk edit`コマンドは[fzf](https://github.com/junegunn/fzf)と[bat](https://github.com/sharkdp/bat)に依存しています。
 エディタとコンテナの内外を問わず開発できるようにしてありますが、
 LSPや拡張機能などの開発支援ツールが設定済みであるVSCodeのDev Containerを使うのがベターです。
 VSCodeを使う場合は、Multi-root Workspaces機能を利用することを想定しているため、

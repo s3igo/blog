@@ -27,7 +27,6 @@
     "test:e2e": "playwright test",
     "coverage": "vitest run --coverage",
     "coverage:clean": "rm -rf ./coverage",
-    "index": "cd ./src/data && zk index",
     "clean": "rm -rf ./node_modules"
   },
   "dependencies": {
