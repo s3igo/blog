@@ -57,8 +57,6 @@
   "devDependencies": {
     "@markuplint/astro-parser": "^3.5.0",
     "@playwright/test": "^1.31.1",
-    "@solidjs/testing-library": "^0.8.0",
-    "@testing-library/jest-dom": "^5.16.5",
     "@trivago/prettier-plugin-sort-imports": "^4.1.1",
     "@types/markdown-it": "^12.2.3",
     "@types/sanitize-html": "^2.8.0",
