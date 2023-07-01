@@ -6,7 +6,7 @@ import { Body } from './body';
 import { Dates } from './dates';
 import { Name } from './name';
 import { Tags } from './tags';
-import { Url } from './Url';
+import { Url } from './Url_tmp';
 
 type Meta = {
     dates: Dates;
