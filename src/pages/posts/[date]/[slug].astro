@@ -1,30 +1,23 @@
 ---
-import { format } from '~/utils/dateToString';
-import { type CollectionEntry, getCollection } from 'astro:content';
 import Blog from '~/layouts/Blog.astro';
+import { Post, Posts } from '~/domain/post';
 
 export const getStaticPaths = async () => {
-    const posts = await getCollection('posts');
+    const posts = await Posts.fetch();
     return posts.map((post) => ({
         params: {
-            date: format(post.data.published),
-            slug: post.slug.split('/').slice(-1)[0] ?? '',
+            date: post.meta.dates.published,
+            slug: post.meta.name,
         },
         props: { post },
     }));
 };
 
-type Props = { post: CollectionEntry<'posts'> };
+type Props = { post: Post };
 const { post } = Astro.props;
-const { Content, headings } = await post.render();
+const { body, meta, headings, Content } = post;
 ---
 
-<Blog
-    rawContent={post.body}
-    published={post.data.published}
-    updated={post.data.updated}
-    tags={post.data.tags}
-    {headings}
->
+<Blog {body} {headings} dates={meta.dates} tags={meta.tags}>
     <Content />
 </Blog>
