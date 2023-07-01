@@ -8,35 +8,30 @@ import { Metadata } from '~/components/atoms/Metadata';
 import Toc from '~/components/atoms/Toc.astro';
 import { Tag } from '~/components/molecules/Tag';
 import { pageTitle } from '~/utils/constructString';
-import { embedCreated, embedUpdated } from '~/utils/dateToString';
-import { first3Sentences } from '~/utils/string';
 import Layout from './Layout.astro';
 import type { MarkdownHeading } from 'astro';
+import type { Dates } from '~/domain/dates';
+import type { Body } from '~/domain/body';
+import type { Tags } from '~/domain/tags';
 
 type Props = {
-    rawContent: string;
-    published: Date;
-    updated: Date | null;
-    tags: string[];
+    body: Body;
+    dates: Dates;
+    tags: Tags;
     headings: MarkdownHeading[];
 };
 
-const { headings, published, rawContent, tags, updated } = Astro.props;
-const [_, ...textStartWithTitle] = rawContent.split('# ');
-const [title, ...body] = textStartWithTitle.join('').split('\n');
-
-const createdStatement = embedCreated(published);
-const updatedStatement = updated !== null ? embedUpdated(updated) : '';
+const { body, dates, headings, tags } = Astro.props;
 ---
 
-<Layout title={pageTitle(title ?? 'No title')} description={first3Sentences(body.join(''))}>
+<Layout title={pageTitle(body.title)} description={body.firstThreeSentences}>
     <div class="flex flex-col gap-5 md:flex-row-reverse">
         <div class="pt-12 md:w-52">
             <div class="sticky top-12 flex shrink-0 flex-col gap-4">
                 <div class="flex flex-col">
-                    <Metadata text={createdStatement} />
-                    {updated && <Metadata text={updatedStatement} />}
-                    {tags.map((tag) => <Tag name={tag} />)}
+                    <Metadata text={`created on ${dates.published}`} />
+                    {dates.updated && <Metadata text={`last updated on ${dates.updated}`} />}
+                    {tags.value.map((tag) => <Tag name={tag} />)}
                 </div>
                 <div>
                     <h2 class="decoration text-xl text-primary">目次</h2>
