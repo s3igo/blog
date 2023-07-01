@@ -7,7 +7,7 @@ type TagsSchema = {
     readonly value: string[];
 };
 
-type Tags = TagsSchema & { readonly brand: unique symbol };
+export type Tags = TagsSchema & { readonly brand: unique symbol };
 
 const transformTags = (value: string[]): TagsSchema => ({
     sort() {
@@ -20,7 +20,7 @@ const transformTags = (value: string[]): TagsSchema => ({
 });
 
 export const Tags: Companion<string[], Tags> = {
-    new: (tags) => newType(transformTags(tags)),
+    new: (tags) => newType<TagsSchema, Tags>(transformTags(tags)),
 };
 
 if (import.meta.vitest) {

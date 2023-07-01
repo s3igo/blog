@@ -4,7 +4,7 @@ import type { Companion } from '~/utils/types';
 
 type DateString = string & { readonly brand: unique symbol };
 export const DateString: Companion<Date, DateString> = {
-    new: (date) => newType(format(date, 'yyyy-MM-dd')),
+    new: (date) => newType<string, DateString>(format(date, 'yyyy-MM-dd')),
 };
 
 if (import.meta.vitest) {

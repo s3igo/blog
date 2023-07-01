@@ -14,9 +14,8 @@ export type Companion<T, U> = {
     new: (value: T) => U;
 };
 
-// usecase: type T = string & { readonly brand: unique symbol };
-export const newType = <T, U extends T & { readonly brand: symbol }>(value: T): U =>
-    value as unknown as U;
+// ex: type T = string & { readonly brand: unique symbol };
+export const newType = <T, U extends T & { readonly brand: symbol }>(v: T): U => v as unknown as U;
 
 if (import.meta.vitest) {
     const { describe, expect, test } = import.meta.vitest;
