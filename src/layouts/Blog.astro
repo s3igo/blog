@@ -21,7 +21,7 @@ type Props = {
     headings: MarkdownHeading[];
 };
 
-const { body, dates, tags, headings } = Astro.props;
+const { body, dates, headings, tags } = Astro.props;
 ---
 
 <Layout title={pageTitle(body.title)} description={body.firstThreeSentences}>

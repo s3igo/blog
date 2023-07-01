@@ -1,6 +1,6 @@
 ---
 import Blog from '~/layouts/Blog.astro';
-import { Post, Posts } from '~/domain/post';
+import { type Post, Posts } from '~/domain/post';
 
 export const getStaticPaths = async () => {
     const posts = await Posts.fetch();
@@ -15,7 +15,7 @@ export const getStaticPaths = async () => {
 
 type Props = { post: Post };
 const { post } = Astro.props;
-const { body, meta, headings, Content } = post;
+const { body, Content, headings, meta } = post;
 ---
 
 <Blog {body} {headings} dates={meta.dates} tags={meta.tags}>
