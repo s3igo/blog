@@ -9,16 +9,24 @@ import { Tags } from './tags';
 import { Url } from './url';
 
 type Meta = {
+    /** 記事の日付情報 */
     dates: Dates;
+    /** 記事のタグの配列 */
     tags: Tags;
+    /** 記事のファイル名 */
     name: Name;
+    /** 記事のURL */
     url: Url;
 };
 
 type PostSchema = {
+    /** 記事のメタ情報 */
     meta: Meta;
+    /** 記事の本文による情報 */
     body: Body;
+    /** レンダリングされた記事のコンポーネント */
     Content: AstroComponentFactory;
+    /** 記事の見出し */
     headings: MarkdownHeading[];
 };
 

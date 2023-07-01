@@ -5,7 +5,9 @@ import { DateString } from './dateString';
 type Receive = Pick<FrontmatterSchema, 'published' | 'updated'>;
 
 type DatesSchema = {
+    /** 記事の公開日 */
     published: DateString;
+    /** 記事の更新日 */
     updated?: DateString | undefined;
 };
 
