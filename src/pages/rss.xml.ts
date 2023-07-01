@@ -9,7 +9,6 @@ const parser = new MarkdownIt();
 
 export const get = async (context: APIContext) => {
     const site = context.site?.toString() ?? '';
-    // const posts = await getCollection('posts');
     const posts = await Posts.fetch();
 
     return rss({
