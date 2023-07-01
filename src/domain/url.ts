@@ -9,7 +9,7 @@ type Receive = {
 
 export type Url = string & { readonly brand: unique symbol };
 export const Url: Companion<Receive, Url> = {
-    new: ({ dates, name }) => newType<string, Url>(`/${dates.published}/${name}`),
+    new: ({ dates, name }) => newType<string, Url>(`/posts/${dates.published}/${name}`),
 };
 
 if (import.meta.vitest) {
@@ -21,7 +21,7 @@ if (import.meta.vitest) {
                 dates: Dates.new({ published: new Date('2021/01/10'), updated: null }),
                 name: Name.new('posts/name'),
             });
-            expect(url).toBe('/2021-01-10/name');
+            expect(url).toBe('/posts/2021-01-10/name');
         });
     });
 }
