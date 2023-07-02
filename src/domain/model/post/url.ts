@@ -1,6 +1,6 @@
 import { type Companion, Opaque } from '~/utils/types';
-import { Dates } from './model/post/dates';
-import { Name } from './model/post/name';
+import { Dates } from './dates';
+import { Name } from './name';
 
 type Receive = {
     name: Name;
