@@ -4,7 +4,6 @@ import '@fontsource/jetbrains-mono/latin-400.css';
 import '@fontsource/nunito-sans/latin-400-italic.css';
 import '@fontsource/nunito-sans/latin-700.css';
 import '@fontsource/zen-kaku-gothic-new/japanese-700.css';
-import { Metadata } from '~/components/atoms/Metadata';
 import Toc from '~/components/atoms/Toc.astro';
 import { Tag } from '~/components/molecules/Tag';
 import { pageTitle } from '~/utils/constructString';
@@ -29,8 +28,9 @@ const { body, dates, headings, tags } = Astro.props;
         <div class="pt-12 md:w-52">
             <div class="sticky top-12 flex shrink-0 flex-col gap-4">
                 <div class="flex flex-col">
-                    <Metadata text={`created on ${dates.published}`} />
-                    {dates.updated && <Metadata text={`last updated on ${dates.updated}`} />}
+                    <!-- FIXME: 以下のtruncateがないと幅が崩れる -->
+                    <span class="metadata truncate">created on {dates.published}</span>
+                    {dates.updated && <span class="metadata">last updated on {dates.updated}</span>}
                     {tags.value.map((tag) => <Tag name={tag} />)}
                 </div>
                 <div>
@@ -53,6 +53,8 @@ const { body, dates, headings, tags } = Astro.props;
         }
 
         a {
+            /* TODO: なぜか`.link`ユーティリティクラスが読めない */
+            /* @apply link; */
             @apply text-secondary decoration-2 underline-offset-2 hover:underline;
         }
 

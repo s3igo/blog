@@ -8,6 +8,6 @@ const { tags } = Astro.props;
 <div class="">
     <h2 class="text-2xl text-tertiary">Tags</h2>
     <div class="flex flex-wrap">
-        {tags.map((tag) => <Tag name={tag} truncate />)}
+        {tags.map((tag) => <Tag name={tag} />)}
     </div>
 </div>
