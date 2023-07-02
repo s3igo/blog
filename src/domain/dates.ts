@@ -1,5 +1,5 @@
 import type { Schema as FrontmatterSchema } from '~/content/config';
-import { type Companion, newType } from '~/utils/types';
+import { type Companion, Opaque } from '~/utils/types';
 import { DateString } from './dateString';
 
 type Receive = Pick<FrontmatterSchema, 'published' | 'updated'>;
@@ -13,16 +13,15 @@ type DatesSchema = {
     updated?: DateString | undefined;
 };
 
-export type Dates = DatesSchema & { readonly brand: unique symbol };
-
-const transformDates = ({ published, updated }: Receive): DatesSchema => ({
-    published: DateString.new(published),
-    rawPublished: published,
-    updated: updated ? DateString.new(updated) : undefined,
-});
+export type Dates = Opaque<DatesSchema, 'Dates'>;
 
 export const Dates: Companion<Receive, Dates> = {
-    new: (dates) => newType<DatesSchema, Dates>(transformDates(dates)),
+    new: ({ published, updated }) =>
+        Opaque.create<Dates, DatesSchema>({
+            published: DateString.new(published),
+            rawPublished: published,
+            updated: updated ? DateString.new(updated) : undefined,
+        }),
 };
 
 if (import.meta.vitest) {

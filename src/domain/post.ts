@@ -1,7 +1,7 @@
 import type { MarkdownHeading } from 'astro';
 import type { AstroComponentFactory } from 'astro/dist/runtime/server';
 import { type CollectionEntry, getCollection } from 'astro:content';
-import { type Companion, newType } from '~/utils/types';
+import { type Companion, Opaque } from '~/utils/types';
 import { Body } from './body';
 import { Dates } from './dates';
 import { Name } from './name';
@@ -30,7 +30,7 @@ type PostSchema = {
     headings: MarkdownHeading[];
 };
 
-export type Post = PostSchema & { readonly brand: unique symbol };
+export type Post = Opaque<PostSchema, 'Post'>;
 
 const transformPost = async ({
     body,
@@ -55,7 +55,7 @@ const transformPost = async ({
 };
 
 export const Post: Companion<CollectionEntry<'posts'>, Promise<Post>> = {
-    new: async (value) => newType<PostSchema, Post>(await transformPost(value)),
+    new: async (value) => Opaque.create<Post, PostSchema>(await transformPost(value)),
 };
 
 export type Posts = Post[];

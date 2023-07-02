@@ -26,6 +26,7 @@ export type Companion<T, U> = {
  *     const a = fn('a'); // Error
  *     const b = fn<string>('b'); // OK
  */
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type NoInfer<T> = [T][T extends any ? 0 : never];
 
 /**
@@ -54,24 +55,24 @@ export const Opaque = {
     create: <T extends Opaque<U, string>, U = never>(v: NoInfer<U>): T => v as unknown as T,
 };
 
-// ex: type T = string & { readonly brand: unique symbol }; //
-export const newType = <T, U extends T & { readonly brand: symbol }>(v: T): U => v as unknown as U;
-
 if (import.meta.vitest) {
     const { describe, expect, test } = import.meta.vitest;
 
-    describe('newType', () => {
-        test('string', () => {
-            const a = newType('a');
-            const b = newType('b');
+    describe('Opaque.create()', () => {
+        test('Opaque.create()', () => {
+            type A = Opaque<string, 'A'>;
+            const a = Opaque.create<A, string>('a');
             expect(a).toBe('a');
-            expect(b).toBe('b');
         });
-        test('number', () => {
-            const a = newType(1);
-            const b = newType(2);
+        test('Opaque.create() with number', () => {
+            type A = Opaque<number, 'A'>;
+            const a = Opaque.create<A, number>(1);
             expect(a).toBe(1);
-            expect(b).toBe(2);
+        });
+        test('Opaque.create() with object', () => {
+            type A = Opaque<{ a: string }, 'A'>;
+            const a = Opaque.create<A, { a: string }>({ a: 'a' });
+            expect(a).toEqual({ a: 'a' });
         });
     });
 }

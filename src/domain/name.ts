@@ -1,9 +1,17 @@
-import { newType } from '~/utils/types';
-import type { Companion } from '~/utils/types';
+import { type Companion, Opaque } from '~/utils/types';
 
-export type Name = string & { readonly brand: unique symbol };
+/** 記事のファイル名 */
+export type Name = Opaque<string, 'Name'>;
+
+const transformName = (name: string): string => {
+    const formedName = name.split('/').slice(-1)[0];
+    if (!formedName) throw new Error('name is undefined');
+
+    return formedName;
+};
+
 export const Name: Companion<string, Name> = {
-    new: (name) => newType<string, Name>(name.split('/').slice(-1)[0] ?? ''),
+    new: (name) => Opaque.create<Name, string>(transformName(name)),
 };
 
 if (import.meta.vitest) {
@@ -15,6 +23,9 @@ if (import.meta.vitest) {
         });
         test('name with slash', () => {
             expect(Name.new('name/with/slash')).toBe('slash');
+        });
+        test('no name', () => {
+            expect(() => Name.new('')).toThrow('name is undefined');
         });
     });
 }

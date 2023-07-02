@@ -1,6 +1,5 @@
 import { first3Sentences, truncate } from '~/utils/string';
-import { newType } from '~/utils/types';
-import type { Companion } from '~/utils/types';
+import { type Companion, Opaque } from '~/utils/types';
 
 type BodySchema = {
     /** 記事のタイトル */
@@ -13,22 +12,24 @@ type BodySchema = {
     firstThreeSentences: string;
 };
 
-export type Body = BodySchema & { readonly brand: unique symbol };
+export type Body = Opaque<BodySchema, 'Body'>;
 
 const transformBody = (value: string): BodySchema => {
     const [_, ...textStartWithTitle] = value.split('# ');
     const [title, ...body] = textStartWithTitle.join('').split('\n');
 
+    if (!title) throw new Error('title is undefined');
+
     return {
         content: body.join(''),
         description: truncate(body.join(''), 500),
         firstThreeSentences: first3Sentences(body.join('')),
-        title: title || 'No Title',
+        title: title,
     };
 };
 
 export const Body: Companion<string, Body> = {
-    new: (body) => newType<BodySchema, Body>(transformBody(body)),
+    new: (body) => Opaque.create<Body, BodySchema>(transformBody(body)),
 };
 
 if (import.meta.vitest) {
@@ -63,7 +64,7 @@ if (import.meta.vitest) {
             expect(Body.new('# title\ncontent\n').title).toBe('title');
         });
         test('title with no title', () => {
-            expect(Body.new('content').title).toBe('No Title');
+            expect(() => Body.new('content')).toThrow('title is undefined');
         });
     });
     describe('firstThreeSentences', () => {

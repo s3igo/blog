@@ -1,4 +1,4 @@
-import { type Companion, newType } from '~/utils/types';
+import { type Companion, Opaque } from '~/utils/types';
 import { Dates } from './dates';
 import { Name } from './name';
 
@@ -7,9 +7,10 @@ type Receive = {
     dates: Dates;
 };
 
-export type Url = string & { readonly brand: unique symbol };
+/** 記事URLの型 */
+export type Url = Opaque<string, 'Url'>;
 export const Url: Companion<Receive, Url> = {
-    new: ({ dates, name }) => newType<string, Url>(`/posts/${dates.published}/${name}`),
+    new: ({ dates, name }) => Opaque.create<Url, string>(`/posts/${dates.published}/${name}`),
 };
 
 if (import.meta.vitest) {

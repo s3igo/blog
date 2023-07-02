@@ -1,4 +1,4 @@
-import { newType } from '~/utils/types';
+import { Opaque } from '~/utils/types';
 import type { Companion } from '~/utils/types';
 
 type TagsSchema = {
@@ -7,7 +7,8 @@ type TagsSchema = {
     readonly value: string[];
 };
 
-export type Tags = TagsSchema & { readonly brand: unique symbol };
+/** タグ配列 */
+export type Tags = Opaque<TagsSchema, 'Tags'>;
 
 const transformTags = (value: string[]): TagsSchema => ({
     sort() {
@@ -20,7 +21,7 @@ const transformTags = (value: string[]): TagsSchema => ({
 });
 
 export const Tags: Companion<string[], Tags> = {
-    new: (tags) => newType<TagsSchema, Tags>(transformTags(tags)),
+    new: (tags) => Opaque.create<Tags, TagsSchema>(transformTags(tags)),
 };
 
 if (import.meta.vitest) {
