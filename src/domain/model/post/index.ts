@@ -4,9 +4,9 @@ import { type CollectionEntry, getCollection } from 'astro:content';
 import { type Companion, Opaque } from '~/utils/types';
 import { Body } from '../../body';
 import { Dates } from '../../dates';
-import { Name } from '../../name';
 import { Tags } from '../../tags';
 import { Url } from '../../url';
+import { Name } from './name';
 
 type Meta = {
     /** 記事の日付情報 */
