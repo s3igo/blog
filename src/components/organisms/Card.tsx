@@ -2,7 +2,6 @@ import { Separator } from '@kobalte/core';
 import { type Component, createSignal, For, Show } from 'solid-js';
 import { format } from '~/utils/dateToString';
 import { truncate } from '~/utils/string';
-import { Metadata } from '../atoms/Metadata';
 import { Tag } from '../molecules/Tag';
 
 type Props = {
@@ -32,7 +31,7 @@ export const Card: Component<Props> = (props) => {
         >
             <div class="py-4 px-2 sm:px-5">
                 <div class="flex gap-1 items-center flex-wrap">
-                    <Metadata text={date} />
+                    <span class="metadata">{date}</span>
                     <Show when={props.tags.length !== 0}>
                         <Separator.Root
                             orientation="vertical"
