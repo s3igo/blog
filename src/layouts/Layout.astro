@@ -1,6 +1,6 @@
 ---
-import nunitoSans400 from '@fontsource/nunito-sans/files/nunito-sans-latin-400-normal.woff2';
-import zenKakuGothicNew400 from '@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-japanese-400-normal.woff2';
+import '@fontsource/nunito-sans';
+import '@fontsource/zen-kaku-gothic-new';
 import Footer from '~/components/atoms/Footer.astro';
 import Header, { type Props as HeaderProps } from '~/components/molecules/Header.astro';
 import { PAGE_DESCRIPTION } from '~/constants';
@@ -29,21 +29,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <meta name="generator" content={Astro.generator} />
         <link rel="icon" type="image/png" href="/favicon.png" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-        <link
-            rel="preload"
-            as="font"
-            href={nunitoSans400}
-            type="font/woff2"
-            crossorigin="anonymous"
-        />
-        <link
-            rel="preload"
-            as="font"
-            href={zenKakuGothicNew400}
-            type="font/woff2"
-            crossorigin="anonymous"
-        />
-
         <title>{title}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonicalURL} />
