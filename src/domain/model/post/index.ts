@@ -1,14 +1,28 @@
 import type { MarkdownHeading } from 'astro';
 import type { AstroComponentFactory } from 'astro/dist/runtime/server';
 import { type CollectionEntry, getCollection } from 'astro:content';
-import { type Companion, newType } from '~/utils/types';
-import { Body } from './body';
+import { type Companion, Opaque } from '~/utils/types';
+import {
+    Body,
+    type Description,
+    type FirstThreeSentences,
+    type TextContent,
+    type Title,
+} from './body';
 import { Dates } from './dates';
 import { Name } from './name';
 import { Tags } from './tags';
 import { Url } from './url';
 
-type Meta = {
+type PostSchema = {
+    /** 記事のタイトル */
+    title: Title;
+    /** 記事の本文 */
+    textContent: TextContent;
+    /** 記事の概要（graphemeベースで500文字） */
+    description: Description;
+    /** 記事の最初の3文 */
+    firstThreeSentences: FirstThreeSentences;
     /** 記事の日付情報 */
     dates: Dates;
     /** 記事のタグの配列 */
@@ -17,20 +31,13 @@ type Meta = {
     name: Name;
     /** 記事のURL */
     url: Url;
-};
-
-type PostSchema = {
-    /** 記事のメタ情報 */
-    meta: Meta;
-    /** 記事の本文による情報 */
-    body: Body;
     /** レンダリングされた記事のコンポーネント */
     Content: AstroComponentFactory;
     /** 記事の見出し */
     headings: MarkdownHeading[];
 };
 
-export type Post = PostSchema & { readonly brand: unique symbol };
+export type Post = Opaque<PostSchema, 'Post'>;
 
 const transformPost = async ({
     body,
@@ -40,22 +47,25 @@ const transformPost = async ({
 }: CollectionEntry<'posts'>): Promise<PostSchema> => {
     const { published, tags, updated } = data;
     const { Content, headings } = await render();
+    const dates = Dates.new({ published, updated });
+    const bodyValues = Body.new(body);
 
     return {
-        body: Body.new(body),
         Content,
+        dates,
+        description: bodyValues.description,
+        firstThreeSentences: bodyValues.firstThreeSentences,
         headings,
-        meta: {
-            dates: Dates.new({ published, updated }),
-            name: Name.new(slug),
-            tags: Tags.new(tags),
-            url: Url.new({ dates: Dates.new({ published, updated }), name: Name.new(slug) }),
-        },
+        name: Name.new(slug),
+        tags: Tags.new(tags),
+        textContent: bodyValues.textContent,
+        title: bodyValues.title,
+        url: Url.new({ dates, name: Name.new(slug) }),
     };
 };
 
 export const Post: Companion<CollectionEntry<'posts'>, Promise<Post>> = {
-    new: async (value) => newType<PostSchema, Post>(await transformPost(value)),
+    new: async (value) => Opaque.create<Post, PostSchema>(await transformPost(value)),
 };
 
 export type Posts = Post[];

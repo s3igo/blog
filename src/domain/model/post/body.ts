@@ -1,34 +1,42 @@
 import { first3Sentences, truncate } from '~/utils/string';
-import { newType } from '~/utils/types';
-import type { Companion } from '~/utils/types';
+import { type Companion, Opaque } from '~/utils/types';
+
+export type Title = Opaque<string, 'Title'>;
+export type TextContent = Opaque<string, 'TextContent'>;
+export type Description = Opaque<string, 'Description'>;
+export type FirstThreeSentences = Opaque<string, 'FirstThreeSentences'>;
 
 type BodySchema = {
     /** 記事のタイトル */
-    title: string;
+    title: Title;
     /** 記事の本文 */
-    content: string;
+    textContent: TextContent;
     /** 記事の概要（graphemeベースで500文字） */
-    description: string;
+    description: Description;
     /** 記事の最初の3文 */
-    firstThreeSentences: string;
+    firstThreeSentences: FirstThreeSentences;
 };
 
-export type Body = BodySchema & { readonly brand: unique symbol };
+export type Body = Opaque<BodySchema, 'Body'>;
 
 const transformBody = (value: string): BodySchema => {
     const [_, ...textStartWithTitle] = value.split('# ');
     const [title, ...body] = textStartWithTitle.join('').split('\n');
 
+    if (!title) throw new Error('title is undefined');
+
     return {
-        content: body.join(''),
-        description: truncate(body.join(''), 500),
-        firstThreeSentences: first3Sentences(body.join('')),
-        title: title || 'No Title',
+        description: Opaque.create<Description, string>(truncate(body.join(''), 500)),
+        firstThreeSentences: Opaque.create<FirstThreeSentences, string>(
+            first3Sentences(body.join(''))
+        ),
+        textContent: Opaque.create<TextContent, string>(body.join('')),
+        title: Opaque.create<Title, string>(title),
     };
 };
 
 export const Body: Companion<string, Body> = {
-    new: (body) => newType<BodySchema, Body>(transformBody(body)),
+    new: (body) => Opaque.create<Body, BodySchema>(transformBody(body)),
 };
 
 if (import.meta.vitest) {
@@ -36,10 +44,10 @@ if (import.meta.vitest) {
 
     describe('content', () => {
         test('content', () => {
-            expect(Body.new('# title\ncontent').content).toBe('content');
+            expect(Body.new('# title\ncontent').textContent).toBe('content');
         });
         test('content with new line', () => {
-            expect(Body.new('# title\ncontent\n').content).toBe('content');
+            expect(Body.new('# title\ncontent\n').textContent).toBe('content');
         });
     });
     describe('description', () => {
@@ -63,7 +71,7 @@ if (import.meta.vitest) {
             expect(Body.new('# title\ncontent\n').title).toBe('title');
         });
         test('title with no title', () => {
-            expect(Body.new('content').title).toBe('No Title');
+            expect(() => Body.new('content')).toThrow('title is undefined');
         });
     });
     describe('firstThreeSentences', () => {

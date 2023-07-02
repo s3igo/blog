@@ -3,7 +3,7 @@ import type { APIContext } from 'astro';
 import MarkdownIt from 'markdown-it';
 import sanitizeHtml from 'sanitize-html';
 import { PAGE_DESCRIPTION, PAGE_TITLE } from '~/constants';
-import { Posts } from '~/domain/post';
+import { Posts } from '~/domain/model/post';
 
 const parser = new MarkdownIt();
 
@@ -14,12 +14,12 @@ export const get = async (context: APIContext) => {
     return rss({
         customData: '<language>ja</language>',
         description: PAGE_DESCRIPTION,
-        items: posts.map(({ body, meta }) => ({
-            content: sanitizeHtml(parser.render(body.content)),
-            description: body.firstThreeSentences,
-            link: meta.url,
-            pubDate: meta.dates.rawPublished,
-            title: body.title,
+        items: posts.map(({ dates, firstThreeSentences, textContent, title, url }) => ({
+            content: sanitizeHtml(parser.render(textContent)),
+            description: firstThreeSentences,
+            link: url,
+            pubDate: dates.rawPublished,
+            title: title,
         })),
         site,
         title: PAGE_TITLE,
