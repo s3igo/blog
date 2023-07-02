@@ -3,9 +3,9 @@ import type { AstroComponentFactory } from 'astro/dist/runtime/server';
 import { type CollectionEntry, getCollection } from 'astro:content';
 import { type Companion, Opaque } from '~/utils/types';
 import { Body } from '../../body';
-import { Dates } from '../../dates';
 import { Tags } from '../../tags';
 import { Url } from '../../url';
+import { Dates } from './dates';
 import { Name } from './name';
 
 type PostSchema = {
