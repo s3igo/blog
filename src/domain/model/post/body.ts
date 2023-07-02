@@ -5,7 +5,7 @@ type BodySchema = {
     /** 記事のタイトル */
     title: string;
     /** 記事の本文 */
-    content: string;
+    text: string;
     /** 記事の概要（graphemeベースで500文字） */
     description: string;
     /** 記事の最初の3文 */
@@ -21,9 +21,9 @@ const transformBody = (value: string): BodySchema => {
     if (!title) throw new Error('title is undefined');
 
     return {
-        content: body.join(''),
         description: truncate(body.join(''), 500),
         firstThreeSentences: first3Sentences(body.join('')),
+        text: body.join(''),
         title: title,
     };
 };
@@ -37,10 +37,10 @@ if (import.meta.vitest) {
 
     describe('content', () => {
         test('content', () => {
-            expect(Body.new('# title\ncontent').content).toBe('content');
+            expect(Body.new('# title\ncontent').text).toBe('content');
         });
         test('content with new line', () => {
-            expect(Body.new('# title\ncontent\n').content).toBe('content');
+            expect(Body.new('# title\ncontent\n').text).toBe('content');
         });
     });
     describe('description', () => {
