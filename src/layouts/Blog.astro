@@ -53,7 +53,9 @@ const { body, dates, headings, tags } = Astro.props;
         }
 
         a {
-            @apply link;
+            /* TODO: なぜか`.link`ユーティリティクラスが読めない */
+            /* @apply link; */
+            @apply text-secondary decoration-2 underline-offset-2 hover:underline;
         }
 
         em {
