@@ -14,12 +14,12 @@ export const get = async (context: APIContext) => {
     return rss({
         customData: '<language>ja</language>',
         description: PAGE_DESCRIPTION,
-        items: posts.map(({ body, dates, url }) => ({
-            content: sanitizeHtml(parser.render(body.text)),
-            description: body.firstThreeSentences,
+        items: posts.map(({ dates, firstThreeSentences, textContent, title, url }) => ({
+            content: sanitizeHtml(parser.render(textContent)),
+            description: firstThreeSentences,
             link: url,
             pubDate: dates.rawPublished,
-            title: body.title,
+            title: title,
         })),
         site,
         title: PAGE_TITLE,
