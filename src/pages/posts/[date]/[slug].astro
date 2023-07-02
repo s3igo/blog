@@ -1,6 +1,6 @@
 ---
 import Blog from '~/layouts/Blog.astro';
-import { type Post, Posts } from '~/domain/post';
+import { type Post, Posts } from '~/domain/model/post';
 
 export const getStaticPaths = async () => {
     const posts = await Posts.fetch();
