@@ -15,8 +15,8 @@ export const getStaticPaths = async () => {
 
 type Props = { post: Post };
 const { post } = Astro.props;
-const { body, Content, headings, dates, tags } = post;
-const blogProps = { body, headings, dates, tags };
+const { Content, dates, firstThreeSentences, headings, tags, title } = post;
+const blogProps = { dates, firstThreeSentences, headings, tags, title };
 ---
 
 <Blog {...blogProps}>

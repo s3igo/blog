@@ -1,15 +1,20 @@
 import { first3Sentences, truncate } from '~/utils/string';
 import { type Companion, Opaque } from '~/utils/types';
 
+export type Title = Opaque<string, 'Title'>;
+export type TextContent = Opaque<string, 'TextContent'>;
+export type Description = Opaque<string, 'Description'>;
+export type FirstThreeSentences = Opaque<string, 'FirstThreeSentences'>;
+
 type BodySchema = {
     /** 記事のタイトル */
-    title: string;
+    title: Title;
     /** 記事の本文 */
-    text: string;
+    textContent: TextContent;
     /** 記事の概要（graphemeベースで500文字） */
-    description: string;
+    description: Description;
     /** 記事の最初の3文 */
-    firstThreeSentences: string;
+    firstThreeSentences: FirstThreeSentences;
 };
 
 export type Body = Opaque<BodySchema, 'Body'>;
@@ -21,10 +26,12 @@ const transformBody = (value: string): BodySchema => {
     if (!title) throw new Error('title is undefined');
 
     return {
-        description: truncate(body.join(''), 500),
-        firstThreeSentences: first3Sentences(body.join('')),
-        text: body.join(''),
-        title: title,
+        description: Opaque.create<Description, string>(truncate(body.join(''), 500)),
+        firstThreeSentences: Opaque.create<FirstThreeSentences, string>(
+            first3Sentences(body.join(''))
+        ),
+        textContent: Opaque.create<TextContent, string>(body.join('')),
+        title: Opaque.create<Title, string>(title),
     };
 };
 
@@ -37,10 +44,10 @@ if (import.meta.vitest) {
 
     describe('content', () => {
         test('content', () => {
-            expect(Body.new('# title\ncontent').text).toBe('content');
+            expect(Body.new('# title\ncontent').textContent).toBe('content');
         });
         test('content with new line', () => {
-            expect(Body.new('# title\ncontent\n').text).toBe('content');
+            expect(Body.new('# title\ncontent\n').textContent).toBe('content');
         });
     });
     describe('description', () => {

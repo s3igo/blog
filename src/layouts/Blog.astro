@@ -10,20 +10,21 @@ import { pageTitle } from '~/utils/constructString';
 import Layout from './Layout.astro';
 import type { MarkdownHeading } from 'astro';
 import type { Dates } from '~/domain/model/post/dates';
-import type { Body } from '~/domain/model/post/body';
+import type { FirstThreeSentences, Title } from '~/domain/model/post/body';
 import type { Tags } from '~/domain/model/post/tags';
 
 type Props = {
-    body: Body;
+    title: Title;
+    firstThreeSentences: FirstThreeSentences;
     dates: Dates;
     tags: Tags;
     headings: MarkdownHeading[];
 };
 
-const { body, dates, headings, tags } = Astro.props;
+const { dates, firstThreeSentences, headings, tags, title } = Astro.props;
 ---
 
-<Layout title={pageTitle(body.title)} description={body.firstThreeSentences}>
+<Layout title={pageTitle(title)} description={firstThreeSentences}>
     <div class="flex flex-col gap-5 md:flex-row-reverse">
         <div class="pt-12 md:w-52">
             <div class="sticky top-12 flex shrink-0 flex-col gap-4">

@@ -2,13 +2,27 @@ import type { MarkdownHeading } from 'astro';
 import type { AstroComponentFactory } from 'astro/dist/runtime/server';
 import { type CollectionEntry, getCollection } from 'astro:content';
 import { type Companion, Opaque } from '~/utils/types';
-import { Body } from './body';
+import {
+    Body,
+    type Description,
+    type FirstThreeSentences,
+    type TextContent,
+    type Title,
+} from './body';
 import { Dates } from './dates';
 import { Name } from './name';
 import { Tags } from './tags';
 import { Url } from './url';
 
 type PostSchema = {
+    /** 記事のタイトル */
+    title: Title;
+    /** 記事の本文 */
+    textContent: TextContent;
+    /** 記事の概要（graphemeベースで500文字） */
+    description: Description;
+    /** 記事の最初の3文 */
+    firstThreeSentences: FirstThreeSentences;
     /** 記事の日付情報 */
     dates: Dates;
     /** 記事のタグの配列 */
@@ -17,8 +31,6 @@ type PostSchema = {
     name: Name;
     /** 記事のURL */
     url: Url;
-    /** 記事の本文による情報 */
-    body: Body;
     /** レンダリングされた記事のコンポーネント */
     Content: AstroComponentFactory;
     /** 記事の見出し */
@@ -35,15 +47,20 @@ const transformPost = async ({
 }: CollectionEntry<'posts'>): Promise<PostSchema> => {
     const { published, tags, updated } = data;
     const { Content, headings } = await render();
+    const dates = Dates.new({ published, updated });
+    const bodyValues = Body.new(body);
 
     return {
-        body: Body.new(body),
         Content,
-        dates: Dates.new({ published, updated }),
+        dates,
+        description: bodyValues.description,
+        firstThreeSentences: bodyValues.firstThreeSentences,
         headings,
         name: Name.new(slug),
         tags: Tags.new(tags),
-        url: Url.new({ dates: Dates.new({ published, updated }), name: Name.new(slug) }),
+        textContent: bodyValues.textContent,
+        title: bodyValues.title,
+        url: Url.new({ dates, name: Name.new(slug) }),
     };
 };
 
