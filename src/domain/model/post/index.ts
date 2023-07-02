@@ -8,7 +8,7 @@ import { Tags } from '../../tags';
 import { Url } from '../../url';
 import { Name } from './name';
 
-type Meta = {
+type PostSchema = {
     /** 記事の日付情報 */
     dates: Dates;
     /** 記事のタグの配列 */
@@ -17,11 +17,6 @@ type Meta = {
     name: Name;
     /** 記事のURL */
     url: Url;
-};
-
-type PostSchema = {
-    /** 記事のメタ情報 */
-    meta: Meta;
     /** 記事の本文による情報 */
     body: Body;
     /** レンダリングされた記事のコンポーネント */
@@ -44,13 +39,11 @@ const transformPost = async ({
     return {
         body: Body.new(body),
         Content,
+        dates: Dates.new({ published, updated }),
         headings,
-        meta: {
-            dates: Dates.new({ published, updated }),
-            name: Name.new(slug),
-            tags: Tags.new(tags),
-            url: Url.new({ dates: Dates.new({ published, updated }), name: Name.new(slug) }),
-        },
+        name: Name.new(slug),
+        tags: Tags.new(tags),
+        url: Url.new({ dates: Dates.new({ published, updated }), name: Name.new(slug) }),
     };
 };
 

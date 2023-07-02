@@ -6,8 +6,8 @@ export const getStaticPaths = async () => {
     const posts = await Posts.fetch();
     return posts.map((post) => ({
         params: {
-            date: post.meta.dates.published,
-            slug: post.meta.name,
+            date: post.dates.published,
+            slug: post.name,
         },
         props: { post },
     }));
@@ -15,9 +15,10 @@ export const getStaticPaths = async () => {
 
 type Props = { post: Post };
 const { post } = Astro.props;
-const { body, Content, headings, meta } = post;
+const { body, Content, headings, dates, tags } = post;
+const blogProps = { body, headings, dates, tags };
 ---
 
-<Blog {body} {headings} dates={meta.dates} tags={meta.tags}>
+<Blog {...blogProps}>
     <Content />
 </Blog>
