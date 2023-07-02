@@ -7,7 +7,7 @@ type Receive = {
     dates: Dates;
 };
 
-/** 記事URLの型 */
+/** 記事のURL */
 export type Url = Opaque<string, 'Url'>;
 export const Url: Companion<Receive, Url> = {
     new: ({ dates, name }) => Opaque.create<Url, string>(`/posts/${dates.published}/${name}`),
