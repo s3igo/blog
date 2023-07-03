@@ -1,7 +1,8 @@
 ---
 import { Tag } from './Tag';
+import type { Tags } from '~/domain/model/post';
 
-type Props = { tags: string[] };
+type Props = { tags: Tags };
 const { tags } = Astro.props;
 ---
 

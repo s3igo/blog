@@ -10,13 +10,13 @@ import {
     type Title,
 } from './body';
 import { Dates } from './dates';
+import type { DateString } from './dates';
 import { Name } from './name';
-import { Tags } from './tags';
+import { type Tag, Tags } from './tags';
 import { Url } from './url';
 
-export { Tags };
-export { Dates };
-export { FirstThreeSentences, Title };
+export type { Tag };
+export { FirstThreeSentences, Title, DateString, Tags };
 
 type PostSchema = {
     /** 記事のタイトル */
@@ -27,8 +27,12 @@ type PostSchema = {
     description: Description;
     /** 記事の最初の3文 */
     firstThreeSentences: FirstThreeSentences;
-    /** 記事の日付情報 */
-    dates: Dates;
+    /** 記事の公開日（Date型） */
+    rawPublished: Date;
+    /** 記事の公開日 */
+    published: DateString;
+    /** 記事の更新日 */
+    updated: DateString | undefined;
     /** 記事のタグの配列 */
     tags: Tags;
     /** 記事のファイル名 */
@@ -56,14 +60,16 @@ const transformPost = async ({
 
     return {
         Content,
-        dates,
         description: bodyValues.description,
         firstThreeSentences: bodyValues.firstThreeSentences,
         headings,
         name: Name.new(slug),
+        published: dates.published,
+        rawPublished: published,
         tags: Tags.new(tags),
         textContent: bodyValues.textContent,
         title: bodyValues.title,
+        updated: dates.updated,
         url: Url.new({ dates, name: Name.new(slug) }),
     };
 };

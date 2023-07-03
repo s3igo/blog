@@ -9,17 +9,18 @@ import { Tag } from '~/components/molecules/Tag';
 import { pageTitle } from '~/utils/constructString';
 import Layout from './Layout.astro';
 import type { MarkdownHeading } from 'astro';
-import type { Dates, FirstThreeSentences, Tags, Title } from '~/domain/model/post';
+import type { DateString, FirstThreeSentences, Tags, Title } from '~/domain/model/post';
 
 type Props = {
     title: Title;
     firstThreeSentences: FirstThreeSentences;
-    dates: Dates;
+    published: DateString;
+    updated: DateString | undefined;
     tags: Tags;
     headings: MarkdownHeading[];
 };
 
-const { dates, firstThreeSentences, headings, tags, title } = Astro.props;
+const { firstThreeSentences, headings, published, tags, title, updated } = Astro.props;
 ---
 
 <Layout title={pageTitle(title)} description={firstThreeSentences}>
@@ -28,9 +29,9 @@ const { dates, firstThreeSentences, headings, tags, title } = Astro.props;
             <div class="sticky top-12 flex shrink-0 flex-col gap-4">
                 <div class="flex flex-col">
                     <!-- FIXME: 以下のtruncateがないと幅が崩れる -->
-                    <span class="metadata truncate">created on {dates.published}</span>
-                    {dates.updated && <span class="metadata">last updated on {dates.updated}</span>}
-                    {tags.value.map((tag) => <Tag name={tag} />)}
+                    <span class="metadata truncate">created on {published}</span>
+                    {updated && <span class="metadata">last updated on {updated}</span>}
+                    {tags.map((tag) => <Tag name={tag} />)}
                 </div>
                 <div>
                     <h2 class="decoration text-xl text-primary">目次</h2>

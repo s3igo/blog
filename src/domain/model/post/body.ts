@@ -1,13 +1,19 @@
 import { first3Sentences, truncate } from '~/utils/string';
 import { type Companion, Opaque } from '~/utils/types';
 
-/** @package */
+/**
+ * 記事のタイトル
+ * @package
+ */
 export type Title = Opaque<string, 'Title'>;
 /** @package */
 export type TextContent = Opaque<string, 'TextContent'>;
 /** @package */
 export type Description = Opaque<string, 'Description'>;
-/** @package */
+/**
+ * 記事の最初の3文
+ * @package
+ */
 export type FirstThreeSentences = Opaque<string, 'FirstThreeSentences'>;
 
 type BodySchema = {
