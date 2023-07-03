@@ -1,5 +1,6 @@
 import { Separator } from '@kobalte/core';
 import { type Component, For, Show } from 'solid-js';
+import type { Tag as TagType } from '~/domain/model/post';
 import { format } from '~/utils/dateToString';
 import { truncate } from '~/utils/string';
 import { Tag } from '../molecules/Tag';
@@ -34,7 +35,7 @@ export const Card: Component<Props> = (props) => {
                             class="h-4 pr-px border-none bg-foreground/60 mx-1"
                         />
                     </Show>
-                    <For each={props.tags}>{(tag) => <Tag name={tag} />}</For>
+                    <For each={props.tags}>{(tag) => <Tag name={tag as TagType} />}</For>
                 </div>
                 <a href={url}>
                     <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-xl text-primary sm:text-2xl">
