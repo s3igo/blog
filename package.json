@@ -32,7 +32,7 @@
   "dependencies": {
     "@astrojs/rss": "^2.1.1",
     "@astrojs/solid-js": "^2.0.2",
-    "@astrojs/tailwind": "^3.0.0",
+    "@astrojs/tailwind": "^4.0.0",
     "@fontsource/biz-udgothic": "^4.5.7",
     "@fontsource/jetbrains-mono": "^4.5.12",
     "@fontsource/nunito-sans": "^4.5.10",
