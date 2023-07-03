@@ -1,23 +1,17 @@
 import * as R from 'remeda';
-import type { CollectionEntry } from 'astro:content';
 import { type Component, For } from 'solid-js';
+import type { Posts } from '~/domain/model/post';
 import { Card } from '../organisms/Card';
 
-type Post = CollectionEntry<'posts'>;
-type Props = {
-    posts: Post[];
-};
+type Props = { posts: Posts };
 
 export const List: Component<Props> = (props) => {
-    const sorted = R.pipe(
+    const cards = R.pipe(
         props.posts,
-        R.sortBy(({ data }: Post) => data.published),
+        R.map(R.pick(['description', 'published', 'tags', 'title', 'updated', 'url'])),
+        R.sortBy(({ published }) => published),
         R.reverse()
     );
-    const frontmatter = R.map(sorted, ({ data }: Post) => data);
-    const needed = R.map(sorted, ({ body, slug }: Post) => ({ body, slug }));
-
-    const cards = R.zipWith(frontmatter, needed, (a, b) => ({ ...a, ...b }));
 
     return (
         <main class="flex flex-col gap-4 sm:gap-6">
