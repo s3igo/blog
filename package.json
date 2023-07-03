@@ -66,6 +66,7 @@
     "eslint-config-prettier": "^8.6.0",
     "eslint-plugin-astro": "^0.27.0",
     "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-import-access": "^1.1.2",
     "eslint-plugin-jsx-a11y": "^6.7.1",
     "eslint-plugin-sort-destructure-keys": "^1.5.0",
     "eslint-plugin-sort-keys-fix": "^1.1.2",
