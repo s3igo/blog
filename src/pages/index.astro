@@ -3,8 +3,7 @@ import { List } from '~/components/molecules/List';
 import Menu from '~/components/molecules/Menu.astro';
 import { PAGE_TITLE } from '~/constants';
 import Layout from '../layouts/Layout.astro';
-import { Tags } from '~/domain/model/post';
-import { Posts } from '~/domain/model/post';
+import { Tags, Posts } from '~/domain/model/post';
 
 const posts = await Posts.fetch();
 const tags = Tags.new(posts.flatMap(({ tags }) => tags));
