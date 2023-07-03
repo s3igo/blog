@@ -3,10 +3,20 @@
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": [
+        "./src/*"
+      ]
     },
-    "types": ["vitest/globals", "vitest/importMeta"],
+    "types": [
+      "vitest/globals",
+      "vitest/importMeta"
+    ],
     "jsx": "preserve",
-    "jsxImportSource": "solid-js"
+    "jsxImportSource": "solid-js",
+    "plugins": [
+      {
+        "name": "eslint-plugin-import-access"
+      }
+    ]
   }
 }
