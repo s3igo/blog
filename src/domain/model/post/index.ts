@@ -15,7 +15,8 @@ import { Name } from './name';
 import { type Tag, Tags } from './tags';
 import { Url } from './url';
 
-export type { Tag, Url, FirstThreeSentences, Title, DateString, Tags, Description };
+export type { Tag, Url, FirstThreeSentences, Title, DateString, Description };
+export { Tags };
 
 type PostSchema = {
     /** 記事のタイトル */
