@@ -4,6 +4,7 @@ import { List } from '~/components/molecules/List';
 import Menu from '~/components/molecules/Menu.astro';
 import { PAGE_TITLE } from '~/constants';
 import Layout from '../layouts/Layout.astro';
+import type { Tags } from '~/domain/model/post';
 
 const posts = await getCollection('posts');
 const sortedUniqueTags = [...new Set(posts.flatMap(({ data: { tags } }) => tags))].sort();
@@ -13,7 +14,7 @@ const sortedUniqueTags = [...new Set(posts.flatMap(({ data: { tags } }) => tags)
     <div class="flex flex-col-reverse gap-5 md:flex-row">
         <List client:load {posts} />
         <div class="shrink-0 max-sm:px-[10px] sm:max-md:px-[22px] md:w-48">
-            <Menu tags={sortedUniqueTags} />
+            <Menu tags={sortedUniqueTags as Tags} />
         </div>
     </div>
 </Layout>

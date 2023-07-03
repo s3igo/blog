@@ -1,43 +1,30 @@
 import { Opaque } from '~/utils/types';
 import type { Companion } from '~/utils/types';
 
-type TagsSchema = {
-    sort: () => TagsSchema;
-    unique: () => TagsSchema;
-    readonly value: string[];
-};
-
-const transformTags = (value: string[]): TagsSchema => ({
-    sort() {
-        return transformTags(this.value.sort());
-    },
-    unique() {
-        return transformTags([...new Set(this.value)]);
-    },
-    value,
-});
+/** @package */
+export type Tag = Opaque<string, 'Tag'>;
 
 /**
- * タグ配列
+ * ユニークで整列済みであることを保証されたタグの配列
  * @package
  */
-export type Tags = Opaque<TagsSchema, 'Tags'>;
+export type Tags = Opaque<Tag[], 'Tags'>;
 export const Tags: Companion<string[], Tags> = {
-    new: (tags) => Opaque.create<Tags, TagsSchema>(transformTags(tags)),
+    new: (tags) =>
+        Opaque.create<Tags, Tag[]>(
+            [...new Set(tags)].sort().map((tag) => Opaque.create<Tag, string>(tag))
+        ),
 };
 
 if (import.meta.vitest) {
     const { describe, expect, test } = import.meta.vitest;
 
     describe('Tags', () => {
-        test('sort', () => {
-            expect(Tags.new(['b', 'a']).sort().value).toEqual(['a', 'b']);
-        });
         test('unique', () => {
-            expect(Tags.new(['a', 'a']).unique().value).toEqual(['a']);
+            expect(Tags.new(['a', 'b', 'a'])).toEqual(['a', 'b']);
         });
-        test('unique and sort', () => {
-            expect(Tags.new(['b', 'a', 'a']).unique().sort().value).toEqual(['a', 'b']);
+        test('sort', () => {
+            expect(Tags.new(['b', 'a', 'c'])).toEqual(['a', 'b', 'c']);
         });
     });
 }

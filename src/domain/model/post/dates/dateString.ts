@@ -1,3 +1,6 @@
+/**
+ * @file format関数の影響範囲を限定するためにファイルを分割
+ */
 import { format } from 'date-fns';
 import { type Companion, Opaque } from '~/utils/types';
 

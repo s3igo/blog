@@ -31,7 +31,7 @@ const { firstThreeSentences, headings, published, tags, title, updated } = Astro
                     <!-- FIXME: 以下のtruncateがないと幅が崩れる -->
                     <span class="metadata truncate">created on {published}</span>
                     {updated && <span class="metadata">last updated on {updated}</span>}
-                    {tags.value.map((tag) => <Tag name={tag} />)}
+                    {tags.map((tag) => <Tag name={tag} />)}
                 </div>
                 <div>
                     <h2 class="decoration text-xl text-primary">目次</h2>

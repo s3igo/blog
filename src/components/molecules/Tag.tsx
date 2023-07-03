@@ -1,6 +1,7 @@
 import type { Component } from 'solid-js';
+import type { Tag as TagType } from '~/domain/model/post';
 
-type Props = { name: string };
+type Props = { name: TagType };
 
 export const Tag: Component<Props> = (props) => (
     <a

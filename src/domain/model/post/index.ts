@@ -12,11 +12,11 @@ import {
 import { Dates } from './dates';
 import type { DateString } from './dates';
 import { Name } from './name';
-import { Tags } from './tags';
+import { type Tag, Tags } from './tags';
 import { Url } from './url';
 
-export { Tags };
-export { FirstThreeSentences, Title, DateString };
+export type { Tag };
+export { FirstThreeSentences, Title, DateString, Tags };
 
 type PostSchema = {
     /** 記事のタイトル */
