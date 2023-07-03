@@ -1,7 +1,10 @@
 import { Opaque } from '~/utils/types';
 import type { Companion } from '~/utils/types';
 
-/** @package */
+/**
+ * 記事のタグ
+ * @package
+ */
 export type Tag = Opaque<string, 'Tag'>;
 
 /**
