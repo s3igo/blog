@@ -17,8 +17,6 @@ type BodySchema = {
     firstThreeSentences: FirstThreeSentences;
 };
 
-export type Body = Opaque<BodySchema, 'Body'>;
-
 const transformBody = (value: string): BodySchema => {
     const [_, ...textStartWithTitle] = value.split('# ');
     const [title, ...body] = textStartWithTitle.join('').split('\n');
@@ -35,6 +33,8 @@ const transformBody = (value: string): BodySchema => {
     };
 };
 
+/** @package */
+export type Body = Opaque<BodySchema, 'Body'>;
 export const Body: Companion<string, Body> = {
     new: (body) => Opaque.create<Body, BodySchema>(transformBody(body)),
 };

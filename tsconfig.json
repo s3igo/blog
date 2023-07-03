@@ -15,7 +15,12 @@
     "jsxImportSource": "solid-js",
     "plugins": [
       {
-        "name": "eslint-plugin-import-access"
+        "name": "eslint-plugin-import-access",
+        "jsdoc": {
+          "indexLoophole": true,
+          "filenameLoophole": true,
+          "defaultImportability": "public"
+        }
       }
     ]
   }

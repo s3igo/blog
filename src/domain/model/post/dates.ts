@@ -13,8 +13,8 @@ type DatesSchema = {
     updated?: DateString | undefined;
 };
 
+/** @package */
 export type Dates = Opaque<DatesSchema, 'Dates'>;
-
 export const Dates: Companion<Receive, Dates> = {
     new: ({ published, updated }) =>
         Opaque.create<Dates, DatesSchema>({
