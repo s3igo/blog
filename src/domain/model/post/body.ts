@@ -1,23 +1,21 @@
 import { first3Sentences, truncate } from '~/utils/string';
 import { type Companion, Opaque } from '~/utils/types';
 
+/** @package */
 export type Title = Opaque<string, 'Title'>;
+/** @package */
 export type TextContent = Opaque<string, 'TextContent'>;
+/** @package */
 export type Description = Opaque<string, 'Description'>;
+/** @package */
 export type FirstThreeSentences = Opaque<string, 'FirstThreeSentences'>;
 
 type BodySchema = {
-    /** 記事のタイトル */
     title: Title;
-    /** 記事の本文 */
     textContent: TextContent;
-    /** 記事の概要（graphemeベースで500文字） */
     description: Description;
-    /** 記事の最初の3文 */
     firstThreeSentences: FirstThreeSentences;
 };
-
-export type Body = Opaque<BodySchema, 'Body'>;
 
 const transformBody = (value: string): BodySchema => {
     const [_, ...textStartWithTitle] = value.split('# ');
@@ -35,6 +33,8 @@ const transformBody = (value: string): BodySchema => {
     };
 };
 
+/** @package */
+export type Body = Opaque<BodySchema, 'Body'>;
 export const Body: Companion<string, Body> = {
     new: (body) => Opaque.create<Body, BodySchema>(transformBody(body)),
 };

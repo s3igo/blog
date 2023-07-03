@@ -7,9 +7,6 @@ type TagsSchema = {
     readonly value: string[];
 };
 
-/** タグ配列 */
-export type Tags = Opaque<TagsSchema, 'Tags'>;
-
 const transformTags = (value: string[]): TagsSchema => ({
     sort() {
         return transformTags(this.value.sort());
@@ -20,6 +17,11 @@ const transformTags = (value: string[]): TagsSchema => ({
     value,
 });
 
+/**
+ * タグ配列
+ * @package
+ */
+export type Tags = Opaque<TagsSchema, 'Tags'>;
 export const Tags: Companion<string[], Tags> = {
     new: (tags) => Opaque.create<Tags, TagsSchema>(transformTags(tags)),
 };

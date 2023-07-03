@@ -9,9 +9,7 @@ import { Tag } from '~/components/molecules/Tag';
 import { pageTitle } from '~/utils/constructString';
 import Layout from './Layout.astro';
 import type { MarkdownHeading } from 'astro';
-import type { Dates } from '~/domain/model/post/dates';
-import type { FirstThreeSentences, Title } from '~/domain/model/post/body';
-import type { Tags } from '~/domain/model/post/tags';
+import type { Dates, FirstThreeSentences, Tags, Title } from '~/domain/model/post';
 
 type Props = {
     title: Title;

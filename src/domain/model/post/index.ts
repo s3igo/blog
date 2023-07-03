@@ -14,6 +14,10 @@ import { Name } from './name';
 import { Tags } from './tags';
 import { Url } from './url';
 
+export { Tags };
+export { Dates };
+export { FirstThreeSentences, Title };
+
 type PostSchema = {
     /** 記事のタイトル */
     title: Title;

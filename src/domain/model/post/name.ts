@@ -1,8 +1,5 @@
 import { type Companion, Opaque } from '~/utils/types';
 
-/** 記事のファイル名 */
-export type Name = Opaque<string, 'Name'>;
-
 const transformName = (name: string): string => {
     const formedName = name.split('/').slice(-1)[0];
     if (!formedName) throw new Error('name is undefined');
@@ -10,6 +7,11 @@ const transformName = (name: string): string => {
     return formedName;
 };
 
+/**
+ * 記事のファイル名
+ * @package
+ */
+export type Name = Opaque<string, 'Name'>;
 export const Name: Companion<string, Name> = {
     new: (name) => Opaque.create<Name, string>(transformName(name)),
 };

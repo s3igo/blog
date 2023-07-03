@@ -1,6 +1,6 @@
 import type { Schema as FrontmatterSchema } from '~/content/config';
 import { type Companion, Opaque } from '~/utils/types';
-import { DateString } from './dateString';
+import { DateString } from './dates/dateString';
 
 type Receive = Pick<FrontmatterSchema, 'published' | 'updated'>;
 
@@ -13,8 +13,8 @@ type DatesSchema = {
     updated?: DateString | undefined;
 };
 
+/** @package */
 export type Dates = Opaque<DatesSchema, 'Dates'>;
-
 export const Dates: Companion<Receive, Dates> = {
     new: ({ published, updated }) =>
         Opaque.create<Dates, DatesSchema>({
