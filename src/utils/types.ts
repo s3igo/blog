@@ -22,7 +22,9 @@ export type Companion<T, U> = {
  * @param U Opaque型のBrand
  * @example type A = Opaque<string, 'A'>;
  */
-export type Opaque<T, U extends string> = T & { [P in U as `_${P}Brand`]: never };
+export type Opaque<T extends NonNullable<unknown>, U extends string> = T & {
+    [P in U as `_${P}Brand`]: never;
+};
 
 /**
  * Opaque型とそれに付与したBrandから元の型を取り出す
