@@ -1,6 +1,6 @@
 import { Separator } from '@kobalte/core';
 import { type Component, For, Show } from 'solid-js';
-import type { Description, Published, Tags, Title, Updated, Url } from '~/domain/model/post';
+import type { Description, Published, Tags, Title, Updated, Url } from '~/domain/values/post';
 import { Tag } from '../../base/Tag';
 
 type Props = {

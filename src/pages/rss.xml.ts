@@ -3,7 +3,7 @@ import type { APIContext } from 'astro';
 import MarkdownIt from 'markdown-it';
 import sanitizeHtml from 'sanitize-html';
 import { PAGE_DESCRIPTION, PAGE_TITLE } from '~/constants';
-import { Posts } from '~/domain/model/post';
+import { Posts } from '~/domain/values/post';
 
 const parser = new MarkdownIt();
 

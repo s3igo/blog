@@ -3,7 +3,7 @@ import { List } from '~/components/features/List';
 import Menu from '~/components/features/Menu.astro';
 import { PAGE_TITLE } from '~/constants';
 import Layout from '~/components/layouts/Layout.astro';
-import { Tags, Posts } from '~/domain/model/post';
+import { Tags, Posts } from '~/domain/values/post';
 
 const posts = await Posts.fetch();
 const tags = Tags.new(posts.flatMap(({ tags }) => tags));

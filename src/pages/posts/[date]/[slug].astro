@@ -1,6 +1,6 @@
 ---
 import BlogLayout from '~/components/layouts/BlogLayout.astro';
-import { type Post, Posts } from '~/domain/model/post';
+import { type Post, Posts } from '~/domain/values/post';
 
 export const getStaticPaths = async () => {
     const posts = await Posts.fetch();
