@@ -2,8 +2,10 @@ import { OcRss2 } from 'solid-icons/oc';
 import { type Component, Show } from 'solid-js';
 import { PAGE_TITLE } from '~/constants';
 
+/** @package */
 export type Props = { isH1: boolean };
 
+/** @package */
 export const Navbar: Component<Props> = (props) => (
     <nav
         class="custom-shadow flex h-14 items-center justify-between rounded-full border-2 border-solid border-primary bg-background xs:h-16 sm:h-20"

@@ -1,7 +1,7 @@
 import * as R from 'remeda';
 import { type Component, For } from 'solid-js';
 import type { Posts } from '~/domain/model/post';
-import { Card } from '../organisms/Card';
+import { Card } from './List/Card';
 
 type Props = { posts: Posts };
 
