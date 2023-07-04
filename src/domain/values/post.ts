@@ -8,12 +8,12 @@ import {
     type FirstThreeSentences,
     type TextContent,
     type Title,
-} from './body';
-import { Dates } from './dates';
-import type { Published, Updated } from './dates';
-import { Name } from './name';
-import { type Tag, Tags } from './tags';
-import { Url } from './url';
+} from './post/body';
+import { Dates } from './post/dates';
+import type { Published, Updated } from './post/dates';
+import { Name } from './post/name';
+import { type Tag, Tags } from './post/tags';
+import { Url } from './post/url';
 
 export type { Tag, Url, FirstThreeSentences, Title, Published, Updated, Description };
 export { Tags };
