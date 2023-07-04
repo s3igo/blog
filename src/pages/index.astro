@@ -3,10 +3,11 @@ import { List } from '~/components/features/List';
 import Menu from '~/components/features/Menu.astro';
 import { PAGE_TITLE } from '~/constants';
 import Layout from '~/components/layouts/Layout.astro';
-import { Tags, Posts } from '~/domain/model/post';
+import { Posts } from '~/domain/values/post';
+import { Tags } from '~/domain/values/tags';
 
 const posts = await Posts.fetch();
-const tags = Tags.new(posts.flatMap(({ tags }) => tags));
+const tags = Tags.from(posts);
 ---
 
 <Layout title={PAGE_TITLE} isTop={true}>

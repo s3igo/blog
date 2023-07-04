@@ -1,5 +1,5 @@
 import type { Component } from 'solid-js';
-import type { Tag as TagType } from '~/domain/model/post';
+import type { Tag as TagType } from '~/domain/values/post';
 
 type Props = { name: TagType };
 

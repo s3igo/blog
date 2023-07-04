@@ -8,15 +8,14 @@ import {
     type FirstThreeSentences,
     type TextContent,
     type Title,
-} from './body';
-import { Dates } from './dates';
-import type { DateString } from './dates';
-import { Name } from './name';
+} from './post/body';
+import { Dates } from './post/dates';
+import type { Published, Updated } from './post/dates';
+import { Name } from './post/name';
+import { Url } from './post/url';
 import { type Tag, Tags } from './tags';
-import { Url } from './url';
 
-export type { Tag, Url, FirstThreeSentences, Title, DateString, Description };
-export { Tags };
+export type { Tag, Url, FirstThreeSentences, Title, Published, Updated, Description };
 
 type PostSchema = {
     /** 記事のタイトル */
@@ -30,9 +29,9 @@ type PostSchema = {
     /** 記事の公開日（Date型） */
     rawPublished: Date;
     /** 記事の公開日 */
-    published: DateString;
+    published: Published;
     /** 記事の更新日 */
-    updated: DateString | undefined;
+    updated: Updated;
     /** 記事のタグの配列 */
     tags: Tags;
     /** 記事のファイル名 */

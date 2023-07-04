@@ -2,14 +2,16 @@ import type { Schema as FrontmatterSchema } from '~/content/config';
 import { type Companion, Opaque } from '~/utils/types';
 import { DateString } from './dates/dateString';
 
-/** @package */
-export { type DateString };
-
 type Receive = Pick<FrontmatterSchema, 'published' | 'updated'>;
 
+/** @package */
+export type Published = DateString;
+/** @package */
+export type Updated = DateString | undefined;
+
 type DatesSchema = {
-    published: DateString;
-    updated?: DateString | undefined;
+    published: Published;
+    updated: Updated;
 };
 
 /** @package */

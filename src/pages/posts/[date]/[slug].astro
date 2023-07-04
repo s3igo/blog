@@ -1,6 +1,6 @@
 ---
-import Blog from '~/components/layouts/BlogLayout.astro';
-import { type Post, Posts } from '~/domain/model/post';
+import BlogLayout from '~/components/layouts/BlogLayout.astro';
+import { type Post, Posts } from '~/domain/values/post';
 
 export const getStaticPaths = async () => {
     const posts = await Posts.fetch();
@@ -19,6 +19,6 @@ const { Content, firstThreeSentences, headings, published, tags, title, updated 
 const blogProps = { firstThreeSentences, headings, published, tags, title, updated };
 ---
 
-<Blog {...blogProps}>
+<BlogLayout {...blogProps}>
     <Content />
-</Blog>
+</BlogLayout>

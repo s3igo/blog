@@ -9,13 +9,14 @@ import { Tag } from '~/components/base/Tag';
 import { pageTitle } from '~/utils/constructString';
 import Layout from './Layout.astro';
 import type { MarkdownHeading } from 'astro';
-import type { DateString, FirstThreeSentences, Tags, Title } from '~/domain/model/post';
+import type { FirstThreeSentences, Published, Title, Updated } from '~/domain/values/post';
+import type { Tags } from '~/domain/values/tags';
 
 type Props = {
     title: Title;
     firstThreeSentences: FirstThreeSentences;
-    published: DateString;
-    updated: DateString | undefined;
+    published: Published;
+    updated: Updated;
     tags: Tags;
     headings: MarkdownHeading[];
 };
