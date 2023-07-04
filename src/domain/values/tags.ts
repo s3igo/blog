@@ -17,8 +17,8 @@ export type Tags = Opaque<Tag[], 'Tags'>;
 export const Tags: Companion<string[], Tags> & From<Posts, Tags> = {
     from: (posts) => Tags.new(posts.flatMap(({ tags }) => tags)),
     new: (tags) =>
-        Opaque.create<Tags, Tag[]>(
-            [...new Set(tags)].sort().map((tag) => Opaque.create<Tag, string>(tag))
+        Opaque.create<Tags, 'Tags'>(
+            [...new Set(tags)].sort().map((tag) => Opaque.create<Tag, 'Tag'>(tag))
         ),
 };
 

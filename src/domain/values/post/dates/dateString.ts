@@ -10,7 +10,7 @@ import { type Companion, Opaque } from '~/utils/types';
  */
 export type DateString = Opaque<string, 'DateString'>;
 export const DateString: Companion<Date, DateString> = {
-    new: (date) => Opaque.create<DateString, string>(format(date, 'yyyy-MM-dd')),
+    new: (date) => Opaque.create<DateString, 'DateString'>(format(date, 'yyyy-MM-dd')),
 };
 
 if (import.meta.vitest) {

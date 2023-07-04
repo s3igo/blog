@@ -74,7 +74,7 @@ const transformPost = async ({
 };
 
 export const Post: Companion<CollectionEntry<'posts'>, Promise<Post>> = {
-    new: async (value) => Opaque.create<Post, PostSchema>(await transformPost(value)),
+    new: async (value) => Opaque.create<Post, 'Post'>(await transformPost(value)),
 };
 
 export type Posts = Post[];

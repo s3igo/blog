@@ -30,19 +30,19 @@ const transformBody = (value: string): BodySchema => {
     if (!title) throw new Error('title is undefined');
 
     return {
-        description: Opaque.create<Description, string>(truncate(body.join(''), 500)),
-        firstThreeSentences: Opaque.create<FirstThreeSentences, string>(
+        description: Opaque.create<Description, 'Description'>(truncate(body.join(''), 500)),
+        firstThreeSentences: Opaque.create<FirstThreeSentences, 'FirstThreeSentences'>(
             first3Sentences(body.join(''))
         ),
-        textContent: Opaque.create<TextContent, string>(body.join('')),
-        title: Opaque.create<Title, string>(title),
+        textContent: Opaque.create<TextContent, 'TextContent'>(body.join('')),
+        title: Opaque.create<Title, 'Title'>(title),
     };
 };
 
 /** @package */
 export type Body = Opaque<BodySchema, 'Body'>;
 export const Body: Companion<string, Body> = {
-    new: (body) => Opaque.create<Body, BodySchema>(transformBody(body)),
+    new: (body) => Opaque.create<Body, 'Body'>(transformBody(body)),
 };
 
 if (import.meta.vitest) {

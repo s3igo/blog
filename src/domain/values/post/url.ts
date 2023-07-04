@@ -13,7 +13,7 @@ type Receive = {
  */
 export type Url = Opaque<string, 'Url'>;
 export const Url: Companion<Receive, Url> = {
-    new: ({ dates, name }) => Opaque.create<Url, string>(`/posts/${dates.published}/${name}`),
+    new: ({ dates, name }) => Opaque.create<Url, 'Url'>(`/posts/${dates.published}/${name}`),
 };
 
 if (import.meta.vitest) {
