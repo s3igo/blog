@@ -13,7 +13,7 @@ const transformName = (name: string): string => {
  */
 export type Name = Opaque<string, 'Name'>;
 export const Name: Companion<string, Name> = {
-    new: (name) => Opaque.create<Name, string>(transformName(name)),
+    new: (name) => Opaque.create<Name, 'Name'>(transformName(name)),
 };
 
 if (import.meta.vitest) {

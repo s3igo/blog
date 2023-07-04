@@ -18,7 +18,7 @@ type DatesSchema = {
 export type Dates = Opaque<DatesSchema, 'Dates'>;
 export const Dates: Companion<Receive, Dates> = {
     new: ({ published, updated }) =>
-        Opaque.create<Dates, DatesSchema>({
+        Opaque.create<Dates, 'Dates'>({
             published: DateString.new(published),
             updated: updated ? DateString.new(updated) : undefined,
         }),
