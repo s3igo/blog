@@ -5,7 +5,7 @@ import { DateString } from './dates/dateString';
 type Receive = Pick<FrontmatterSchema, 'published' | 'updated'>;
 
 /** @package */
-export type Published = DateString;
+export type Published = Opaque<DateString, 'Published'>;
 /** @package */
 export type Updated = DateString | undefined;
 
@@ -19,7 +19,7 @@ export type Dates = Opaque<DatesSchema, 'Dates'>;
 export const Dates: Companion<Receive, Dates> = {
     new: ({ published, updated }) =>
         Opaque.create<Dates, 'Dates'>({
-            published: DateString.new(published),
+            published: Opaque.create<Published, 'Published'>(DateString.new(published)),
             updated: updated ? DateString.new(updated) : undefined,
         }),
 };
