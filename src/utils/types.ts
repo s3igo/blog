@@ -7,9 +7,6 @@
 
 export type Prettify<T extends object> = { [K in keyof T]: T[K] };
 
-// eslint-disable-next-line @typescript-eslint/no-empty-function
-// export const isNever = <_ extends never>(): void => {};
-
 /**
  * コンパニオンオブジェクトパターンでコンストラクタを注釈するための型
  * @param T コンストラクタの引数の型
@@ -20,39 +17,44 @@ export type Companion<T, U> = {
 };
 
 /**
- * 型引数を省略した場合に推論させない型
- * @param T 対象の型
- * @example const fn = <T>(value: NoInfer<T>): T => value;
- *     const a = fn('a'); // Error
- *     const b = fn<string>('b'); // OK
- */
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
-type NoInfer<T> = [T][T extends any ? 0 : never];
-
-/**
- * Opaque型を作成するための型
+ * Opaque型を作成する
  * @param T Opaque型の元になる型
- * @param U Opaque型のブランド
+ * @param U Opaque型のBrand
  * @example type A = Opaque<string, 'A'>;
  */
-export type Opaque<T, U extends string> = T & { readonly _brand: U };
+export type Opaque<T, U extends string> = T & { [P in U as `_${P}Brand`]: never };
 
 /**
- * Opaque型を作成するためのユーティリティ
- * @example const a = Opaque.create<A, string>('a');
+ * Opaque型とそれに付与したBrandから元の型を取り出す
+ * @param T Opaque型のtype alias
+ * @param U Opaque型のBrand
+ * @example type A = Opaque<string, 'A'>;
+ *     type B = InferBase<A, 'A'>; //=> string
+ */
+type InferBase<T, U extends string> = T extends infer V & { [K in `_${U}Brand`]: never }
+    ? V
+    : never;
+
+/**
+ * @example const a = Opaque.create<A, 'A'>('foo');
  *     type B = Opaque<string, 'B'>;
  *     const b: B = a; // Error
  *     const c: string = a; // OK
  */
 export const Opaque = {
     /**
-     * Opaque型を作成するコンストラクター
-     * @param T Opaque<T, U>によって作成された型
-     * @param U 引数vに渡す型
+     * Opaque型の値を作成する
+     * @constructor
+     * @param T Opaque<T, U>によって作成した型
+     * @param U Opaque<T, U>によって作成した型のBrand
      * @param v 作成する型の値
-     * @example const a = Opaque.create<A, string>('a');
+     * @example type A = Opaque<string, 'A'>;
+     *     const a = Opaque.create<A, 'A'>('foo');
+     *     type B = Opaque<string, 'B'>;
+     *     const b: B = a; // Error
+     *     const c: string = a; // OK
      */
-    create: <T extends Opaque<U, string>, U = never>(v: NoInfer<U>): T => v as unknown as T,
+    create: <T, U extends string>(v: InferBase<T, U>) => v as unknown as T,
 };
 
 if (import.meta.vitest) {
@@ -61,17 +63,17 @@ if (import.meta.vitest) {
     describe('Opaque.create()', () => {
         test('Opaque.create()', () => {
             type A = Opaque<string, 'A'>;
-            const a = Opaque.create<A, string>('a');
+            const a = Opaque.create<A, 'A'>('a');
             expect(a).toBe('a');
         });
         test('Opaque.create() with number', () => {
             type A = Opaque<number, 'A'>;
-            const a = Opaque.create<A, number>(1);
+            const a = Opaque.create<A, 'A'>(1);
             expect(a).toBe(1);
         });
         test('Opaque.create() with object', () => {
             type A = Opaque<{ a: string }, 'A'>;
-            const a = Opaque.create<A, { a: string }>({ a: 'a' });
+            const a = Opaque.create<A, 'A'>({ a: 'a' });
             expect(a).toEqual({ a: 'a' });
         });
     });
