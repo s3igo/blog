@@ -10,12 +10,12 @@ import {
     type Title,
 } from './body';
 import { Dates } from './dates';
-import type { DateString } from './dates';
+import type { Published, Updated } from './dates';
 import { Name } from './name';
 import { type Tag, Tags } from './tags';
 import { Url } from './url';
 
-export type { Tag, Url, FirstThreeSentences, Title, DateString, Description };
+export type { Tag, Url, FirstThreeSentences, Title, Published, Updated, Description };
 export { Tags };
 
 type PostSchema = {
@@ -30,9 +30,9 @@ type PostSchema = {
     /** 記事の公開日（Date型） */
     rawPublished: Date;
     /** 記事の公開日 */
-    published: DateString;
+    published: Published;
     /** 記事の更新日 */
-    updated: DateString | undefined;
+    updated: Updated;
     /** 記事のタグの配列 */
     tags: Tags;
     /** 記事のファイル名 */
