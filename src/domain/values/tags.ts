@@ -1,5 +1,6 @@
 import { Opaque } from '~/utils/types';
 import type { Companion } from '~/utils/types';
+import type { Posts } from './post';
 
 /**
  * 記事のタグ
@@ -7,9 +8,14 @@ import type { Companion } from '~/utils/types';
  */
 export type Tag = Opaque<string, 'Tag'>;
 
+type From<T, U> = {
+    from: (v: T) => U;
+};
+
 /** ユニークで整列済みであることを保証されたタグの配列 */
 export type Tags = Opaque<Tag[], 'Tags'>;
-export const Tags: Companion<string[], Tags> = {
+export const Tags: Companion<string[], Tags> & From<Posts, Tags> = {
+    from: (posts) => Tags.new(posts.flatMap(({ tags }) => tags)),
     new: (tags) =>
         Opaque.create<Tags, Tag[]>(
             [...new Set(tags)].sort().map((tag) => Opaque.create<Tag, string>(tag))

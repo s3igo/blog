@@ -7,7 +7,7 @@ import { pageTitle } from '~/utils/constructString';
 
 export const getStaticPaths = async () => {
     const posts = await Posts.fetch();
-    const tags = Tags.new(posts.flatMap(({ tags }) => tags));
+    const tags = Tags.from(posts);
 
     return tags.map((tag) => ({
         params: { tag },
