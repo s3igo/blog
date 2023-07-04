@@ -9,7 +9,8 @@ import { Tag } from '~/components/base/Tag';
 import { pageTitle } from '~/utils/constructString';
 import Layout from './Layout.astro';
 import type { MarkdownHeading } from 'astro';
-import type { FirstThreeSentences, Published, Tags, Title, Updated } from '~/domain/values/post';
+import type { FirstThreeSentences, Published, Title, Updated } from '~/domain/values/post';
+import type { Tags } from '~/domain/values/tags';
 
 type Props = {
     title: Title;

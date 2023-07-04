@@ -7,10 +7,7 @@ import type { Companion } from '~/utils/types';
  */
 export type Tag = Opaque<string, 'Tag'>;
 
-/**
- * ユニークで整列済みであることを保証されたタグの配列
- * @package
- */
+/** ユニークで整列済みであることを保証されたタグの配列 */
 export type Tags = Opaque<Tag[], 'Tags'>;
 export const Tags: Companion<string[], Tags> = {
     new: (tags) =>
