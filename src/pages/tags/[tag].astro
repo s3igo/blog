@@ -3,7 +3,6 @@ import { List } from '~/components/features/List';
 import { Posts } from '~/domain/values/post';
 import { Tags } from '~/domain/values/tags';
 import Layout from '~/components/layouts/Layout.astro';
-import { pageTitle } from '~/utils/constructString';
 
 export const getStaticPaths = async () => {
     const posts = await Posts.fetch();
@@ -20,7 +19,7 @@ type Props = { posts: Posts };
 const { posts } = Astro.props;
 ---
 
-<Layout title={pageTitle(`tag: ${tag}`)}>
+<Layout title={`tag: ${tag}`}>
     <h1 class="pb-5 pl-5 pt-8 text-3xl text-tertiary sm:text-4xl">#{tag}の記事一覧</h1>
     <List {posts} />
 </Layout>

@@ -1,7 +1,6 @@
 ---
 import { List } from '~/components/features/List';
 import Menu from '~/components/features/Menu.astro';
-import { PAGE_TITLE } from '~/utils/constants';
 import Layout from '~/components/layouts/Layout.astro';
 import { Posts } from '~/domain/values/post';
 import { Tags } from '~/domain/values/tags';
@@ -10,7 +9,7 @@ const posts = await Posts.fetch();
 const tags = Tags.from(posts);
 ---
 
-<Layout title={PAGE_TITLE} isTop={true}>
+<Layout isTop={true}>
     <div class="flex flex-col-reverse gap-5 md:flex-row">
         <List {posts} />
         <div class="shrink-0 max-sm:px-[10px] sm:max-md:px-[22px] md:w-48">
