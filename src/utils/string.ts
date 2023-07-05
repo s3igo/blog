@@ -10,33 +10,6 @@ export const truncate = (str: string, size: number, suffix = '...'): string => {
     return chars.slice(0, size).join('') + (chars.length > size ? suffix : '');
 };
 
-if (import.meta.vitest) {
-    const { describe, expect, test } = import.meta.vitest;
-    const asset = 'あいうえおかきくけこさしすせそたちつてとなにぬねの';
-    describe('文字数が正しい', () => {
-        test('5文字', () => {
-            expect(truncate(asset, 5)).toBe('あいうえお...');
-        });
-        test('10文字', () => {
-            expect(truncate(asset, 10)).toBe('あいうえおかきくけこ...');
-        });
-        test('20文字', () => {
-            expect(truncate(asset, 20)).toBe('あいうえおかきくけこさしすせそたちつてと...');
-        });
-    });
-    describe('suffixが正しい', () => {
-        test('suffixなし', () => {
-            expect(truncate(asset, 5, '')).toBe('あいうえお');
-        });
-        test('suffixあり', () => {
-            expect(truncate(asset, 5, '...')).toBe('あいうえお...');
-        });
-        test('suffixに`~`を指定', () => {
-            expect(truncate(asset, 5, '~')).toBe('あいうえお~');
-        });
-    });
-}
-
 export const first3Sentences = (str: string): string => {
     const sentences = segments(str, 'sentence').map(({ segment }) => segment);
     return sentences.slice(0, 3).join('');
@@ -44,7 +17,32 @@ export const first3Sentences = (str: string): string => {
 
 if (import.meta.vitest) {
     const { describe, expect, test } = import.meta.vitest;
-    describe('文の数が正しい', () => {
+    describe('truncate', () => {
+        const asset = 'あいうえおかきくけこさしすせそたちつてとなにぬねの';
+        describe('文字数が正しい', () => {
+            test('5文字', () => {
+                expect(truncate(asset, 5)).toBe('あいうえお...');
+            });
+            test('10文字', () => {
+                expect(truncate(asset, 10)).toBe('あいうえおかきくけこ...');
+            });
+            test('20文字', () => {
+                expect(truncate(asset, 20)).toBe('あいうえおかきくけこさしすせそたちつてと...');
+            });
+        });
+        describe('suffixが正しい', () => {
+            test('suffixなし', () => {
+                expect(truncate(asset, 5, '')).toBe('あいうえお');
+            });
+            test('suffixあり', () => {
+                expect(truncate(asset, 5, '...')).toBe('あいうえお...');
+            });
+            test('suffixに`~`を指定', () => {
+                expect(truncate(asset, 5, '~')).toBe('あいうえお~');
+            });
+        });
+    });
+    describe('first3Sentences', () => {
         test('50音表', () => {
             const str = 'あいうえお。かきくけこ。さしすせそ。たちつてと。なにぬねの。';
             expect(first3Sentences(str)).toBe('あいうえお。かきくけこ。さしすせそ。');
