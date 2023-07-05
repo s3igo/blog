@@ -1,16 +1,10 @@
-// export type ExcessPropertyCheck<T extends object, TExpected extends object> = Exclude<
-//     keyof T,
-//     keyof TExpected
-// > extends never
-//     ? T
-//     : never;
-
-export type Prettify<T extends object> = { [K in keyof T]: T[K] };
-
 /**
  * コンパニオンオブジェクトパターンでコンストラクタを注釈するための型
  * @param T コンストラクタの引数の型
  * @param U コンストラクタの戻り値の型
+ * @example const A: Companion<number, string> = {
+ *         new: (value) => value.toString(),
+ *     }
  */
 export type Companion<T, U> = {
     new: (value: T) => U;

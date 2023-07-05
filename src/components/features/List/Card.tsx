@@ -13,18 +13,21 @@ type Props = {
     description: Description;
 };
 
+const VerticalSeparator: Component = () => (
+    <Separator.Root orientation="vertical" class="h-4 pr-px border-none bg-foreground/60 mx-1" />
+);
+
 export const Card: Component<Props> = (props) => (
     <article class="hover:custom-shadow rounded-2xl border-2 border-solid border-transparent hover:border-secondary">
         <div class="py-4 px-2 sm:px-5">
             <div class="flex gap-1 items-center flex-wrap">
-                <span class="metadata">
-                    {props.published + props.updated && ` last updated on ${props.updated}`}
-                </span>
+                <span class="metadata">{props.published}</span>
+                <Show when={props.updated !== undefined}>
+                    <VerticalSeparator />
+                    <span class="metadata">{`edited: ${props.updated}`}</span>
+                </Show>
                 <Show when={props.tags.length !== 0}>
-                    <Separator.Root
-                        orientation="vertical"
-                        class="h-4 pr-px border-none bg-foreground/60 mx-1"
-                    />
+                    <VerticalSeparator />
                 </Show>
                 <For each={props.tags}>{(tag) => <Tag name={tag} />}</For>
             </div>
