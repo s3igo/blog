@@ -1,6 +1,6 @@
 import { OcRss2 } from 'solid-icons/oc';
 import { type Component, Show } from 'solid-js';
-import { PAGE_TITLE } from '~/constants';
+import { PAGE_TITLE } from '~/utils/constants';
 
 /** @package */
 export type Props = { isH1: boolean };

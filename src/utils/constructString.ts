@@ -1,4 +1,4 @@
-import { PAGE_TITLE } from '~/constants';
+import { PAGE_TITLE } from '~/utils/constants';
 
 export const pageTitle = (text: string): string => `${text} | ${PAGE_TITLE}`;
 
