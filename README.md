@@ -40,14 +40,22 @@
 ### ルート
 
 ```shell
-$ tree -ad -L 1 -I node_modules -I .git
+$ tree -ad -L 2 -I 'node_modules|.git|.astro'
 .
-├── .devcontainer  # devcontainerの設定
-├── .github        # GitHub Actionsの設定
-├── app            # ソースコード
-└── infra          # 開発環境のDockerfile
+├── .github
+│   └── workflows  # GitHub Actions
+├── public
+├── src
+│   ├── components # UIコンポーネント
+│   ├── content    # 記事実体
+│   ├── domain     # ドメインに紐づく処理
+│   ├── pages      # ページルーティング
+│   ├── styles     # グローバルに適用されるCSS
+│   └── utils      # プロジェクト全体で使うユーティリティ
+└── tests
+    └── e2e        # E2Eテスト
 
-5 directories
+13 directories
 ```
 
 npm workspacesを使ってルートから動かず作業するようにしています。
