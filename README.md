@@ -87,19 +87,16 @@ $ tree -ad -L 2 -I 'node_modules|.git|.astro'
 13 directories
 ```
 
-npm workspacesを使ってルートから動かず作業するようにしています。
-記事を書くときのみ、記事実体がある`./app/src/data`に移動して作業します。
-
-### コンポーネント
+### UIコンポーネント
 
 ```shell
-$ tree ./app/src/components -d
-./app/src/components
-├── atoms      # Atom
-├── molecules  # Molecule
-└── organisms  # Organism
+$ tree ./src/components -L 1
+./src/components
+├── base     # プロジェクト全体で使うもの
+├── features # ページを構成する部品ごとに分割したもの
+└── layouts  # ページ全体のレイアウトを担当するもの
 
-4 directories
+4 directories, 0 files
 ```
 
 Atomic Designを参考にしています。
