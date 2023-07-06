@@ -10,6 +10,12 @@ export type Companion<T, U> = {
     new: (value: T) => U;
 };
 
+/** Brandの名前 */
+type BrandName<T extends string> = `_${T}Brand`;
+
+/** never型が露出しないためのtype alias */
+type BrandMarker = never;
+
 /**
  * Opaque型を作成する
  * @param T Opaque型の元になる型
@@ -17,7 +23,7 @@ export type Companion<T, U> = {
  * @example type A = Opaque<string, 'A'>;
  */
 export type Opaque<T extends NonNullable<unknown>, U extends string> = T & {
-    [P in U as `_${P}Brand`]: never;
+    [P in U as BrandName<U>]: BrandMarker;
 };
 
 /**
@@ -27,7 +33,7 @@ export type Opaque<T extends NonNullable<unknown>, U extends string> = T & {
  * @example type A = Opaque<string, 'A'>;
  *     type B = InferBase<A, 'A'>; //=> string
  */
-type InferBase<T, U extends string> = T extends infer V & { [K in `_${U}Brand`]: never }
+type InferBase<T, U extends string> = T extends infer V & { [K in BrandName<U>]: BrandMarker }
     ? V
     : never;
 
@@ -50,7 +56,7 @@ export const Opaque = {
      *     const b: B = a; // Error
      *     const c: string = a; // OK
      */
-    create: <T, U extends string>(v: InferBase<T, U>) => v as unknown as T,
+    create: <T, U extends string>(value: InferBase<T, U>) => value as T,
 };
 
 if (import.meta.vitest) {
