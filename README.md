@@ -99,18 +99,21 @@ $ tree ./src/components -L 1
 4 directories, 0 files
 ```
 
-Atomic Designを参考にしています。
-しかし、コンポーネントの粒度が曖昧になりがちな部分を解消するため、
-以下のような基準を設け、振り分けるべきディレクトリを明確にしています。
+## 開発
 
-```mermaid
-flowchart TB
-    A([コンポーネント]) --> B[状態を持ってる?]
-    B -->|Yes| C([Organism])
-    B -->|No| D[他のコンポーネントに依存してる?]
-    D -->|Yes| E([Molecule])
-    D -->|No| F([Atom])
-```
+### 環境
+
+Git、GNU makeが必要です。
+エディタを問わず開発できるようにしてありますが、
+VS Code Workspaceを使うことを想定し、`blog.code-workspace`を配置しています。
+
+### 手法
+
+Issue駆動で開発し、PRの`close`コメントでIssueを閉じます。
+軽微な変更の場合、Issueを立てずにPRを作成することもあります。
+また、PRは`squash and merge`でマージします。
+ブランチ戦略はGit-flowでreleaseブランチは省き、
+mainブランチにマージすることで本番環境にデプロイされます。
 
 また、TemplateとPageはコンポーネントとして扱わず、
 Templateは`./app/src/layouts`に、Pageは`./app/src/pages`に配置しています。
