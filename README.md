@@ -90,9 +90,8 @@ flowchart TB
 Templateは`./app/src/layouts`に、Pageは`./app/src/pages`に配置しています。
 これは、Astroにはデフォルトで`layouts`ディレクトリと`pages`ディレクトリが用意されているためです。
 
-## 開発
 
-### 環境
+## 開発環境
 
 Git、Docker、GNU makeが必要です。
 エディタとコンテナの内外を問わず開発できるようにしてありますが、
@@ -100,7 +99,7 @@ LSPや拡張機能などの開発支援ツールが設定済みであるVSCode�
 VSCodeを使う場合は、Multi-root Workspaces機能を利用することを想定しているため、
 プロジェクトフォルダの代わりに`./blog.code-workspace`を開きます。
 
-#### Makefile
+### Makefile
 
 Makefileをタスクランナーとして活用し、コンテナ内外で同じコマンドが使えるようにしてあります。
 基本的にnpm-scriptsをラップする形でターゲットを定義していますが、
@@ -110,7 +109,7 @@ Makefileをタスクランナーとして活用し、コンテナ内外で同じ
 - 複数のコマンドを組み合わせる必要がある
 - コンテナ外から実行するのが大変
 
-### 手法
+### 開発手法
 
 Issue駆動で開発し、PRの`close`コメントでIssueを閉じます。
 軽微な変更の場合、Issueを立てずにPRを作成することもあります。
