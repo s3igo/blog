@@ -26,6 +26,14 @@ export type Opaque<T extends NonNullable<unknown>, U extends string> = T & {
     [P in U as BrandName<U>]: BrandMarker;
 };
 
+// TODO: Brandが複数存在する場合に対応
+// Brandが複数存在する場合、Brandを作成することはできるがそこから元の型を取り出すことができない
+
+/** Opaque型からBrandを取り出す */
+type InferBrand<T> = {
+    [K in keyof T]: T[K] extends BrandMarker ? K : never;
+}[keyof T]; //=> string | number | symbol
+
 /**
  * Opaque型とそれに付与したBrandから元の型を取り出す
  * @param T Opaque型のtype alias
@@ -46,10 +54,10 @@ type InferBase<T, U extends string> = T extends infer V & { [K in BrandName<U>]:
 export const Opaque = {
     /**
      * Opaque型の値を作成する
-     * @constructor
+     * @function
      * @param T Opaque<T, U>によって作成した型
      * @param U Opaque<T, U>によって作成した型のBrand
-     * @param v 作成する型の値
+     * @param value 作成する型の値
      * @example type A = Opaque<string, 'A'>;
      *     const a = Opaque.create<A, 'A'>('foo');
      *     type B = Opaque<string, 'B'>;
