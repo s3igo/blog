@@ -11,9 +11,11 @@ const tags = Tags.from(posts);
 
 <Layout isTop={true}>
     <div class="flex flex-col-reverse gap-5 md:flex-row">
-        <List {posts} />
-        <div class="shrink-0 max-sm:px-[10px] sm:max-md:px-[22px] md:w-48">
-            <Menu {tags} />
+        <div class="mx-auto max-w-3xl">
+            <List {posts} />
         </div>
+        <!-- <div class="shrink-0 max-sm:px-[10px] sm:max-md:px-[22px] md:w-48">
+            <Menu {tags} />
+        </div> -->
     </div>
 </Layout>

@@ -4,13 +4,13 @@ module.exports = {
     theme: {
         extend: {
             colors: {
+                accent: '#384B5A',
                 background: '#011627',
                 foreground: '#D6DEEB',
                 primary: '#FFEB95',
                 secondary: '#7fdbca',
                 shadow: '#575656',
                 tertiary: '#82aaff',
-                transparent: 'transparent',
             },
             screens: {
                 xs: '375px',

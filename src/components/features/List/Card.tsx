@@ -14,12 +14,15 @@ type Props = {
 };
 
 const VerticalSeparator: Component = () => (
-    <Separator.Root orientation="vertical" class="h-4 pr-px border-none bg-foreground/60 mx-1" />
+    <Separator.Root
+        orientation="vertical"
+        class="h-4 pr-[2px] border-none bg-slate-400 mx-[6px] rounded-sm"
+    />
 );
 
 export const Card: Component<Props> = (props) => (
-    <article class="hover:custom-shadow rounded-2xl border-2 border-solid border-transparent hover:border-secondary">
-        <div class="py-4 px-2 sm:px-5">
+    <article class="rounded-3xl bg-white hover:border-slate-400 border-2 border-transparent">
+        <div class="py-6 px-2 sm:px-8">
             <div class="flex gap-1 items-center flex-wrap">
                 <span class="metadata">{props.published}</span>
                 <Show when={props.updated !== undefined}>
@@ -32,12 +35,8 @@ export const Card: Component<Props> = (props) => (
                 <For each={props.tags}>{(tag) => <Tag name={tag} />}</For>
             </div>
             <a href={props.url}>
-                <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-xl text-primary sm:text-2xl">
-                    {props.title}
-                </h2>
-                <p class="bg-gradient-to-b from-foreground via-foreground/80 to-foreground/20 bg-clip-text text-transparent line-clamp-5 sm:text-lg">
-                    {props.description}
-                </p>
+                <h2 class="mb-2.5 pb-1.5 text-xl text-slate-800 sm:text-2xl">{props.title}</h2>
+                <p class="line-clamp-5 sm:text-lg">{props.description}</p>
             </a>
         </div>
     </article>
