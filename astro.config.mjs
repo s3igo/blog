@@ -1,7 +1,6 @@
 import solidJs from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
-import nightOwl from 'night-owl/themes/Night Owl-color-theme.json';
 
 // https://astro.build/config
 export default defineConfig({
@@ -17,9 +16,9 @@ export default defineConfig({
     ],
     markdown: {
         extendedDefaultPlugins: true,
+        remarkPlugins: ['remark-code-titles'],
         shikiConfig: {
-            theme: nightOwl,
-            wrap: true,
+            theme: 'material-theme-ocean',
         },
     },
     site: 'https://blog.tsuki-yo.net',
