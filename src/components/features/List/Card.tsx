@@ -21,23 +21,25 @@ const VerticalSeparator: Component = () => (
 );
 
 export const Card: Component<Props> = (props) => (
-    <article class="rounded-3xl bg-white hover:border-slate-400 border-2 border-transparent">
-        <div class="py-6 px-2 sm:px-8">
-            <div class="flex gap-1 items-center flex-wrap">
+    <a href={props.url}>
+        <article class="rounded-3xl bg-white hover:border-cyan-500 border-2 border-transparent py-6 px-2 sm:px-8">
+            <div class="flex items-center">
                 <span class="metadata">{props.published}</span>
                 <Show when={props.updated !== undefined}>
                     <VerticalSeparator />
-                    <span class="metadata">{`edited: ${props.updated}`}</span>
+                    <span class="metadata">{`↻ ${props.updated}`}</span>
                 </Show>
                 <Show when={props.tags.length !== 0}>
                     <VerticalSeparator />
                 </Show>
-                <For each={props.tags}>{(tag) => <Tag name={tag} link={false} />}</For>
+                <div class="flex gap-[6px]">
+                    <For each={props.tags}>{(tag) => <Tag name={tag} link={false} />}</For>
+                </div>
             </div>
-            <a href={props.url}>
-                <h2 class="mb-2.5 pb-1.5 text-xl text-slate-800 sm:text-2xl">{props.title}</h2>
-                <p class="line-clamp-5 sm:text-lg">{props.description}</p>
-            </a>
-        </div>
-    </article>
+            <h2 class="py-1.5 text-xl text-accent sm:text-2xl before:content-['#_'] before:text-cyan-500">
+                {props.title}
+            </h2>
+            <p class="line-clamp-5 sm:text-lg">{props.description}</p>
+        </article>
+    </a>
 );
