@@ -10,10 +10,10 @@ export const Navbar: Component<Props> = (props) => (
     //     aria-label="Global navigation"
     // >
     <nav
-        class="flex h-14 items-center justify-between rounded-full border-2 border-solid xs:h-16 sm:h-20 bg-white "
+        class="flex h-14 items-center justify-between rounded-full border-2 border-solid xs:h-16 xl:h-20  bg-white relative"
         aria-label="Global navigation"
     >
-        <a class="pl-5 text-2xl text-accent xs:pl-6 xs:text-3xl sm:pl-8 sm:text-[40px]" href="/">
+        <a class="absolute left-8 text-2xl text-accent xs:text-3xl xl:text-[40px]" href="/">
             <Show when={props.isH1} fallback={PAGE_TITLE}>
                 <h1>{PAGE_TITLE}</h1>
             </Show>

@@ -36,10 +36,10 @@ export const Card: Component<Props> = (props) => (
                     <For each={props.tags}>{(tag) => <Tag name={tag} link={false} />}</For>
                 </div>
             </div>
-            <h2 class="py-1.5 text-xl text-accent sm:text-2xl before:content-['#_'] before:text-cyan-500">
+            <h2 class="py-1.5 text-xl text-accent xl:text-2xl before:content-['#_'] before:text-cyan-500">
                 {props.title}
             </h2>
-            <p class="line-clamp-5 sm:text-lg">{props.description}</p>
+            <p class="line-clamp-5 xl:text-lg">{props.description}</p>
         </article>
     </a>
 );

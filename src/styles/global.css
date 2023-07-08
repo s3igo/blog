@@ -10,7 +10,7 @@
         @apply text-secondary decoration-2 underline-offset-2 hover:underline;
     }
     .metadata {
-        @apply text-sm text-slate-400 sm:text-base;
+        @apply text-sm text-slate-400 xl:text-base;
     }
     .vrl {
         writing-mode: vertical-rl;
