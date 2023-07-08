@@ -8,9 +8,8 @@ export const Tag: Component<Props> = (props) => {
     return merged.link ? (
         <a
             href={`/tags/${merged.name}`}
-            target="_blank"
             rel="noopener"
-            class="rounded-full border-2 border-transparent px-3 py-1 bg-white w-max hover:border-slate-400 block"
+            class="rounded-full border-2 border-transparent px-3 py-1 bg-white w-max hover:border-cyan-500 block"
         >
             <span class="metadata">#{merged.name}</span>
         </a>

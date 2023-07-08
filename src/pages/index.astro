@@ -15,21 +15,23 @@ const tags = Tags.from(posts);
 ---
 
 <Layout>
-    <div class="col-start-3 pt-6 xl:col-start-2">
-        <div class="fixed">
+    <div class="col-start-2 pt-6 lg:max-xl:col-start-3">
+        <div class="md:fixed">
             <Icon />
         </div>
     </div>
-    <div class="col-span-6 col-start-4 pt-6 xl:col-span-8">
+    <div class="xg:max-xl:col-start-4 col-span-8 pt-6 lg:max-xl:col-span-6">
         <Navbar isH1={true} />
     </div>
-    <div class="col-span-6 col-start-4 xl:col-span-8 xl:col-start-3">
+    <div
+        class="col-span-8 col-start-3 max-lg:row-start-3 lg:max-xl:col-span-6 lg:max-xl:col-start-4"
+    >
         <List {posts} />
     </div>
-    <div class="col-span-2">
+    <div class="col-span-2 max-lg:col-span-8 max-lg:col-start-3 max-lg:row-start-2">
         <Menu {tags} />
     </div>
-    <div class="col-span-6 col-start-4 pb-6 xl:col-span-8 xl:col-start-3">
+    <div class="col-span-8 col-start-3 pb-6 lg:max-xl:col-span-6 lg:max-xl:col-start-4">
         <Footer />
     </div>
 </Layout>
