@@ -16,7 +16,7 @@ type Props = {
 const VerticalSeparator: Component = () => (
     <Separator.Root
         orientation="vertical"
-        class="h-4 pr-[2px] border-none bg-slate-400 mx-[6px] rounded-sm"
+        class="h-4 pr-[1.5px] bg-slate-400 mx-[6px] rounded-sm border-none"
     />
 );
 
@@ -32,7 +32,7 @@ export const Card: Component<Props> = (props) => (
                 <Show when={props.tags.length !== 0}>
                     <VerticalSeparator />
                 </Show>
-                <For each={props.tags}>{(tag) => <Tag name={tag} />}</For>
+                <For each={props.tags}>{(tag) => <Tag name={tag} link={false} />}</For>
             </div>
             <a href={props.url}>
                 <h2 class="mb-2.5 pb-1.5 text-xl text-slate-800 sm:text-2xl">{props.title}</h2>

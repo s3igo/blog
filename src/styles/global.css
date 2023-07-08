@@ -12,6 +12,9 @@
     .metadata {
         @apply text-sm text-slate-400 sm:text-base;
     }
+    .vrl {
+        writing-mode: vertical-rl;
+    }
 }
 
 html {

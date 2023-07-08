@@ -1,15 +1,20 @@
-import type { Component } from 'solid-js';
+import { type Component, mergeProps } from 'solid-js';
 import type { Tag as TagType } from '~/domain/values/post';
 
-type Props = { name: TagType };
+type Props = { name: TagType; link?: boolean };
 
-export const Tag: Component<Props> = (props) => (
-    <a
-        href={`/tags/${props.name}`}
-        target="_blank"
-        rel="noopener"
-        class="hover:custom-shadow ml-[-6px] rounded-md border-2 border-transparent px-1 hover:border-secondary w-min max-w-full"
-    >
-        <span class="metadata">#{props.name}</span>
-    </a>
-);
+export const Tag: Component<Props> = (props) => {
+    const merged = mergeProps({ link: true }, props);
+    return merged.link ? (
+        <a
+            href={`/tags/${merged.name}`}
+            target="_blank"
+            rel="noopener"
+            class="rounded-full border-2 border-transparent px-3 py-1 bg-white w-max hover:border-slate-400 block"
+        >
+            <span class="metadata">#{merged.name}</span>
+        </a>
+    ) : (
+        <div class="metadata">#{merged.name}</div>
+    );
+};
