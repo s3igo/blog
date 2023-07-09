@@ -1,19 +1,42 @@
 ---
 import { List } from '~/components/features/List';
-import Menu from '~/components/features/Menu.astro';
+import { Navbar } from '~/components/features/Navbar';
+// import { List } from '~/components/features/List';
+// import Menu from '~/components/features/Menu.astro';
 import Layout from '~/components/layouts/Layout.astro';
 import { Posts } from '~/domain/values/post';
 import { Tags } from '~/domain/values/tags';
+import Menu from '~/components/features/Menu.astro';
+import Footer from '~/components/features/Footer.astro';
 
 const posts = await Posts.fetch();
 const tags = Tags.from(posts);
 ---
 
-<Layout isTop={true}>
-    <div class="flex flex-col-reverse gap-5 md:flex-row">
-        <List {posts} />
-        <div class="shrink-0 max-sm:px-[10px] sm:max-md:px-[22px] md:w-48">
-            <Menu {tags} />
+<Layout>
+    <div class="pt-4 max-md:col-span-12 md:col-start-2 md:pt-6 lg:max-xl:col-start-3">
+        <div class="flex md:justify-end">
+            <div class="md:fixed">
+                <img src="/icon.png" alt="tsukiyo icon" class="w-14 xl:w-20" />
+            </div>
         </div>
+    </div>
+    <div
+        class="xg:max-xl:col-start-4 col-span-12 col-start-1 md:col-span-8 md:pt-6 lg:max-xl:col-span-6"
+    >
+        <Navbar isH1={true} />
+    </div>
+    <div
+        class="col-span-12 col-start-1 row-start-4 md:col-span-8 md:col-start-3 md:row-start-3 lg:row-start-2 lg:max-xl:col-span-6 lg:max-xl:col-start-4"
+    >
+        <List {posts} />
+    </div>
+    <div
+        class="xl: col-span-12 col-start-1 row-start-3 md:col-span-8 md:row-start-2 md:max-lg:col-start-3 lg:col-span-2 lg:col-start-10 xl:col-start-11"
+    >
+        <Menu {tags} />
+    </div>
+    <div class="col-span-8 col-start-3 pb-4 md:pb-6 lg:max-xl:col-span-6 lg:max-xl:col-start-4">
+        <Footer />
     </div>
 </Layout>

@@ -20,6 +20,8 @@ const { posts } = Astro.props;
 ---
 
 <Layout title={`tag: ${tag}`}>
-    <h1 class="pb-5 pl-5 pt-8 text-3xl text-tertiary sm:text-4xl">#{tag}の記事一覧</h1>
-    <List {posts} />
+    <div class="col-span-10">
+        <h1 class="pb-5 pl-5 pt-8 text-3xl text-tertiary sm:text-4xl">#{tag}の記事一覧</h1>
+        <List {posts} />
+    </div>
 </Layout>

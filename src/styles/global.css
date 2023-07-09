@@ -10,10 +10,13 @@
         @apply text-secondary decoration-2 underline-offset-2 hover:underline;
     }
     .metadata {
-        @apply text-sm text-foreground/60 sm:text-base;
+        @apply text-sm text-slate-400 xl:text-base;
+    }
+    .vrl {
+        writing-mode: vertical-rl;
     }
 }
 
 html {
-    @apply bg-background font-sans text-foreground;
+    @apply bg-slate-200 font-sans text-accent;
 }

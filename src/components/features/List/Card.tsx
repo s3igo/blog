@@ -13,32 +13,37 @@ type Props = {
     description: Description;
 };
 
-const VerticalSeparator: Component = () => (
-    <Separator.Root orientation="vertical" class="h-4 pr-px border-none bg-foreground/60 mx-1" />
+export const Card: Component<Props> = (props) => (
+    <a href={props.url}>
+        <article class="rounded-3xl bg-white hover:border-cyan-500 border-2 border-transparent py-4 sm:py-6 px-5 sm:px-8">
+            <div class="flex sm:items-center max-sm:flex-col">
+                <div class="flex items-center">
+                    <span class="metadata">{props.published}</span>
+                    <Show when={props.updated !== undefined}>
+                        <Separator.Root
+                            orientation="vertical"
+                            class="h-4 pr-[1.5px] bg-slate-400 mx-[6px] rounded-sm border-none"
+                        />
+                        <span class="metadata">{`↻ ${props.updated}`}</span>
+                    </Show>
+                </div>
+                <Show when={props.tags.length !== 0}>
+                    <Separator.Root
+                        orientation="vertical"
+                        class="h-4 pr-[1.5px] bg-slate-400 mx-[6px] rounded-sm border-none max-sm:hidden"
+                    />
+
+                    <div class="flex gap-[6px]">
+                        <For each={props.tags}>{(tag) => <Tag name={tag} link={false} />}</For>
+                    </div>
+                </Show>
+            </div>
+            <h2 class="py-1.5 text-xl text-accent xl:text-2xl before:content-['#_'] before:text-cyan-500">
+                {props.title}
+            </h2>
+            <p class="line-clamp-5 xl:text-lg">{props.description}</p>
+        </article>
+    </a>
 );
 
-export const Card: Component<Props> = (props) => (
-    <article class="hover:custom-shadow rounded-2xl border-2 border-solid border-transparent hover:border-secondary">
-        <div class="py-4 px-2 sm:px-5">
-            <div class="flex gap-1 items-center flex-wrap">
-                <span class="metadata">{props.published}</span>
-                <Show when={props.updated !== undefined}>
-                    <VerticalSeparator />
-                    <span class="metadata">{`edited: ${props.updated}`}</span>
-                </Show>
-                <Show when={props.tags.length !== 0}>
-                    <VerticalSeparator />
-                </Show>
-                <For each={props.tags}>{(tag) => <Tag name={tag} />}</For>
-            </div>
-            <a href={props.url}>
-                <h2 class="mb-2.5 border-b border-tertiary pb-1.5 text-xl text-primary sm:text-2xl">
-                    {props.title}
-                </h2>
-                <p class="bg-gradient-to-b from-foreground via-foreground/80 to-foreground/20 bg-clip-text text-transparent line-clamp-5 sm:text-lg">
-                    {props.description}
-                </p>
-            </a>
-        </div>
-    </article>
-);
+// TODO: aの方にスタイルを当てる

@@ -1,8 +1,6 @@
 ---
 import '@fontsource/nunito-sans';
 import '@fontsource/zen-kaku-gothic-new';
-import Footer from '~/components/features/Footer.astro';
-import Header, { type Props as HeaderProps } from '~/components/features/Header.astro';
 import { PAGE_DESCRIPTION, PAGE_TITLE } from '~/utils/constants';
 import '~/styles/global.css';
 
@@ -11,10 +9,8 @@ const pageTitle = (text: string): string => `${text} | ${PAGE_TITLE}`;
 type Props = {
     title?: string;
     description?: string;
-    isTop?: boolean;
 };
-const { description = PAGE_DESCRIPTION, isTop = false, title } = Astro.props;
-const headerProps: HeaderProps = { isH1: isTop };
+const { description = PAGE_DESCRIPTION, title } = Astro.props;
 
 const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
@@ -33,12 +29,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <slot name="head" />
     </head>
     <body>
-        <div class="mx-auto px-5 xl:container sm:px-8">
-            <div class="py-8">
-                <Header {...headerProps} />
-            </div>
+        <div class="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-4 max-md:gap-y-4 md:px-8">
             <slot />
-            <Footer />
         </div>
     </body>
 </html>

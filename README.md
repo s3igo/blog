@@ -33,6 +33,8 @@
 
 ## 設計思想
 
+特に実現したい項目は以下の通りです。
+
 - ハイパフォーマンス
 - シンプル
 - 変更・拡張が容易
@@ -88,13 +90,13 @@ $ tree -ad -L 2 -I 'node_modules|.git|.astro'
 ### UIコンポーネント
 
 ```shell
-$ tree ./src/components -L 1
+$ tree -d ./src/components -L 1
 ./src/components
 ├── base     # プロジェクト全体で使うもの
 ├── features # ページを構成する部品ごとに分割したもの
 └── layouts  # ページ全体のレイアウトを担当するもの
 
-4 directories, 0 files
+4 directories
 ```
 
 ## 開発
@@ -131,7 +133,7 @@ AstroのContent Collectionを使ってzodによるバリデーションを行っ
 ### Opaque型
 
 TypeScriptはStructural typingなので、
-Branded typesでOpaque型を作成して部分的にNominal typingを実現しています。
+Branded typesでOpaque型を作成して部分的なNominal typingを実現しています。
 また、型の定義はドメインに紐づけて行うことで、ドメインの変更に伴う修正箇所を最小限に抑えています。
 
 ### 自動化

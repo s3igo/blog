@@ -14,7 +14,7 @@ export const List: Component<Props> = (props) => {
     );
 
     return (
-        <main class="flex flex-col gap-4 sm:gap-6">
+        <main class="flex flex-col gap-4 md:gap-6">
             <For each={cards}>{(card) => <Card {...card} />}</For>
         </main>
     );
