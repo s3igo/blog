@@ -12,7 +12,7 @@ const { tags } = Astro.props;
         orientation="vertical"
         class="mr-6 h-full rounded-sm border-none bg-slate-400 pr-[1.5px] max-lg:hidden"
     />
-    <div class="flex h-max gap-3 lg:flex-col">
+    <div class="flex h-max flex-wrap gap-3 lg:flex-col">
         {tags.map((tag) => <Tag name={tag} />)}
     </div>
 </div>
