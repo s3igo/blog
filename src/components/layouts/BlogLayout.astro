@@ -23,15 +23,15 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
 ---
 
 <Layout {title} description={firstThreeSentences}>
-    <div class="pt-4 max-md:col-span-12 md:col-start-2 md:pt-6 lg:col-start-3 xl:col-start-1">
+    <div class="col-start-1 pt-6 max-md:col-span-12 md:max-lg:col-start-2">
         <a class="flex md:justify-end" href="/">
             <div class="md:fixed">
                 <img src="/icon.png" alt="tsukiyo icon" class="w-14 xl:w-20" />
             </div>
         </a>
     </div>
-    <div class="col-span-10">
-        <div class="mb-2 flex gap-3 pt-6">
+    <div class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-10 lg:col-start-2">
+        <div class="mb-2 flex flex-wrap gap-3 md:pt-6">
             <Metadata type="text" text={published} />
             {updated && <Metadata type="text" text={`↻ ${updated}`} />}
             {tags.map((tag) => <TagComponent name={tag} />)}
@@ -68,11 +68,11 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
 
         /* --------------------------------- header --------------------------------- */
         h1 {
-            @apply mb-20 text-2xl before:text-cyan-500 before:content-['#_'] sm:text-4xl;
+            @apply mb-16 text-3xl before:text-cyan-500 before:content-['#_'] sm:mb-20 sm:text-4xl;
         }
 
         :is(h2, h3, h4, h5) {
-            @apply mt-16 after:text-cyan-500;
+            @apply mt-10 after:text-cyan-500 sm:mt-16;
         }
 
         h2 {
