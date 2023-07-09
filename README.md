@@ -90,7 +90,7 @@ $ tree -ad -L 2 -I 'node_modules|.git|.astro'
 ### UIコンポーネント
 
 ```shell
-$ tree -d ./src/components -L 1
+$ tree -d -L 1 ./src/components
 ./src/components
 ├── base     # プロジェクト全体で使うもの
 ├── features # ページを構成する部品ごとに分割したもの
