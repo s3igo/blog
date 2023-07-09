@@ -1,6 +1,5 @@
 ---
 import { List } from '~/components/features/List';
-import Icon from '~/components/features/Header/Icon.astro';
 import { Navbar } from '~/components/features/Header/Navbar';
 // import { List } from '~/components/features/List';
 // import Menu from '~/components/features/Menu.astro';
@@ -15,9 +14,9 @@ const tags = Tags.from(posts);
 ---
 
 <Layout>
-    <div class="col-start-2 pt-6 lg:max-xl:col-start-3">
-        <div class="md:fixed">
-            <Icon />
+    <div class="relative col-start-2 pt-6 lg:max-xl:col-start-3">
+        <div class="md:fixed md:w-16 xl:w-20">
+            <img src="/icon.png" alt="tsukiyo icon" class="max-xl:float-right max-xl:-mr-3" />
         </div>
     </div>
     <div class="xg:max-xl:col-start-4 col-span-8 pt-6 lg:max-xl:col-span-6">
