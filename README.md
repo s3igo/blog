@@ -14,96 +14,100 @@
 ## 背景・方針
 
 プログラミングのこと日常のこと問わず、アウトプットの場が欲しかったので作りました。
-詳しくは[こちら](https://blog.tsuki-yo.net/posts/2023-01-01/first-post)へ。
-
-## 設計思想
-
-任意のエディタで編集できることとロックインを避けることを意識してCMSを使わず、
-素のMarkdownで記事を作成しています。
-記事の管理は[zk](https://github.com/mickael-menu/zk)を利用しています。
+詳しくは[このブログの最初の投稿](https://blog.tsuki-yo.net/posts/2023-01-01/first-post)をご覧ください。
 
 ## 技術スタック
 
 - 言語: TypeScript
 - パッケージマネージャー: npm
 - レンダリングフレームワーク: Astro
-- フロントエンドフレームワーク: solid-js
-- CSSフレームワーク: tailwindCSS(PostCSS)
+- UIライブラリ: solid-js
+- CSSフレームワーク: tailwindCSS
 - リンター: ESLint
 - フォーマッター: Prettier
 - ドメイン・デプロイ・CDN: Cloudflare
-- 単体テスト: Vitest・solid-testing-library
+- 単体テスト: Vitest
 - E2Eテスト: Playwright
 - CI/CD: GitHub Actions
+- 依存関係管理: Renovate
+
+## 設計思想
+
+特に実現したい項目は以下の通りです。
+
+- ハイパフォーマンス
+- シンプル
+- 変更・拡張が容易
+- 人的ミスの発生する余地が小さい
+
+### 記事について
+
+任意のエディタで編集できることとロックインを避けることを意識してCMSを使わず、
+素のMarkdownで記事を作成しています。
+
+### コード品質について
+
+Lintをできるだけ厳しく設定することでテストを最小限にとどめています。
+ブログというメディアは要件上複雑なビジネスロジックを必要としないため、
+この運用で十分だと考えています。
+<!-- WIP: また、実際の環境での動作を重視して結合テストを行わず、
+E2Eテストの比重を大きくしています。 -->
+
+### 型について
+
+扱うデータはすべて型で表現し、Primitive Obsessionに陥ることを避けています。
+型による安全性をさらに高めるため、Opaque型を適用して各データを公称型として扱っています。
 
 ## ディレクトリ構成
 
-### ルート
+各ディレクトリについて、さらにサブディレクトリを作るときは`index.{ts,tsx,astro}`を特別視せず、
+ファイル名と同名のディレクトリを作るようにしています。
+これは、既存のコードを移動・変更せずに拡張性を高めるためと、
+エディタのタブリストが`index`で溢れるのを防ぐためです。
+
+importの治安を守るため、`eslint-plugin-import-access`を利用してexportを制限し、
+適切な分割単位でBarrel exportを行っています。
 
 ```shell
-$ tree -ad -L 1 -I node_modules -I .git
+$ tree -ad -L 2 -I 'node_modules|.git|.astro'
 .
-├── .devcontainer  # devcontainerの設定
-├── .github        # GitHub Actionsの設定
-├── app            # ソースコード
-└── infra          # 開発環境のDockerfile
+├── .github
+│   └── workflows  # GitHub Actions
+├── public
+├── src
+│   ├── components # UIコンポーネント
+│   ├── content    # 記事実体
+│   ├── domain     # ドメインに紐づく処理
+│   ├── pages      # ページルーティング
+│   ├── styles     # グローバルに適用されるCSS
+│   └── utils      # プロジェクト全体で使うユーティリティ
+└── tests
+    └── e2e        # E2Eテスト
 
-5 directories
+13 directories
 ```
 
-npm workspacesを使ってルートから動かず作業するようにしています。
-記事を書くときのみ、記事実体がある`./app/src/data`に移動して作業します。
-
-### コンポーネント
+### UIコンポーネント
 
 ```shell
-$ tree ./app/src/components -d
-./app/src/components
-├── atoms      # Atom
-├── molecules  # Molecule
-└── organisms  # Organism
+$ tree -d -L 1 ./src/components
+./src/components
+├── base     # プロジェクト全体で使うもの
+├── features # ページを構成する部品ごとに分割したもの
+└── layouts  # ページ全体のレイアウトを担当するもの
 
 4 directories
 ```
-
-Atomic Designを参考にしています。
-しかし、コンポーネントの粒度が曖昧になりがちな部分を解消するため、
-以下のような基準を設け、振り分けるべきディレクトリを明確にしています。
-
-```mermaid
-flowchart TB
-    A([コンポーネント]) --> B[状態を持ってる?]
-    B -->|Yes| C([Organism])
-    B -->|No| D[他のコンポーネントに依存してる?]
-    D -->|Yes| E([Molecule])
-    D -->|No| F([Atom])
-```
-
-また、TemplateとPageはコンポーネントとして扱わず、
-Templateは`./app/src/layouts`に、Pageは`./app/src/pages`に配置しています。
-これは、Astroにはデフォルトで`layouts`ディレクトリと`pages`ディレクトリが用意されているためです。
 
 ## 開発
 
 ### 環境
 
-Git、Docker、GNU makeが必要です。
-コンテナ外で記事を書く場合は[zk](https://github.com/mickael-menu/zk)が必要です。
-また、`zk edit`コマンドは[fzf](https://github.com/junegunn/fzf)と[bat](https://github.com/sharkdp/bat)に依存しています。
-エディタとコンテナの内外を問わず開発できるようにしてありますが、
-LSPや拡張機能などの開発支援ツールが設定済みであるVSCodeのDev Containerを使うのがベターです。
-VSCodeを使う場合は、Multi-root Workspaces機能を利用することを想定しているため、
-プロジェクトフォルダの代わりに`./blog.code-workspace`を開きます。
-
-#### Makefile
-
-Makefileをタスクランナーとして活用し、コンテナ内外で同じコマンドが使えるようにしてあります。
-基本的にnpm-scriptsをラップする形でターゲットを定義していますが、
-以下に当てはまるもののみ実装して必用以上にコマンドが増えないようにしています。
-
-- 使用頻度が高い
-- 複数のコマンドを組み合わせる必要がある
-- コンテナ外から実行するのが大変
+Git、GNU makeが必要です。
+エディタを問わず開発できるようにしてありますが、
+VS Code Workspaceを使うことを想定し、`blog.code-workspace`を配置しています。
+エディタ環境の統一のために`.editorconfig`を、
+ツールチェーンのバージョン固定のために`.node-version`と`package.json`のenginesフィールドを使っています。
 
 ### 手法
 
@@ -112,3 +116,33 @@ Issue駆動で開発し、PRの`close`コメントでIssueを閉じます。
 また、PRは`squash and merge`でマージします。
 ブランチ戦略はGit-flowでreleaseブランチは省き、
 mainブランチにマージすることで本番環境にデプロイされます。
+
+## 詳細
+
+### 記事の管理
+
+記事のメタデータは必要なもののみYAML Frontmatterに記述し、
+AstroのContent Collectionを使ってzodによるバリデーションを行って型安全を保っています。
+文章の品質を保つためTextlintを使っています。
+
+### テスト
+
+単体テストはVitestのIn-source testingを利用して実際のコードにできるだけ近い位置で書くようにしています。
+一応カバレッジの計測は行っていますが、明確な目標は設けていません。
+
+### Opaque型
+
+TypeScriptはStructural typingなので、
+Branded typesでOpaque型を作成して部分的なNominal typingを実現しています。
+また、型の定義はドメインに紐づけて行うことで、ドメインの変更に伴う修正箇所を最小限に抑えています。
+
+### 自動化
+
+GitHub Actionsを使ってCI/CDの自動化を、Renovateを使って依存関係の更新を自動化しています。
+GitHub Actionについては、
+ジョブの並列化とキャッシュの活用でできるだけ高速に実行されるよう意識しています。
+Cloudflare PagesとのGitHub連携でマージをトリガーに本番環境へのデプロイを行っています。
+
+## ライセンス
+
+[MIT](LICENSE)

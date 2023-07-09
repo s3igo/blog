@@ -1,0 +1,25 @@
+---
+import { List } from '~/components/features/List';
+import { Posts } from '~/domain/values/post';
+import { Tags } from '~/domain/values/tags';
+import ListLayout from '~/components/layouts/ListLayout.astro';
+
+export const getStaticPaths = async () => {
+    const posts = await Posts.fetch();
+    const tags = Tags.from(posts);
+
+    return tags.map((tag) => ({
+        params: { tag },
+        props: { posts: posts.filter(({ tags }) => tags.includes(tag)) },
+    }));
+};
+
+const { tag } = Astro.params;
+type Props = { posts: Posts };
+const { posts } = Astro.props;
+---
+
+<ListLayout title={`#${tag}の記事一覧`}>
+    <h2 class="pb-4 text-2xl xl:pb-6 xl:text-4xl">#{tag}</h2>
+    <List {posts} />
+</ListLayout>

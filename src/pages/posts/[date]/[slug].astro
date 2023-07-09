@@ -1,0 +1,24 @@
+---
+import BlogLayout from '~/components/layouts/BlogLayout.astro';
+import { type Post, Posts } from '~/domain/values/post';
+
+export const getStaticPaths = async () => {
+    const posts = await Posts.fetch();
+    return posts.map((post) => ({
+        params: {
+            date: post.published,
+            slug: post.name,
+        },
+        props: { post },
+    }));
+};
+
+type Props = { post: Post };
+const { post } = Astro.props;
+const { Content, firstThreeSentences, headings, published, tags, title, updated } = post;
+const blogProps = { firstThreeSentences, headings, published, tags, title, updated };
+---
+
+<BlogLayout {...blogProps}>
+    <Content />
+</BlogLayout>

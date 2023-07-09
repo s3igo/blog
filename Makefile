@@ -1,103 +1,36 @@
-# docker compose
-COMPOSE := docker compose
-SELF = $(COMPOSE) run --rm app make $@
-
-# npm
-RUN := npm run
-RUN_APP := $(RUN) -w app
-
-# GitHub
 USER := s3igo
 REPO := blog
 
-# error
-ERROR = $(error You can't run this command in the container)
-
-
 .PHONY: dev
 dev:
-ifeq ($(shell whoami),node)
-	$(RUN_APP) start
-else
-	$(COMPOSE) up
-endif
+	npm start
 
 .PHONY: preview
 preview:
-ifeq ($(shell whoami),node)
-	bash -c "trap '$(RUN_APP) build:clean' SIGINT; $(RUN_APP) preview:local"
-else
-	$(COMPOSE) run --rm --service-ports app make $@
-endif
+	bash -c "trap 'npm run build:clean' SIGINT; npm run preview:local"
 
 .PHONY: test
 test:
-ifeq ($(shell whoami),node)
-	$(RUN_APP) test
-else
-	$(SELF)
-endif
+	npm test
 
 .PHONY: index
 index:
-ifeq ($(shell whoami),node)
-	$(RUN_APP) index
-else
-	$(SELF)
-endif
+	npm run index
 
 .PHONY: clean
 clean:
-ifeq ($(shell whoami),node)
-	$(RUN) clean
-	$(RUN_APP) clean
-	$(RUN_APP) build:clean
-	$(RUN_APP) coverage:clean
-else
-	$(SELF)
-endif
+	npm run clean
+	npm run build:clean
+	npm run coverage:clean
 
 .PHONY: init
 init:
-	$(MAKE) clean
-ifeq ($(shell whoami),node)
+	npm run clean
 	npm install
-	$(MAKE) index
-else
-	$(SELF)
-endif
-
-# --------------------------- 以下はDockerコンテナ外でのみ実行可能 -------------------------- #
-.PHONY: shell
-shell:
-ifeq ($(shell whoami),node)
-	$(ERROR)
-else
-	$(COMPOSE) run --rm --service-ports app bash
-endif
-
-.PHONY: down
-down:
-ifeq ($(shell whoami),node)
-	$(ERROR)
-else
-	$(COMPOSE) down
-endif
-
-.PHONY: remove
-remove:
-ifeq ($(shell whoami),node)
-	$(ERROR)
-else
-	$(COMPOSE) down --rmi all --volumes --remove-orphans
-endif
+	npm run index
 
 .PHONY: clear-cache
 clear-cache:
-ifeq ($(shell whoami),node)
-	$(ERROR)
-else
 	gh api repos/$(USER)/$(REPO)/actions/caches \
 		| jq '.actions_caches[].id' \
 		| xargs -I{} gh api -X DELETE repos/$(USER)/$(REPO)/actions/caches/{}
-endif

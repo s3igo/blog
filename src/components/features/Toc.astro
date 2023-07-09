@@ -1,0 +1,25 @@
+---
+import type { MarkdownHeading } from 'astro';
+
+export type Props = { headings: MarkdownHeading[] };
+const { headings } = Astro.props;
+---
+
+<nav aria-label="Local navigation">
+    <ul>
+        {
+            headings.map(({ depth, slug, text }, idx, self) => {
+                const degree = depth - 2;
+                const isLast = idx === self.length - 1;
+                const bullet = isLast ? '└' : '├' + '─'.repeat(degree);
+                return (
+                    <li class="ml-[20px] before:ml-[-20px]">
+                        <a href={`#${slug}`} class="link">
+                            {`${bullet} ${text}`}
+                        </a>
+                    </li>
+                );
+            })
+        }
+    </ul>
+</nav>

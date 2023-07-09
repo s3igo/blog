@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .custom-shadow {
+        @apply shadow-[3px_3px_4px_1px] shadow-shadow;
+    }
+    .link {
+        @apply text-secondary decoration-2 underline-offset-2 hover:underline;
+    }
+    .metadata {
+        @apply text-sm text-slate-400 xl:text-base;
+    }
+    .vrl {
+        writing-mode: vertical-rl;
+    }
+}
+
+html {
+    @apply bg-slate-200 font-sans text-accent;
+}

@@ -1,7 +1,6 @@
 {
   "extensions": {
     "recommendations": [
-      "ms-vscode-remote.remote-containers",
       "editorconfig.editorconfig",
       "astro-build.astro-vscode",
       "dbaeumer.vscode-eslint",
@@ -19,10 +18,7 @@
       "path": "."
     },
     {
-      "path": "app"
-    },
-    {
-      "path": "app/src/data"
+      "path": "src/content/posts"
     }
   ],
   "settings": {
