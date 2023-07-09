@@ -14,20 +14,26 @@ const tags = Tags.from(posts);
 ---
 
 <Layout>
-    <div class="relative col-start-2 pt-6 lg:max-xl:col-start-3">
-        <div class="md:fixed md:w-16 xl:w-20">
-            <img src="/icon.png" alt="tsukiyo icon" class="max-xl:float-right max-xl:-mr-3" />
+    <div class="pt-6 max-md:col-span-2 md:col-start-2 lg:max-xl:col-start-3">
+        <div class="flex md:justify-end">
+            <div class="md:fixed">
+                <img src="/icon.png" alt="tsukiyo icon" class="w-14 xl:w-20" />
+            </div>
         </div>
     </div>
-    <div class="xg:max-xl:col-start-4 col-span-8 pt-6 lg:max-xl:col-span-6">
+    <div
+        class="xg:max-xl:col-start-4 col-span-12 col-start-1 md:col-span-8 md:pt-6 lg:max-xl:col-span-6"
+    >
         <Navbar isH1={true} />
     </div>
     <div
-        class="col-span-8 col-start-3 max-lg:row-start-3 lg:max-xl:col-span-6 lg:max-xl:col-start-4"
+        class="col-span-12 col-start-1 row-start-4 md:col-span-8 md:col-start-3 md:row-start-3 lg:row-start-2 lg:max-xl:col-span-6 lg:max-xl:col-start-4"
     >
         <List {posts} />
     </div>
-    <div class="col-span-2 max-lg:col-span-8 max-lg:col-start-3 max-lg:row-start-2">
+    <div
+        class="xl: col-span-12 col-start-1 row-start-3 max-lg:col-span-8 md:row-start-2 md:max-lg:col-start-3 lg:col-span-2 lg:col-start-10 xl:col-start-11"
+    >
         <Menu {tags} />
     </div>
     <div class="col-span-8 col-start-3 pb-6 lg:max-xl:col-span-6 lg:max-xl:col-start-4">

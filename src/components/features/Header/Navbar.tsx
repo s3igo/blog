@@ -9,7 +9,7 @@ export const Navbar: Component<Props> = (props) => (
     //     aria-label="Global navigation"
     // >
     <nav
-        class="flex h-14 items-center justify-between rounded-full border-2 border-solid xs:h-16 xl:h-20  bg-white relative"
+        class="flex h-14 items-center justify-between rounded-full border-2 border-solid xs:h-14 xl:h-20  bg-white relative"
         aria-label="Global navigation"
     >
         <a
