@@ -44,13 +44,13 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
             @apply sm:text-lg;
 
             p {
-                @apply bg-white py-4;
+                @apply my-4 rounded-2xl bg-white p-4;
             }
 
             a {
                 /* TODO: なぜか`.link`ユーティリティクラスが読めない */
                 /* @apply link; */
-                @apply text-secondary decoration-2 underline-offset-2 hover:underline;
+                @apply text-cyan-500 decoration-2 underline-offset-2 hover:underline;
             }
 
             em {
@@ -63,12 +63,11 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
 
             /* --------------------------------- header --------------------------------- */
             h1 {
-                /* @apply mb-2 pt-6 text-2xl leading-relaxed text-tertiary xs:text-3xl sm:text-4xl; */
-                @apply mb-6 text-2xl before:text-cyan-500 before:content-['#_'] sm:text-4xl;
+                @apply mb-20 text-2xl before:text-cyan-500 before:content-['#_'] sm:text-4xl;
             }
 
             :is(h2, h3, h4, h5) {
-                @apply border-b border-dashed border-primary pb-3 pt-12 after:text-foreground/50 sm:pt-[72px];
+                @apply mt-16 after:text-cyan-500;
             }
 
             h2 {
@@ -89,7 +88,7 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
 
             /* header要素が連続する場合の余白調整 */
             :is(h2 + h3, h3 + h4, h4 + h5) {
-                @apply pt-3;
+                @apply mt-4;
             }
 
             /* ---------------------------------- list ---------------------------------- */
@@ -122,12 +121,12 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
 
             /* block */
             pre {
-                @apply my-4 rounded-xl border border-dashed border-tertiary p-4 text-base;
+                @apply my-4 rounded-2xl p-4 text-base;
             }
 
             /* filename */
             .remark-code-title {
-                @apply mb-[-16px] pl-2 font-code text-base text-tertiary;
+                @apply -mb-3 font-code text-base text-[#82AAFF];
             }
         }
     </style>
