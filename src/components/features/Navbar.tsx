@@ -1,24 +1,13 @@
-import { type Component, Show } from 'solid-js';
+import type { Component } from 'solid-js';
 import { PAGE_TITLE } from '~/utils/constants';
 
-export type Props = { isH1: boolean };
-
-export const Navbar: Component<Props> = (props) => (
-    // <nav
-    //     class="flex h-14 items-center justify-between rounded-full border-2 border-solid border-primary xs:h-16 sm:h-20 bg-gradient-to-tr from-background via-accent via-55%"
-    //     aria-label="Global navigation"
-    // >
+export const Navbar: Component = () => (
     <nav
-        class="flex h-14 items-center justify-between rounded-full border-2 border-solid xs:h-14 xl:h-20  bg-white relative"
+        class="flex h-14 items-center justify-between rounded-full border-2 border-solid xl:h-20  bg-white relative"
         aria-label="Global navigation"
     >
-        <a
-            class="absolute left-6 lg:left-8 text-2xl text-accent xs:text-3xl xl:text-[40px]"
-            href="/"
-        >
-            <Show when={props.isH1} fallback={PAGE_TITLE}>
-                <h1>{PAGE_TITLE}</h1>
-            </Show>
+        <a class="absolute left-6 lg:left-8 text-accent text-3xl xl:text-[40px]" href="/">
+            <h1>{PAGE_TITLE}</h1>
         </a>
         {/* <a href="/rss.xml">
             <OcRss2
