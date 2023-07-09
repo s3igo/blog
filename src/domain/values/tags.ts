@@ -7,6 +7,9 @@ import type { Posts } from './post';
  * @package
  */
 export type Tag = Opaque<string, 'Tag'>;
+const Tag: Companion<string, Tag> = {
+    new: (tag) => Opaque.create<Tag, 'Tag'>(tag),
+};
 
 type From<T, U> = {
     from: (v: T) => U;
@@ -17,9 +20,7 @@ export type Tags = Opaque<Tag[], 'Tags'>;
 export const Tags: Companion<string[], Tags> & From<Posts, Tags> = {
     from: (posts) => Tags.new(posts.flatMap(({ tags }) => tags)),
     new: (tags) =>
-        Opaque.create<Tags, 'Tags'>(
-            [...new Set(tags)].sort().map((tag) => Opaque.create<Tag, 'Tag'>(tag))
-        ),
+        Opaque.create<Tags, 'Tags'>([...new Set(tags)].sort().map((tag) => Tag.new(tag))),
 };
 
 if (import.meta.vitest) {

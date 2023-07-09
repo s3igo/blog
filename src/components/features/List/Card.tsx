@@ -2,7 +2,6 @@ import { Separator } from '@kobalte/core';
 import { type Component, For, Show } from 'solid-js';
 import type { Description, Published, Title, Updated, Url } from '~/domain/values/post';
 import type { Tags } from '~/domain/values/tags';
-import { Tag } from '../../base/Tag';
 
 type Props = {
     tags: Tags;
@@ -34,7 +33,7 @@ export const Card: Component<Props> = (props) => (
                     />
 
                     <div class="flex gap-[6px]">
-                        <For each={props.tags}>{(tag) => <Tag name={tag} link={false} />}</For>
+                        <For each={props.tags}>{(tag) => <span class="metadata">#{tag}</span>}</For>
                     </div>
                 </Show>
             </div>

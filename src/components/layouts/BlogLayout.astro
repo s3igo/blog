@@ -4,12 +4,12 @@ import '@fontsource/jetbrains-mono/latin-400.css';
 import '@fontsource/nunito-sans/latin-400-italic.css';
 import '@fontsource/nunito-sans/latin-700.css';
 import '@fontsource/zen-kaku-gothic-new/japanese-700.css';
-import Toc from '~/components/features/Toc.astro';
-import { Tag } from '~/components/base/Tag';
+import { Tag as TagComponent } from '~/components/base/Tag';
 import Layout from './Layout.astro';
-import type { MarkdownHeading } from 'astro';
 import type { FirstThreeSentences, Published, Title, Updated } from '~/domain/values/post';
 import type { Tags } from '~/domain/values/tags';
+import { Metadata } from '../base/Metadata';
+import Footer from '../features/Footer.astro';
 
 type Props = {
     title: Title;
@@ -17,30 +17,30 @@ type Props = {
     published: Published;
     updated: Updated;
     tags: Tags;
-    headings: MarkdownHeading[];
 };
 
-const { firstThreeSentences, headings, published, tags, title, updated } = Astro.props;
+const { firstThreeSentences, published, tags, title, updated } = Astro.props;
 ---
 
 <Layout {title} description={firstThreeSentences}>
-    <div class="col-span-10 flex flex-col gap-5 md:flex-row-reverse">
-        <div class="pt-12 md:w-52">
-            <div class="sticky top-12 flex shrink-0 flex-col gap-4">
-                <div class="flex flex-col">
-                    <!-- FIXME: 以下のtruncateがないと幅が崩れる -->
-                    <span class="metadata truncate">created on {published}</span>
-                    {updated && <span class="metadata">last updated on {updated}</span>}
-                    {tags.map((tag) => <Tag name={tag} />)}
-                </div>
-                <div>
-                    <h2 class="decoration text-xl text-primary">目次</h2>
-                    <Toc headings={headings.filter(({ depth }) => depth !== 1)} />
-                </div>
+    <div class="col-start-1 pt-6 max-md:col-span-12 md:max-lg:col-start-2">
+        <a class="flex md:justify-end" href="/">
+            <div class="md:fixed">
+                <img src="/icon.png" alt="tsukiyo icon" class="w-14 xl:w-20" />
             </div>
+        </a>
+    </div>
+    <div class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-10 lg:col-start-2">
+        <div class="mb-2 flex flex-wrap gap-3 md:pt-6">
+            <Metadata type="text" text={published} />
+            {updated && <Metadata type="text" text={`↻ ${updated}`} />}
+            {tags.map((tag) => <TagComponent name={tag} />)}
         </div>
         <div class="blog">
             <slot />
+        </div>
+        <div class="mt-6 pb-6">
+            <Footer />
         </div>
     </div>
 </Layout>
@@ -49,13 +49,13 @@ const { firstThreeSentences, headings, published, tags, title, updated } = Astro
         @apply sm:text-lg;
 
         p {
-            @apply py-4;
+            @apply my-4 rounded-2xl bg-white p-4;
         }
 
         a {
             /* TODO: なぜか`.link`ユーティリティクラスが読めない */
             /* @apply link; */
-            @apply text-secondary decoration-2 underline-offset-2 hover:underline;
+            @apply text-cyan-500 decoration-2 underline-offset-2 hover:underline;
         }
 
         em {
@@ -68,11 +68,11 @@ const { firstThreeSentences, headings, published, tags, title, updated } = Astro
 
         /* --------------------------------- header --------------------------------- */
         h1 {
-            @apply my-2 text-2xl leading-relaxed text-tertiary xs:text-3xl sm:text-4xl;
+            @apply mb-16 text-3xl before:text-cyan-500 before:content-['#_'] sm:mb-20 sm:text-4xl;
         }
 
         :is(h2, h3, h4, h5) {
-            @apply border-b border-dashed border-primary pb-3 pt-12 after:text-foreground/50 sm:pt-[72px];
+            @apply mt-10 after:text-cyan-500 sm:mt-16;
         }
 
         h2 {
@@ -93,7 +93,7 @@ const { firstThreeSentences, headings, published, tags, title, updated } = Astro
 
         /* header要素が連続する場合の余白調整 */
         :is(h2 + h3, h3 + h4, h4 + h5) {
-            @apply pt-3;
+            @apply mt-4;
         }
 
         /* ---------------------------------- list ---------------------------------- */
@@ -120,18 +120,18 @@ const { firstThreeSentences, headings, published, tags, title, updated } = Astro
 
             /* inline */
             &:not(pre > *) {
-                @apply mx-1 rounded-md bg-shadow/40 px-1 text-base text-foreground/60;
+                @apply mx-1 rounded-md bg-slate-200 px-1 text-base;
             }
         }
 
         /* block */
         pre {
-            @apply my-4 rounded-xl border border-dashed border-tertiary p-4 text-base;
+            @apply my-4 rounded-2xl p-4 text-base;
         }
 
         /* filename */
         .remark-code-title {
-            @apply mb-[-16px] pl-2 font-code text-base text-tertiary;
+            @apply -mb-3 font-code text-base text-[#82AAFF];
         }
     }
 </style>
