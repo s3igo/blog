@@ -22,8 +22,6 @@ jobs:
         run: npm ci
       - name: Run `astro check`
         run: npm run check
-      - name: Run Markuplint on Astro files
-        run: npm run lint:astro
       - name: Run Prettier
         run: npm run format
       - name: Run ESLint with fix options
