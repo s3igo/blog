@@ -6,6 +6,9 @@
   "engines": {
     "node": "<17"
   },
+  "browserslist": [
+    "defaults"
+  ],
   "scripts": {
     "start": "astro dev",
     "build": "astro build",
