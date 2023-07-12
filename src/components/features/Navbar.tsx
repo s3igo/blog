@@ -1,3 +1,4 @@
+import { As, Button } from '@kobalte/core';
 import type { Component } from 'solid-js';
 import { PAGE_TITLE } from '~/utils/constants';
 
@@ -23,12 +24,14 @@ export const Navbar: Component = () => (
         <a class="absolute left-6 lg:left-8 text-accent text-3xl xl:text-[40px]" href="/">
             <h1>{PAGE_TITLE}</h1>
         </a>
-        <a
-            href="/rss.xml"
-            aria-label="RSS"
-            class="absolute xl:h-12 xl:w-12 h-8 w-8 right-3 xl:right-4 border-2 border-transparent rounded-full hover:border-cyan-500 p-1 xl:p-2"
-        >
-            <RssIcon />
-        </a>
+        <Button.Root asChild>
+            <As
+                component="a"
+                href="/rss.xml"
+                class="absolute xl:h-12 xl:w-12 h-8 w-8 right-3 xl:right-4 border-2 border-transparent rounded-full hover:border-cyan-500 p-1 xl:p-2"
+            >
+                <RssIcon />
+            </As>
+        </Button.Root>
     </nav>
 );
