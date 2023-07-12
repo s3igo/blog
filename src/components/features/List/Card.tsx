@@ -12,6 +12,7 @@ type Props = {
     description: Description;
 };
 
+/** @package */
 export const Card: Component<Props> = (props) => (
     <a href={props.url}>
         <article class="rounded-3xl bg-white hover:border-cyan-500 border-2 border-transparent py-4 sm:py-6 px-5 sm:px-8">
