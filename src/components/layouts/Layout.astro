@@ -26,7 +26,14 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <title>{title ? pageTitle(title) : PAGE_TITLE}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonicalURL} />
-        <slot name="head" />
+        <script is:inline>
+            if (typeof window.localStorage.getItem('theme') === 'string') {
+                const current = window.localStorage.getItem('theme');
+                if (current === 'dark') document.documentElement.classList.add('dark');
+            } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                document.documentElement.classList.add('dark');
+            }
+        </script>
     </head>
     <body>
         <div class="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-4 max-md:gap-y-4 md:px-8">
