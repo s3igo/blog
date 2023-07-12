@@ -49,7 +49,7 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
         @apply sm:text-lg;
 
         p {
-            @apply my-4 rounded-2xl bg-white p-4;
+            @apply my-4 rounded-2xl bg-white p-4 dark:bg-gray-800;
         }
 
         a {
@@ -120,7 +120,7 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
 
             /* inline */
             &:not(pre > *) {
-                @apply mx-1 rounded-md bg-slate-200 px-1 text-base;
+                @apply mx-1 rounded-md bg-slate-200 px-1 text-base dark:bg-gray-950;
             }
         }
 

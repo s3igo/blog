@@ -1,5 +1,6 @@
 module.exports = {
     content: ['./src/**/*.{astro,html,js,jsx,ts,tsx}'],
+    darkMode: 'class',
     plugins: [require('@kobalte/tailwindcss')],
     theme: {
         extend: {

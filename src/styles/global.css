@@ -17,6 +17,6 @@
     }
 }
 
-html {
-    @apply bg-slate-200 font-sans text-accent;
+body {
+    @apply bg-slate-200 font-sans text-accent dark:bg-gray-950 dark:text-gray-200;
 }

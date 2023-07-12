@@ -15,7 +15,7 @@ type Props = {
 /** @package */
 export const Card: Component<Props> = (props) => (
     <a href={props.url}>
-        <article class="rounded-3xl bg-white hover:border-cyan-500 border-2 border-transparent py-4 sm:py-6 px-5 sm:px-8">
+        <article class="rounded-3xl dark:bg-gray-800 bg-white hover:border-cyan-500 border-2 border-transparent py-4 sm:py-6 px-5 sm:px-8">
             <div class="flex sm:items-center max-sm:flex-col">
                 <div class="flex items-center">
                     <span class="metadata">{props.published}</span>
@@ -37,7 +37,7 @@ export const Card: Component<Props> = (props) => (
                     </div>
                 </Show>
             </div>
-            <h2 class="py-1.5 text-xl text-accent xl:text-2xl before:content-['#_'] before:text-cyan-500">
+            <h2 class="py-1.5 text-xl xl:text-2xl before:content-['#_'] before:text-cyan-500">
                 {props.title}
             </h2>
             <p class="line-clamp-5 xl:text-lg">{props.description}</p>
