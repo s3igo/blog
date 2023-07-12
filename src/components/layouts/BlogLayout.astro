@@ -131,7 +131,8 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
 
         /* filename */
         .remark-code-title {
-            @apply -mb-3 font-code text-base text-[#82AAFF];
+            /* SEE: https://github.com/material-theme/vsc-material-theme/blob/main/scripts/generator/settings/specific/default.ts */
+            @apply -mb-3 font-code text-base text-[#263238] dark:text-[#546E7A];
         }
     }
 </style>
