@@ -22,8 +22,8 @@ const DarkModeIcon: Component = () => (
         stroke-width="0"
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 24 24"
-        height="1em"
-        width="1em"
+        height="100%"
+        width="100%"
         style="overflow: visible;"
     >
         <path fill="currentColor" d="M12 16a4 4 0 0 0 0-8v8Z"></path>
@@ -70,18 +70,23 @@ export const Navbar: Component = () => {
             <a class="absolute left-6 lg:left-8 text-accent text-3xl xl:text-[40px]" href="/">
                 <h1>{PAGE_TITLE}</h1>
             </a>
-            <Button.Root asChild>
-                <As
-                    component="a"
-                    href="/rss.xml"
-                    class="absolute xl:h-12 xl:w-12 h-8 w-8 right-3 xl:right-4 border-2 border-transparent rounded-full hover:border-cyan-500 p-1 xl:p-2"
+            <div class="flex absolute  right-3 xl:right-4 ">
+                <Button.Root asChild>
+                    <As
+                        component="a"
+                        href="/rss.xml"
+                        class="border-2 border-transparent rounded-full hover:border-cyan-500 p-1 xl:p-2 xl:h-12 xl:w-12 h-8 w-8"
+                    >
+                        <RssIcon />
+                    </As>
+                </Button.Root>
+                <Button.Root
+                    onClick={toggleTheme}
+                    class="border-2 border-transparent rounded-full hover:border-cyan-500 p-1 xl:p-2 xl:h-12 xl:w-12 h-8 w-8"
                 >
-                    <RssIcon />
-                </As>
-            </Button.Root>
-            <Button.Root onClick={toggleTheme}>
-                <DarkModeIcon />
-            </Button.Root>
+                    <DarkModeIcon />
+                </Button.Root>
+            </div>
         </nav>
     );
 };
