@@ -8,7 +8,7 @@ export default defineConfig({
     markdown: {
         remarkPlugins: ['remark-code-titles'],
         shikiConfig: {
-            theme: 'material-theme-ocean',
+            theme: 'material-theme',
         },
     },
     site: 'https://blog.tsuki-yo.net',

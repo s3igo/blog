@@ -1,5 +1,5 @@
+import { As, Button } from '@kobalte/core';
 import type { Component } from 'solid-js';
-import { PAGE_TITLE } from '~/utils/constants';
 
 const RssIcon: Component = () => (
     <svg
@@ -15,20 +15,15 @@ const RssIcon: Component = () => (
     </svg>
 );
 
-export const Navbar: Component = () => (
-    <nav
-        class="flex h-14 items-center justify-between rounded-full border-2 border-solid xl:h-20  bg-white relative"
-        aria-label="Global navigation"
-    >
-        <a class="absolute left-6 lg:left-8 text-accent text-3xl xl:text-[40px]" href="/">
-            <h1>{PAGE_TITLE}</h1>
-        </a>
-        <a
+/** @package */
+export const RssButton: Component = () => (
+    <Button.Root asChild>
+        <As
+            component="a"
             href="/rss.xml"
-            aria-label="RSS"
-            class="absolute xl:h-12 xl:w-12 h-8 w-8 right-3 xl:right-4 border-2 border-transparent rounded-full hover:border-cyan-500 p-1 xl:p-2"
+            class="border-2 border-transparent rounded-full hover:border-cyan-500 p-1 xl:p-2 xl:h-12 xl:w-12 h-8 w-8"
         >
             <RssIcon />
-        </a>
-    </nav>
+        </As>
+    </Button.Root>
 );
