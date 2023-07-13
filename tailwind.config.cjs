@@ -13,9 +13,6 @@ module.exports = {
                 shadow: '#575656',
                 tertiary: '#82aaff',
             },
-            screens: {
-                xs: '375px',
-            },
         },
         fontFamily: {
             code: ['JetBrains Mono', 'BIZ UDGothic', 'monospace', 'sans-serif'],
