@@ -26,7 +26,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <title>{title ? pageTitle(title) : PAGE_TITLE}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonicalURL} />
-        <script is:inline>
+        <script data-cfasync="false" is:inline>
             if (typeof window.localStorage.getItem('theme') === 'string') {
                 const current = window.localStorage.getItem('theme');
                 if (current === 'dark') document.documentElement.classList.add('dark');
