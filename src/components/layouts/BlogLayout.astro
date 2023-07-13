@@ -49,13 +49,13 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
         @apply sm:text-lg;
 
         p {
-            @apply my-4 rounded-2xl bg-white p-4 dark:bg-gray-800;
+            @apply my-4 rounded-2xl bg-white p-4 dark:bg-midnight-express;
         }
 
         a {
             /* TODO: なぜか`.link`ユーティリティクラスが読めない */
             /* @apply link; */
-            @apply text-cyan-500 decoration-2 underline-offset-2 hover:underline;
+            @apply text-maldives decoration-2 underline-offset-2 hover:underline;
         }
 
         em {
@@ -63,16 +63,16 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
         }
 
         blockquote {
-            @apply border-l-4 border-tertiary pl-6;
+            @apply border-l-4 border-spiced-nectarine pl-6;
         }
 
         /* --------------------------------- header --------------------------------- */
         h1 {
-            @apply mb-16 text-3xl before:text-cyan-500 before:content-['#_'] sm:mb-20 sm:text-4xl;
+            @apply mb-16 text-3xl before:text-maldives before:content-['#_'] sm:mb-20 sm:text-4xl;
         }
 
         :is(h2, h3, h4, h5) {
-            @apply mt-10 after:text-cyan-500 sm:mt-16;
+            @apply mt-10 after:text-maldives sm:mt-16;
         }
 
         h2 {
@@ -120,7 +120,7 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
 
             /* inline */
             &:not(pre > *) {
-                @apply mx-1 rounded-md bg-slate-200 px-1 text-base dark:bg-gray-950;
+                @apply mx-1 rounded-md bg-bellflower-blue px-1 text-base dark:bg-black-knight;
             }
         }
 

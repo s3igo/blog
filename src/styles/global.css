@@ -3,14 +3,11 @@
 @tailwind utilities;
 
 @layer utilities {
-    .custom-shadow {
-        @apply shadow-[3px_3px_4px_1px] shadow-shadow;
-    }
-    .link {
-        @apply text-secondary decoration-2 underline-offset-2 hover:underline;
-    }
+    /* .link {
+        @apply text-maldives decoration-2 underline-offset-2 hover:underline;
+    } */
     .metadata {
-        @apply text-sm text-slate-400 xl:text-base;
+        @apply text-sm text-blue-blouse xl:text-base;
     }
     .vrl {
         writing-mode: vertical-rl;
@@ -18,5 +15,5 @@
 }
 
 body {
-    @apply bg-slate-200 font-sans text-accent dark:bg-gray-950 dark:text-gray-200;
+    @apply bg-bellflower-blue font-sans text-yamagami-blue dark:bg-black-knight dark:text-dreamy-cloud;
 }

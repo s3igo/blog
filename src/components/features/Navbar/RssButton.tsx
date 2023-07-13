@@ -21,7 +21,7 @@ export const RssButton: Component = () => (
         <As
             component="a"
             href="/rss.xml"
-            class="border-2 border-transparent rounded-full hover:border-cyan-500 p-1 xl:p-2 xl:h-12 xl:w-12 h-8 w-8"
+            class="border-2 border-transparent rounded-full hover:border-maldives p-1 xl:p-2 xl:h-12 xl:w-12 h-8 w-8"
         >
             <RssIcon />
         </As>
