@@ -14,8 +14,11 @@ type Props = {
 
 /** @package */
 export const Card: Component<Props> = (props) => (
-    <a href={props.url}>
-        <article class="rounded-3xl dark:bg-midnight-express bg-white hover:border-maldives border-2 border-transparent py-4 sm:py-6 px-5 sm:px-8">
+    <a
+        href={props.url}
+        class="rounded-3xl dark:bg-midnight-express bg-white hover:border-maldives border-2 border-transparent py-4 sm:py-6 px-5 sm:px-8"
+    >
+        <article>
             <div class="flex sm:items-center max-sm:flex-col">
                 <div class="flex items-center">
                     <span class="metadata">{props.published}</span>
@@ -44,5 +47,3 @@ export const Card: Component<Props> = (props) => (
         </article>
     </a>
 );
-
-// TODO: aの方にスタイルを当てる
