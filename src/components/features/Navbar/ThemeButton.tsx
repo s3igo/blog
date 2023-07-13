@@ -51,7 +51,7 @@ export const ThemeButton: Component = () => {
     return (
         <Button.Root
             onClick={toggleTheme}
-            class="border-2 border-transparent rounded-full hover:border-cyan-500 p-1 xl:p-2 xl:h-12 xl:w-12 h-8 w-8"
+            class="border-2 border-transparent rounded-full hover:border-maldives p-1 xl:p-2 xl:h-12 xl:w-12 h-8 w-8"
         >
             <DarkModeIcon />
         </Button.Root>
