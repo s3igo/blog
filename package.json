@@ -43,6 +43,8 @@
     "astro": "^2.0.1",
     "date-fns": "^2.29.3",
     "markdown-it": "^13.0.1",
+    "mdast-util-from-markdown": "^2.0.0",
+    "mdast-util-to-string": "^4.0.0",
     "remark-code-titles": "^0.1.2",
     "remeda": "^1.6.0",
     "sanitize-html": "^2.10.0",
