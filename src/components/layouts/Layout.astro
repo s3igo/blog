@@ -27,10 +27,11 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <meta name="description" content={description} />
         <link rel="canonical" href={canonicalURL} />
         <script data-cfasync="false" is:inline>
-            if (typeof window.localStorage.getItem('theme') === 'string') {
-                const current = window.localStorage.getItem('theme');
-                if (current === 'dark') document.documentElement.classList.add('dark');
-            } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+            if (
+                window.localStorage.getItem('theme') === 'dark' ||
+                (!('theme' in window.localStorage) &&
+                    window.matchMedia('(prefers-color-scheme: dark)').matches)
+            ) {
                 document.documentElement.classList.add('dark');
             }
         </script>
