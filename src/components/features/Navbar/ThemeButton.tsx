@@ -1,5 +1,5 @@
 import { Button } from '@kobalte/core';
-import { type Component, createSignal } from 'solid-js';
+import type { Component } from 'solid-js';
 
 const DarkModeIcon: Component = () => (
     <svg
@@ -23,28 +23,13 @@ const DarkModeIcon: Component = () => (
 
 /** @package */
 export const ThemeButton: Component = () => {
-    const getCurrentTheme = (): 'light' | 'dark' => {
-        if (typeof window.localStorage.getItem('theme') === 'string') {
-            const current = window.localStorage.getItem('theme');
-            return current === 'dark' ? 'dark' : 'light';
-        } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-            return 'dark';
-        } else {
-            return 'light';
-        }
-    };
-
-    const [darkMode, setDarkMode] = createSignal(getCurrentTheme() === 'dark' ? true : false);
-
     const toggleTheme = (): void => {
-        if (darkMode()) {
+        if (document.documentElement.classList.contains('dark')) {
             document.documentElement.classList.remove('dark');
             window.localStorage.setItem('theme', 'light');
-            setDarkMode(false);
         } else {
             document.documentElement.classList.add('dark');
             window.localStorage.setItem('theme', 'dark');
-            setDarkMode(true);
         }
     };
 

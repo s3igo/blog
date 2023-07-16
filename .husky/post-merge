@@ -1,0 +1,4 @@
+#!/usr/bin/env sh
+. "$(dirname -- "$0")/_/husky.sh"
+
+(git diff @~ @ --name-only | grep "package-lock.json" > /dev/null) && npm ci || echo "No difference in packages."
