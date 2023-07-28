@@ -1,5 +1,4 @@
-import { Opaque } from '~/utils/types';
-import type { Companion } from '~/utils/types';
+import { Opaque ,type  Companion } from '~/utils/types';
 import type { Posts } from './post';
 
 /**
