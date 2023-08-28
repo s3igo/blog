@@ -14,6 +14,6 @@ module.exports = {
             },
         },
     ],
-    plugins: ['prettier-plugin-astro', 'prettier-plugin-sort-json'],
+    plugins: ['prettier-plugin-astro', 'prettier-plugin-sort-json', 'prettier-plugin-tailwindcss'],
     singleQuote: true,
 };
