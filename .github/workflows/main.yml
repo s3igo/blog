@@ -23,7 +23,7 @@ jobs:
       - name: Run `astro check`
         run: npm run check
       - name: Run Prettier
-        run: npm run format
+        run: npm run format:fix
       - name: Run ESLint with fix options
         run: npm run lint:fix
       - name: Commit files modified by ESLint
