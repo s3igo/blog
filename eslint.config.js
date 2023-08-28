@@ -1,0 +1,48 @@
+import prettier from 'eslint-config-prettier';
+import ts from '@typescript-eslint/eslint-plugin';
+import tsParser from '@typescript-eslint/parser';
+import esLint from '@eslint/js';
+import astro from 'eslint-plugin-astro';
+import astroParser from 'astro-eslint-parser';
+
+export default [
+    {
+        rules: {
+            ...esLint.configs['recommended'].rules,
+            ...prettier.rules,
+        },
+    },
+    {
+        files: ['src/**/*.ts', 'src/**/*.tsx'],
+        plugins: {
+            '@typescript-eslint': ts,
+        },
+        rules: {
+            ...ts.configs['recommended'].rules,
+        },
+        languageOptions: {
+            parser: tsParser,
+            parserOptions: {
+                project: './tsconfig.json',
+            },
+            ecmaVersion: 2022,
+            sourceType: 'module',
+        },
+    },
+    {
+        files: ['src/**/*.astro'],
+        plugins: {
+            astro,
+        },
+        rules: {
+            ...astro.configs['recommended'].rules,
+        },
+        languageOptions: {
+            parser: astroParser,
+            parserOptions: {
+                extraFileExtensions: ['.astro'],
+                parser: tsParser,
+            },
+        },
+    },
+];
