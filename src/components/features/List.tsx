@@ -10,7 +10,7 @@ export const List: Component<Props> = (props) => {
         props.posts,
         R.map(R.pick(['description', 'published', 'tags', 'title', 'updated', 'url'])),
         R.sortBy(({ published }) => published),
-        R.reverse()
+        R.reverse(),
     );
 
     return (

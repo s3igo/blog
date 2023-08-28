@@ -43,6 +43,7 @@ type InferBase<T, U extends string> = T extends infer V & { [K in BrandName<U>]:
  *     const b: B = a; // Error
  *     const c: string = a; // OK
  */
+// eslint-disable-next-line no-redeclare
 export const Opaque = {
     /**
      * Opaque型の値を作成する
