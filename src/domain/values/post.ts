@@ -9,7 +9,7 @@ import {
     type TextContent,
     type Title,
 } from './post/body';
-import { Dates ,type  Published,type  Updated } from './post/dates';
+import { Dates, type Published, type Updated } from './post/dates';
 import { Name } from './post/name';
 import { Url } from './post/url';
 import { type Tag, Tags } from './tags';
