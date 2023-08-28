@@ -22,6 +22,7 @@
   ],
   "settings": {
     // "explorer.sortOrder": "mixed",
+    "eslint.experimental.useFlatConfig": true,
     "editor.codeActionsOnSave": {
       "source.addMissingImports": true,
       "source.fixAll.eslint": true

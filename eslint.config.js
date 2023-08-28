@@ -4,6 +4,7 @@ import tsParser from '@typescript-eslint/parser';
 import esLint from '@eslint/js';
 import astro from 'eslint-plugin-astro';
 import astroParser from 'astro-eslint-parser';
+import globals from 'globals';
 
 export default [
     {
@@ -30,6 +31,20 @@ export default [
         },
     },
     {
+        files: ['src/domain/**/*.ts'],
+        rules: {
+            'no-redeclare': 'off',
+        },
+    },
+    {
+        files: ['src/**/*.tsx'],
+        languageOptions: {
+            globals: {
+                ...globals.browser,
+            },
+        },
+    },
+    {
         files: ['src/**/*.astro'],
         plugins: {
             astro,
@@ -42,6 +57,9 @@ export default [
             parserOptions: {
                 extraFileExtensions: ['.astro'],
                 parser: tsParser,
+            },
+            globals: {
+                ...globals.node,
             },
         },
     },
