@@ -21,6 +21,7 @@
     }
   ],
   "settings": {
+    // "explorer.sortOrder": "mixed",
     "editor.codeActionsOnSave": {
       "source.addMissingImports": true,
       "source.fixAll.eslint": true
