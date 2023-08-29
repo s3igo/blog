@@ -1,9 +1,5 @@
 /** @type {import("prettier").Config} */
 module.exports = {
-    importOrder: ['^@(.*)$', '<THIRD_PARTY_MODULES>', '^~(.*)$', '^../(.*)$', '^./(.*)$'],
-    importOrderCaseInsensitive: true,
-    importOrderGroupNamespaceSpecifiers: true,
-    importOrderSortSpecifiers: true,
     jsonRecursiveSort: true,
     jsonSortOrder: 'lexical',
     overrides: [
@@ -14,11 +10,6 @@ module.exports = {
             },
         },
     ],
-    plugins: [
-        'prettier-plugin-astro',
-        'prettier-plugin-sort-json',
-        'prettier-plugin-tailwindcss',
-        '@trivago/prettier-plugin-sort-imports',
-    ],
+    plugins: ['prettier-plugin-astro', 'prettier-plugin-sort-json', 'prettier-plugin-tailwindcss'],
     singleQuote: true,
 };
