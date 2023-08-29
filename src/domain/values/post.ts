@@ -1,7 +1,6 @@
 import type { MarkdownHeading } from 'astro';
 import type { AstroComponentFactory } from 'astro/dist/runtime/server';
 import { type CollectionEntry, getCollection } from 'astro:content';
-import { type Companion, Opaque } from '~/utils/types';
 import {
     Body,
     type Description,
@@ -13,6 +12,7 @@ import { Dates, type Published, type Updated } from './post/dates';
 import { Name } from './post/name';
 import { Url } from './post/url';
 import { type Tag, Tags } from './tags';
+import { type Companion, Opaque } from '~/utils/types';
 
 export type { Tag, Url, FirstThreeSentences, Title, Published, Updated, Description };
 

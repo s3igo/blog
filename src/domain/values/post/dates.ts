@@ -1,6 +1,6 @@
+import { DateString } from './dates/dateString';
 import type { Schema as FrontmatterSchema } from '~/content/config';
 import { type Companion, Opaque } from '~/utils/types';
-import { DateString } from './dates/dateString';
 
 type Receive = Pick<FrontmatterSchema, 'published' | 'updated'>;
 
