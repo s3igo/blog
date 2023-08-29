@@ -4,7 +4,9 @@ import tsParser from '@typescript-eslint/parser';
 import astroParser from 'astro-eslint-parser';
 import prettier from 'eslint-config-prettier';
 import astro from 'eslint-plugin-astro';
+import esLintImport from 'eslint-plugin-import';
 import globals from 'globals';
+import sortDestructureKeys from 'eslint-plugin-sort-destructure-keys';
 
 export default [
     {
@@ -14,12 +16,24 @@ export default [
         },
     },
     {
-        files: ['src/**/*.ts', 'src/**/*.tsx'],
+        files: ['**/*.ts', '**/*.tsx'],
         plugins: {
             '@typescript-eslint': ts,
+            import: esLintImport,
+            'sort-destructure-keys': sortDestructureKeys,
         },
         rules: {
             ...ts.configs['recommended'].rules,
+            '@typescript-eslint/consistent-type-imports': [
+                'error',
+                { fixStyle: 'inline-type-imports' },
+            ],
+            'sort-keys': ['error', 'asc', { natural: true }],
+            'import/first': 'error',
+            'import/order': 'error',
+            'import/newline-after-import': 'error',
+            'import/no-duplicates': ['error', { 'prefer-inline': true }],
+            'sort-destructure-keys/sort-destructure-keys': 'error',
         },
         languageOptions: {
             parser: tsParser,
