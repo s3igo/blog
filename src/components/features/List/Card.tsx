@@ -16,16 +16,16 @@ type Props = {
 export const Card: Component<Props> = (props) => (
     <a
         href={props.url}
-        class="rounded-3xl dark:bg-midnight-express bg-white hover:border-maldives border-2 border-transparent py-4 sm:py-6 px-5 sm:px-8"
+        class="rounded-3xl border-2 border-transparent bg-white px-5 py-4 hover:border-maldives dark:bg-midnight-express sm:px-8 sm:py-6"
     >
         <article>
-            <div class="flex sm:items-center max-sm:flex-col">
+            <div class="flex max-sm:flex-col sm:items-center">
                 <div class="flex items-center">
                     <span class="metadata">{props.published}</span>
                     <Show when={props.updated !== undefined}>
                         <Separator.Root
                             orientation="vertical"
-                            class="h-4 md:pr-[1.5px] bg-blue-blouse mx-[6px] rounded-sm border-none pr-px"
+                            class="mx-[6px] h-4 rounded-sm border-none bg-blue-blouse pr-px md:pr-[1.5px]"
                         />
                         <span class="metadata">{`↻ ${props.updated}`}</span>
                     </Show>
@@ -33,14 +33,14 @@ export const Card: Component<Props> = (props) => (
                 <Show when={props.tags.length !== 0}>
                     <Separator.Root
                         orientation="vertical"
-                        class="h-4 pr-px md:pr-[1.5px] bg-blue-blouse mx-[6px] rounded-sm border-none max-sm:hidden"
+                        class="mx-[6px] h-4 rounded-sm border-none bg-blue-blouse pr-px max-sm:hidden md:pr-[1.5px]"
                     />
                     <div class="flex gap-[6px]">
                         <For each={props.tags}>{(tag) => <span class="metadata">#{tag}</span>}</For>
                     </div>
                 </Show>
             </div>
-            <h2 class="py-1.5 text-xl xl:text-2xl before:content-['#_'] before:text-maldives">
+            <h2 class="py-1.5 text-xl before:text-maldives before:content-['#_'] xl:text-2xl">
                 {props.title}
             </h2>
             <p class="line-clamp-5 xl:text-lg">{props.description}</p>
