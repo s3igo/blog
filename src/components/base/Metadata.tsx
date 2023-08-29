@@ -4,13 +4,13 @@ type Props = { type: 'text'; text: string } | { type: 'link'; text: string; link
 
 export const Metadata: Component<Props> = (props) =>
     props.type === 'text' ? (
-        <div class="rounded-full border-2 border-transparent px-3 py-1 bg-white w-max metadata dark:bg-midnight-express">
+        <div class="metadata w-max rounded-full border-2 border-transparent bg-white px-3 py-1 dark:bg-midnight-express">
             {props.text}
         </div>
     ) : (
         <a
             href={props.link}
-            class="rounded-full border-2 border-transparent px-3 py-1 bg-white w-max dark:bg-midnight-express hover:border-maldives block metadata"
+            class="metadata block w-max rounded-full border-2 border-transparent bg-white px-3 py-1 hover:border-maldives dark:bg-midnight-express"
         >
             {props.text}
         </a>
