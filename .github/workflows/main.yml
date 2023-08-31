@@ -23,7 +23,7 @@ jobs:
       - name: Run `astro check`
         run: npm run check
       - name: Run Prettier
-        run: npm run format
+        run: npm run format:fix
       - name: Run ESLint with fix options
         run: npm run lint:fix
       - name: Commit files modified by ESLint
@@ -128,10 +128,6 @@ jobs:
     name: Coverage
     timeout-minutes: 60
     runs-on: ubuntu-22.04
-    needs:
-      - test-unit
-      # - test-type
-      - test-e2e
     steps:
       - name: Checkout repository
         uses: actions/checkout@v3

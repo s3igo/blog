@@ -13,10 +13,6 @@ preview:
 test:
 	npm test
 
-.PHONY: index
-index:
-	npm run index
-
 .PHONY: clean
 clean:
 	npm run clean
@@ -27,7 +23,6 @@ clean:
 init:
 	npm run clean
 	npm install
-	npm run index
 
 .PHONY: clear-cache
 clear-cache:

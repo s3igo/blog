@@ -1,6 +1,5 @@
-import { Opaque } from '~/utils/types';
-import type { Companion } from '~/utils/types';
 import type { Posts } from './post';
+import { type Companion, Opaque } from '~/utils/types';
 
 /**
  * 記事のタグ

@@ -9,7 +9,6 @@
       "bradlc.vscode-tailwindcss",
       "csstools.postcss",
       "taichi.vscode-textlint",
-      "tamasfe.even-better-toml"
     ]
   },
   "folders": [
@@ -22,15 +21,14 @@
     }
   ],
   "settings": {
+    // "explorer.sortOrder": "mixed",
+    "eslint.experimental.useFlatConfig": true,
     "editor.codeActionsOnSave": {
       "source.addMissingImports": true,
       "source.fixAll.eslint": true
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
-    "[markdown]": {
-      "editor.formatOnSave": false
-    },
     "prettier.documentSelectors": [
       "**/*.astro"
     ],

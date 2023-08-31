@@ -1,6 +1,6 @@
 import { type Component, mergeProps } from 'solid-js';
-import type { Tag as TagType } from '~/domain/values/post';
 import { Metadata } from './Metadata';
+import type { Tag as TagType } from '~/domain/values/post';
 
 type Props = { name: TagType; link?: boolean };
 

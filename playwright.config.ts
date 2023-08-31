@@ -24,6 +24,7 @@ export default defineConfig({
     },
     webServer: {
         command: 'npm run preview',
+        // eslint-disable-next-line no-undef
         reuseExistingServer: !process.env.CI,
         timeout: 120 * 1000,
         url: 'http://localhost:3000/',

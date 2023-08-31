@@ -1,3 +1,6 @@
+// @vitest-environment jsdom
+import { fromMarkdown } from 'mdast-util-from-markdown';
+import { toString } from 'mdast-util-to-string';
 import { first3Sentences, truncate } from '~/utils/string';
 import { type Companion, Opaque } from '~/utils/types';
 
@@ -24,17 +27,20 @@ type BodySchema = {
 };
 
 const transformBody = (value: string): BodySchema => {
-    const [_, ...textStartWithTitle] = value.split('# ');
-    const [title, ...body] = textStartWithTitle.join('').split('\n');
+    const mdast = fromMarkdown(value);
+    const title = toString(
+        mdast.children.find((node) => node.type === 'heading' && node.depth === 1),
+    );
+    const body = toString(mdast.children.filter((node) => node.type !== 'heading'));
 
     if (!title) throw new Error('title is undefined');
 
     return {
-        description: Opaque.create<Description, 'Description'>(truncate(body.join(''), 500)),
+        description: Opaque.create<Description, 'Description'>(truncate(body, 500)),
         firstThreeSentences: Opaque.create<FirstThreeSentences, 'FirstThreeSentences'>(
-            first3Sentences(body.join(''))
+            first3Sentences(body),
         ),
-        textContent: Opaque.create<TextContent, 'TextContent'>(body.join('')),
+        textContent: Opaque.create<TextContent, 'TextContent'>(body),
         title: Opaque.create<Title, 'Title'>(title),
     };
 };
@@ -65,7 +71,7 @@ if (import.meta.vitest) {
         });
         test('description with over 500 characters', () => {
             expect(Body.new('# title\n' + 'a'.repeat(501)).description).toBe(
-                'a'.repeat(500) + '...'
+                'a'.repeat(500) + '...',
             );
         });
     });
@@ -86,7 +92,7 @@ if (import.meta.vitest) {
         });
         test('firstThreeSentences with 3文より長い場合', () => {
             expect(Body.new('# title\nあいう。えお。かきく。けこ。').firstThreeSentences).toBe(
-                'あいう。えお。かきく。'
+                'あいう。えお。かきく。',
             );
         });
     });
