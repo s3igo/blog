@@ -16,7 +16,7 @@
     "build:clean": "rm -rf ./dist",
     "preview": "astro preview",
     "prepreview:local": "npm run build",
-    "preview:local": "astro preview --host 0.0.0.0",
+    "preview:local": "astro preview",
     "check": "astro check",
     "format": "prettier './src/**/*.{ts,tsx,astro}'",
     "format:fix": "prettier --write './src/**/*.{ts,tsx,astro}'",
