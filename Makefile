@@ -7,7 +7,7 @@ dev:
 
 .PHONY: preview
 preview:
-	bash -c "trap 'npm run build:clean' SIGINT; npm run preview:local"
+	bash -c "trap 'npm run build:clean' SIGINT; npm run preview"
 
 .PHONY: test
 test:
