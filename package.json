@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "engines": {
-    "node": "<17"
+    "node": "18"
   },
   "browserslist": [
     "defaults"
@@ -14,15 +14,13 @@
     "start": "astro dev",
     "build": "astro build",
     "build:clean": "rm -rf ./dist",
+    "prepreview": "npm run build",
     "preview": "astro preview",
-    "prepreview:local": "npm run build",
-    "preview:local": "astro preview",
     "check": "astro check",
     "format": "prettier './src/**/*.{ts,tsx,astro}'",
     "format:fix": "prettier --write './src/**/*.{ts,tsx,astro}'",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
-    "lint:astro:fix": "npm run lint:astro -- --fix",
     "lint:text": "textlint ./src/content/posts/**/*.md",
     "test": "vitest",
     "test:unit": "vitest run",

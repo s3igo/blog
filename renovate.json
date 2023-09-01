@@ -6,7 +6,7 @@
     ":prHourlyLimitNone",
     ":automergePatch",
     "schedule:automergeDaily",
-    "schedule:weekly",
+    "schedule:daily",
     "group:allNonMajor"
   ],
   "labels": ["bot: dependencies"],
