@@ -1,4 +1,3 @@
-import esLint from '@eslint/js';
 import ts from '@typescript-eslint/eslint-plugin';
 import tsParser from '@typescript-eslint/parser';
 import astroParser from 'astro-eslint-parser';
@@ -10,11 +9,6 @@ import sortDestructureKeys from 'eslint-plugin-sort-destructure-keys';
 
 export default [
     {
-        rules: {
-            ...esLint.configs['recommended'].rules,
-        },
-    },
-    {
         files: ['**/*.ts', '**/*.tsx'],
         ignores: ['**/*.d.ts'],
         plugins: {
@@ -23,7 +17,7 @@ export default [
             'sort-destructure-keys': sortDestructureKeys,
         },
         rules: {
-            ...ts.configs['recommended'].rules,
+            ...ts.configs['strict-type-checked'].rules,
             '@typescript-eslint/consistent-type-imports': [
                 'error',
                 { fixStyle: 'inline-type-imports' },
