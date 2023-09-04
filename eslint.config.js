@@ -12,7 +12,6 @@ export default [
     {
         rules: {
             ...esLint.configs['recommended'].rules,
-            ...prettier.rules,
         },
     },
     {
@@ -78,4 +77,5 @@ export default [
             },
         },
     },
+    prettier,
 ];
