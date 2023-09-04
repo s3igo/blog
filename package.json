@@ -53,7 +53,6 @@
     "tailwindcss": "^3.2.7"
   },
   "devDependencies": {
-    "@eslint/js": "^8.48.0",
     "@playwright/test": "^1.31.1",
     "@types/markdown-it": "^13.0.0",
     "@types/sanitize-html": "^2.8.0",
