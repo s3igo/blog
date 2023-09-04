@@ -31,7 +31,7 @@
     "clean": "rm -rf ./node_modules"
   },
   "dependencies": {
-    "@astrojs/rss": "^2.1.1",
+    "@astrojs/rss": "^3.0.0",
     "@astrojs/solid-js": "^2.0.2",
     "@astrojs/tailwind": "^4.0.0",
     "@fontsource/biz-udgothic": "^5.0.0",
