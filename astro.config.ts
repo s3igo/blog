@@ -1,4 +1,4 @@
-import solidJs from '@astrojs/solid-js';
+import solid from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
 import compress from 'astro-compress';
@@ -9,7 +9,7 @@ export default defineConfig({
         tailwind({
             applyBaseStyles: false,
         }),
-        solidJs(),
+        solid(),
         compress(),
     ],
     markdown: {
