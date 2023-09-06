@@ -1,4 +1,7 @@
 import { defineConfig, devices } from '@playwright/test';
+import dotenv from 'dotenv';
+
+dotenv.config();
 
 export default defineConfig({
     projects: [
@@ -20,12 +23,12 @@ export default defineConfig({
     ],
     testDir: './tests/e2e',
     use: {
-        baseURL: 'http://localhost:4321/',
+        baseURL: process.env.PREVIEW_URL,
     },
     webServer: {
         command: 'npm run preview',
-        // eslint-disable-next-line no-undef
         reuseExistingServer: !process.env.CI,
         timeout: 120 * 1000,
+        url: process.env.PREVIEW_URL || 'http://localhost:3000',
     },
 });
