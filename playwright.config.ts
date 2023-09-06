@@ -27,6 +27,6 @@ export default defineConfig({
         // eslint-disable-next-line no-undef
         reuseExistingServer: !process.env.CI,
         timeout: 120 * 1000,
-        url: 'http://localhost:3000/',
+        url: 'http://localhost:4321/',
     },
 });
