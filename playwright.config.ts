@@ -23,12 +23,14 @@ export default defineConfig({
     ],
     testDir: './tests/e2e',
     use: {
-        baseURL: process.env.PREVIEW_URL,
+        // baseURL: process.env.PREVIEW_URL,
+        baseURL: 'http://localhost:4321',
     },
     webServer: {
         command: 'npm run preview',
         reuseExistingServer: !process.env.CI,
         timeout: 120 * 1000,
-        url: process.env.PREVIEW_URL || 'http://localhost:3000',
+        // url: process.env.PREVIEW_URL || 'http://localhost:4321',
+        url: 'http://localhost:4321',
     },
 });
