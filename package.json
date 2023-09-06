@@ -31,16 +31,17 @@
     "clean": "rm -rf ./node_modules"
   },
   "dependencies": {
-    "@astrojs/rss": "^2.1.1",
-    "@astrojs/solid-js": "^2.0.2",
-    "@astrojs/tailwind": "^4.0.0",
+    "@astrojs/check": "^0.2.0",
+    "@astrojs/rss": "^3.0.0",
+    "@astrojs/solid-js": "^3.0.0",
+    "@astrojs/tailwind": "^5.0.0",
     "@fontsource/biz-udgothic": "^5.0.0",
     "@fontsource/jetbrains-mono": "^5.0.0",
     "@fontsource/nunito-sans": "^5.0.0",
     "@fontsource/zen-kaku-gothic-new": "^5.0.0",
     "@kobalte/core": "^0.11.0",
     "@kobalte/tailwindcss": "^0.8.0",
-    "astro": "^2.0.1",
+    "astro": "^3.0.8",
     "astro-compress": "^2.0.14",
     "date-fns": "^2.29.3",
     "markdown-it": "^13.0.1",
@@ -50,7 +51,8 @@
     "remeda": "^1.6.0",
     "sanitize-html": "^2.10.0",
     "solid-js": "^1.6.11",
-    "tailwindcss": "^3.2.7"
+    "tailwindcss": "^3.2.7",
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
     "@playwright/test": "^1.31.1",
@@ -77,6 +79,6 @@
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
     "textlint-rule-preset-ja-technical-writing": "^8.0.0",
-    "vitest": "^0.34.0"
+    "vitest": "^0.34.3"
   }
 }
