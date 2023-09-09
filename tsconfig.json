@@ -1,17 +1,12 @@
 {
-  "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "~/*": [
-        "./src/*"
-      ]
-    },
-    "types": [
-      "vitest/globals",
-      "vitest/importMeta"
-    ],
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-  }
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "types": ["vitest/globals", "vitest/importMeta"]
+  },
+  "extends": "astro/tsconfigs/strictest"
 }
