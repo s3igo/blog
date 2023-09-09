@@ -1,6 +1,7 @@
-const colors = require('tailwindcss/colors');
+import type { Config } from 'tailwindcss';
+import colors from 'tailwindcss/colors';
 
-module.exports = {
+const config: Config = {
     content: ['./src/**/*.{astro,html,js,jsx,ts,tsx}'],
     darkMode: 'class',
     plugins: [require('@kobalte/tailwindcss')],
@@ -24,3 +25,5 @@ module.exports = {
         },
     },
 };
+
+export default config;

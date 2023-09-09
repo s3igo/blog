@@ -24,8 +24,7 @@
     // "explorer.sortOrder": "mixed",
     "eslint.experimental.useFlatConfig": true,
     "editor.codeActionsOnSave": {
-      "source.addMissingImports": true,
-      "source.fixAll.eslint": true
+      "source.fixAll.eslint": true,
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
@@ -44,26 +43,27 @@
     ],
     "cSpell.words": [
       "astro",
-      "tsconfigs",
       "astrojs",
+      "codecov",
       "kaku",
-      "remeda",
+      "kobalte",
+      "Labelledby",
       "mdast",
-      "stefanzweifel",
-      "udgothic",
-      "tsukiyo",
+      "nocjsp",
+      "rdfa",
+      "rehype",
+      "remeda",
       "sdras",
       "shiki",
-      "trivago",
-      "nocjsp",
-      "Vitest",
-      "kobalte",
-      "codecov",
-      "rehype",
-      "tsup",
       "solidjs",
-      "Labelledby",
-      "rdfa"
+      "stefanzweifel",
+      "trivago",
+      "tsconfigs",
+      "tsukiyo",
+      "tsup",
+      "udgothic",
+      "Vitest",
+      "yamagami"
     ]
   }
 }
