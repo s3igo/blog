@@ -62,6 +62,8 @@ jobs:
           cache: npm
       - name: Install dependencies
         run: npm ci
+      - name: Build app
+        run: npm run build
       - name: Run Vitest typecheck
         run: npm run test:type
 
