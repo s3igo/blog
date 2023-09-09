@@ -1,7 +1,6 @@
 /** @type {import("prettier").Config} */
 export default {
     jsonRecursiveSort: true,
-    jsonSortOrder: 'lexical',
     overrides: [
         {
             files: '*.astro',
