@@ -8,7 +8,7 @@ const config: Config = {
     theme: {
         colors: {
             'bellflower-blue': colors.slate[200],
-            'black-knight': colors.gray[950],
+            'black-knight': '#030712', // gray-950
             'blue-blouse': colors.slate[400],
             'dreamy-cloud': colors.gray[200],
             encore: colors.gray[500],
