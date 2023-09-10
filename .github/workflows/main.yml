@@ -17,15 +17,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version-file: .node-version
-          cache: npm
+          cache: pnpm
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
       - name: Run `astro check`
-        run: npm run check
+        run: pnpm run check
       - name: Run Prettier
-        run: npm run format:fix
+        run: pnpm run format:fix
       - name: Run ESLint with fix options
-        run: npm run lint:fix
+        run: pnpm run lint:fix
       - name: Commit files modified by ESLint
         uses: stefanzweifel/git-auto-commit-action@v4
         with:
@@ -42,11 +42,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version-file: .node-version
-          cache: npm
+          cache: pnpm
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
       - name: Run Textlint
-        run: npm run lint:text
+        run: pnpm run lint:text
 
   test-type:
     name: Typecheck
@@ -59,13 +59,13 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version-file: .node-version
-          cache: npm
+          cache: pnpm
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
       - name: Build app
-        run: npm run build
+        run: pnpm run build
       - name: Run Vitest typecheck
-        run: npm run test:type
+        run: pnpm run test:type
 
   test-unit:
     name: Unit Test
@@ -78,11 +78,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version-file: .node-version
-          cache: npm
+          cache: pnpm
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
       - name: Run Vitest
-        run: npm run test:unit
+        run: pnpm run test:unit
 
   test-e2e:
     name: E2E Test
@@ -101,12 +101,12 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version-file: .node-version
-          cache: npm
+          cache: pnpm
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
       - name: Store Playwright's version
         run: |
-          PLAYWRIGHT_VERSION=$(npm ls @playwright/test | grep @playwright | sed 's/.*@//')
+          PLAYWRIGHT_VERSION=$(pnpm ls @playwright/test | grep @playwright | awk '{ print $2 }')
           echo "Playwright's Version: $PLAYWRIGHT_VERSION"
           echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
       - name: Cache Playwright browsers for Playwright's version
@@ -117,14 +117,14 @@ jobs:
           key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}-${{ matrix.browser }}
       - name: Setup Playwright
         if: steps.cache-playwright.outputs.cache-hit != 'true'
-        run: npx playwright install --with-deps ${{ matrix.browser }}
+        run: pnpx playwright install --with-deps ${{ matrix.browser }}
       - name: Install Additional Dependencies
         if: steps.cache-playwright.outputs.cache-hit == 'true'
-        run: npx playwright install-deps ${{ matrix.browser }}
+        run: pnpx playwright install-deps ${{ matrix.browser }}
       - name: Build app
-        run: npm run build
+        run: pnpm run build
       - name: Run Playwright tests
-        run: npx playwright test --project=${{ matrix.browser }}
+        run: pnpx playwright test --project=${{ matrix.browser }}
 
   coverage:
     name: Coverage
@@ -137,11 +137,11 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version-file: .node-version
-          cache: npm
+          cache: pnpm
       - name: Install dependencies
-        run: npm ci
+        run: pnpm install
       - name: Generate coverage file
-        run: npm run coverage
+        run: pnpm run coverage
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@v3
         with:

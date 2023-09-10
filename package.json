@@ -72,6 +72,7 @@
     "globals": "^13.21.0",
     "husky": "^8.0.3",
     "is-ci": "^3.0.1",
+    "jsdom": "^22.1.0",
     "postcss-load-config": "^4.0.1",
     "prettier": "^3.0.2",
     "prettier-plugin-astro": "^0.12.0",
