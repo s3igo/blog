@@ -101,6 +101,10 @@ $ tree -d -L 1 ./src/components
 
 ## 開発
 
+```sh
+corepack enable npm
+```
+
 ### 環境
 
 Git、GNU makeが必要です。

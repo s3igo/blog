@@ -10,6 +10,7 @@ import type { FirstThreeSentences, Published, Title, Updated } from '~/domain/va
 import type { Tags } from '~/domain/values/tags';
 import { Metadata } from '../base/Metadata';
 import Footer from '../features/Footer.astro';
+import Icon from '../features/Icon.astro';
 
 type Props = {
     title: Title;
@@ -26,7 +27,7 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
     <div class="col-start-1 pt-6 max-md:col-span-12 md:max-lg:col-start-2">
         <a class="flex md:justify-end" href="/">
             <div class="md:fixed">
-                <img src="/icon.png" alt="tsukiyo icon" class="w-14 xl:w-20" />
+                <Icon />
             </div>
         </a>
     </div>

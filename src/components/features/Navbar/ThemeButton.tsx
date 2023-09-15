@@ -37,6 +37,7 @@ export const ThemeButton: Component = () => {
         <Button.Root
             onClick={toggleTheme}
             class="h-8 w-8 rounded-full border-2 border-transparent p-1 hover:border-maldives xl:h-12 xl:w-12 xl:p-2"
+            aria-label="Toggle dark mode"
         >
             <DarkModeIcon />
         </Button.Root>
