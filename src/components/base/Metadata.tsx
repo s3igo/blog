@@ -10,6 +10,7 @@ export const Metadata: Component<Props> = (props) =>
     ) : (
         <a
             href={props.link}
+            rel="prefetch-intent"
             class="metadata block w-max rounded-full border-2 border-transparent bg-white px-3 py-1 hover:border-maldives dark:bg-midnight-express"
         >
             {props.text}
