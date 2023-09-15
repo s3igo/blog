@@ -22,6 +22,7 @@ export const RssButton: Component = () => (
             component="a"
             href="/rss.xml"
             class="h-8 w-8 rounded-full border-2 border-transparent p-1 hover:border-maldives xl:h-12 xl:w-12 xl:p-2"
+            aria-label="RSS feed"
         >
             <RssIcon />
         </As>
