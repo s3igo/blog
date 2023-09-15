@@ -20,13 +20,12 @@ export default defineConfig({
     ],
     testDir: './tests/e2e',
     use: {
-        baseURL: 'http://localhost:3000',
+        baseURL: 'http://localhost:4321',
     },
     webServer: {
         command: 'npm run preview',
-        // eslint-disable-next-line no-undef
         reuseExistingServer: !process.env.CI,
         timeout: 120 * 1000,
-        url: 'http://localhost:3000/',
+        url: 'http://localhost:4321',
     },
 });

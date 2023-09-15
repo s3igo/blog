@@ -3,26 +3,26 @@ REPO := blog
 
 .PHONY: dev
 dev:
-	npm start
+	pnpm start
 
 .PHONY: preview
 preview:
-	bash -c "trap 'npm run build:clean' SIGINT; npm run preview:local"
+	bash -c "trap 'pnpm run build:clean' SIGINT; pnpm run preview"
 
 .PHONY: test
 test:
-	npm test
+	pnpm test
 
 .PHONY: clean
 clean:
-	npm run clean
-	npm run build:clean
-	npm run coverage:clean
+	pnpm run clean
+	pnpm run build:clean
+	pnpm run coverage:clean
 
 .PHONY: init
 init:
-	npm run clean
-	npm install
+	pnpm run clean
+	pnpm install
 
 .PHONY: clear-cache
 clear-cache:

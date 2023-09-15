@@ -1,13 +1,14 @@
-const colors = require('tailwindcss/colors');
+import type { Config } from 'tailwindcss';
+import colors from 'tailwindcss/colors';
 
-module.exports = {
+const config: Config = {
     content: ['./src/**/*.{astro,html,js,jsx,ts,tsx}'],
     darkMode: 'class',
     plugins: [require('@kobalte/tailwindcss')],
     theme: {
         colors: {
             'bellflower-blue': colors.slate[200],
-            'black-knight': colors.gray[950],
+            'black-knight': '#030712', // gray-950
             'blue-blouse': colors.slate[400],
             'dreamy-cloud': colors.gray[200],
             encore: colors.gray[500],
@@ -24,3 +25,5 @@ module.exports = {
         },
     },
 };
+
+export default config;

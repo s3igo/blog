@@ -1,5 +1,5 @@
 import type { MarkdownHeading } from 'astro';
-import type { AstroComponentFactory } from 'astro/dist/runtime/server';
+import type { AstroComponentFactory } from 'astro/runtime/server/index.js';
 import { type CollectionEntry, getCollection } from 'astro:content';
 import {
     Body,

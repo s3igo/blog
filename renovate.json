@@ -6,26 +6,26 @@
     ":prHourlyLimitNone",
     ":automergePatch",
     "schedule:automergeDaily",
-    "schedule:weekly",
+    "schedule:daily",
     "group:allNonMajor"
   ],
   "labels": ["bot: dependencies"],
   "packageRules": [
     {
-      "matchUpdateTypes": "major",
-      "addLabels": ["bot.dependencies: 1.major"]
+      "addLabels": ["bot.dependencies: 1.major"],
+      "matchUpdateTypes": "major"
     },
     {
-      "matchUpdateTypes": "minor",
-      "addLabels": ["bot.dependencies: 2.minor"]
+      "addLabels": ["bot.dependencies: 2.minor"],
+      "matchUpdateTypes": "minor"
     },
     {
-      "matchUpdateTypes": "patch",
-      "addLabels": ["bot.dependencies: 3.patch"]
+      "addLabels": ["bot.dependencies: 3.patch"],
+      "matchUpdateTypes": "patch"
     },
     {
-      "matchPackageNames": ["node"],
-      "allowedVersions": "<17"
+      "allowedVersions": "<17",
+      "matchPackageNames": ["node"]
     }
   ],
   "prConcurrentLimit": 3

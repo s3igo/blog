@@ -1,27 +1,12 @@
 {
-  "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
     "baseUrl": ".",
-    "paths": {
-      "~/*": [
-        "./src/*"
-      ]
-    },
-    "types": [
-      "vitest/globals",
-      "vitest/importMeta"
-    ],
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
-    "plugins": [
-      {
-        "name": "eslint-plugin-import-access",
-        "jsdoc": {
-          "indexLoophole": true,
-          "filenameLoophole": true,
-          "defaultImportability": "public"
-        }
-      }
-    ]
-  }
+    "paths": {
+      "~/*": ["./src/*"]
+    },
+    "types": ["vitest/globals", "vitest/importMeta"]
+  },
+  "extends": "astro/tsconfigs/strictest"
 }
