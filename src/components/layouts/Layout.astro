@@ -22,6 +22,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <link rel="icon" type="image/png" href="/icon.webp" />
+        <link rel="sitemap" href="/sitemap-index.xml" />
         <title>{title ? pageTitle(title) : PAGE_TITLE}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonicalURL} />
