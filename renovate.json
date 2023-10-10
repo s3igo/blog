@@ -28,5 +28,6 @@
       "matchPackageNames": ["node"]
     }
   ],
-  "prConcurrentLimit": 3
+  "prConcurrentLimit": 3,
+  "rangeStrategy": "bump"
 }
