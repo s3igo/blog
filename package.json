@@ -41,7 +41,7 @@
     "@fontsource/zen-kaku-gothic-new": "^5.0.14",
     "@kobalte/core": "^0.11.0",
     "@kobalte/tailwindcss": "^0.8.0",
-    "astro": "^3.2.4",
+    "astro": "^3.3.0",
     "astro-compress": "^2.0.15",
     "date-fns": "^2.30.0",
     "markdown-it": "^13.0.2",
@@ -55,7 +55,7 @@
     "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "@playwright/test": "^1.38.1",
+    "@playwright/test": "^1.39.0",
     "@types/markdown-it": "^13.0.2",
     "@types/sanitize-html": "^2.9.2",
     "@typescript-eslint/eslint-plugin": "^6.7.5",
