@@ -3,7 +3,7 @@
   "type": "module",
   "version": "0.1.0",
   "private": true,
-  "packageManager": "pnpm@8.9.1",
+  "packageManager": "pnpm@8.9.2",
   "browserslist": [
     "defaults"
   ],
@@ -41,7 +41,7 @@
     "@fontsource/zen-kaku-gothic-new": "^5.0.14",
     "@kobalte/core": "^0.11.0",
     "@kobalte/tailwindcss": "^0.8.0",
-    "astro": "^3.3.0",
+    "astro": "^3.3.1",
     "astro-compress": "^2.0.15",
     "date-fns": "^2.30.0",
     "markdown-it": "^13.0.2",
