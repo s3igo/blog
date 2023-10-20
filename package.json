@@ -39,7 +39,7 @@
     "@fontsource/jetbrains-mono": "^5.0.16",
     "@fontsource/nunito-sans": "^5.0.8",
     "@fontsource/zen-kaku-gothic-new": "^5.0.15",
-    "@kobalte/core": "^0.11.0",
+    "@kobalte/core": "^0.11.1",
     "@kobalte/tailwindcss": "^0.8.0",
     "astro": "^3.3.2",
     "astro-compress": "^2.0.15",
