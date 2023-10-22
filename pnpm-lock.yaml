@@ -24,20 +24,20 @@ dependencies:
     specifier: ^5.0.2
     version: 5.0.2(astro@3.3.2)(tailwindcss@3.3.3)
   '@fontsource/biz-udgothic':
-    specifier: ^5.0.15
-    version: 5.0.15
-  '@fontsource/jetbrains-mono':
     specifier: ^5.0.16
     version: 5.0.16
+  '@fontsource/jetbrains-mono':
+    specifier: ^5.0.17
+    version: 5.0.17
   '@fontsource/nunito-sans':
     specifier: ^5.0.8
     version: 5.0.8
   '@fontsource/zen-kaku-gothic-new':
-    specifier: ^5.0.15
-    version: 5.0.15
+    specifier: ^5.0.16
+    version: 5.0.16
   '@kobalte/core':
-    specifier: ^0.11.1
-    version: 0.11.1(solid-js@1.8.3)
+    specifier: ^0.11.2
+    version: 0.11.2(solid-js@1.8.3)
   '@kobalte/tailwindcss':
     specifier: ^0.8.0
     version: 0.8.0(tailwindcss@3.3.3)
@@ -1135,20 +1135,20 @@ packages:
     resolution: {integrity: sha512-m0G6wlnhm/AX0H12IOWtK8gASEMffnX08RtKkCgTdHb9JpHKGloI7icFfLg9ZmQeavcvR0PKmzxClyuFPSjKWw==}
     dev: false
 
-  /@fontsource/biz-udgothic@5.0.15:
-    resolution: {integrity: sha512-DTAuJ0qJRBhUGQ7KB7wjNi1nSHvf1XMBpZRex2DNVW7HwlK1RE25e72kz0Ic96PYEnYmXWDZL3gzTtqjbuINRA==}
+  /@fontsource/biz-udgothic@5.0.16:
+    resolution: {integrity: sha512-b24GzUFTzBV3BHFRxaPesp/bGet9Uz7WTNDCnJcYM+61kCcSsImHegparg0pqGuiSdIUE046rFJZXdBL8UgCAg==}
     dev: false
 
-  /@fontsource/jetbrains-mono@5.0.16:
-    resolution: {integrity: sha512-JO3KQiBST/kqHB/VknW1PjOxKdLTaRrEOjkr2NZB9YSWMtFU0kAvEhv01JoOuKAJ38BR9fGm/FTGbIDoK6Np7g==}
+  /@fontsource/jetbrains-mono@5.0.17:
+    resolution: {integrity: sha512-Y/EtdbwKwNQTGpnMrexX8SVW6Jqlh0nX2bNHI9Z9m6FsyjbocZIFNJqwSY9bDUoi7irGtz8nuidAN7FF8wYuJA==}
     dev: false
 
   /@fontsource/nunito-sans@5.0.8:
     resolution: {integrity: sha512-LxUlZGwVHGe5w6RAeqAHV2VC4VdfG28FvfMN8Z8s3vY+DNP6U0hBT9rV/jry59oNK7/zIC6kaoqq61PGrP/EIw==}
     dev: false
 
-  /@fontsource/zen-kaku-gothic-new@5.0.15:
-    resolution: {integrity: sha512-Lay9kxUTiUBIxKqVqGFTLRzEwVWK122hm/xdvOHLlCqs2iotN0dRqBpzkfIgOBvyvzjjWgYMyJ0joKBJB9uZCg==}
+  /@fontsource/zen-kaku-gothic-new@5.0.16:
+    resolution: {integrity: sha512-oXWt7QViB33AwyYkFRXDCE5zblQXT1IOFGRz/NtFQD15SKIS4HpIpXH7ob4nRqrEfYQ/Oa7oqVif6OuFugSBQg==}
     dev: false
 
   /@formatjs/ecma402-abstract@1.17.1:
@@ -1268,8 +1268,8 @@ packages:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
 
-  /@kobalte/core@0.11.1(solid-js@1.8.3):
-    resolution: {integrity: sha512-Gp/zW/tkkzvnHPXj2mzEeV5aAB0OF91efu/4o3QUXqDKVEIuo5+gmr1YAjhvM1DqTB+RwRP0OdAhc00XedHQ6Q==}
+  /@kobalte/core@0.11.2(solid-js@1.8.3):
+    resolution: {integrity: sha512-B19TvpmR0E8n7LJqopF0lbMayBErnWJ5MlTTnrgVAFU1up/2Bo1O6ldTK1c5NikmpppzIK2A8ovUwIhRqw/3Uw==}
     peerDependencies:
       solid-js: ^1.7.11
     dependencies:
