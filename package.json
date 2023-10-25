@@ -41,7 +41,7 @@
     "@fontsource/zen-kaku-gothic-new": "^5.0.16",
     "@kobalte/core": "^0.11.2",
     "@kobalte/tailwindcss": "^0.8.0",
-    "astro": "^3.3.3",
+    "astro": "^3.3.4",
     "astro-compress": "^2.0.15",
     "date-fns": "^2.30.0",
     "markdown-it": "^13.0.2",
@@ -51,7 +51,7 @@
     "remeda": "^1.27.1",
     "sanitize-html": "^2.11.0",
     "solid-js": "^1.8.3",
-    "tailwindcss": "^3.3.3",
+    "tailwindcss": "^3.3.5",
     "typescript": "^5.2.2"
   },
   "devDependencies": {
