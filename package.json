@@ -76,7 +76,7 @@
     "prettier": "^3.0.3",
     "prettier-plugin-astro": "^0.12.1",
     "prettier-plugin-sort-json": "^3.1.0",
-    "prettier-plugin-tailwindcss": "^0.5.6",
+    "prettier-plugin-tailwindcss": "^0.5.7",
     "textlint": "^13.4.0",
     "textlint-filter-rule-allowlist": "^4.0.0",
     "textlint-filter-rule-comments": "^1.2.2",
