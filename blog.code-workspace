@@ -8,7 +8,7 @@
       "streetsidesoftware.code-spell-checker",
       "bradlc.vscode-tailwindcss",
       "csstools.postcss",
-      "taichi.vscode-textlint",
+      "taichi.vscode-textlint"
     ]
   },
   "folders": [
@@ -21,26 +21,9 @@
     }
   ],
   "settings": {
-    // "explorer.sortOrder": "mixed",
-    "eslint.experimental.useFlatConfig": true,
-    "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true,
-    },
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnSave": true,
-    "prettier.documentSelectors": [
-      "**/*.astro"
-    ],
     "cSpell.allowCompoundWords": true,
-    "cSpell.ignoreRegExpList": [
-      "[０-９Ａ-Ｚａ-ｚぁ-んァ-ヶ亜-熙纊-黑]+"
-    ],
-    "cSpell.ignorePaths": [
-      "devcontainer.json",
-      "*.code-workspace",
-      "*.md",
-      "package-lock.json"
-    ],
+    "cSpell.ignorePaths": ["devcontainer.json", "*.code-workspace", "*.md", "package-lock.json"],
+    "cSpell.ignoreRegExpList": ["[０-９Ａ-Ｚａ-ｚぁ-んァ-ヶ亜-熙纊-黑]+"],
     "cSpell.words": [
       "astro",
       "astrojs",
@@ -64,6 +47,14 @@
       "udgothic",
       "Vitest",
       "yamagami"
-    ]
+    ],
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnSave": true,
+    // "explorer.sortOrder": "mixed",
+    "eslint.experimental.useFlatConfig": true,
+    "prettier.documentSelectors": ["**/*.astro"]
   }
 }
