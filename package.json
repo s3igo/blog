@@ -41,7 +41,7 @@
     "@fontsource/zen-kaku-gothic-new": "^5.0.16",
     "@kobalte/core": "^0.11.2",
     "@kobalte/tailwindcss": "^0.9.0",
-    "astro": "^3.5.4",
+    "astro": "^3.5.5",
     "astro-compress": "^2.2.3",
     "date-fns": "^2.30.0",
     "markdown-it": "^13.0.2",
