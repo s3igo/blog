@@ -22,10 +22,6 @@
     {
       "addLabels": ["bot.dependencies: 3.patch"],
       "matchUpdateTypes": "patch"
-    },
-    {
-      "allowedVersions": "<17",
-      "matchPackageNames": ["node"]
     }
   ],
   "prConcurrentLimit": 3,
