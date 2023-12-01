@@ -131,8 +131,8 @@ devDependencies:
     specifier: ^23.0.1
     version: 23.0.1
   postcss-load-config:
-    specifier: ^4.0.2
-    version: 4.0.2(postcss@8.4.29)
+    specifier: ^5.0.0
+    version: 5.0.0(postcss@8.4.29)
   prettier:
     specifier: ^3.1.0
     version: 3.1.0
@@ -7052,6 +7052,24 @@ packages:
       lilconfig: 3.0.0
       postcss: 8.4.29
       yaml: 2.3.4
+    dev: false
+
+  /postcss-load-config@5.0.0(postcss@8.4.29):
+    resolution: {integrity: sha512-i069VOAUi6mpTsToA+qPAAfD7m7dfjm9Yhaqma7KEMJcQFM9jerKBU6rTGNcYLErj4sjR9fZ1q30TpFm2K7PSg==}
+    engines: {node: '>= 18'}
+    peerDependencies:
+      jiti: '>=1.21.0'
+      postcss: '>=8.0.9'
+    peerDependenciesMeta:
+      jiti:
+        optional: true
+      postcss:
+        optional: true
+    dependencies:
+      lilconfig: 3.0.0
+      postcss: 8.4.29
+      yaml: 2.3.4
+    dev: true
 
   /postcss-nested@6.0.1(postcss@8.4.29):
     resolution: {integrity: sha512-mEp4xPMi5bSWiMbsgoPfcP74lsWLHkQbZc3sY+jWYd65CUwXrUaTp0fmNpa01ZcETKlIgUdFN/MpS2xZtqL9dQ==}
