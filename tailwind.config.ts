@@ -4,6 +4,7 @@ import colors from 'tailwindcss/colors';
 const config: Config = {
     content: ['./src/**/*.{astro,html,js,jsx,ts,tsx}'],
     darkMode: 'class',
+    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     plugins: [require('@kobalte/tailwindcss')],
     theme: {
         colors: {
