@@ -44,7 +44,7 @@
     "astro": "^3.6.4",
     "astro-compress": "^2.2.3",
     "date-fns": "^2.30.0",
-    "markdown-it": "^13.0.2",
+    "markdown-it": "^14.0.0",
     "mdast-util-from-markdown": "^2.0.0",
     "mdast-util-to-string": "^4.0.0",
     "remark-code-titles": "^0.1.2",
