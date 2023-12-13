@@ -63,8 +63,8 @@ dependencies:
     specifier: ^0.1.2
     version: 0.1.2
   remeda:
-    specifier: ^1.29.0
-    version: 1.29.0
+    specifier: ^1.30.0
+    version: 1.30.0
   sanitize-html:
     specifier: ^2.11.0
     version: 2.11.0
@@ -7415,8 +7415,8 @@ packages:
       unist-util-visit: 4.1.2
     dev: false
 
-  /remeda@1.29.0:
-    resolution: {integrity: sha512-M3LQ14KtMdQ1879lj/kKji3zBk158s7Rwg963mEkTfQFMxnKrIEAMxJfo/+0sp/+uGgN/KMVU2MBA4LNjqf8YQ==}
+  /remeda@1.30.0:
+    resolution: {integrity: sha512-KzdPP0PCxSdafrJlaaNOvxGCout+qNBb9lefLLbWBC6YOpskVXbOA4hmSGnKHe5/MRHjIa8qhsZjvbE2eU/l2w==}
     dev: false
 
   /repeat-string@1.6.1:
