@@ -17,7 +17,7 @@ export const Card: Component<Props> = (props) => (
     <a
         href={props.url}
         rel="prefetch-intent"
-        class="rounded-3xl border-2 border-transparent bg-white px-5 py-4 hover:border-maldives dark:bg-midnight-express sm:px-8 sm:py-6"
+        class="rounded-3xl border-2 border-transparent bg-white px-5 py-4 hover:border-maldives sm:px-8 sm:py-6 dark:bg-midnight-express"
     >
         <article>
             <div class="flex max-sm:flex-col sm:items-center">
