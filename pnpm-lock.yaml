@@ -22,7 +22,7 @@ dependencies:
     version: 3.0.2(solid-js@1.8.7)(vite@4.4.9)
   '@astrojs/tailwind':
     specifier: ^5.0.3
-    version: 5.0.3(astro@3.6.4)(tailwindcss@3.3.7)
+    version: 5.0.3(astro@3.6.4)(tailwindcss@3.4.0)
   '@fontsource/biz-udgothic':
     specifier: ^5.0.17
     version: 5.0.17
@@ -40,7 +40,7 @@ dependencies:
     version: 0.11.2(solid-js@1.8.7)
   '@kobalte/tailwindcss':
     specifier: ^0.9.0
-    version: 0.9.0(tailwindcss@3.3.7)
+    version: 0.9.0(tailwindcss@3.4.0)
   astro:
     specifier: ^3.6.4
     version: 3.6.4(typescript@5.3.3)
@@ -72,8 +72,8 @@ dependencies:
     specifier: ^1.8.7
     version: 1.8.7
   tailwindcss:
-    specifier: ^3.3.7
-    version: 3.3.7
+    specifier: ^3.4.0
+    version: 3.4.0
   typescript:
     specifier: ^5.3.3
     version: 5.3.3
@@ -307,7 +307,7 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/tailwind@5.0.3(astro@3.6.4)(tailwindcss@3.3.7):
+  /@astrojs/tailwind@5.0.3(astro@3.6.4)(tailwindcss@3.4.0):
     resolution: {integrity: sha512-p+uFa1PNuV8RxhGkPUFgVq8CUbmS3xr0u5k1An2xKECLotRh7vsrGcPUijHvYOt42URohcg8rIq0CxNoVMhReg==}
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0
@@ -317,7 +317,7 @@ packages:
       autoprefixer: 10.4.16(postcss@8.4.29)
       postcss: 8.4.29
       postcss-load-config: 4.0.2(postcss@8.4.29)
-      tailwindcss: 3.3.7
+      tailwindcss: 3.4.0
     transitivePeerDependencies:
       - ts-node
     dev: false
@@ -1679,12 +1679,12 @@ packages:
       solid-js: 1.8.7
     dev: false
 
-  /@kobalte/tailwindcss@0.9.0(tailwindcss@3.3.7):
+  /@kobalte/tailwindcss@0.9.0(tailwindcss@3.4.0):
     resolution: {integrity: sha512-WbueJTVRiO4yrmfHIBwp07y3M5iibJ/gauEAQ7mOyg1tZulvpO7SM/UdgzX95a9a0KDt1mQFxwO7RmpOUXWOWA==}
     peerDependencies:
       tailwindcss: ^3.3.3
     dependencies:
-      tailwindcss: 3.3.7
+      tailwindcss: 3.4.0
     dev: false
 
   /@kobalte/utils@0.9.0(solid-js@1.8.7):
@@ -8574,8 +8574,8 @@ packages:
       strip-ansi: 6.0.1
     dev: true
 
-  /tailwindcss@3.3.7:
-    resolution: {integrity: sha512-pjgQxDZPvyS/nG3ZYkyCvsbONJl7GdOejfm24iMt2ElYQQw8Jc4p0m8RdMp7mznPD0kUhfzwV3zAwa80qI0zmQ==}
+  /tailwindcss@3.4.0:
+    resolution: {integrity: sha512-VigzymniH77knD1dryXbyxR+ePHihHociZbXnLZHUyzf2MMs2ZVqlUrZ3FvpXP8pno9JzmILt1sZPD19M3IxtA==}
     engines: {node: '>=14.0.0'}
     hasBin: true
     dependencies:
