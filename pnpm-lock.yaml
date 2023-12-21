@@ -21,8 +21,8 @@ dependencies:
     specifier: ^3.0.2
     version: 3.0.2(solid-js@1.8.7)(vite@4.4.9)
   '@astrojs/tailwind':
-    specifier: ^5.0.3
-    version: 5.0.3(astro@3.6.4)(tailwindcss@3.4.0)
+    specifier: ^5.0.4
+    version: 5.0.4(astro@3.6.4)(tailwindcss@3.4.0)
   '@fontsource/biz-udgothic':
     specifier: ^5.0.17
     version: 5.0.17
@@ -48,8 +48,8 @@ dependencies:
     specifier: ^2.2.5
     version: 2.2.5
   date-fns:
-    specifier: ^3.0.3
-    version: 3.0.3
+    specifier: ^3.0.5
+    version: 3.0.5
   markdown-it:
     specifier: ^14.0.0
     version: 14.0.0
@@ -307,8 +307,8 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/tailwind@5.0.3(astro@3.6.4)(tailwindcss@3.4.0):
-    resolution: {integrity: sha512-p+uFa1PNuV8RxhGkPUFgVq8CUbmS3xr0u5k1An2xKECLotRh7vsrGcPUijHvYOt42URohcg8rIq0CxNoVMhReg==}
+  /@astrojs/tailwind@5.0.4(astro@3.6.4)(tailwindcss@3.4.0):
+    resolution: {integrity: sha512-50ImfEFRBjndtWus6xJOWQ4EVpZWB4d+hieosMPm1Tca68mNTX+Yi1/PhTMk9q/w7iZPIUK/KGBoovo15O10eQ==}
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0
       tailwindcss: ^3.0.24
@@ -3436,8 +3436,8 @@ packages:
       whatwg-url: 14.0.0
     dev: true
 
-  /date-fns@3.0.3:
-    resolution: {integrity: sha512-orRh4Qc+Y5fE8RO2fG0FkggCTxgfRR71kypohBPvIlEHi+GZCy0RuaPm5i2oNVhnT96nNMj/0R+LWAjBA/3prA==}
+  /date-fns@3.0.5:
+    resolution: {integrity: sha512-Q4Tq5c5s/Zl/zbgdWf6pejn9ru7UwdIlLfvEEg1hVsQNQ7LKt76qIduagIT9OPK7+JCv1mAKherdU6bOqGYDnw==}
     dev: false
 
   /debug@2.6.9:
