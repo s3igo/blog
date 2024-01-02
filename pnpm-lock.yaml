@@ -155,8 +155,8 @@ devDependencies:
     specifier: ^1.2.2
     version: 1.2.2(textlint@13.4.1)
   textlint-rule-preset-ja-technical-writing:
-    specifier: ^9.0.0
-    version: 9.0.0(textlint@13.4.1)
+    specifier: ^10.0.1
+    version: 10.0.1(textlint@13.4.1)
   vitest:
     specifier: ^0.34.6
     version: 0.34.6(jsdom@23.0.1)
@@ -8677,14 +8677,6 @@ packages:
       textlint: 13.4.1
     dev: true
 
-  /textlint-rule-helper@2.3.0:
-    resolution: {integrity: sha512-Ug78Saahb/qVImttL0NSFyT5/JJ5wXvOPepR2pYAjNi54BsQAAz/hAyyEgKuYeR0+yjFb0KPhby4f880X5vqHA==}
-    dependencies:
-      '@textlint/ast-node-types': 13.4.1
-      structured-source: 4.0.0
-      unist-util-visit: 2.0.3
-    dev: true
-
   /textlint-rule-helper@2.3.1:
     resolution: {integrity: sha512-b1bijvyiUmKinfFE5hkQMSXs3Ky8jyZ3Y6SOoTRJKV9HLL2LWUVFAUezO7z4FpAkVvYruDYWCwA5qWV8GmvyUw==}
     dependencies:
@@ -8705,7 +8697,7 @@ packages:
     resolution: {integrity: sha512-h5sljMUPD/buXR7B6DYPdd7B5EkXz5+wKtVhU4juti/QCJ8ngXpv55owhzWEV4ZqH1pTNnBess+38Yy4sI+R+w==}
     dependencies:
       check-ends-with-period: 3.0.2
-      textlint-rule-helper: 2.3.0
+      textlint-rule-helper: 2.3.1
     dev: true
 
   /textlint-rule-ja-no-redundant-expression@4.0.1:
@@ -8715,8 +8707,8 @@ packages:
       kuromojin: 3.0.0
       morpheme-match: 2.0.4
       morpheme-match-all: 2.0.5
-      textlint-rule-helper: 2.3.0
-      textlint-util-to-string: 3.3.2
+      textlint-rule-helper: 2.3.1
+      textlint-util-to-string: 3.3.4
     dev: true
 
   /textlint-rule-ja-no-successive-word@2.0.1:
@@ -8753,7 +8745,7 @@ packages:
     resolution: {integrity: sha512-os+p7dS9Op4PtZV7B9/wnzN5qpDO2WR2kj7nTnqEPbApS06AXX+qf5eH3fKdm4blzUCcPF5ozMN8zbs3AJUAug==}
     dependencies:
       match-index: 1.0.3
-      textlint-rule-helper: 2.3.0
+      textlint-rule-helper: 2.3.1
     dev: true
 
   /textlint-rule-max-ten@5.0.0:
@@ -8801,7 +8793,7 @@ packages:
     resolution: {integrity: sha512-KbSIlcxj1kLs4sGSMSLGA8OmgRoaPAWtodJaGEyEUiy7uiZM/VPqYALpuD8vf16N1OR5SM/bXXeZFME65r8ZgQ==}
     dependencies:
       kuromojin: 3.0.0
-      textlint-rule-helper: 2.3.0
+      textlint-rule-helper: 2.3.1
     dev: true
 
   /textlint-rule-no-exclamation-question-mark@1.1.0:
@@ -8809,39 +8801,38 @@ packages:
     dependencies:
       '@textlint/regexp-string-matcher': 1.1.1
       match-index: 1.0.3
-      textlint-rule-helper: 2.3.0
+      textlint-rule-helper: 2.3.1
     dev: true
 
   /textlint-rule-no-hankaku-kana@2.0.1:
     resolution: {integrity: sha512-39s94HK6V1xnII1haYiYQnWy1YQAKK7Zj0mcpUMFHHC4M5JdsRnhGs6DQPVEff0gQIFV0iuDNlofXt15kjMtEA==}
     dependencies:
-      textlint-rule-helper: 2.3.0
+      textlint-rule-helper: 2.3.1
       textlint-tester: 13.3.3
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /textlint-rule-no-mix-dearu-desumasu@5.0.0:
-    resolution: {integrity: sha512-fBNWXBUeP9xuxZYjNqm3PQDsHStYPxpkJaLwTvbNQEZ6rpC1dHsHwLujYtuAQVuvrfxxU6J4jtepP61rhjPA8g==}
+  /textlint-rule-no-mix-dearu-desumasu@6.0.2:
+    resolution: {integrity: sha512-h/Vs6qltBlkm7bmKT2rtJ6jZriNV3uTr5fxKuPMBUHVUMnAuQvz3lI7oFrGC10Pxny+Ofng5fbLiYntHq/ymaA==}
     dependencies:
       analyze-desumasu-dearu: 5.0.1
-      textlint-rule-helper: 2.3.0
-      unist-util-visit: 3.1.0
+      textlint-rule-helper: 2.3.1
     dev: true
 
   /textlint-rule-no-nfd@2.0.2:
     resolution: {integrity: sha512-lIUvcQ+wqtConpPQU2YwEJl2dRcRyyrxPYZ3V76UwnkVg++XPLIrE5mLDgyNE/UIQ34e/KitJfMLqKWvnkFbNQ==}
     dependencies:
       match-index: 1.0.3
-      textlint-rule-helper: 2.3.0
+      textlint-rule-helper: 2.3.1
     dev: true
 
   /textlint-rule-no-zero-width-spaces@1.0.1:
     resolution: {integrity: sha512-AkxpzBILGB4YsXddzHx2xqpXmqMv5Yd+PQm4anUV+ADSJuwLP1Jd6yHf/LOtu9j3ps8K3XM9vQrXRK73z0bU3A==}
     dev: true
 
-  /textlint-rule-preset-ja-technical-writing@9.0.0(textlint@13.4.1):
-    resolution: {integrity: sha512-1dbqEkIaYG57lDE5pdynF9F/8lPhtxp9/CzgvIAeHa3wpIwFsGf6OKUP2cEONeYlyeye1WpAwXVzMEDkp525sA==}
+  /textlint-rule-preset-ja-technical-writing@10.0.1(textlint@13.4.1):
+    resolution: {integrity: sha512-GC7sUPsn65UOZcBQ+SLvt3RRmGcm3Fb8t/o8/hD/zyRr1NpYYNrtte0HckVnCPH3TD8zbMt4mov2nlnfA8f7gg==}
     dependencies:
       '@textlint-rule/textlint-rule-no-invalid-control-character': 2.0.0
       '@textlint-rule/textlint-rule-no-unmatched-pair': 2.0.2
@@ -8862,7 +8853,7 @@ packages:
       textlint-rule-no-dropping-the-ra: 3.0.0
       textlint-rule-no-exclamation-question-mark: 1.1.0
       textlint-rule-no-hankaku-kana: 2.0.1
-      textlint-rule-no-mix-dearu-desumasu: 5.0.0
+      textlint-rule-no-mix-dearu-desumasu: 6.0.2
       textlint-rule-no-nfd: 2.0.2
       textlint-rule-no-zero-width-spaces: 1.0.1
       textlint-rule-preset-jtf-style: 2.3.13(textlint@13.4.1)
@@ -8885,7 +8876,7 @@ packages:
       regx: 1.0.4
       sorted-joyo-kanji: 0.2.0
       textlint: 13.4.1
-      textlint-rule-helper: 2.3.0
+      textlint-rule-helper: 2.3.1
       textlint-rule-prh: 5.3.0
     dev: true
 
@@ -8894,7 +8885,7 @@ packages:
     dependencies:
       '@babel/parser': 7.23.0
       prh: 5.4.4
-      textlint-rule-helper: 2.3.0
+      textlint-rule-helper: 2.3.1
       untildify: 3.0.3
     dev: true
 
@@ -8916,15 +8907,6 @@ packages:
       '@textlint/textlint-plugin-text': 13.4.1
     transitivePeerDependencies:
       - supports-color
-    dev: true
-
-  /textlint-util-to-string@3.3.2:
-    resolution: {integrity: sha512-TCnHX5xGDWIGQpcusLrctodid+n5t5G6ft9+KAVad+GmrOOkk9IiPej8FwH9Vq/uk1j44yTB20YYja0YnQ+z/w==}
-    dependencies:
-      '@textlint/ast-node-types': 13.4.1
-      rehype-parse: 6.0.2
-      structured-source: 4.0.0
-      unified: 8.4.2
     dev: true
 
   /textlint-util-to-string@3.3.4:
@@ -9346,6 +9328,7 @@ packages:
     resolution: {integrity: sha512-u9njyyfEh43npf1M+yGKDGVPbY/JWEemg5nH05ncKPfi+kBbKBJoTdsogMu33uhytuLlv9y0O7GH7fEdwLdLQw==}
     dependencies:
       '@types/unist': 2.0.8
+    dev: false
 
   /unist-util-is@6.0.0:
     resolution: {integrity: sha512-2qCTHimwdxLfz+YzdGfkqNlH0tLi9xjTnHddPmJwtIG9MGsdbutfTc4P+haPD7l7Cjxf/WZj+we5qfVPvvxfYw==}
@@ -9409,13 +9392,6 @@ packages:
       unist-util-is: 4.1.0
     dev: true
 
-  /unist-util-visit-parents@4.1.1:
-    resolution: {integrity: sha512-1xAFJXAKpnnJl8G7K5KgU7FY55y3GcLIXqkzUj5QF/QVP7biUm0K0O2oqVkYsdjzJKifYeWn9+o6piAK2hGSHw==}
-    dependencies:
-      '@types/unist': 2.0.8
-      unist-util-is: 5.2.1
-    dev: true
-
   /unist-util-visit-parents@5.1.3:
     resolution: {integrity: sha512-x6+y8g7wWMyQhL1iZfhIPhDAs7Xwbn9nRosDXl7qoPTSCy0yNxnKc+hWokFifWQIDGi154rdUqKvbCa4+1kLhg==}
     dependencies:
@@ -9442,14 +9418,6 @@ packages:
       '@types/unist': 2.0.8
       unist-util-is: 4.1.0
       unist-util-visit-parents: 3.1.1
-    dev: true
-
-  /unist-util-visit@3.1.0:
-    resolution: {integrity: sha512-Szoh+R/Ll68QWAyQyZZpQzZQm2UPbxibDvaY8Xc9SUtYgPsDzx5AWSk++UUt2hJuow8mvwR+rG+LQLw+KsuAKA==}
-    dependencies:
-      '@types/unist': 2.0.8
-      unist-util-is: 5.2.1
-      unist-util-visit-parents: 4.1.1
     dev: true
 
   /unist-util-visit@4.1.2:
