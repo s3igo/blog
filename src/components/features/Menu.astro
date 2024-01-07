@@ -10,7 +10,7 @@ const { tags } = Astro.props;
 <div class="flex lg:h-full">
     <Separator.Root
         orientation="vertical"
-        class="mr-6 h-full rounded-sm border-none bg-blue-blouse pr-[1.5px] max-lg:hidden dark:bg-encore"
+        class="mr-6 h-full rounded-sm border-none bg-blue-blouse pr-[1.5px] dark:bg-encore max-lg:hidden"
     />
     <div class="flex h-max flex-wrap gap-3 lg:flex-col">
         {tags.map((tag) => <Tag name={tag} />)}
