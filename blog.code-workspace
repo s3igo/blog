@@ -8,17 +8,17 @@
       "streetsidesoftware.code-spell-checker",
       "bradlc.vscode-tailwindcss",
       "csstools.postcss",
-      "taichi.vscode-textlint"
-    ]
+      "taichi.vscode-textlint",
+    ],
   },
   "folders": [
     {
       "name": "root",
-      "path": "."
+      "path": ".",
     },
     {
-      "path": "src/content/posts"
-    }
+      "path": "src/content/posts",
+    },
   ],
   "settings": {
     "cSpell.allowCompoundWords": true,
@@ -46,15 +46,15 @@
       "tsup",
       "udgothic",
       "Vitest",
-      "yamagami"
+      "yamagami",
     ],
     "editor.codeActionsOnSave": {
-      "source.fixAll.eslint": true
+      "source.fixAll.eslint": true,
     },
     "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnSave": true,
     // "explorer.sortOrder": "mixed",
     "eslint.experimental.useFlatConfig": true,
-    "prettier.documentSelectors": ["**/*.astro"]
-  }
+    "prettier.documentSelectors": ["**/*.astro"],
+  },
 }
