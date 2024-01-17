@@ -4,9 +4,9 @@
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
     "paths": {
-      "~/*": ["./src/*"]
+      "~/*": ["./src/*"],
     },
-    "types": ["vitest/globals", "vitest/importMeta"]
+    "types": ["vitest/globals", "vitest/importMeta"],
   },
-  "extends": "astro/tsconfigs/strictest"
+  "extends": "astro/tsconfigs/strictest",
 }
