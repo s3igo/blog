@@ -32,7 +32,7 @@
     "@astrojs/check": "^0.4.1",
     "@astrojs/prefetch": "^0.4.1",
     "@astrojs/rss": "^4.0.2",
-    "@astrojs/sitemap": "^3.0.4",
+    "@astrojs/sitemap": "^3.0.5",
     "@astrojs/solid-js": "^4.0.1",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/biz-udgothic": "^5.0.17",
