@@ -63,7 +63,7 @@ dependencies:
     specifier: ^0.1.2
     version: 0.1.2
   remeda:
-    specifier: ^1.38.1
+    specifier: ^1.39.0
     version: 1.39.0
   sanitize-html:
     specifier: ^2.11.0
