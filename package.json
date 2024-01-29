@@ -48,7 +48,7 @@
     "mdast-util-from-markdown": "^2.0.0",
     "mdast-util-to-string": "^4.0.0",
     "remark-code-titles": "^0.1.2",
-    "remeda": "^1.38.0",
+    "remeda": "^1.38.1",
     "sanitize-html": "^2.11.0",
     "solid-js": "^1.8.12",
     "tailwindcss": "^3.4.1",
