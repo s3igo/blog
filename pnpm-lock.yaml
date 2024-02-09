@@ -131,8 +131,8 @@ devDependencies:
     specifier: ^24.0.0
     version: 24.0.0
   postcss-load-config:
-    specifier: ^5.0.2
-    version: 5.0.2(postcss@8.4.33)
+    specifier: ^5.0.3
+    version: 5.0.3(postcss@8.4.33)
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
@@ -7330,8 +7330,8 @@ packages:
       yaml: 2.3.4
     dev: false
 
-  /postcss-load-config@5.0.2(postcss@8.4.33):
-    resolution: {integrity: sha512-Q8QR3FYbqOKa0bnC1UQ2bFq9/ulHX5Bi34muzitMr8aDtUelO5xKeJEYC/5smE0jNE9zdB/NBnOwXKexELbRlw==}
+  /postcss-load-config@5.0.3(postcss@8.4.33):
+    resolution: {integrity: sha512-90pBBI5apUVruIEdCxZic93Wm+i9fTrp7TXbgdUCH+/L+2WnfpITSpq5dFU/IPvbv7aNiMlQISpUkAm3fEcvgQ==}
     engines: {node: '>= 18'}
     peerDependencies:
       jiti: '>=1.21.0'
