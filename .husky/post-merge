@@ -1,5 +1,1 @@
-#!/usr/bin/env sh
-. "$(dirname -- "$0")/_/husky.sh"
-
-# (git diff @~ @ --name-only | grep "pnpm-lock.yaml" > /dev/null) && pnpm install || echo "No difference in packages."
-pnpm install
+(git diff @~ @ --name-only | grep pnpm-lock.yaml > /dev/null) && pnpm install || echo 'No difference in packages.'

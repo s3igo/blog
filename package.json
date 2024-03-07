@@ -9,7 +9,7 @@
   ],
   "scripts": {
     "preinstall": "npx only-allow pnpm",
-    "prepare": "is-ci || husky install",
+    "prepare": "husky",
     "start": "astro dev",
     "build": "astro build",
     "build:clean": "rm -rf ./dist",
