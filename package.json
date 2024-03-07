@@ -70,7 +70,6 @@
     "eslint-plugin-sort-destructure-keys": "^1.5.0",
     "globals": "^14.0.0",
     "husky": "^9.0.11",
-    "is-ci": "^3.0.1",
     "jsdom": "^24.0.0",
     "postcss-load-config": "^5.0.3",
     "prettier": "^3.2.5",
