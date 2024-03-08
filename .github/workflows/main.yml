@@ -157,3 +157,13 @@ jobs:
         uses: codecov/codecov-action@v3
         with:
           files: ./coverage/coverage-final.json
+
+  validate:
+    name: Validate
+    timeout-minutes: 60
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Validate Renovate Config
+        uses: rinchsan/renovate-config-validator@main
