@@ -1,6 +1,6 @@
 /** @type {import("prettier").Config} */
 export default {
-    jsonRecursiveSort: true,
+    singleQuote: true,
     overrides: [
         {
             files: '*.astro',
@@ -9,6 +9,5 @@ export default {
             },
         },
     ],
-    plugins: ['prettier-plugin-astro', 'prettier-plugin-sort-json', 'prettier-plugin-tailwindcss'],
-    singleQuote: true,
+    plugins: ['prettier-plugin-astro', 'prettier-plugin-tailwindcss'],
 };
