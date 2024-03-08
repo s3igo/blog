@@ -1,14 +1,14 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": [
-    "config:base",
-    ":timezone(Asia/Tokyo)",
-    ":prHourlyLimitNone",
-    ":automergePatch",
-    "schedule:automergeDaily",
-    "schedule:daily",
-    "group:allNonMajor"
+    "config:js-app",
+    "helpers:pinGitHubActionDigests",
+    ":disableRateLimiting",
+    "group:allNonMajor",
+    "schedule:daily"
   ],
+  "enabledManagers": ["node", "npm", "github-actions"],
+  "timezone": "Asia/Tokyo",
   "labels": ["bot: dependencies"],
   "packageRules": [
     {
@@ -22,8 +22,14 @@
     {
       "addLabels": ["bot.dependencies: 3.patch"],
       "matchUpdateTypes": "patch"
+    },
+    {
+      "matchPackageNames": ["node"],
+      "allowedVersions": "/^[0-9]*[02468]([.-].*)?$/"
+    },
+    {
+      "matchPackagePatterns": ["vite"],
+      "groupName": "vite"
     }
-  ],
-  "prConcurrentLimit": 3,
-  "rangeStrategy": "bump"
+  ]
 }
