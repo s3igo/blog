@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "extends": "astro/tsconfigs/strictest",
     "baseUrl": ".",
     "jsx": "preserve",
     "jsxImportSource": "solid-js",
@@ -7,6 +8,5 @@
       "~/*": ["./src/*"]
     },
     "types": ["vitest/globals", "vitest/importMeta"]
-  },
-  "extends": "astro/tsconfigs/strictest"
+  }
 }
