@@ -41,7 +41,7 @@
     "@kobalte/core": "0.12.3",
     "@kobalte/tailwindcss": "0.9.0",
     "astro": "4.4.15",
-    "astro-compress": "2.2.11",
+    "astro-compress": "2.2.13",
     "autoprefixer": "10.4.18",
     "date-fns": "3.3.1",
     "markdown-it": "14.0.0",
