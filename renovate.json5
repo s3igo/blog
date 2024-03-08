@@ -3,9 +3,9 @@
     extends: [
         'config:js-app',
         'helpers:pinGitHubActionDigests',
-        ':disableRateLimiting',
         'group:allNonMajor',
         'schedule:daily',
+        ':disableRateLimiting',
     ],
     enabledManagers: ['node', 'npm', 'github-actions'],
     timezone: 'Asia/Tokyo',
@@ -23,13 +23,9 @@
             addLabels: ['bot.dependencies: 3.patch'],
             matchUpdateTypes: 'patch',
         },
-        {
+        { // only allow even versions
             matchPackageNames: ['node'],
             allowedVersions: '/^[0-9]*[02468]([.-].*)?$/',
-        },
-        {
-            matchPackagePatterns: ['vite'],
-            groupName: 'vite',
         },
     ],
 }
