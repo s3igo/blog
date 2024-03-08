@@ -1,4 +1,5 @@
 {
+  "extends": "astro/tsconfigs/strictest",
   "compilerOptions": {
     "baseUrl": ".",
     "jsx": "preserve",
@@ -7,6 +8,5 @@
       "~/*": ["./src/*"]
     },
     "types": ["vitest/globals", "vitest/importMeta"]
-  },
-  "extends": "astro/tsconfigs/strictest"
+  }
 }

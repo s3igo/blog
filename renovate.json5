@@ -1,0 +1,32 @@
+{
+    $schema: 'https://docs.renovatebot.com/renovate-schema.json',
+    extends: [
+        'config:js-app',
+        'helpers:pinGitHubActionDigests',
+        'group:allNonMajor',
+        'schedule:daily',
+        ':disableRateLimiting',
+    ],
+    enabledManagers: ['nodenv', 'npm', 'github-actions'],
+    timezone: 'Asia/Tokyo',
+    labels: ['bot: dependencies'],
+    packageRules: [
+        {
+            addLabels: ['bot.dependencies: 1.major'],
+            matchUpdateTypes: 'major',
+        },
+        {
+            addLabels: ['bot.dependencies: 2.minor'],
+            matchUpdateTypes: 'minor',
+        },
+        {
+            addLabels: ['bot.dependencies: 3.patch'],
+            matchUpdateTypes: 'patch',
+        },
+        // allow even-numbered versions only
+        {
+            matchPackageNames: ['node'],
+            allowedVersions: '/^[0-9]*[02468]([.-].*)?$/',
+        },
+    ],
+}
