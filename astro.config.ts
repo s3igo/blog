@@ -19,7 +19,10 @@ export default defineConfig({
     markdown: {
         remarkPlugins: ['remark-code-titles'],
         shikiConfig: {
-            theme: 'material-theme',
+            experimentalThemes: {
+                light: 'material-theme-lighter',
+                dark: 'material-theme',
+            },
         },
     },
     site: 'https://blog.tsuki-yo.net',

@@ -45,6 +45,12 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
     </div>
 </Layout>
 <style is:global>
+    html.dark .astro-code,
+    html.dark .astro-code span {
+      color: var(--shiki-dark) !important;
+      background-color: var(--shiki-dark-bg) !important;
+    }
+
     .blog {
         @apply sm:text-lg;
 
