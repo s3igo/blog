@@ -174,7 +174,7 @@ jobs:
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Dump toolchain updates
-        run: nix develop --command node --version > .node-version \
+        run: nix develop .#deps --command node --version > .node-version \
           && corepack use "pnpm@$(pnpm --version)"
       - name: Commit files modified in devShell
         uses: stefanzweifel/git-auto-commit-action@8756aa072ef5b4a080af5dc8fef36c5d586e521d # v5

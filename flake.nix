@@ -30,19 +30,17 @@
           inherit neovim;
         };
 
-        devShells.default = pkgs.mkShell {
-          buildInputs =
-            with pkgs;
-            [
+        devShells =
+          let
+            deps = with pkgs; [
               nodejs-slim
               nodePackages.pnpm
-            ]
-            ++ [ neovim ];
-
-          # shellHook = ''
-          # echo ${version}
-          # '';
-        };
+            ];
+          in
+          {
+            default = pkgs.mkShell { buildInputs = deps ++ [ neovim ]; };
+            deps = pkgs.mkShell { buildInputs = deps; };
+          };
       }
     );
 }
