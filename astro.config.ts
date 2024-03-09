@@ -1,4 +1,3 @@
-import prefetch from '@astrojs/prefetch';
 import sitemap from '@astrojs/sitemap';
 import solid from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
@@ -6,6 +5,9 @@ import { defineConfig } from 'astro/config';
 import compress from 'astro-compress';
 
 export default defineConfig({
+    prefetch: {
+        prefetchAll: true,
+    },
     integrations: [
         tailwind({
             applyBaseStyles: false,
@@ -13,7 +15,6 @@ export default defineConfig({
         solid(),
         compress(),
         sitemap(),
-        prefetch(),
     ],
     markdown: {
         remarkPlugins: ['remark-code-titles'],
