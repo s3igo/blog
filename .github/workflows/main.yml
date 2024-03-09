@@ -158,8 +158,8 @@ jobs:
         with:
           files: ./coverage/coverage-final.json
 
-  validate:
-    name: Validate
+  dependencies:
+    name: Dependencies
     timeout-minutes: 60
     runs-on: ubuntu-22.04
     steps:
@@ -169,4 +169,16 @@ jobs:
         uses: rinchsan/renovate-config-validator@main
         with:
           pattern: 'renovate.json5'
-
+      - name: Install Nix
+        uses: cachix/install-nix-action@v25
+        with:
+          github_access_token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Dump toolchain updates
+        run: |
+          PNPM_VERSION=$(nix develop .#deps --command pnpm --version)
+          nix develop .#deps --command node --version > .node-version \
+            && corepack use "pnpm@$PNPM_VERSION"
+      - name: Commit files modified in devShell
+        uses: stefanzweifel/git-auto-commit-action@8756aa072ef5b4a080af5dc8fef36c5d586e521d # v5
+        with:
+          commit_message: Apply toolchain updates

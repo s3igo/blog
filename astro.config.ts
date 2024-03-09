@@ -1,4 +1,3 @@
-import prefetch from '@astrojs/prefetch';
 import sitemap from '@astrojs/sitemap';
 import solid from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
@@ -13,13 +12,18 @@ export default defineConfig({
         solid(),
         compress(),
         sitemap(),
-        prefetch(),
     ],
     markdown: {
         remarkPlugins: ['remark-code-titles'],
         shikiConfig: {
-            theme: 'material-theme',
+            experimentalThemes: {
+                dark: 'material-theme',
+                light: 'material-theme-lighter',
+            },
         },
+    },
+    prefetch: {
+        prefetchAll: true,
     },
     site: 'https://blog.tsuki-yo.net',
 });

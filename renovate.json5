@@ -7,8 +7,11 @@
         'schedule:daily',
         ':disableRateLimiting',
     ],
-    enabledManagers: ['nodenv', 'npm', 'github-actions'],
+    enabledManagers: ['nix', 'npm', 'github-actions'],
     timezone: 'Asia/Tokyo',
+    nix: {
+        enabled: true,
+    },
     labels: ['bot: dependencies'],
     packageRules: [
         {
@@ -23,10 +26,10 @@
             addLabels: ['bot.dependencies: 3.patch'],
             matchUpdateTypes: 'patch',
         },
-        // allow even-numbered versions only
+        // disable `packageManager` field in `package.json`
         {
-            matchPackageNames: ['node'],
-            allowedVersions: '/^[0-9]*[02468]([.-].*)?$/',
+            matchDepTypes: 'packageManager',
+            enabled: false,
         },
     ],
 }
