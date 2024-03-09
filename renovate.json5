@@ -23,10 +23,5 @@
             addLabels: ['bot.dependencies: 3.patch'],
             matchUpdateTypes: 'patch',
         },
-        // allow even-numbered versions only
-        {
-            matchPackageNames: ['node'],
-            allowedVersions: '/^[0-9]*[02468]([.-].*)?$/',
-        },
     ],
 }
