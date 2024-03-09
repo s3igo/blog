@@ -26,22 +26,23 @@
         };
       in
       {
-        devShells.default = pkgs.mkShell {
-          buildInputs =
-            with pkgs;
-            [
-              statix
-              nodejs-slim
-              nodePackages.pnpm
-            ]
-            ++ [ neovim ];
-        };
-
         packages = {
           inherit neovim;
         };
 
-        formatter = pkgs.nixfmt-rfc-style;
+        devShells.default = pkgs.mkShell {
+          buildInputs =
+            with pkgs;
+            [
+              nodejs-slim
+              nodePackages.pnpm
+            ]
+            ++ [ neovim ];
+
+          # shellHook = ''
+          # echo ${version}
+          # '';
+        };
       }
     );
 }

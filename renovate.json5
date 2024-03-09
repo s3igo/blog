@@ -7,8 +7,11 @@
         'schedule:daily',
         ':disableRateLimiting',
     ],
-    enabledManagers: ['nodenv', 'npm', 'github-actions'],
+    enabledManagers: ['nix', 'npm', 'github-actions'],
     timezone: 'Asia/Tokyo',
+    nix: {
+        enabled: true,
+    },
     labels: ['bot: dependencies'],
     packageRules: [
         {
@@ -22,6 +25,11 @@
         {
             addLabels: ['bot.dependencies: 3.patch'],
             matchUpdateTypes: 'patch',
+        },
+        // disable `packageManager` field in `package.json`
+        {
+            matchDepTypes: 'packageManager',
+            enabled: false,
         },
     ],
 }
