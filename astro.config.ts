@@ -16,7 +16,6 @@ export default defineConfig({
     markdown: {
         remarkPlugins: ['remark-code-titles'],
         shikiConfig: {
-            defaultColor: 'light',
             experimentalThemes: {
                 dark: 'material-theme',
                 light: 'material-theme-lighter',
