@@ -5,9 +5,6 @@ import { defineConfig } from 'astro/config';
 import compress from 'astro-compress';
 
 export default defineConfig({
-    prefetch: {
-        prefetchAll: true,
-    },
     integrations: [
         tailwind({
             applyBaseStyles: false,
@@ -19,11 +16,15 @@ export default defineConfig({
     markdown: {
         remarkPlugins: ['remark-code-titles'],
         shikiConfig: {
+            defaultColor: 'light',
             experimentalThemes: {
-                light: 'material-theme-lighter',
                 dark: 'material-theme',
+                light: 'material-theme-lighter',
             },
         },
+    },
+    prefetch: {
+        prefetchAll: true,
     },
     site: 'https://blog.tsuki-yo.net',
 });
