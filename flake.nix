@@ -18,12 +18,6 @@
             nodejs-slim
             nodePackages.pnpm
           ];
-          shellHook = ''
-            node --version > .node-version
-            if [ -e package.json ]; then
-              corepack use "pnpm@$(pnpm --version)"
-            fi
-          '';
         };
 
         formatter = pkgs.nixfmt-rfc-style;
