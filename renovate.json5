@@ -12,7 +12,7 @@
     nix: {
         enabled: true,
     },
-    labels: ['bot: dependencies'],
+    labels: ['deps'],
     packageRules: [
         {
             addLabels: ['bot.dependencies: 1.major'],
