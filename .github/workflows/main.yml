@@ -5,8 +5,8 @@ on: push
 jobs:
   format-lint:
     name: Format and Lint
-    timeout-minutes: 60
     runs-on: ubuntu-22.04
+    timeout-minutes: 60
     steps:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
@@ -34,8 +34,8 @@ jobs:
 
   lint-text:
     name: Textlint
-    timeout-minutes: 60
     runs-on: ubuntu-22.04
+    timeout-minutes: 60
     steps:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
@@ -53,8 +53,8 @@ jobs:
 
   test-type:
     name: Typecheck
-    timeout-minutes: 60
     runs-on: ubuntu-22.04
+    timeout-minutes: 60
     steps:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
@@ -74,8 +74,8 @@ jobs:
 
   test-unit:
     name: Unit Test
-    timeout-minutes: 60
     runs-on: ubuntu-22.04
+    timeout-minutes: 60
     steps:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
@@ -93,8 +93,8 @@ jobs:
 
   test-e2e:
     name: E2E Test
-    timeout-minutes: 60
     runs-on: ubuntu-22.04
+    timeout-minutes: 60
     strategy:
       matrix:
         browser:
@@ -137,8 +137,8 @@ jobs:
 
   coverage:
     name: Coverage
-    timeout-minutes: 60
     runs-on: ubuntu-22.04
+    timeout-minutes: 60
     steps:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
@@ -158,10 +158,10 @@ jobs:
         with:
           files: ./coverage/coverage-final.json
 
-  dependencies:
-    name: Dependencies
-    timeout-minutes: 60
+  validate:
+    name: Validate
     runs-on: ubuntu-22.04
+    timeout-minutes: 60
     steps:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
@@ -169,16 +169,3 @@ jobs:
         uses: rinchsan/renovate-config-validator@main
         with:
           pattern: 'renovate.json5'
-      - name: Install Nix
-        uses: cachix/install-nix-action@8887e596b4ee1134dae06b98d573bd674693f47c # v26
-        with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Dump toolchain updates
-        run: |
-          PNPM_VERSION=$(nix develop .#deps --command pnpm --version)
-          nix develop .#deps --command node --version > .node-version \
-            && corepack use "pnpm@$PNPM_VERSION"
-      - name: Commit files modified in devShell
-        uses: stefanzweifel/git-auto-commit-action@8756aa072ef5b4a080af5dc8fef36c5d586e521d # v5
-        with:
-          commit_message: Apply toolchain updates
