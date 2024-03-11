@@ -1,6 +1,8 @@
 import type { Component } from 'solid-js';
 
-type Props = { type: 'text'; text: string } | { type: 'link'; text: string; link: string };
+type Props =
+    | { type: 'text'; text: string }
+    | { type: 'link'; text: string; link: string };
 
 export const Metadata: Component<Props> = (props) =>
     props.type === 'text' ? (

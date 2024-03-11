@@ -38,7 +38,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         </script>
     </head>
     <body>
-        <div class="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-4 max-md:gap-y-4 md:px-8">
+        <div
+            class="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-4 max-md:gap-y-4 md:px-8"
+        >
             <slot />
         </div>
     </body>

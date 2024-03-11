@@ -6,7 +6,11 @@ type Props = { name: TagType; link?: boolean };
 
 export const Tag: Component<Props> = (props) =>
     mergeProps({ link: true }, props).link ? (
-        <Metadata type="link" text={`#${props.name}`} link={`/tags/${props.name}`} />
+        <Metadata
+            type="link"
+            text={`#${props.name}`}
+            link={`/tags/${props.name}`}
+        />
     ) : (
         <Metadata type="text" text={`#${props.name}`} />
     );

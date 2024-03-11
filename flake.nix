@@ -58,7 +58,12 @@
                     json5
                     regex
                   ];
-                  lsp.servers.jsonls.enable = true;
+                  lsp.servers.jsonls = {
+                    enable = true;
+                    onAttach.function = ''
+                      client.server_capabilities.documentFormattingProvider = false
+                    '';
+                  };
                 };
               }
             )

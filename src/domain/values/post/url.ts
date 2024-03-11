@@ -13,7 +13,8 @@ type Receive = {
  */
 export type Url = Opaque<string, 'Url'>;
 export const Url: Companion<Receive, Url> = {
-    new: ({ dates, name }) => Opaque.create<Url, 'Url'>(`/posts/${dates.published}/${name}`),
+    new: ({ dates, name }) =>
+        Opaque.create<Url, 'Url'>(`/posts/${dates.published}/${name}`),
 };
 
 if (import.meta.vitest) {
@@ -22,7 +23,10 @@ if (import.meta.vitest) {
     describe('Url', () => {
         test('url', () => {
             const url = Url.new({
-                dates: Dates.new({ published: new Date('2021/01/10'), updated: null }),
+                dates: Dates.new({
+                    published: new Date('2021/01/10'),
+                    updated: null,
+                }),
                 name: Name.new('posts/name'),
             });
             expect(url).toBe('/posts/2021-01-10/name');
