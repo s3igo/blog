@@ -2,7 +2,7 @@ import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
 
 const config: Config = {
-    content: ['./src/**/*.{astro,html,js,jsx,ts,tsx}'],
+    content: ['./src/**/*.{astro,tsx}'],
     darkMode: 'class',
     // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
     plugins: [require('@kobalte/tailwindcss')],
@@ -21,7 +21,7 @@ const config: Config = {
             'yamagami-blue': '#384B5A',
         },
         fontFamily: {
-            code: ['JetBrains Mono', 'BIZ UDGothic', 'monospace', 'sans-serif'],
+            code: ['JetBrains Mono', 'monospace', 'sans-serif'],
             sans: ['Nunito Sans', 'Zen Kaku Gothic New', 'system-ui', 'sans-serif'],
         },
     },
