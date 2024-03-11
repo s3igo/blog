@@ -22,7 +22,12 @@ const config: Config = {
         },
         fontFamily: {
             code: ['JetBrains Mono', 'monospace', 'sans-serif'],
-            sans: ['Nunito Sans', 'Zen Kaku Gothic New', 'system-ui', 'sans-serif'],
+            sans: [
+                'Nunito Sans',
+                'Zen Kaku Gothic New',
+                'system-ui',
+                'sans-serif',
+            ],
         },
     },
 };

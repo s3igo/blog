@@ -1,6 +1,9 @@
 // ref: https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Intl/Segmenter/Segmenter
 type Granularity = 'grapheme' | 'word' | 'sentence';
-const segments = (str: string, granularity: Granularity): Intl.SegmentData[] => {
+const segments = (
+    str: string,
+    granularity: Granularity,
+): Intl.SegmentData[] => {
     const segmenter = new Intl.Segmenter('ja', { granularity });
     return [...segmenter.segment(str)];
 };
@@ -27,7 +30,9 @@ if (import.meta.vitest) {
                 expect(truncate(asset, 10)).toBe('あいうえおかきくけこ...');
             });
             test('20文字', () => {
-                expect(truncate(asset, 20)).toBe('あいうえおかきくけこさしすせそたちつてと...');
+                expect(truncate(asset, 20)).toBe(
+                    'あいうえおかきくけこさしすせそたちつてと...',
+                );
             });
         });
         describe('suffixが正しい', () => {
@@ -44,8 +49,11 @@ if (import.meta.vitest) {
     });
     describe('first3Sentences', () => {
         test('50音表', () => {
-            const str = 'あいうえお。かきくけこ。さしすせそ。たちつてと。なにぬねの。';
-            expect(first3Sentences(str)).toBe('あいうえお。かきくけこ。さしすせそ。');
+            const str =
+                'あいうえお。かきくけこ。さしすせそ。たちつてと。なにぬねの。';
+            expect(first3Sentences(str)).toBe(
+                'あいうえお。かきくけこ。さしすせそ。',
+            );
         });
         test('自動生成', () => {
             const str =

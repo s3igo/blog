@@ -14,7 +14,15 @@ import { Url } from './post/url';
 import { type Tag, Tags } from './tags';
 import { type Companion, Opaque } from '~/utils/types';
 
-export type { Tag, Url, FirstThreeSentences, Title, Published, Updated, Description };
+export type {
+    Tag,
+    Url,
+    FirstThreeSentences,
+    Title,
+    Published,
+    Updated,
+    Description,
+};
 
 type PostSchema = {
     /** 記事のタイトル */
@@ -73,7 +81,8 @@ const transformPost = async ({
 };
 
 export const Post: Companion<CollectionEntry<'posts'>, Promise<Post>> = {
-    new: async (value) => Opaque.create<Post, 'Post'>(await transformPost(value)),
+    new: async (value) =>
+        Opaque.create<Post, 'Post'>(await transformPost(value)),
 };
 
 export type Posts = Post[];

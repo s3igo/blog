@@ -3,7 +3,12 @@ import '@fontsource/jetbrains-mono';
 import '@fontsource/zen-kaku-gothic-new/japanese-700.css';
 import { Tag as TagComponent } from '~/components/base/Tag';
 import Layout from './Layout.astro';
-import type { FirstThreeSentences, Published, Title, Updated } from '~/domain/values/post';
+import type {
+    FirstThreeSentences,
+    Published,
+    Title,
+    Updated,
+} from '~/domain/values/post';
 import type { Tags } from '~/domain/values/tags';
 import { Metadata } from '../base/Metadata';
 import Footer from '../features/Footer.astro';
@@ -28,7 +33,9 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
             </div>
         </a>
     </div>
-    <div class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-10 lg:col-start-2">
+    <div
+        class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-10 lg:col-start-2"
+    >
         <div class="mb-2 flex flex-wrap gap-3 md:pt-6">
             <Metadata type="text" text={published} />
             {updated && <Metadata type="text" text={`↻ ${updated}`} />}
