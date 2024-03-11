@@ -1,12 +1,14 @@
 ---
-import '@fontsource/biz-udgothic/japanese-400.css';
-import '@fontsource/jetbrains-mono/latin-400.css';
-import '@fontsource/nunito-sans/latin-400-italic.css';
-import '@fontsource/nunito-sans/latin-700.css';
+import '@fontsource/jetbrains-mono';
 import '@fontsource/zen-kaku-gothic-new/japanese-700.css';
 import { Tag as TagComponent } from '~/components/base/Tag';
 import Layout from './Layout.astro';
-import type { FirstThreeSentences, Published, Title, Updated } from '~/domain/values/post';
+import type {
+    FirstThreeSentences,
+    Published,
+    Title,
+    Updated,
+} from '~/domain/values/post';
 import type { Tags } from '~/domain/values/tags';
 import { Metadata } from '../base/Metadata';
 import Footer from '../features/Footer.astro';
@@ -25,13 +27,15 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
 
 <Layout {title} description={firstThreeSentences}>
     <div class="col-start-1 pt-6 max-md:col-span-12 md:max-lg:col-start-2">
-        <a class="flex md:justify-end" href="/" rel="prefetch-intent">
+        <a class="flex md:justify-end" href="/">
             <div class="md:fixed">
                 <Icon />
             </div>
         </a>
     </div>
-    <div class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-10 lg:col-start-2">
+    <div
+        class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-10 lg:col-start-2"
+    >
         <div class="mb-2 flex flex-wrap gap-3 md:pt-6">
             <Metadata type="text" text={published} />
             {updated && <Metadata type="text" text={`↻ ${updated}`} />}
@@ -46,6 +50,12 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
     </div>
 </Layout>
 <style is:global>
+    html.dark .astro-code,
+    html.dark .astro-code span {
+        color: var(--shiki-dark) !important;
+        background-color: var(--shiki-dark-bg) !important;
+    }
+
     .blog {
         @apply sm:text-lg;
 

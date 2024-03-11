@@ -33,7 +33,9 @@ export type Opaque<T extends NonNullable<unknown>, U extends string> = T & {
  * @example type A = Opaque<string, 'A'>;
  *     type B = InferBase<A, 'A'>; //=> string
  */
-type InferBase<T, U extends string> = T extends infer V & { [K in BrandName<U>]: BrandMarker }
+type InferBase<T, U extends string> = T extends infer V & {
+    [K in BrandName<U>]: BrandMarker;
+}
     ? V
     : never;
 

@@ -1,12 +1,12 @@
 {
-  "compilerOptions": {
-    "baseUrl": ".",
-    "jsx": "preserve",
-    "jsxImportSource": "solid-js",
-    "paths": {
-      "~/*": ["./src/*"]
-    },
-    "types": ["vitest/globals", "vitest/importMeta"]
-  },
-  "extends": "astro/tsconfigs/strictest"
+    "extends": "astro/tsconfigs/strictest",
+    "compilerOptions": {
+        "baseUrl": ".",
+        "jsx": "preserve",
+        "jsxImportSource": "solid-js",
+        "paths": {
+            "~/*": ["./src/*"]
+        },
+        "types": ["vitest/globals", "vitest/importMeta"]
+    }
 }

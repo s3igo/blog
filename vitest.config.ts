@@ -23,7 +23,7 @@ export default getViteConfig({
             include: ['src/**'],
             reporter: ['text', 'json'],
         },
-        exclude: ['./tests/e2e/**', ...defaultExcludes],
+        exclude: ['./.direnv/**', './tests/e2e/**', ...defaultExcludes],
         globals: true,
         includeSource: ['src/**/*.{js,ts,jsx,tsx}', ...defaultIncludes],
         testTransformMode: {

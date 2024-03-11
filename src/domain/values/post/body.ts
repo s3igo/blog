@@ -29,17 +29,24 @@ type BodySchema = {
 const transformBody = (value: string): BodySchema => {
     const mdast = fromMarkdown(value);
     const title = toString(
-        mdast.children.find((node) => node.type === 'heading' && node.depth === 1),
+        mdast.children.find(
+            (node) => node.type === 'heading' && node.depth === 1,
+        ),
     );
-    const body = toString(mdast.children.filter((node) => node.type !== 'heading'));
+    const body = toString(
+        mdast.children.filter((node) => node.type !== 'heading'),
+    );
 
     if (!title) throw new Error('title is undefined');
 
     return {
-        description: Opaque.create<Description, 'Description'>(truncate(body, 500)),
-        firstThreeSentences: Opaque.create<FirstThreeSentences, 'FirstThreeSentences'>(
-            first3Sentences(body),
+        description: Opaque.create<Description, 'Description'>(
+            truncate(body, 500),
         ),
+        firstThreeSentences: Opaque.create<
+            FirstThreeSentences,
+            'FirstThreeSentences'
+        >(first3Sentences(body)),
         textContent: Opaque.create<TextContent, 'TextContent'>(body),
         title: Opaque.create<Title, 'Title'>(title),
     };
@@ -88,12 +95,15 @@ if (import.meta.vitest) {
     });
     describe('firstThreeSentences', () => {
         test('firstThreeSentences', () => {
-            expect(Body.new('# title\ncontent').firstThreeSentences).toBe('content');
+            expect(Body.new('# title\ncontent').firstThreeSentences).toBe(
+                'content',
+            );
         });
         test('firstThreeSentences with 3文より長い場合', () => {
-            expect(Body.new('# title\nあいう。えお。かきく。けこ。').firstThreeSentences).toBe(
-                'あいう。えお。かきく。',
-            );
+            expect(
+                Body.new('# title\nあいう。えお。かきく。けこ。')
+                    .firstThreeSentences,
+            ).toBe('あいう。えお。かきく。');
         });
     });
 }

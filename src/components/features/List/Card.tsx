@@ -1,6 +1,12 @@
 import { Separator } from '@kobalte/core';
 import { type Component, For, Show } from 'solid-js';
-import type { Description, Published, Title, Updated, Url } from '~/domain/values/post';
+import type {
+    Description,
+    Published,
+    Title,
+    Updated,
+    Url,
+} from '~/domain/values/post';
 import type { Tags } from '~/domain/values/tags';
 
 type Props = {
@@ -16,7 +22,6 @@ type Props = {
 export const Card: Component<Props> = (props) => (
     <a
         href={props.url}
-        rel="prefetch-intent"
         class="rounded-3xl border-2 border-transparent bg-white px-5 py-4 hover:border-maldives dark:bg-midnight-express sm:px-8 sm:py-6"
     >
         <article>
@@ -37,7 +42,9 @@ export const Card: Component<Props> = (props) => (
                         class="mx-[6px] h-4 rounded-sm border-none bg-blue-blouse pr-px max-sm:hidden md:pr-[1.5px]"
                     />
                     <div class="flex gap-[6px]">
-                        <For each={props.tags}>{(tag) => <span class="metadata">#{tag}</span>}</For>
+                        <For each={props.tags}>
+                            {(tag) => <span class="metadata">#{tag}</span>}
+                        </For>
                     </div>
                 </Show>
             </div>

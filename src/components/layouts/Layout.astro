@@ -26,8 +26,8 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <title>{title ? pageTitle(title) : PAGE_TITLE}</title>
         <meta name="description" content={description} />
         <link rel="canonical" href={canonicalURL} />
-        <!-- `data-cfasync="false"` to ignore the Cloudflare Rocket Loader -->
-        <script data-cfasync="false">
+        <!-- `data-cfasync="false"` is for ignoring the Cloudflare Rocket Loader -->
+        <script is:inline data-cfasync="false">
             if (
                 window.localStorage.getItem('theme') === 'dark' ||
                 (!('theme' in window.localStorage) &&
@@ -38,7 +38,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         </script>
     </head>
     <body>
-        <div class="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-4 max-md:gap-y-4 md:px-8">
+        <div
+            class="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-4 max-md:gap-y-4 md:px-8"
+        >
             <slot />
         </div>
     </body>
