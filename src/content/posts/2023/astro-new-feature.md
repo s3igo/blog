@@ -6,7 +6,8 @@ tags: [programming]
 
 # Astroの新機能、Content Collectionsを使わない理由
 
-このブログは[Astro](https://astro.build/)で作られています。
+このブログは[Astro](https://astro.build/)で作られて
+います。
 AstroはNext.jsやNuxt、SvelteKitといった競合が存在するレンダリングフレームワークの1つで、
 歴史が浅いながら[The State of JS 2022](https://2022.stateofjs.com/ja-JP/libraries/rendering-frameworks/)
 ではランキング1位を獲得しています。
