@@ -28,7 +28,7 @@
     "clean": "rm -rf ./node_modules"
   },
   "dependencies": {
-    "@astrojs/check": "0.5.8",
+    "@astrojs/check": "0.5.9",
     "@astrojs/rss": "4.0.5",
     "@astrojs/sitemap": "3.1.1",
     "@astrojs/solid-js": "4.0.1",
@@ -38,7 +38,7 @@
     "@fontsource/zen-kaku-gothic-new": "5.0.18",
     "@kobalte/core": "0.12.4",
     "@kobalte/tailwindcss": "0.9.0",
-    "astro": "4.5.2",
+    "astro": "4.5.3",
     "astro-compress": "2.2.14",
     "autoprefixer": "10.4.18",
     "date-fns": "3.4.0",
