@@ -7,7 +7,7 @@ import { PAGE_DESCRIPTION, PAGE_TITLE } from '~/utils/constants';
 
 const parser = new MarkdownIt();
 
-export const get = async (context: APIContext) => {
+export const GET = async (context: APIContext) => {
     const site = context.site?.toString() ?? '';
     const posts = await Posts.fetch();
 

@@ -8,7 +8,7 @@ on:
 jobs:
   deps:
     name: Update dependencies
-    if: github.event.label.name == 'deps'
+    if: github.event.label.name == 'deps[bot]'
     runs-on: ubuntu-22.04
     timeout-minutes: 60
     steps:

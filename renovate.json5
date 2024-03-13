@@ -12,18 +12,18 @@
     nix: {
         enabled: true,
     },
-    labels: ['deps'],
+    labels: ['deps[bot]'],
     packageRules: [
         {
-            addLabels: ['bot.dependencies: 1.major'],
+            addLabels: ['deps.major[bot]'],
             matchUpdateTypes: 'major',
         },
         {
-            addLabels: ['bot.dependencies: 2.minor'],
+            addLabels: ['deps.minor[bot]'],
             matchUpdateTypes: 'minor',
         },
         {
-            addLabels: ['bot.dependencies: 3.patch'],
+            addLabels: ['deps.patch[bot]'],
             matchUpdateTypes: 'patch',
         },
         // disable `packageManager` field in `package.json`
