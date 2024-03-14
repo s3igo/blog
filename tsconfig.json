@@ -5,7 +5,6 @@
         "paths": {
             "~/*": ["./src/*"]
         },
-        "types": ["vitest/globals", "vitest/importMeta"],
-        "allowJs": true
+        "types": ["vitest/globals", "vitest/importMeta"]
     }
 }
