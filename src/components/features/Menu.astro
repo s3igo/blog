@@ -1,18 +1,11 @@
 ---
-import { Separator } from '@kobalte/core';
-import { Tag } from '../base/Tag';
+import Tag from '../shared/Tag.astro';
 import type { Tags } from '~/domain/values/tags';
 
 type Props = { tags: Tags };
 const { tags } = Astro.props;
 ---
 
-<div class="flex lg:h-full">
-    <Separator.Root
-        orientation="vertical"
-        class="mr-6 h-full rounded-sm border-none bg-blue-blouse pr-[1.5px] dark:bg-encore max-lg:hidden"
-    />
-    <div class="flex h-max flex-wrap gap-3 lg:flex-col">
-        {tags.map((tag) => <Tag name={tag} />)}
-    </div>
+<div class="flex h-max flex-wrap gap-3 lg:h-full lg:flex-col">
+    {tags.map((tag) => <Tag href={`/tags/${tag}`}>#{tag}</Tag>)}
 </div>

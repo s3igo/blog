@@ -1,7 +1,8 @@
-import { Button } from '@kobalte/core';
-import type { Component } from 'solid-js';
-
-const DarkModeIcon: Component = () => (
+<button
+    id="theme-button"
+    class="h-8 w-8 rounded-full border-2 border-transparent p-1 hover:border-maldives xl:h-12 xl:w-12 xl:p-2"
+    aria-label="Toggle dark mode"
+>
     <svg
         fill="none"
         stroke-width="0"
@@ -16,14 +17,11 @@ const DarkModeIcon: Component = () => (
             fill="currentColor"
             fill-rule="evenodd"
             d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm0 2v4a4 4 0 1 0 0 8v4a8 8 0 1 0 0-16Z"
-            clip-rule="evenodd"
-        ></path>
+            clip-rule="evenodd"></path>
     </svg>
-);
-
-/** @package */
-export const ThemeButton: Component = () => {
-    const toggleTheme = (): void => {
+</button>
+<script>
+    document.getElementById('theme-button')?.addEventListener('click', () => {
         if (document.documentElement.classList.contains('dark')) {
             document.documentElement.classList.remove('dark');
             window.localStorage.setItem('theme', 'light');
@@ -31,15 +29,5 @@ export const ThemeButton: Component = () => {
             document.documentElement.classList.add('dark');
             window.localStorage.setItem('theme', 'dark');
         }
-    };
-
-    return (
-        <Button.Root
-            onClick={toggleTheme}
-            class="h-8 w-8 rounded-full border-2 border-transparent p-1 hover:border-maldives xl:h-12 xl:w-12 xl:p-2"
-            aria-label="Toggle dark mode"
-        >
-            <DarkModeIcon />
-        </Button.Root>
-    );
-};
+    });
+</script>

@@ -1,7 +1,7 @@
 ---
 import '@fontsource/jetbrains-mono';
 import '@fontsource/zen-kaku-gothic-new/700.css';
-import { Tag as TagComponent } from '~/components/base/Tag';
+import Tag from '~/components/shared/Tag.astro';
 import Layout from './Layout.astro';
 import type {
     FirstThreeSentences,
@@ -10,7 +10,6 @@ import type {
     Updated,
 } from '~/domain/values/post';
 import type { Tags } from '~/domain/values/tags';
-import { Metadata } from '../base/Metadata';
 import Footer from '../features/Footer.astro';
 import Icon from '../features/Icon.astro';
 
@@ -37,9 +36,9 @@ const { firstThreeSentences, published, tags, title, updated } = Astro.props;
         class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-10 lg:col-start-2"
     >
         <div class="mb-2 flex flex-wrap gap-3 md:pt-6">
-            <Metadata type="text" text={published} />
-            {updated && <Metadata type="text" text={`↻ ${updated}`} />}
-            {tags.map((tag) => <TagComponent name={tag} />)}
+            <div class="metadata py-2">{published}</div>
+            {updated && <div class="metadata py-2">↻{updated}</div>}
+            {tags.map((tag) => <Tag href={`/tags/${tag}`}>{tag}</Tag>)}
         </div>
         <div class="blog">
             <slot />

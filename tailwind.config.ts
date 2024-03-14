@@ -2,10 +2,8 @@ import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
 
 const config: Config = {
-    content: ['./src/**/*.{astro,tsx}'],
+    content: ['./src/**/*.astro'],
     darkMode: 'class',
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
-    plugins: [require('@kobalte/tailwindcss')],
     theme: {
         colors: {
             'bellflower-blue': colors.slate[200],

@@ -1,7 +1,7 @@
 ---
 import { PAGE_TITLE } from '~/utils/constants';
-import { RssButton } from './Navbar/RssButton';
-import { ThemeButton } from './Navbar/ThemeButton';
+import RssButton from './Navbar/RssButton.astro';
+import ThemeButton from './Navbar/ThemeButton.astro';
 ---
 
 <nav
@@ -12,7 +12,7 @@ import { ThemeButton } from './Navbar/ThemeButton';
         <h1>{PAGE_TITLE}</h1>
     </a>
     <div class="absolute right-3 flex xl:right-4">
-        <ThemeButton client:only="solid-js" />
+        <ThemeButton />
         <RssButton />
     </div>
 </nav>
