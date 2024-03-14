@@ -21,13 +21,44 @@
     </svg>
 </button>
 <script>
-    document.getElementById('theme-button')?.addEventListener('click', () => {
-        if (document.documentElement.classList.contains('dark')) {
-            document.documentElement.classList.remove('dark');
-            window.localStorage.setItem('theme', 'light');
-        } else {
+    const loadTheme = () => {
+        if (window.localStorage.getItem('theme') === 'light') return;
+        if (
+            window.localStorage.getItem('theme') === 'dark' ||
+            window.matchMedia('(prefers-color-scheme: dark)').matches
+        ) {
             document.documentElement.classList.add('dark');
-            window.localStorage.setItem('theme', 'dark');
         }
-    });
+    };
+    const toggleTheme = () => {
+        document
+            .getElementById('theme-button')
+            ?.addEventListener('click', () => {
+                // theme is set
+                switch (window.localStorage.getItem('theme')) {
+                    case 'light':
+                        document.documentElement.classList.add('dark');
+                        window.localStorage.setItem('theme', 'dark');
+                        return;
+                    case 'dark':
+                        document.documentElement.classList.remove('dark');
+                        window.localStorage.setItem('theme', 'light');
+                        return;
+                }
+                // theme is not set
+                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+                    document.documentElement.classList.remove('dark');
+                    window.localStorage.setItem('theme', 'light');
+                } else {
+                    document.documentElement.classList.add('dark');
+                    window.localStorage.setItem('theme', 'dark');
+                }
+            });
+    };
+    const handleTheme = () => {
+        loadTheme();
+        toggleTheme();
+    };
+    document.addEventListener('astro:page-load', handleTheme, { once: true });
+    document.addEventListener('astro:after-swap', handleTheme);
 </script>
