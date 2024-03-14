@@ -2,10 +2,18 @@ import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
 import { defineConfig } from 'astro/config';
 import compress from 'astro-compress';
+import qwikdev from '@qwikdev/astro';
 import { remarkStripLineBreaks } from './remark-strip-line-breaks';
 
 export default defineConfig({
-    integrations: [tailwind({ applyBaseStyles: false }), compress(), sitemap()],
+    integrations: [
+        qwikdev(),
+        tailwind({
+            applyBaseStyles: false,
+        }),
+        compress(),
+        sitemap(),
+    ],
     markdown: {
         remarkPlugins: [remarkStripLineBreaks, 'remark-code-titles'],
         shikiConfig: {

@@ -1,63 +1,69 @@
+---
+// import MoonIcon from './Themebutton/MoonIcon.astro'
+// import { MoonIcon } from './Themebutton/moon-icon'
+import { Icon } from './Themebutton/icon';
+---
+
 <button
     id="theme-button"
     class="h-8 w-8 rounded-full border-2 border-transparent p-1 hover:border-maldives xl:h-12 xl:w-12 xl:p-2"
     aria-label="Toggle dark mode"
 >
-    <svg
-        fill="none"
-        stroke-width="0"
-        xmlns="http://www.w3.org/2000/svg"
-        viewBox="0 0 24 24"
-        height="100%"
-        width="100%"
-        style="overflow: visible;"
-    >
-        <path fill="currentColor" d="M12 16a4 4 0 0 0 0-8v8Z"></path>
-        <path
-            fill="currentColor"
-            fill-rule="evenodd"
-            d="M12 2C6.477 2 2 6.477 2 12s4.477 10 10 10 10-4.477 10-10S17.523 2 12 2Zm0 2v4a4 4 0 1 0 0 8v4a8 8 0 1 0 0-16Z"
-            clip-rule="evenodd"></path>
-    </svg>
+    <!-- <MoonIcon class="stop" /> -->
+    <!-- <MoonIcon /> -->
+    <Icon />
 </button>
 <script>
+    type Theme = 'light' | 'dark';
+    const getCurrentTheme = (): Theme =>
+        (window.localStorage.getItem('theme') as Theme | null) ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches
+            ? 'dark'
+            : 'light');
+
     const loadTheme = () => {
-        if (window.localStorage.getItem('theme') === 'light') return;
-        if (
-            window.localStorage.getItem('theme') === 'dark' ||
-            window.matchMedia('(prefers-color-scheme: dark)').matches
-        ) {
+        const currentTheme = getCurrentTheme();
+
+        document.dispatchEvent(
+            new CustomEvent('theme', {
+                detail: currentTheme,
+            }),
+        );
+
+        currentTheme === 'dark' &&
+            document.documentElement.classList.add('dark');
+    };
+
+    const toggleTheme = () => {
+        const currentTheme = getCurrentTheme();
+
+        if (currentTheme === 'dark') {
+            document.documentElement.classList.remove('dark');
+        } else {
             document.documentElement.classList.add('dark');
         }
+
+        window.localStorage.setItem(
+            'theme',
+            currentTheme === 'dark' ? 'light' : 'dark',
+        );
+
+        document.dispatchEvent(
+            new CustomEvent('theme', {
+                detail: currentTheme === 'dark' ? 'light' : 'dark',
+            }),
+        );
     };
-    const toggleTheme = () => {
+
+    const listenClick = () => {
         document
             .getElementById('theme-button')
-            ?.addEventListener('click', () => {
-                // theme is set
-                switch (window.localStorage.getItem('theme')) {
-                    case 'light':
-                        document.documentElement.classList.add('dark');
-                        window.localStorage.setItem('theme', 'dark');
-                        return;
-                    case 'dark':
-                        document.documentElement.classList.remove('dark');
-                        window.localStorage.setItem('theme', 'light');
-                        return;
-                }
-                // theme is not set
-                if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
-                    document.documentElement.classList.remove('dark');
-                    window.localStorage.setItem('theme', 'light');
-                } else {
-                    document.documentElement.classList.add('dark');
-                    window.localStorage.setItem('theme', 'dark');
-                }
-            });
+            ?.addEventListener('click', toggleTheme);
     };
+
     const handleTheme = () => {
         loadTheme();
-        toggleTheme();
+        listenClick();
     };
     document.addEventListener('astro:page-load', handleTheme, { once: true });
     document.addEventListener('astro:after-swap', handleTheme);

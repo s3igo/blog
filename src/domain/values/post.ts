@@ -10,13 +10,22 @@ import {
 } from './post/body';
 import { Dates, type Published, type Updated } from './post/dates';
 import { Name } from './post/name';
-import { Url } from './post/url';
 import { type Tag, Tags } from './tags';
 import { type Companion, Opaque } from '~/utils/types';
 
+type Receive = {
+    name: Name;
+    dates: Dates;
+};
+
+export type UrlType = Opaque<string, 'Url'>;
+export const Url: Companion<Receive, UrlType> = {
+    new: ({ dates, name }) =>
+        Opaque.create<UrlType, 'Url'>(`/posts/${dates.published}/${name}`),
+};
+
 export type {
     Tag,
-    Url,
     FirstThreeSentences,
     Title,
     Published,
@@ -44,7 +53,7 @@ type PostSchema = {
     /** 記事のファイル名 */
     name: Name;
     /** 記事のURL */
-    url: Url;
+    url: UrlType;
     /** レンダリングされた記事のコンポーネント */
     Content: AstroComponentFactory;
     /** 記事の見出し */

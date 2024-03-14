@@ -2,7 +2,7 @@ import type { Config } from 'tailwindcss';
 import colors from 'tailwindcss/colors';
 
 const config: Config = {
-    content: ['./src/**/*.astro'],
+    content: ['./src/**/*.{astro,tsx}'],
     darkMode: 'class',
     theme: {
         colors: {

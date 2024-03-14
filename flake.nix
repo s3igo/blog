@@ -24,6 +24,7 @@
             im-select
             nix
             typescript
+            json
             prettier
             yaml
             markdown
@@ -39,6 +40,9 @@
                     eslint.enable = true;
                     astro.enable = true;
                     tailwindcss.enable = true;
+                    jsonls.onAttach.function = ''
+                      client.server_capabilities.documentFormattingProvider = false
+                    '';
                   };
                 };
               }
