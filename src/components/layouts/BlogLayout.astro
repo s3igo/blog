@@ -2,7 +2,7 @@
 import '@fontsource/jetbrains-mono';
 import '@fontsource/zen-kaku-gothic-new/700.css';
 import Tag from '~/components/shared/Tag.astro';
-import Footer from '../features/Footer.astro';
+import Footer from '~/features/Footer.astro';
 import Icon from '../features/Icon.astro';
 import Layout from './Layout.astro';
 
@@ -18,45 +18,49 @@ const { published, tags, title, updated } = Astro.props;
 ---
 
 <Layout {title}>
-    <div class="col-start-1 pt-6 max-md:col-span-12 md:max-lg:col-start-2">
-        <a class="flex md:justify-end" href="/">
-            <div class="md:fixed">
-                <Icon />
-            </div>
-        </a>
-    </div>
     <div
-        class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-10 lg:col-start-2"
+        class="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-4 max-md:gap-y-4 md:px-8 h-svh"
     >
-        <h1
-            class="text-3xl before:text-maldives before:content-['#_'] sm:text-4xl md:mt-12"
+        <div class="col-start-1 pt-6 max-md:col-span-12 md:max-lg:col-start-2">
+            <a class="flex md:justify-end" href="/">
+                <div class="md:fixed">
+                    <Icon />
+                </div>
+            </a>
+        </div>
+        <div
+            class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-10 lg:col-start-2"
         >
-            {title}
-        </h1>
-        <div class="mb-12 mt-4 flex flex-wrap gap-3">
-            <div class="metadata py-2">{published}</div>
-            {updated && <div class="metadata py-2">↻{updated}</div>}
-            {tags.map((tag) => <Tag href={`/tags/${tag}`}>{tag}</Tag>)}
-        </div>
-        <div class="blog">
-            <slot />
-        </div>
-        <div class="mt-6 pb-6">
-            <Footer />
+            <h1
+                class="text-3xl before:text-maldives before:content-['#_'] sm:text-4xl md:mt-12"
+            >
+                {title}
+            </h1>
+            <div class="mb-12 mt-4 flex flex-wrap gap-3">
+                <div class="metadata py-2">{published}</div>
+                {updated && <div class="metadata py-2">↻{updated}</div>}
+                {tags.map((tag) => <Tag href={`/tags/${tag}`}>{tag}</Tag>)}
+            </div>
+            <div class="blog">
+                <slot />
+            </div>
+            <div class="mt-6 pb-6">
+                <Footer />
+            </div>
         </div>
     </div>
 </Layout>
 <style is:global>
     .astro-code,
     .astro-code span {
-        background-color: theme('colors.white') !important;
+        background-color: theme("colors.white") !important;
     }
 
     html.dark {
         .astro-code,
         .astro-code span {
             color: var(--shiki-dark) !important;
-            background-color: theme('colors.midnight-express') !important;
+            background-color: theme("colors.midnight-express") !important;
         }
     }
 

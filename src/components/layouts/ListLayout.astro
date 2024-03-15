@@ -1,11 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
-import Footer from '~/components/features/Footer.astro';
 import Menu from '~/components/features/Menu.astro';
 import Navbar from '~/components/features/Navbar.astro';
 import Layout, {
     type Props as LayoutProps,
 } from '~/components/layouts/Layout.astro';
+import Footer from '~/features/Footer.astro';
 import Icon from '../features/Icon.astro';
 
 type Props = LayoutProps;
@@ -16,32 +16,36 @@ const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
 
 <Layout {...Astro.props}>
     <div
-        class="pt-4 max-md:col-span-12 md:col-start-2 md:pt-6 lg:max-xl:col-start-3"
+        class="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-4 max-md:gap-y-4 md:px-8 h-svh grid-5-rows md:grid-4-rows lg:grid-3-rows"
     >
-        <div class="flex md:justify-end">
-            <div class="md:fixed">
-                <Icon />
+        <div
+            class="pt-4 max-md:col-span-12 md:col-start-2 md:pt-6 lg:max-xl:col-start-3"
+        >
+            <div class="flex md:justify-end">
+                <div class="md:fixed">
+                    <Icon />
+                </div>
             </div>
         </div>
-    </div>
-    <div
-        class="xg:max-xl:col-start-4 col-span-12 col-start-1 md:col-span-8 md:pt-6 lg:max-xl:col-span-6"
-    >
-        <Navbar />
-    </div>
-    <div
-        class="col-span-12 col-start-1 row-start-4 md:col-span-8 md:col-start-3 md:row-start-3 lg:row-start-2 lg:max-xl:col-span-6 lg:max-xl:col-start-4"
-    >
-        <slot />
-    </div>
-    <div
-        class="xl: col-span-12 col-start-1 row-start-3 md:col-span-8 md:row-start-2 md:max-lg:col-start-3 lg:col-span-2 lg:col-start-10 xl:col-start-11"
-    >
-        <Menu {tags} />
-    </div>
-    <div
-        class="col-span-8 col-start-3 pb-4 md:pb-6 lg:max-xl:col-span-6 lg:max-xl:col-start-4"
-    >
-        <Footer />
+        <div
+            class="xg:max-xl:col-start-4 col-span-12 col-start-1 md:col-span-8 md:pt-6 lg:max-xl:col-span-6"
+        >
+            <Navbar />
+        </div>
+        <div
+            class="col-span-12 col-start-1 row-start-4 md:col-span-8 md:col-start-3 md:row-start-3 lg:row-start-2 lg:max-xl:col-span-6 lg:max-xl:col-start-4"
+        >
+            <slot />
+        </div>
+        <div
+            class="col-span-12 col-start-1 row-start-3 md:col-span-8 md:row-start-2 md:max-lg:col-start-3 lg:col-span-2 lg:col-start-10 xl:col-start-11"
+        >
+            <Menu {tags} />
+        </div>
+        <div
+            class="col-span-8 col-start-3 pb-4 md:pb-6 lg:max-xl:col-span-6 lg:max-xl:col-start-4"
+        >
+            <Footer />
+        </div>
     </div>
 </Layout>

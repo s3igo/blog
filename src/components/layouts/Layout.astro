@@ -30,10 +30,6 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <ViewTransitions />
     </head>
     <body>
-        <div
-            class="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-4 max-md:gap-y-4 md:px-8"
-        >
-            <slot />
-        </div>
+        <slot />
     </body>
 </html>

@@ -4,9 +4,7 @@
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@8.15.3+sha256.fc4a49bd609550a41e14d20efbce802a4b892aa4cac877322de2f0924f122991",
-  "browserslist": [
-    "defaults"
-  ],
+  "browserslist": ["defaults"],
   "scripts": {
     "prepare": "husky",
     "start": "astro dev",
@@ -42,6 +40,7 @@
     "@iconify-json/gg": "1.1.9",
     "@iconify-json/lucide": "1.1.174",
     "@qwikdev/astro": "^0.5.9",
+    "@tailwindcss/container-queries": "0.1.1",
     "astro": "4.5.2",
     "astro-compress": "2.2.14",
     "astro-icon": "^1.1.0",
