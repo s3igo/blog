@@ -38,7 +38,10 @@
                   ];
                   lsp.servers = {
                     # eslint.enable = true;
-                    biome.enable = true;
+                    biome = {
+                      enable = true;
+                      filetypes = [ "astro" ];
+                    };
                     astro.enable = true;
                     tailwindcss.enable = true;
                     jsonls.onAttach.function = ''

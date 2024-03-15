@@ -1,5 +1,5 @@
-import { visit } from 'unist-util-visit';
 import type { Literal, Node } from 'unist';
+import { visit } from 'unist-util-visit';
 
 export const remarkStripLineBreaks = () => (tree: Node) => {
     visit(tree, 'text', (node: Literal) => {

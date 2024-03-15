@@ -1,14 +1,14 @@
 ---
+import { ViewTransitions } from 'astro:transitions';
 import '@fontsource/nunito-sans';
 import '@fontsource/zen-kaku-gothic-new';
-import { PAGE_DESCRIPTION, PAGE_TITLE } from '~/utils/constants';
 import '~/styles/global.css';
-import { ViewTransitions } from 'astro:transitions';
+import { PAGE_DESCRIPTION, PAGE_TITLE } from '~/utils/constants';
 
 export type Props = {
     title?: string;
     description?: string;
-    children: any;
+    children: unknown;
 };
 
 const { description = PAGE_DESCRIPTION, title } = Astro.props;

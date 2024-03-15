@@ -1,12 +1,12 @@
 ---
+import { getCollection } from 'astro:content';
+import Footer from '~/components/features/Footer.astro';
+import Menu from '~/components/features/Menu.astro';
 import Navbar from '~/components/features/Navbar.astro';
 import Layout, {
     type Props as LayoutProps,
 } from '~/components/layouts/Layout.astro';
-import Menu from '~/components/features/Menu.astro';
-import Footer from '~/components/features/Footer.astro';
 import Icon from '../features/Icon.astro';
-import { getCollection } from 'astro:content';
 
 type Props = LayoutProps;
 

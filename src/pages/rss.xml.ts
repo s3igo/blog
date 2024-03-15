@@ -1,6 +1,6 @@
+import { getCollection } from 'astro:content';
 import rss from '@astrojs/rss';
 import type { APIContext } from 'astro';
-import { getCollection } from 'astro:content';
 import MarkdownIt from 'markdown-it';
 import sanitizeHtml from 'sanitize-html';
 import { PAGE_DESCRIPTION, PAGE_TITLE } from '~/utils/constants';

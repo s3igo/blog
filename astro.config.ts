@@ -1,9 +1,9 @@
 import sitemap from '@astrojs/sitemap';
 import tailwind from '@astrojs/tailwind';
-import { defineConfig } from 'astro/config';
-import compress from 'astro-compress';
 import qwikdev from '@qwikdev/astro';
+import compress from 'astro-compress';
 import icon from 'astro-icon';
+import { defineConfig } from 'astro/config';
 import { remarkStripLineBreaks } from './remark-strip-line-breaks';
 
 // https://astro.build/config
