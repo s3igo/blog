@@ -1,7 +1,7 @@
 {
     "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
     "files": {
-        "ignore": [".direnv", ".astro/", "coverage/", "src/*.tsx"]
+        "ignore": [".direnv/", "dist/", ".astro/", "coverage/", "src/*.tsx"]
     },
     "linter": {
         "rules": {

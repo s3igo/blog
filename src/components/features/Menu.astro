@@ -5,6 +5,6 @@ type Props = { tags: string[] };
 const { tags } = Astro.props;
 ---
 
-<div class="flex h-max flex-wrap gap-3 lg:h-full lg:flex-col">
+<div class="flex gap-3 lg:h-full lg:flex-col">
     {tags.map((tag) => <Tag href={`/tags/${tag}`}>#{tag}</Tag>)}
 </div>

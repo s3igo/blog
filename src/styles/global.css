@@ -18,6 +18,9 @@
     .vrl {
         writing-mode: vertical-rl;
     }
+    .grid-2-rows {
+        grid-template-rows: auto 1fr;
+    }
     .grid-3-rows {
         grid-template-rows: auto 1fr auto;
     }

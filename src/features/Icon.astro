@@ -1,17 +1,19 @@
 ---
-import { getImage } from "astro:assets";
-import icon from "public/icon.webp";
+import { getImage } from 'astro:assets';
+import icon from 'public/icon.webp';
+
+type Props = Record<string, never>;
 
 const smallImage = await getImage({
     src: icon,
-    format: "avif",
+    format: 'avif',
     width: 56,
     height: 56,
 });
 
 const largeImage = await getImage({
     src: icon,
-    format: "avif",
+    format: 'avif',
     width: 80,
     height: 80,
 });

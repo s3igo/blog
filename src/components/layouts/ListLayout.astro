@@ -1,25 +1,36 @@
 ---
 import { getCollection } from 'astro:content';
 import Menu from '~/components/features/Menu.astro';
-import Navbar from '~/components/features/Navbar.astro';
 import Layout, {
     type Props as LayoutProps,
 } from '~/components/layouts/Layout.astro';
-import Footer from '~/features/Footer.astro';
 import Icon from '~/features/Icon.astro';
 
 type Props = LayoutProps;
+
+const { title, description } = Astro.props;
 
 const posts = await getCollection('posts');
 const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
 ---
 
-<Layout {...Astro.props}>
+<Layout {...{ title, description }}>
     <div
-        class="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-4 max-md:gap-y-4 md:px-8 h-svh grid-5-rows md:grid-4-rows lg:grid-3-rows"
+        class:list={[
+            "mx-auto max-w-7xl px-4 h-svh md:px-8", // container
+            "grid gap-6 max-md:gap-y-4", // grid -------------------------------
+            "grid-cols-12 grid-4-rows", // base
+            "lg:grid-3-rows", // lg ~
+        ]}
     >
         <div
-            class="pt-4 max-md:col-span-12 md:col-start-2 md:pt-6 lg:max-xl:col-start-3"
+            class:list={[
+                "pt-4 md:pt-6",
+                "col-start-1 row-start-1", // base
+                "max-md:col-span-12", // ~ md
+                "md:col-start-2", // md ~
+                "lg:max-xl:col-start-3", // lg ~ xl
+            ]}
         >
             <div class="flex md:justify-end">
                 <div class="md:fixed">
@@ -28,24 +39,36 @@ const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
             </div>
         </div>
         <div
-            class="xg:max-xl:col-start-4 col-span-12 col-start-1 md:col-span-8 md:pt-6 lg:max-xl:col-span-6"
-        >
-            <Navbar />
-        </div>
-        <div
-            class="col-span-12 col-start-1 row-start-4 md:col-span-8 md:col-start-3 md:row-start-3 lg:row-start-2 lg:max-xl:col-span-6 lg:max-xl:col-start-4"
-        >
-            <slot />
-        </div>
-        <div
-            class="col-span-12 col-start-1 row-start-3 md:col-span-8 md:row-start-2 md:max-lg:col-start-3 lg:col-span-2 lg:col-start-10 xl:col-start-11"
+            class:list={[
+                "max-lg:overflow-x-auto h-min",
+                "col-span-12 col-start-1 row-start-2", // base
+                "md:col-start-3 md:col-span-8 md:row-start-2", // md ~
+                "lg:col-span-2 lg:col-start-10", // lg ~
+                "xl:col-start-11", // xl ~
+            ]}
         >
             <Menu {tags} />
         </div>
         <div
-            class="col-span-8 col-start-3 pb-4 md:pb-6 lg:max-xl:col-span-6 lg:max-xl:col-start-4"
+            class:list={[
+                "lg:row-start-2",
+                "col-span-12 col-start-1 row-start-3", // base
+                "md:col-span-8 md:col-start-3 md:row-start-3", // md ~
+                "lg:max-xl:col-span-6 lg:max-xl:col-start-4", // lg ~ xl
+            ]}
         >
-            <Footer />
+            <slot />
+        </div>
+        <div
+            class:list={[
+                "text-right pb-4 md:pb-6",
+                "col-span-12 col-start-1 row-start-4", // base
+                "md:col-span-8 md:col-start-3", // md ~
+                "lg:row-start-3", // lg ~
+                "lg:max-xl:col-span-6 lg:max-xl:col-start-4", // lg ~ xl
+            ]}
+        >
+            <small>&copy; 2024 tsukiyo</small>
         </div>
     </div>
 </Layout>
