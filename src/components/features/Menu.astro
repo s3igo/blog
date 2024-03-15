@@ -1,8 +1,7 @@
 ---
 import Tag from '../shared/Tag.astro';
-import type { Tags } from '~/domain/values/tags';
 
-type Props = { tags: Tags };
+type Props = { tags: string[] };
 const { tags } = Astro.props;
 ---
 

@@ -1,0 +1,26 @@
+---
+import BlogLayout from '~/components/layouts/BlogLayout.astro';
+import { type CollectionEntry, getCollection } from 'astro:content';
+import { format } from 'date-fns';
+
+export const getStaticPaths = async () => {
+    const posts = await getCollection('posts');
+    return posts.map((post) => ({
+        params: { slug: post.slug },
+        props: { post },
+    }));
+};
+
+type Props = { post: CollectionEntry<'posts'> };
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BlogLayout
+    title={post.data.title}
+    published={format(post.data.published, 'yyyy-MM-dd')}
+    updated={post.data.updated && format(post.data.updated, 'yyyy-MM-dd')}
+    tags={post.data.tags}
+>
+    <Content />
+</BlogLayout>
