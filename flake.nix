@@ -18,8 +18,8 @@
         pkgs = import nixpkgs { inherit system; };
       in
       {
-        packages.neovim = neovim.withModules.${system} {
-          inherit pkgs;
+        packages.neovim = neovim.withModules {
+          inherit pkgs system;
           modules = with neovim.nixosModules; [
             im-select
             nix
