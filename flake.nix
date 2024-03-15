@@ -25,7 +25,7 @@
             nix
             typescript
             json
-            prettier
+            # prettier
             yaml
             markdown
             (
@@ -37,7 +37,8 @@
                     css
                   ];
                   lsp.servers = {
-                    eslint.enable = true;
+                    # eslint.enable = true;
+                    biome.enable = true;
                     astro.enable = true;
                     tailwindcss.enable = true;
                     jsonls.onAttach.function = ''

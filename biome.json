@@ -1,0 +1,42 @@
+{
+    "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+    "files": {
+        "ignore": [".direnv", ".astro/", "coverage/", "src/*.tsx"]
+    },
+    "linter": {
+        "rules": {
+            "all": true,
+            "style": {
+                "noDefaultExport": "off"
+            },
+            "nursery": {
+                "useSortedClasses": {
+                    "level": "warn",
+                    "options": {
+                        "attributes": ["class:list"]
+                    }
+                }
+            }
+        }
+    },
+    "formatter": {
+        "formatWithErrors": true,
+        "indentStyle": "space",
+        "indentWidth": 4
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "single"
+        }
+    },
+    "overrides": [
+        {
+            "include": ["package.json"],
+            "json": {
+                "formatter": {
+                    "indentWidth": 2
+                }
+            }
+        }
+    ]
+}
