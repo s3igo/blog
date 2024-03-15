@@ -25,7 +25,6 @@
             nix
             typescript
             json
-            # prettier
             yaml
             markdown
             (
@@ -37,10 +36,18 @@
                     css
                   ];
                   lsp.servers = {
-                    # eslint.enable = true;
                     biome = {
                       enable = true;
-                      filetypes = [ "astro" ];
+                      filetypes = [
+                        "javascript"
+                        "javascriptreact"
+                        "json"
+                        "jsonc"
+                        "typescript"
+                        "typescript.tsx"
+                        "typescriptreact"
+                        "astro"
+                      ];
                     };
                     astro.enable = true;
                     tailwindcss.enable = true;
