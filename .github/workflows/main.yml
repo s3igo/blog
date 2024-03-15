@@ -21,16 +21,10 @@ jobs:
         run: pnpm install
         env:
           HUSKY: 0
-      - name: Run `astro check`
+      - name: Run Astro check
         run: pnpm run check
-      - name: Run Prettier
-        run: pnpm run format:fix
-      - name: Run ESLint with fix options
-        run: pnpm run lint:fix
-      - name: Commit files modified by ESLint
-        uses: stefanzweifel/git-auto-commit-action@8756aa072ef5b4a080af5dc8fef36c5d586e521d # v5
-        with:
-          commit_message: Apply Format and Lint changes
+      - name: Run Biome
+        run: pnpm run biome:ci
 
   lint-text:
     name: Textlint

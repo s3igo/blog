@@ -17,9 +17,6 @@ dependencies:
   '@astrojs/tailwind':
     specifier: 5.1.0
     version: 5.1.0(astro@4.5.2)(tailwindcss@3.4.1)
-  '@biomejs/biome':
-    specifier: 1.6.1
-    version: 1.6.1
   '@builder.io/qwik':
     specifier: ^1.5.1
     version: 1.5.1(undici@6.8.0)
@@ -76,6 +73,9 @@ dependencies:
     version: 5.0.0
 
 devDependencies:
+  '@biomejs/biome':
+    specifier: 1.6.1
+    version: 1.6.1
   '@playwright/test':
     specifier: 1.42.1
     version: 1.42.1
@@ -530,7 +530,7 @@ packages:
       '@biomejs/cli-linux-x64-musl': 1.6.1
       '@biomejs/cli-win32-arm64': 1.6.1
       '@biomejs/cli-win32-x64': 1.6.1
-    dev: false
+    dev: true
 
   /@biomejs/cli-darwin-arm64@1.6.1:
     resolution: {integrity: sha512-KlvY00iB9T/vFi4m/GXxEyYkYnYy6aw06uapzUIIdiMMj7I/pmZu7CsZlzWdekVD0j+SsQbxdZMsb0wPhnRSsg==}
@@ -538,7 +538,7 @@ packages:
     cpu: [arm64]
     os: [darwin]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@biomejs/cli-darwin-x64@1.6.1:
@@ -547,7 +547,7 @@ packages:
     cpu: [x64]
     os: [darwin]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@biomejs/cli-linux-arm64-musl@1.6.1:
@@ -556,7 +556,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@biomejs/cli-linux-arm64@1.6.1:
@@ -565,7 +565,7 @@ packages:
     cpu: [arm64]
     os: [linux]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@biomejs/cli-linux-x64-musl@1.6.1:
@@ -574,7 +574,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@biomejs/cli-linux-x64@1.6.1:
@@ -583,7 +583,7 @@ packages:
     cpu: [x64]
     os: [linux]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@biomejs/cli-win32-arm64@1.6.1:
@@ -592,7 +592,7 @@ packages:
     cpu: [arm64]
     os: [win32]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@biomejs/cli-win32-x64@1.6.1:
@@ -601,7 +601,7 @@ packages:
     cpu: [x64]
     os: [win32]
     requiresBuild: true
-    dev: false
+    dev: true
     optional: true
 
   /@builder.io/qwik@1.5.1(undici@6.8.0):
