@@ -5,7 +5,8 @@
         "jsx": "react-jsx",
         "jsxImportSource": "@builder.io/qwik",
         "paths": {
-            "~/*": ["./src/*"]
+            "~/*": ["./src/*"],
+            "public/*": ["./public/*"]
         },
         "types": ["vitest/globals", "vitest/importMeta"]
     }

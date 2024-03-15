@@ -5,7 +5,7 @@ const { href } = Astro.props;
 ---
 
 <a
-    href={href}
+    {...{ href }}
     class="metadata block w-max rounded-full border-2 border-transparent bg-white px-3 py-1 hover:border-maldives dark:bg-midnight-express"
 >
     <slot />

@@ -1,0 +1,24 @@
+---
+import { getImage } from "astro:assets";
+import icon from "public/icon.webp";
+
+const smallImage = await getImage({
+    src: icon,
+    format: "avif",
+    width: 56,
+    height: 56,
+});
+
+const largeImage = await getImage({
+    src: icon,
+    format: "avif",
+    width: 80,
+    height: 80,
+});
+---
+
+<picture>
+    <source media="(max-width: 1279px)" srcset={smallImage.src} />
+    <source media="(min-width: 1280px)" srcset={largeImage.src} />
+    <img src={largeImage.src} alt="tsukiyo icon" />
+</picture>

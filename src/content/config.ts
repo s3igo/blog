@@ -1,17 +1,17 @@
 import { defineCollection, z } from 'astro:content';
 
 const schema = z.object({
-    published: z.date(),
-    tags: z.array(z.string()),
     title: z.string(),
     updated: z.date().nullable(),
+    published: z.date(),
+    tags: z.array(z.string()),
 });
 
 export type Schema = z.infer<typeof schema>;
 
 const posts = defineCollection({
-    schema,
     type: 'content',
+    schema,
 });
 
 export const collections = { posts };
