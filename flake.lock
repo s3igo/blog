@@ -180,11 +180,11 @@
       },
       "locked": {
         "dir": "neovim",
-        "lastModified": 1710492363,
-        "narHash": "sha256-3xpUPZ+uRmggMwfH1lHgeP+h5TmJLPigSqBXkiuvFr4=",
+        "lastModified": 1710493739,
+        "narHash": "sha256-VI5V0kRHBL6ttstnuKD+ZaHwA7t49++ucp46hOHpoIk=",
         "owner": "s3igo",
         "repo": "dotfiles",
-        "rev": "7ee2b045109b21a2d2c38d79b462360c7df0f678",
+        "rev": "184f7cc00461b58b71fab956dbe124728f7125ea",
         "type": "github"
       },
       "original": {
