@@ -1,7 +1,7 @@
 ---
 title: Astroの新機能、Content Collectionsを使わない理由
 published: 2023-02-21
-updated: 2023-03-03
+updated: 2023-02-40
 tags: [programming]
 ---
 

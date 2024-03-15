@@ -47,12 +47,14 @@ const { published, tags, title, updated } = Astro.props;
     </div>
 </Layout>
 <style is:global>
-    .astro-code, .astro-code span {
+    .astro-code,
+    .astro-code span {
         background-color: theme('colors.white') !important;
     }
 
     html.dark {
-        .astro-code, .astro-code span {
+        .astro-code,
+        .astro-code span {
             color: var(--shiki-dark) !important;
             background-color: theme('colors.midnight-express') !important;
         }

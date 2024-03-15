@@ -1,7 +1,6 @@
 ---
 import Card from './List/Card.astro';
 import type { CollectionEntry } from 'astro:content';
-import { format } from 'date-fns';
 
 type Props = { posts: CollectionEntry<'posts'>[] };
 
@@ -10,8 +9,8 @@ const { posts } = Astro.props;
 const cards = posts
     .map(({ data, slug }) => ({
         tags: data.tags,
-        published: format(data.published, 'yyyy-MM-dd'),
-        updated: data.updated && format(data.updated, 'yyyy-MM-dd'),
+        published: data.published.toISOString().substring(0, 10),
+        updated: data.updated && data.updated.toISOString().substring(0, 10),
         href: `/posts/${slug}`,
         title: data.title,
     }))

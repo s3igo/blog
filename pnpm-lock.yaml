@@ -50,27 +50,15 @@ dependencies:
   autoprefixer:
     specifier: 10.4.18
     version: 10.4.18(postcss@8.4.35)
-  date-fns:
-    specifier: 3.4.0
-    version: 3.4.0
   markdown-it:
     specifier: 14.0.0
     version: 14.0.0
-  mdast-util-from-markdown:
-    specifier: 2.0.0
-    version: 2.0.0
-  mdast-util-to-string:
-    specifier: 4.0.0
-    version: 4.0.0
   postcss-load-config:
     specifier: 5.0.3
     version: 5.0.3(postcss@8.4.35)
   remark-code-titles:
     specifier: 0.1.2
     version: 0.1.2
-  remeda:
-    specifier: 1.48.0
-    version: 1.48.0
   sanitize-html:
     specifier: 2.12.1
     version: 2.12.1
@@ -3082,10 +3070,6 @@ packages:
       whatwg-mimetype: 4.0.0
       whatwg-url: 14.0.0
     dev: true
-
-  /date-fns@3.4.0:
-    resolution: {integrity: sha512-Akz4R8J9MXBsOgF1QeWeCsbv6pntT5KCPjU0Q9prBxVmWJYPLhwAIsNg3b0QAdr0ttiozYLD3L/af7Ra0jqYXw==}
-    dev: false
 
   /debug@3.2.7:
     resolution: {integrity: sha512-CFjzYYAi4ThfiQvizrFQevTTXHtnCqWfe7x1AhgEscTz6ZbLbfoLRLPugTQyBth6f8ZERVUSyWHFD/7Wu4t1XQ==}
@@ -7263,10 +7247,6 @@ packages:
       '@types/mdast': 4.0.0
       mdast-util-to-markdown: 2.1.0
       unified: 11.0.4
-    dev: false
-
-  /remeda@1.48.0:
-    resolution: {integrity: sha512-u0XLpaNB/qNY1icmUcosmpGKObmGuJtw7UYN+bS+Hiq0b8KRWvq3gkuqy/VCLalGUrlPrMLbt079Gg5WTuTYQw==}
     dev: false
 
   /repeat-string@1.6.1:
