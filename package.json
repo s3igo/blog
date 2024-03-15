@@ -4,7 +4,9 @@
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@8.15.3+sha256.fc4a49bd609550a41e14d20efbce802a4b892aa4cac877322de2f0924f122991",
-  "browserslist": ["defaults"],
+  "browserslist": [
+    "defaults"
+  ],
   "scripts": {
     "prepare": "husky",
     "start": "astro dev",
@@ -29,7 +31,6 @@
     "clean": "rm -rf ./node_modules"
   },
   "dependencies": {
-    "@astrojs/check": "0.5.8",
     "@astrojs/rss": "4.0.5",
     "@astrojs/sitemap": "3.1.1",
     "@astrojs/tailwind": "5.1.0",
@@ -54,6 +55,7 @@
     "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
+    "@astrojs/check": "0.5.9",
     "@biomejs/biome": "1.6.1",
     "@playwright/test": "1.42.1",
     "@types/markdown-it": "13.0.7",
