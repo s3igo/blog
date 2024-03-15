@@ -1,9 +1,4 @@
-import {
-    $,
-    component$,
-    useOnDocument,
-    useSignal,
-} from '@builder.io/qwik';
+import { $, component$, useOnDocument, useSignal } from '@builder.io/qwik';
 import { SunnyIcon } from './icon/sunny-icon';
 import { MoonIcon } from './icon/moon-icon';
 import type { Theme } from './client-script';

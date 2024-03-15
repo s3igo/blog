@@ -1,20 +1,32 @@
 ---
-import * as R from 'remeda';
 import Card from './List/Card.astro';
-import type { Posts } from '~/domain/values/post';
+import type { CollectionEntry } from 'astro:content';
+import { format } from 'date-fns';
 
-type Props = { posts: Posts };
+type Props = { posts: CollectionEntry<'posts'>[] };
 
 const { posts } = Astro.props;
 
-const cards = R.pipe(
-    posts,
-    R.map(
-        R.pick(['description', 'published', 'tags', 'title', 'updated', 'url']),
-    ),
-    R.sortBy(({ published }) => published),
-    R.reverse(),
-);
+const cards = posts.map((post) => {
+    return {
+        tags: post.data.tags,
+        published: format(post.data.published, 'yyyy-MM-dd'),
+        updated: post.data.updated && format(post.data.updated, 'yyyy-MM-dd'),
+        href: `/posts/${post.slug}`,
+        title: post.data.title,
+    };
+});
+
+
+
+// const cards = R.pipe(
+//     posts,
+//     R.map(
+//         R.pick(['description', 'published', 'tags', 'title', 'updated', 'url']),
+//     ),
+//     R.sortBy(({ published }) => published),
+//     R.reverse(),
+// );
 ---
 
 <main class="flex flex-col gap-4 md:gap-6">

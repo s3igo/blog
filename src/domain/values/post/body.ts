@@ -37,7 +37,7 @@ const transformBody = (value: string): BodySchema => {
         mdast.children.filter((node) => node.type !== 'heading'),
     );
 
-    if (!title) throw new Error('title is undefined');
+    // if (!title) throw new Error('title is undefined');
 
     return {
         description: Opaque.create<Description, 'Description'>(

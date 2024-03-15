@@ -1,9 +1,9 @@
 ---
 import List from '~/components/features/List.astro';
 import ListLayout from '~/components/layouts/ListLayout.astro';
-import { Posts } from '~/domain/values/post';
+import { getCollection } from 'astro:content';
 
-const posts = await Posts.fetch();
+const posts = await getCollection('posts');
 ---
 
 <ListLayout>
