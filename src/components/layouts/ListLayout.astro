@@ -4,7 +4,7 @@ import Menu from '~/components/features/Menu.astro';
 import Layout, {
     type Props as LayoutProps,
 } from '~/components/layouts/Layout.astro';
-import Icon from '~/features/Icon.astro';
+import Navigation from '~/features/navigation/Navigation.astro';
 
 type Props = LayoutProps;
 
@@ -28,13 +28,13 @@ const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
                 "pt-4 md:pt-6",
                 "col-start-1 row-start-1", // base
                 "max-md:col-span-12", // ~ md
-                "md:col-start-2", // md ~
+                "md:row-span-3 md:col-start-2", // md ~
                 "lg:max-xl:col-start-3", // lg ~ xl
             ]}
         >
             <div class="flex md:justify-end">
-                <div class="md:fixed">
-                    <Icon />
+                <div class="md:fixed flex">
+                    <Navigation />
                 </div>
             </div>
         </div>

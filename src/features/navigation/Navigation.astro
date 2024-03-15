@@ -1,7 +1,54 @@
 ---
-import Icon from '../Icon.astro';
+import { Icon as AstroIcon } from "astro-icon/components";
+import Icon from "../Icon.astro";
+
+const baseIconClasses = "bg-white rounded-full border-2 border-transparent p-2";
+const animationIconClasses =
+    "ease-out duration-100 hover:border-maldives hover:bg-cyan-50 hover:scale-[120%]";
+const darkModeIconClasses = "dark:bg-midnight-express dark:hover:bg-gray-600";
+
+const svgClasses = "text-2xl xl:text-3xl p-[2px]";
 ---
 
-<div>
+<div class="flex gap-3 items-center md:flex-col">
     <Icon />
+    <a
+        href="/rss.xml"
+        class:list={[
+            baseIconClasses,
+            animationIconClasses,
+            darkModeIconClasses,
+        ]}
+        aria-label="RSS feed"
+    >
+        <AstroIcon name="lucide:rss" class={svgClasses} />
+    </a>
+    <button
+        id="theme-button"
+        class:list={[
+            baseIconClasses,
+            animationIconClasses,
+            darkModeIconClasses,
+        ]}
+        aria-label="Toggle dark mode"
+    >
+        <AstroIcon name="gg:dark-mode" class={svgClasses} />
+    </button>
 </div>
+<script>
+    import { loadTheme, toggleTheme } from "./client-script";
+
+    const listenClick = () => {
+        document
+            .getElementById("theme-button")
+            ?.addEventListener("click", toggleTheme);
+    };
+
+    const handleTheme = () => {
+        loadTheme();
+        listenClick();
+    };
+
+    document.addEventListener("astro:page-load", handleTheme, { once: true });
+    document.addEventListener("astro:after-swap", handleTheme);
+</script>
