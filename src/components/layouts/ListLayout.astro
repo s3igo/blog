@@ -4,6 +4,7 @@ import Menu from '~/components/features/Menu.astro';
 import Layout, {
     type Props as LayoutProps,
 } from '~/components/layouts/Layout.astro';
+import Footer from '~/features/footer/Footer.astro';
 import Navigation from '~/features/navigation/Navigation.astro';
 
 type Props = LayoutProps;
@@ -15,14 +16,7 @@ const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
 ---
 
 <Layout {...{ title, description }}>
-    <div
-        class:list={[
-            "mx-auto max-w-7xl px-4 h-svh md:px-8", // container
-            "grid gap-6 max-md:gap-y-4", // grid -------------------------------
-            "grid-4-rows grid-cols-12", // base
-            "lg:grid-3-rows", // lg ~
-        ]}
-    >
+    <div class="grid-container grid-4-rows lg:grid-3-rows">
         <div
             class:list={[
                 "pt-4 md:pt-6",
@@ -32,11 +26,7 @@ const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
                 "lg:max-xl:col-start-3", // lg ~ xl
             ]}
         >
-            <div class="flex md:justify-end">
-                <div class="md:fixed flex">
-                    <Navigation />
-                </div>
-            </div>
+            <Navigation />
         </div>
         <div
             class:list={[
@@ -68,7 +58,7 @@ const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
                 "lg:max-xl:col-span-6 lg:max-xl:col-start-4", // lg ~ xl
             ]}
         >
-            <small>&copy; 2024 tsukiyo</small>
+            <Footer />
         </div>
     </div>
 </Layout>
