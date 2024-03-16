@@ -20,9 +20,6 @@ dependencies:
   '@fontsource/jetbrains-mono':
     specifier: 5.0.19
     version: 5.0.19
-  '@fontsource/nunito-sans':
-    specifier: 5.0.12
-    version: 5.0.12
   '@fontsource/zen-kaku-gothic-new':
     specifier: 5.0.18
     version: 5.0.18
@@ -839,10 +836,6 @@ packages:
 
   /@fontsource/jetbrains-mono@5.0.19:
     resolution: {integrity: sha512-SdwUuvdfuAvGWRRc4LOFRSmDrpkE+vFUpCtOIOUl1PpXdLfeU//93BZiGf7j/oFGSZJbHAurfux2uLT38/NIjw==}
-    dev: false
-
-  /@fontsource/nunito-sans@5.0.12:
-    resolution: {integrity: sha512-ioEnbfAUb8D6sDa+mqNBBpFTDkydZ3Dwz9NRrEVJRJQe69SAgkeM6YaiWXmlKqWZksakw8KHM77aDWpUC0BUwg==}
     dev: false
 
   /@fontsource/zen-kaku-gothic-new@5.0.18:
