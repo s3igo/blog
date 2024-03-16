@@ -2,12 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/*@layer base {
-    :root {
-        --color-bellflower-blue:
-    }
-}*/
-
 @layer utilities {
     /* .link {
         @apply text-maldives decoration-2 underline-offset-2 hover:underline;
