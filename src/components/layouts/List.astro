@@ -1,9 +1,9 @@
 ---
 import { getCollection } from 'astro:content';
 import Menu from '~/components/features/Menu.astro';
-import Layout, {
+import Base, {
     type Props as LayoutProps,
-} from '~/components/layouts/Layout.astro';
+} from '~/components/layouts/Base.astro';
 import Footer from '~/features/footer/Footer.astro';
 import Navigation from '~/features/navigation/Navigation.astro';
 
@@ -15,7 +15,7 @@ const posts = await getCollection('posts');
 const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
 ---
 
-<Layout {...{ title, description }}>
+<Base {...{ title, description }}>
     <div class="grid-container grid-4-rows lg:grid-3-rows">
         <div
             class:list={[
@@ -61,4 +61,4 @@ const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
             <Footer />
         </div>
     </div>
-</Layout>
+</Base>

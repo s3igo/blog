@@ -1,11 +1,11 @@
 ---
 import { getCollection } from 'astro:content';
 import List from '~/components/features/List.astro';
-import ListLayout from '~/components/layouts/ListLayout.astro';
+import Layout from '~/components/layouts/List.astro';
 
 const posts = await getCollection('posts');
 ---
 
-<ListLayout>
+<Layout>
     <List {posts} />
-</ListLayout>
+</Layout>

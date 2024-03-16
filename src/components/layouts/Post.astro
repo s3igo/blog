@@ -4,7 +4,7 @@ import '@fontsource/zen-kaku-gothic-new/700.css';
 import Tag from '~/components/shared/Tag.astro';
 import Footer from '~/features/footer/Footer.astro';
 import Navigation from '~/features/navigation/Navigation.astro';
-import Layout from './Layout.astro';
+import Base from './Base.astro';
 
 type Props = {
     title: string;
@@ -19,7 +19,7 @@ const { published, tags, title, updated } = Astro.props;
 const topPaddingClasses = 'pt-4 md:pt-8';
 ---
 
-<Layout {...{ title }}>
+<Base {...{ title }}>
     <div class="grid-container max-md:grid-2-rows">
         <div
             class:list={[
@@ -53,7 +53,7 @@ const topPaddingClasses = 'pt-4 md:pt-8';
             </div>
         </div>
     </div>
-</Layout>
+</Base>
 <style is:global>
     .astro-code,
     .astro-code span {
