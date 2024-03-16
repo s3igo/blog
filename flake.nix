@@ -68,6 +68,9 @@
                       ];
                     };
                     astro.enable = true;
+                    # astro.onAttach.function = ''
+                    #   client.server_capabilities.documentFormattingProvider = false
+                    # '';
                     tailwindcss = {
                       enable = true;
                       extraOptions.settings.tailwindCSS.classAttributes = [

@@ -20,7 +20,6 @@
         }
     },
     "formatter": {
-        "formatWithErrors": true,
         "indentStyle": "space",
         "indentWidth": 4
     },

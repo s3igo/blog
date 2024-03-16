@@ -11,9 +11,9 @@ const { posts, tags } = await getPosts();
 ---
 
 <Layout>
-    <Navigation slot="navigation" />
-    <Menu {...{ tags }} slot="tag-list" />
+    <Navigation slot="nav" />
+    <Menu slot="tags" {...{ tags }} />
     <Title slot="title">tsukiyo-room</Title>
-    <List {...{ posts }} slot="list" />
+    <List slot="list" {...{ posts }} />
     <Footer slot="footer" />
 </Layout>

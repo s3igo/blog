@@ -7,27 +7,25 @@ const { title, description } = Astro.props;
 ---
 
 <Base {...{ title, description }}>
-    <div class="grid-container grid-5-rows lg:grid-4-rows">
+    <div
+        class="container-grid container-rows-5 md:container-rows-4 lg:container-rows-3"
+    >
         <div
             class:list={[
-                //"pt-4 md:pt-6",
-                "col-start-1 row-start-1", // base
-                "md:max-lg:col-span-2", // md ~ lg
-                "max-md:col-span-12", // ~ md
-                "md:row-span-5", // md ~
-                "lg:row-span-4", // lg ~
-                "lg:max-xl:col-start-3", // lg ~ xl
-                "xl:col-start-2", // xl ~
+                "col-span-12 col-start-1 row-start-1",
+                "md:col-span-2 md:row-span-4",
+                "lg:col-span-1 lg:col-start-3 lg:row-span-3",
+                "xl:col-start-2",
             ]}
         >
-            <slot name="navigation" />
+            <slot name="nav" />
         </div>
         <div
             class:list={[
-                "col-span-12 col-start-1 row-start-2", // base
-                "md:col-span-8 md:col-start-3 md:row-start-1", // md ~
-                "lg:col-span-6 lg:col-start-4", // lg ~
-                "xl:col-span-8 xl:col-start-3", // xl ~
+                "col-span-12 col-start-1 row-start-2",
+                "md:col-span-8 md:col-start-3 md:row-start-1",
+                "lg:col-span-6 lg:col-start-4",
+                "xl:col-span-8 xl:col-start-3",
             ]}
         >
             <slot name="title" />
@@ -35,32 +33,30 @@ const { title, description } = Astro.props;
         <div
             class:list={[
                 "h-min max-lg:overflow-x-auto",
-                "col-span-12 col-start-1 row-start-3", // base
-                "md:col-span-8 md:col-start-3 md:row-start-3", // md ~
-                "lg:col-span-2 lg:col-start-10", // lg ~
-                "xl:col-start-11", // xl ~
+                "col-span-12 col-start-1 row-start-3",
+                "md:col-span-8 md:col-start-3 md:row-start-2",
+                "lg:col-span-2 lg:col-start-10",
+                "xl:col-start-11",
             ]}
         >
-            <slot name="tag-list" />
+            <slot name="tags" />
         </div>
         <div
             class:list={[
-                "col-span-12 col-start-1 row-start-4", // base
-                "md:col-span-8 md:col-start-3 md:row-start-4", // md ~
-                "lg:max-xl:col-span-6 lg:max-xl:col-start-4", // lg ~ xl
-                "lg:row-start-3", // lg ~
+                "col-span-12 col-start-1 row-start-4",
+                "md:col-span-8 md:col-start-3 md:row-start-3",
+                "lg:col-span-6 lg:col-start-4 lg:row-start-2",
+                "xl:col-span-8 xl:col-start-3",
             ]}
         >
             <slot name="list" />
         </div>
         <div
             class:list={[
-                "pb-6 text-right md:pb-10",
-                "col-span-12 col-start-1 row-start-5", // base
-                "md:col-span-8 md:col-start-3", // md ~
-                "lg:max-xl:col-span-6 lg:max-xl:col-start-4", // lg ~ xl
-                "lg:row-start-4", // lg ~
-                "xl:col-start-3"
+                "col-span-12 col-start-1 row-start-5",
+                "md:col-span-8 md:col-start-3 md:row-start-4",
+                "lg:col-span-6 lg:col-start-4 lg:row-start-3",
+                "xl:col-span-8 xl:col-start-3",
             ]}
         >
             <slot name="footer" />

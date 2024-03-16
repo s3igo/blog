@@ -12,7 +12,7 @@ const svgClasses = 'text-2xl p-[2px]';
 ---
 
 <a href="/">
-    <div class="flex gap-3 items-center md:flex-col md:sticky md:top-6">
+    <nav class="flex gap-3 items-center md:flex-col md:sticky md:top-6">
         <Image src={icon} width={56} height={56} alt="tsukiyo icon" />
         <a
             href="/rss.xml"
@@ -36,7 +36,7 @@ const svgClasses = 'text-2xl p-[2px]';
         >
             <AstroIcon name="gg:dark-mode" class={svgClasses} />
         </button>
-    </div>
+    <nav>
 </a>
 <script>
     import { loadTheme, toggleTheme } from "./client-script";

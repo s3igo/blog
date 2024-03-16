@@ -26,11 +26,11 @@ const { tag } = Astro.params;
 ---
 
 <Layout title={`#${tag}`}>
-    <Navigation slot="navigation" />
-    <Menu {...{ tags }} slot="tag-list" />
+    <Navigation slot="nav" />
+    <Menu slot="tags" {...{ tags }} />
     <Title slot="title">
         #{tag}
     </Title>
-    <List {posts} slot="list" />
+    <List slot="list" {...{posts}} />
     <Footer slot="footer" />
 </Layout>
