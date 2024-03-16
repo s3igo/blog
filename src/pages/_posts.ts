@@ -1,6 +1,6 @@
 import { type CollectionEntry, getCollection } from 'astro:content';
 
-export type PostsData = {
+type PostsData = {
     posts: CollectionEntry<'posts'>[];
     tags: string[];
 };

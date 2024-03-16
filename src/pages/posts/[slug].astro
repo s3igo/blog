@@ -1,18 +1,19 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
+import { getCollection } from 'astro:content';
+import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 import Layout from '~/components/layouts/Post.astro';
 import Tag from '~/components/shared/Tag.astro';
 import Footer from '~/features/footer/Footer.astro';
 import Navigation from '~/features/navigation/Navigation.astro';
 import Title from '~/features/title/Title.astro';
 
-export const getStaticPaths = async () =>
+export const getStaticPaths = (async () =>
     (await getCollection('posts')).map((post) => ({
         params: { slug: post.slug },
         props: { post },
-    }));
+    }))) satisfies GetStaticPaths;
 
-type Props = { post: CollectionEntry<'posts'> };
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { post } = Astro.props;
 const { title, published, updated, tags } = post.data;

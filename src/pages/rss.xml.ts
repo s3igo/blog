@@ -7,20 +7,16 @@ import { PAGE_DESCRIPTION, PAGE_TITLE } from '~/utils/constants';
 
 const parser = new MarkdownIt();
 
-export const GET = async (context: APIContext) => {
-    const site = context.site?.toString() ?? '';
-    const posts = await getCollection('posts');
-
-    return rss({
+export const GET = async ({ site }: APIContext) =>
+    rss({
+        title: PAGE_TITLE,
+        site: site?.toString() ?? '',
         customData: '<language>ja</language>',
         description: PAGE_DESCRIPTION,
-        items: posts.map(({ body, data, slug }) => ({
-            content: sanitizeHtml(parser.render(body)),
+        items: (await getCollection('posts')).map(({ body, data, slug }) => ({
+            title: data.title,
             link: `/posts/${slug}`,
             pubDate: data.published,
-            title: data.title,
+            content: sanitizeHtml(parser.render(body)),
         })),
-        site,
-        title: PAGE_TITLE,
     });
-};
