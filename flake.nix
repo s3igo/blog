@@ -35,17 +35,6 @@
             (
               { pkgs, ... }:
               {
-                keymaps = [
-                  {
-                    key = "<leader>a";
-                    action = "<cmd>lua require('actions-preview').code_actions()<cr>";
-                    mode = [
-                      "n"
-                      "x"
-                    ];
-                    options.desc = "Code Actions Preview";
-                  }
-                ];
                 plugins = {
                   nvim-colorizer.fileTypes = [
                     {
