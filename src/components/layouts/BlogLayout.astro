@@ -2,8 +2,7 @@
 import '@fontsource/jetbrains-mono';
 import '@fontsource/zen-kaku-gothic-new/700.css';
 import Tag from '~/components/shared/Tag.astro';
-import Footer from '~/features/Footer.astro';
-import Icon from '~/features/Icon.astro';
+import Navigation from '~/features/navigation/Navigation.astro';
 import Layout from './Layout.astro';
 
 type Props = {
@@ -19,21 +18,34 @@ const { published, tags, title, updated } = Astro.props;
 
 <Layout {...{ title }}>
     <div
-        class="mx-auto grid max-w-7xl grid-cols-12 gap-6 px-4 max-md:gap-y-4 md:px-8 h-svh"
+        class:list={[
+            "mx-auto h-svh max-w-7xl px-4 max-md:gap-y-4 md:px-8", // container
+            "grid gap-6", // grid ----------------------------------------------
+            "grid-cols-12", // base
+            "max-md:grid-2-rows", // ~ md
+        ]}
     >
-        <div class="col-start-1 pt-6 max-md:col-span-12 md:max-lg:col-start-2">
+        <div
+            class:list={[
+                "pt-4 md:pt-8",
+                "col-start-1", // base
+                "max-md:col-span-12", // ~ md
+            ]}
+        >
             <a class="flex md:justify-end" href="/">
-                <div class="md:fixed">
-                    <Icon />
+                <div class="md:fixed flex">
+                    <Navigation />
                 </div>
             </a>
         </div>
         <div
-            class="col-span-12 md:col-span-8 md:col-start-3 lg:col-span-10 lg:col-start-2"
+            class:list={[
+                "col-span-12 row-start-2", // base
+                "md:col-span-8 md:col-start-3 md:row-start-1", // md ~
+                "lg:col-span-10 lg:col-start-2", // lg ~
+            ]}
         >
-            <h1
-                class="text-3xl before:text-maldives before:content-['#_'] sm:text-4xl md:mt-12"
-            >
+            <h1 class="text-3xl sm:text-4xl md:mt-12">
                 {title}
             </h1>
             <div class="mb-12 mt-4 flex flex-wrap gap-3">
@@ -44,8 +56,8 @@ const { published, tags, title, updated } = Astro.props;
             <div class="blog">
                 <slot />
             </div>
-            <div class="mt-6 pb-6">
-                <Footer />
+            <div class="text-right mt-6 pb-6 row-start-3">
+                <small>&copy; 2024 tsukiyo</small>
             </div>
         </div>
     </div>

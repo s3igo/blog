@@ -20,6 +20,11 @@
       {
         packages.neovim = neovim.withModules {
           inherit pkgs system;
+          grammars = [
+            "astro"
+            "css"
+            "lua"
+          ];
           modules = with neovim.nixosModules; [
             im-select
             nix
@@ -30,10 +35,23 @@
             (
               { pkgs, ... }:
               {
+                keymaps = [
+                  {
+                    key = "<leader>a";
+                    action = "<cmd>lua require('actions-preview').code_actions()<cr>";
+                    mode = [
+                      "n"
+                      "x"
+                    ];
+                    options.desc = "Code Actions Preview";
+                  }
+                ];
                 plugins = {
-                  treesitter.grammarPackages = with pkgs.vimPlugins.nvim-treesitter.builtGrammars; [
-                    astro
-                    css
+                  nvim-colorizer.fileTypes = [
+                    {
+                      language = "astro";
+                      tailwind = "lsp";
+                    }
                   ];
                   lsp.servers = {
                     biome = {
@@ -50,7 +68,14 @@
                       ];
                     };
                     astro.enable = true;
-                    tailwindcss.enable = true;
+                    tailwindcss = {
+                      enable = true;
+                      extraOptions.settings.tailwindCSS.classAttributes = [
+                        "class"
+                        "class:list"
+                        ".*Classes"
+                      ];
+                    };
                     jsonls.onAttach.function = ''
                       client.server_capabilities.documentFormattingProvider = false
                     '';

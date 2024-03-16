@@ -19,7 +19,7 @@ const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
         class:list={[
             "mx-auto max-w-7xl px-4 h-svh md:px-8", // container
             "grid gap-6 max-md:gap-y-4", // grid -------------------------------
-            "grid-cols-12 grid-4-rows", // base
+            "grid-4-rows grid-cols-12", // base
             "lg:grid-3-rows", // lg ~
         ]}
     >
@@ -28,7 +28,7 @@ const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
                 "pt-4 md:pt-6",
                 "col-start-1 row-start-1", // base
                 "max-md:col-span-12", // ~ md
-                "md:row-span-3 md:col-start-2", // md ~
+                "md:col-start-2 md:row-span-3", // md ~
                 "lg:max-xl:col-start-3", // lg ~ xl
             ]}
         >
@@ -40,9 +40,9 @@ const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
         </div>
         <div
             class:list={[
-                "max-lg:overflow-x-auto h-min",
+                "h-min max-lg:overflow-x-auto",
                 "col-span-12 col-start-1 row-start-2", // base
-                "md:col-start-3 md:col-span-8 md:row-start-2", // md ~
+                "md:col-span-8 md:col-start-3 md:row-start-2", // md ~
                 "lg:col-span-2 lg:col-start-10", // lg ~
                 "xl:col-start-11", // xl ~
             ]}
@@ -61,7 +61,7 @@ const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
         </div>
         <div
             class:list={[
-                "text-right pb-4 md:pb-6",
+                "pb-6 text-right md:pb-10",
                 "col-span-12 col-start-1 row-start-4", // base
                 "md:col-span-8 md:col-start-3", // md ~
                 "lg:row-start-3", // lg ~
