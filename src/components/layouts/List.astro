@@ -10,10 +10,12 @@ const { title, description } = Astro.props;
     <div class="grid-container grid-5-rows lg:grid-4-rows">
         <div
             class:list={[
-                "pt-4 md:pt-6",
+                //"pt-4 md:pt-6",
                 "col-start-1 row-start-1", // base
+                "md:max-lg:col-span-2", // md ~ lg
                 "max-md:col-span-12", // ~ md
-                "md:row-span-3", // md ~
+                "md:row-span-5", // md ~
+                "lg:row-span-4", // lg ~
                 "lg:max-xl:col-start-3", // lg ~ xl
                 "xl:col-start-2", // xl ~
             ]}
@@ -23,7 +25,7 @@ const { title, description } = Astro.props;
         <div
             class:list={[
                 "col-span-12 col-start-1 row-start-2", // base
-                "md:col-span-8 md:col-start-3", // md ~
+                "md:col-span-8 md:col-start-3 md:row-start-1", // md ~
                 "lg:col-span-6 lg:col-start-4", // lg ~
                 "xl:col-span-8 xl:col-start-3", // xl ~
             ]}
