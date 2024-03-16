@@ -30,6 +30,9 @@
     .grid-4-rows {
         grid-template-rows: auto auto 1fr auto;
     }
+    .grid-5-rows {
+        grid-template-rows: auto auto auto 1fr auto;
+    }
 }
 
 body {

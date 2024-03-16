@@ -4,6 +4,7 @@ import Menu from '~/components/features/Menu.astro';
 import Layout from '~/components/layouts/List.astro';
 import Footer from '~/features/footer/Footer.astro';
 import Navigation from '~/features/navigation/Navigation.astro';
+import Title from '~/features/title/Title.astro';
 import { type PostsData, getPosts } from '../_posts';
 
 export const getStaticPaths = async () => {
@@ -27,7 +28,9 @@ const { tag } = Astro.params;
 <Layout title={`#${tag}`}>
     <Navigation slot="navigation" />
     <Menu {...{ tags }} slot="tag-list" />
-    <h2 slot="title" class="pb-4 text-2xl xl:pb-6 xl:text-4xl">#{tag}</h2>
+    <Title slot="title">
+        #{tag}
+    </Title>
     <List {posts} slot="list" />
     <Footer slot="footer" />
 </Layout>

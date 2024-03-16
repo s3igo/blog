@@ -4,6 +4,7 @@ import Menu from '~/components/features/Menu.astro';
 import Layout from '~/components/layouts/List.astro';
 import Footer from '~/features/footer/Footer.astro';
 import Navigation from '~/features/navigation/Navigation.astro';
+import Title from '~/features/title/Title.astro';
 import { getPosts } from './_posts';
 
 const { posts, tags } = await getPosts();
@@ -12,7 +13,7 @@ const { posts, tags } = await getPosts();
 <Layout>
     <Navigation slot="navigation" />
     <Menu {...{ tags }} slot="tag-list" />
-    <h1 slot="title">Blog</h1>
+    <Title slot="title">tsukiyo-room</Title>
     <List {...{ posts }} slot="list" />
     <Footer slot="footer" />
 </Layout>

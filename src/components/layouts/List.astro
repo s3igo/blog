@@ -7,23 +7,34 @@ const { title, description } = Astro.props;
 ---
 
 <Base {...{ title, description }}>
-    <div class="grid-container grid-4-rows lg:grid-3-rows">
+    <div class="grid-container grid-5-rows lg:grid-4-rows">
         <div
             class:list={[
                 "pt-4 md:pt-6",
                 "col-start-1 row-start-1", // base
                 "max-md:col-span-12", // ~ md
-                "md:col-start-2 md:row-span-3", // md ~
+                "md:row-span-3", // md ~
                 "lg:max-xl:col-start-3", // lg ~ xl
+                "xl:col-start-2", // xl ~
             ]}
         >
             <slot name="navigation" />
         </div>
         <div
             class:list={[
-                "h-min max-lg:overflow-x-auto",
                 "col-span-12 col-start-1 row-start-2", // base
-                "md:col-span-8 md:col-start-3 md:row-start-2", // md ~
+                "md:col-span-8 md:col-start-3", // md ~
+                "lg:col-span-6 lg:col-start-4", // lg ~
+                "xl:col-span-8 xl:col-start-3", // xl ~
+            ]}
+        >
+            <slot name="title" />
+        </div>
+        <div
+            class:list={[
+                "h-min max-lg:overflow-x-auto",
+                "col-span-12 col-start-1 row-start-3", // base
+                "md:col-span-8 md:col-start-3 md:row-start-3", // md ~
                 "lg:col-span-2 lg:col-start-10", // lg ~
                 "xl:col-start-11", // xl ~
             ]}
@@ -32,22 +43,22 @@ const { title, description } = Astro.props;
         </div>
         <div
             class:list={[
-                "col-span-12 col-start-1 row-start-3", // base
-                "md:col-span-8 md:col-start-3 md:row-start-3", // md ~
+                "col-span-12 col-start-1 row-start-4", // base
+                "md:col-span-8 md:col-start-3 md:row-start-4", // md ~
                 "lg:max-xl:col-span-6 lg:max-xl:col-start-4", // lg ~ xl
-                "lg:row-start-2", // lg ~
+                "lg:row-start-3", // lg ~
             ]}
         >
-            <slot name="title" />
             <slot name="list" />
         </div>
         <div
             class:list={[
                 "pb-6 text-right md:pb-10",
-                "col-span-12 col-start-1 row-start-4", // base
+                "col-span-12 col-start-1 row-start-5", // base
                 "md:col-span-8 md:col-start-3", // md ~
                 "lg:max-xl:col-span-6 lg:max-xl:col-start-4", // lg ~ xl
-                "lg:row-start-3", // lg ~
+                "lg:row-start-4", // lg ~
+                "xl:col-start-3"
             ]}
         >
             <slot name="footer" />

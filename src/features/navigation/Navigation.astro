@@ -1,19 +1,25 @@
 ---
+import { Image } from 'astro:assets';
 import { Icon as AstroIcon } from 'astro-icon/components';
-import Icon from './Icon.astro';
+import icon from 'public/icon.webp';
 
 const baseIconClasses = 'bg-white rounded-full border-2 border-transparent p-2';
 const animationIconClasses =
     'ease-in-out duration-100 hover:border-maldives hover:bg-cyan-50 hover:scale-[120%]';
 const darkModeIconClasses = 'dark:bg-yamagami-blue dark:hover:bg-gray-500';
 
-const svgClasses = 'text-2xl xl:text-3xl p-[2px]';
+const svgClasses = 'text-2xl p-[2px]';
 ---
 
 <a class="flex md:justify-end" href="/">
     <div class="md:fixed flex">
         <div class="flex gap-3 items-center md:flex-col">
-            <Icon />
+            <Image
+                src={icon}
+                width={56}
+                height={56}
+                alt="tsukiyo icon"
+            />
             <a
                 href="/rss.xml"
                 class:list={[
