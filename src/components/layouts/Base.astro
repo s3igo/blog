@@ -29,7 +29,9 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <link rel="canonical" href={canonicalURL} />
         <ViewTransitions />
     </head>
-    <body>
+    <body
+        class="bg-bellflower-blue font-sans text-yamagami-blue dark:bg-black-knight dark:text-dreamy-cloud"
+    >
         <slot />
     </body>
 </html>

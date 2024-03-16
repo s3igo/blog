@@ -10,7 +10,7 @@
         @apply text-sm text-blue-blouse xl:text-base;
     }
     .grid-container {
-        @apply mx-auto h-svh max-w-7xl px-4 grid grid-cols-12 gap-6 max-md:gap-y-4 md:px-8;
+        @apply pt-32 mx-auto h-svh max-w-7xl px-4 grid grid-cols-12 gap-6 max-md:gap-y-4 md:px-8;
     }
     .vrl {
         writing-mode: vertical-rl;
@@ -27,8 +27,4 @@
     .grid-5-rows {
         grid-template-rows: auto auto auto 1fr auto;
     }
-}
-
-body {
-    @apply bg-bellflower-blue font-sans text-yamagami-blue dark:bg-black-knight dark:text-dreamy-cloud;
 }

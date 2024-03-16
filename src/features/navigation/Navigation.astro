@@ -12,37 +12,30 @@ const svgClasses = 'text-2xl p-[2px]';
 ---
 
 <a class="flex md:justify-end" href="/">
-    <div class="md:fixed flex">
-        <div class="flex gap-3 items-center md:flex-col">
-            <Image
-                src={icon}
-                width={56}
-                height={56}
-                alt="tsukiyo icon"
-            />
-            <a
-                href="/rss.xml"
-                class:list={[
-                    baseIconClasses,
-                    animationIconClasses,
-                    darkModeIconClasses,
-                ]}
-                aria-label="RSS feed"
-            >
-                <AstroIcon name="lucide:rss" class={svgClasses} />
-            </a>
-            <button
-                id="theme-button"
-                class:list={[
-                    baseIconClasses,
-                    animationIconClasses,
-                    darkModeIconClasses,
-                ]}
-                aria-label="Toggle dark mode"
-            >
-                <AstroIcon name="gg:dark-mode" class={svgClasses} />
-            </button>
-        </div>
+    <div class="flex gap-3 items-center md:flex-col md:fixed">
+        <Image src={icon} width={56} height={56} alt="tsukiyo icon" />
+        <a
+            href="/rss.xml"
+            class:list={[
+                baseIconClasses,
+                animationIconClasses,
+                darkModeIconClasses,
+            ]}
+            aria-label="RSS feed"
+        >
+            <AstroIcon name="lucide:rss" class={svgClasses} />
+        </a>
+        <button
+            id="theme-button"
+            class:list={[
+                baseIconClasses,
+                animationIconClasses,
+                darkModeIconClasses,
+            ]}
+            aria-label="Toggle dark mode"
+        >
+            <AstroIcon name="gg:dark-mode" class={svgClasses} />
+        </button>
     </div>
 </a>
 <script>
