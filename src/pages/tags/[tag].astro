@@ -1,26 +1,33 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
 import List from '~/components/features/List.astro';
+import Menu from '~/components/features/Menu.astro';
 import Layout from '~/components/layouts/List.astro';
+import Footer from '~/features/footer/Footer.astro';
+import Navigation from '~/features/navigation/Navigation.astro';
+import { type PostsData, getPosts } from '../_posts';
 
 export const getStaticPaths = async () => {
-    const posts = await getCollection('posts');
-    const tags = [
-        ...new Set(posts.flatMap(({ data }) => data.tags).toSorted()),
-    ];
+    const { posts, tags } = await getPosts();
 
     return tags.map((tag) => ({
         params: { tag },
-        props: { posts: posts.filter(({ data }) => data.tags.includes(tag)) },
+        props: {
+            posts: posts.filter(({ data }) => data.tags.includes(tag)),
+            tags,
+        },
     }));
 };
 
+type Props = { posts: PostsData['posts']; tags: PostsData['tags'] };
+
+const { posts, tags } = Astro.props;
 const { tag } = Astro.params;
-type Props = { posts: CollectionEntry<'posts'>[] };
-const { posts } = Astro.props;
 ---
 
-<Layout title={`#${tag}の記事一覧`}>
-    <h2 class="pb-4 text-2xl xl:pb-6 xl:text-4xl">#{tag}</h2>
-    <List {posts} />
+<Layout title={`#${tag}`}>
+    <Navigation slot="navigation" />
+    <Menu {...{ tags }} slot="tag-list" />
+    <h2 slot="title" class="pb-4 text-2xl xl:pb-6 xl:text-4xl">#{tag}</h2>
+    <List {posts} slot="list" />
+    <Footer slot="footer" />
 </Layout>

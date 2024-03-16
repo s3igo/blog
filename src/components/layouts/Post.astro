@@ -1,5 +1,4 @@
 ---
-import '@fontsource/jetbrains-mono';
 import '@fontsource/zen-kaku-gothic-new/700.css';
 import Tag from '~/components/shared/Tag.astro';
 import Footer from '~/features/footer/Footer.astro';
@@ -41,8 +40,8 @@ const topPaddingClasses = 'pt-4 md:pt-8';
                 {title}
             </h1>
             <div class="mb-12 mt-4 flex flex-wrap gap-3">
-                <div class="metadata py-2">{published}</div>
-                {updated && <div class="metadata py-2">↻{updated}</div>}
+                <div class="metadata py-2 font-code">{published}</div>
+                {updated && <div class="metadata py-2 font-code">↻{updated}</div>}
                 {tags.map((tag) => <Tag href={`/tags/${tag}`}>{tag}</Tag>)}
             </div>
             <div class="blog">

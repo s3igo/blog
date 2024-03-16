@@ -1,18 +1,9 @@
 ---
-import { getCollection } from 'astro:content';
-import Menu from '~/components/features/Menu.astro';
-import Base, {
-    type Props as LayoutProps,
-} from '~/components/layouts/Base.astro';
-import Footer from '~/features/footer/Footer.astro';
-import Navigation from '~/features/navigation/Navigation.astro';
+import Base, { type Props as BaseProps } from '~/components/layouts/Base.astro';
 
-type Props = LayoutProps;
+type Props = BaseProps;
 
 const { title, description } = Astro.props;
-
-const posts = await getCollection('posts');
-const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
 ---
 
 <Base {...{ title, description }}>
@@ -26,7 +17,7 @@ const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
                 "lg:max-xl:col-start-3", // lg ~ xl
             ]}
         >
-            <Navigation />
+            <slot name="navigation" />
         </div>
         <div
             class:list={[
@@ -37,28 +28,29 @@ const tags = [...new Set(posts.flatMap(({ data }) => data.tags).toSorted())];
                 "xl:col-start-11", // xl ~
             ]}
         >
-            <Menu {tags} />
+            <slot name="tag-list" />
         </div>
         <div
             class:list={[
-                "lg:row-start-2",
                 "col-span-12 col-start-1 row-start-3", // base
                 "md:col-span-8 md:col-start-3 md:row-start-3", // md ~
                 "lg:max-xl:col-span-6 lg:max-xl:col-start-4", // lg ~ xl
+                "lg:row-start-2", // lg ~
             ]}
         >
-            <slot />
+            <slot name="title" />
+            <slot name="list" />
         </div>
         <div
             class:list={[
                 "pb-6 text-right md:pb-10",
                 "col-span-12 col-start-1 row-start-4", // base
                 "md:col-span-8 md:col-start-3", // md ~
-                "lg:row-start-3", // lg ~
                 "lg:max-xl:col-span-6 lg:max-xl:col-start-4", // lg ~ xl
+                "lg:row-start-3", // lg ~
             ]}
         >
-            <Footer />
+            <slot name="footer" />
         </div>
     </div>
 </Base>

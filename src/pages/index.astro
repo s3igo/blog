@@ -1,11 +1,18 @@
 ---
-import { getCollection } from 'astro:content';
 import List from '~/components/features/List.astro';
+import Menu from '~/components/features/Menu.astro';
 import Layout from '~/components/layouts/List.astro';
+import Footer from '~/features/footer/Footer.astro';
+import Navigation from '~/features/navigation/Navigation.astro';
+import { getPosts } from './_posts';
 
-const posts = await getCollection('posts');
+const { posts, tags } = await getPosts();
 ---
 
 <Layout>
-    <List {posts} />
+    <Navigation slot="navigation" />
+    <Menu {...{ tags }} slot="tag-list" />
+    <h1 slot="title">Blog</h1>
+    <List {...{ posts }} slot="list" />
+    <Footer slot="footer" />
 </Layout>
