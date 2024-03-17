@@ -19,7 +19,7 @@ dependencies:
     version: 4.0.1(solid-js@1.8.15)(vite@5.1.5)
   '@astrojs/tailwind':
     specifier: 5.1.0
-    version: 5.1.0(astro@4.5.4)(tailwindcss@3.4.1)
+    version: 5.1.0(astro@4.5.5)(tailwindcss@3.4.1)
   '@fontsource/jetbrains-mono':
     specifier: 5.0.19
     version: 5.0.19
@@ -30,14 +30,14 @@ dependencies:
     specifier: 5.0.18
     version: 5.0.18
   '@kobalte/core':
-    specifier: 0.12.5
-    version: 0.12.5(solid-js@1.8.15)
+    specifier: 0.12.6
+    version: 0.12.6(solid-js@1.8.15)
   '@kobalte/tailwindcss':
     specifier: 0.9.0
     version: 0.9.0(tailwindcss@3.4.1)
   astro:
-    specifier: 4.5.4
-    version: 4.5.4(typescript@5.4.2)
+    specifier: 4.5.5
+    version: 4.5.5(typescript@5.4.2)
   astro-compress:
     specifier: 2.2.15
     version: 2.2.15
@@ -291,13 +291,13 @@ packages:
       - vite
     dev: false
 
-  /@astrojs/tailwind@5.1.0(astro@4.5.4)(tailwindcss@3.4.1):
+  /@astrojs/tailwind@5.1.0(astro@4.5.5)(tailwindcss@3.4.1):
     resolution: {integrity: sha512-BJoCDKuWhU9FT2qYg+fr6Nfb3qP4ShtyjXGHKA/4mHN94z7BGcmauQK23iy+YH5qWvTnhqkd6mQPQ1yTZTe9Ig==}
     peerDependencies:
       astro: ^3.0.0 || ^4.0.0
       tailwindcss: ^3.0.24
     dependencies:
-      astro: 4.5.4(typescript@5.4.2)
+      astro: 4.5.5(typescript@5.4.2)
       autoprefixer: 10.4.18(postcss@8.4.35)
       postcss: 8.4.35
       postcss-load-config: 4.0.2(postcss@8.4.35)
@@ -373,7 +373,7 @@ packages:
     dependencies:
       '@babel/types': 7.23.6
       '@jridgewell/gen-mapping': 0.3.3
-      '@jridgewell/trace-mapping': 0.3.19
+      '@jridgewell/trace-mapping': 0.3.25
       jsesc: 2.5.2
     dev: false
 
@@ -1206,7 +1206,7 @@ packages:
     resolution: {integrity: sha512-UTYAUj/wviwdsMfzoSJspJxbkH5o1snzwX0//0ENX1u/55kkZZkcTZP6u9bwKGkv+dkk9at4m1Cpt0uY80kcpQ==}
     dependencies:
       '@jridgewell/gen-mapping': 0.3.3
-      '@jridgewell/trace-mapping': 0.3.19
+      '@jridgewell/trace-mapping': 0.3.25
     dev: false
 
   /@jridgewell/sourcemap-codec@1.4.15:
@@ -1223,10 +1223,9 @@ packages:
     dependencies:
       '@jridgewell/resolve-uri': 3.1.1
       '@jridgewell/sourcemap-codec': 1.4.15
-    dev: true
 
-  /@kobalte/core@0.12.5(solid-js@1.8.15):
-    resolution: {integrity: sha512-OUT8u6x0WdiAsk0ZSf0tJT925QMq7VVttkR06mSbRrJv404pCpZPbBnhlcgqKTjSl3SytPSPm2J0T34o+8sCBw==}
+  /@kobalte/core@0.12.6(solid-js@1.8.15):
+    resolution: {integrity: sha512-+Ta2o2wEqZ2fCqLMkvjT40VHNmcFKdGe8TNDVQbbMPk66qoU6g/DDRFR/Ib7eAjb+C95VoIyk6zaafos2VOo0w==}
     peerDependencies:
       solid-js: ^1.8.15
     dependencies:
@@ -2517,8 +2516,8 @@ packages:
       - supports-color
     dev: true
 
-  /astro@4.5.4(typescript@5.4.2):
-    resolution: {integrity: sha512-qwMyBn36wXvaCzdCmdbyCxLQGG5hTa3saNdHdqS20Yn1b7Z7oqqcWOb2UjFuq6O8dFqZxU8Hq0/pGFscvsYtJA==}
+  /astro@4.5.5(typescript@5.4.2):
+    resolution: {integrity: sha512-gZ3jR06dLmY9/SMkKMr+3pRSrUjhuwjnXt+9abFJV3WGwhCnLZbSNsTBrLMsaFHpAS1ReJChcTWyKRCvs/jCIQ==}
     engines: {node: '>=18.14.1', npm: '>=6.14.0'}
     hasBin: true
     dependencies:
