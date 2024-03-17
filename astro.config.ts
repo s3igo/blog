@@ -6,7 +6,9 @@ import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
-import { remarkStripLineBreaks } from './remark-strip-line-breaks';
+import { externalLinks, stripLineBreaks } from './plugins/remark';
+
+const site = 'https://blog.tsuki-yo.net';
 
 // https://astro.build/config
 export default defineConfig({
@@ -18,7 +20,11 @@ export default defineConfig({
         icon({ include: { gg: ['dark-mode'], lucide: ['rss'] } }),
     ],
     markdown: {
-        remarkPlugins: [remarkStripLineBreaks, 'remark-code-titles'],
+        remarkPlugins: [
+            stripLineBreaks,
+            externalLinks(site),
+            'remark-code-titles',
+        ],
         rehypePlugins: [
             rehypeSlug,
             [
@@ -37,5 +43,5 @@ export default defineConfig({
         },
     },
     prefetch: { prefetchAll: true },
-    site: 'https://blog.tsuki-yo.net',
+    site,
 });
