@@ -4,6 +4,8 @@ import qwikdev from '@qwikdev/astro';
 import compress from 'astro-compress';
 import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
 import { remarkStripLineBreaks } from './remark-strip-line-breaks';
 
 // https://astro.build/config
@@ -17,6 +19,16 @@ export default defineConfig({
     ],
     markdown: {
         remarkPlugins: [remarkStripLineBreaks, 'remark-code-titles'],
+        rehypePlugins: [
+            rehypeSlug,
+            [
+                rehypeAutolinkHeadings,
+                {
+                    behavior: 'wrap',
+                    properties: { class: 'anchor' },
+                },
+            ],
+        ],
         shikiConfig: {
             themes: {
                 dark: 'material-theme',
