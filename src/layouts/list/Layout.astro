@@ -1,12 +1,8 @@
 ---
-import Base, { type Props as BaseProps } from '~/components/layouts/Base.astro';
-
-type Props = BaseProps;
-
-const { title, description } = Astro.props;
+import Base, { type Props } from '../Base.astro';
 ---
 
-<Base {...{ title, description }}>
+<Base {...Astro.props}>
     <div
         class="container-grid container-rows-5 md:container-rows-4 lg:container-rows-3"
     >
