@@ -36,6 +36,7 @@
     "@fontsource/jetbrains-mono": "5.0.19",
     "@fontsource/zen-kaku-gothic-new": "5.0.18",
     "@iconify-json/gg": "1.1.9",
+    "@iconify-json/line-md": "1.1.36",
     "@iconify-json/lucide": "1.1.174",
     "@qwikdev/astro": "^0.5.9",
     "@tailwindcss/container-queries": "0.1.1",

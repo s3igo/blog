@@ -1,4 +1,5 @@
 ---
+import { Icon } from 'astro-icon/components';
 // NOTE: import from ~/_posts.ts as Cards type cannot be exported
 import type { Cards } from '~/pages/_posts';
 
@@ -20,12 +21,26 @@ const { cards } = Astro.props;
             >
                 <article>
                     <div class="flex max-sm:flex-col sm:items-center">
-                        <div class="flex flex-wrap gap-4">
+                        <div class="flex flex-wrap gap-3">
                             <div class="metadata">{published}</div>
-                            {updated && <div class="metadata">↻{updated}</div>}
+                            {updated && (
+                                <div class="metadata">
+                                    <Icon
+                                        name="line-md:rotate-270"
+                                        class="inline pb-[2px]"
+                                    />
+                                    <span class="ml-[-10px]">{updated}</span>
+                                </div>
+                            )}
                             {tags.length > 0 &&
                                 tags.map((tag) => (
-                                    <div class="metadata">#{tag}</div>
+                                    <div class="metadata">
+                                        <Icon
+                                            name="line-md:hash-small"
+                                            class="inline pb-[1px]"
+                                        />
+                                        <span class="ml-[-10px]">{tag}</span>
+                                    </div>
                                 ))}
                         </div>
                     </div>

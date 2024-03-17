@@ -17,7 +17,13 @@ export default defineConfig({
         tailwind({ applyBaseStyles: false }),
         compress(),
         sitemap(),
-        icon({ include: { gg: ['dark-mode'], lucide: ['rss'] } }),
+        icon({
+            include: {
+                gg: ['dark-mode'],
+                lucide: ['rss'],
+                'line-md': ['rotate-270', 'hash', 'hash-small'],
+            },
+        }),
     ],
     markdown: {
         remarkPlugins: [

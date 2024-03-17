@@ -6,5 +6,5 @@ const { tags } = Astro.props;
 ---
 
 <div class="flex gap-3 lg:h-full lg:flex-col">
-    {tags.map((tag) => <Tag href={`/tags/${tag}`}>#{tag}</Tag>)}
+    {tags.map((tag) => <Tag href={`/tags/${tag}`}>{tag}</Tag>)}
 </div>
