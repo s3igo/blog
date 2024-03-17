@@ -18,6 +18,8 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { post } = Astro.props;
 const { title, published, updated, tags } = post.data;
 const { Content } = await post.render();
+
+const dateClasses = 'metadata leading-4';
 ---
 
 <Layout {...{ title }}>
@@ -25,13 +27,13 @@ const { Content } = await post.render();
     <Title slot="title">
         {title}
     </Title>
-    <div slot="meta" class="my-4 flex flex-wrap gap-3">
-        <div class="metadata">
+    <div slot="meta" class="my-4 flex flex-wrap gap-3 items-center">
+        <div class={dateClasses}>
             {published.toISOString().substring(0, 10)}
         </div>
         {
             updated && (
-                <div class="metadata">
+                <div class={dateClasses}>
                     ↻{updated.toISOString().substring(0, 10)}
                 </div>
             )

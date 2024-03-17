@@ -28,6 +28,6 @@ export const getPosts = async (): Promise<PostsData> => {
                 tags: data.tags,
             }))
             .toSorted((a, b) => a.published.localeCompare(b.published))
-            .toReversed()
+            .toReversed(),
     };
 };

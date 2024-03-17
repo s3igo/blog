@@ -1,7 +1,7 @@
 ---
-import List from '~/features/list/List.astro';
-import Menu from '~/components/features/Menu.astro';
 import Footer from '~/features/footer/Footer.astro';
+import TagList from '~/features/tag-list/TagList.astro';
+import List from '~/features/list/List.astro';
 import Navigation from '~/features/navigation/Navigation.astro';
 import Title from '~/features/title/Title.astro';
 import Layout from '~/layouts/list/Layout.astro';
@@ -12,7 +12,7 @@ const { tags, cards } = await getPosts();
 
 <Layout>
     <Navigation slot="nav" />
-    <Menu slot="tags" {...{ tags }} />
+    <TagList slot="tags" {...{ tags }} />
     <Title slot="title">tsukiyo-room</Title>
     <List slot="list" {...{ cards }} />
     <Footer slot="footer" />
