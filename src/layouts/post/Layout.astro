@@ -1,8 +1,8 @@
 ---
 import '@fontsource/zen-kaku-gothic-new/700.css';
-import Base from '../Base.astro';
+import Base, { type Props as BaseProps } from '../Base.astro';
 
-type Props = { title: string };
+type Props = Required<Pick<BaseProps, 'title'>>;
 ---
 
 <Base {...Astro.props}>
@@ -26,7 +26,7 @@ type Props = { title: string };
             <slot name="title" />
             <slot name="meta" />
         </div>
-        <div
+        <main
             class:list={[
                 "blog",
                 "col-span-12 col-start-1 row-start-3",
@@ -35,7 +35,7 @@ type Props = { title: string };
             ]}
         >
             <slot name="content" />
-        </div>
+        </main>
         <div
             class:list={[
                 "col-span-12 col-start-1 row-start-4",

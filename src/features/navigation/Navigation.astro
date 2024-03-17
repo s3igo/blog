@@ -1,43 +1,35 @@
 ---
-import { Image } from 'astro:assets';
-import { Icon as AstroIcon } from 'astro-icon/components';
-import icon from 'public/icon.webp';
+import { Image } from "astro:assets";
+import { Icon as AstroIcon } from "astro-icon/components";
+import icon from "public/icon.webp";
 
-const baseIconClasses = 'bg-white rounded-full border-2 border-transparent p-2';
+const baseIconClasses =
+    "bg-white rounded-full border-2 border-transparent p-2 dark:bg-yamagami-blue";
 const animationIconClasses =
-    'ease-in-out duration-100 hover:border-maldives hover:bg-cyan-50 hover:scale-[120%]';
-const darkModeIconClasses = 'dark:bg-yamagami-blue dark:hover:bg-gray-500';
+    "hover-element dark:hover:bg-gray-500 hover:scale-[120%]";
 
-const svgClasses = 'text-2xl p-[2px]';
+const svgClasses = "text-2xl p-[2px]";
 ---
 
-<a href="/">
-    <nav class="flex gap-3 items-center md:flex-col md:sticky md:top-6">
+<nav class="flex gap-3 items-center md:flex-col md:sticky md:top-6">
+    <a href="/">
         <Image src={icon} width={56} height={56} alt="tsukiyo icon" />
-        <a
-            href="/rss.xml"
-            class:list={[
-                baseIconClasses,
-                animationIconClasses,
-                darkModeIconClasses,
-            ]}
-            aria-label="RSS feed"
-        >
-            <AstroIcon name="lucide:rss" class={svgClasses} />
-        </a>
-        <button
-            id="theme-button"
-            class:list={[
-                baseIconClasses,
-                animationIconClasses,
-                darkModeIconClasses,
-            ]}
-            aria-label="Toggle dark mode"
-        >
-            <AstroIcon name="gg:dark-mode" class={svgClasses} />
-        </button>
-    <nav>
-</a>
+    </a>
+    <a
+        href="/rss.xml"
+        class:list={[baseIconClasses, animationIconClasses]}
+        aria-label="RSS feed"
+    >
+        <AstroIcon name="lucide:rss" class={svgClasses} />
+    </a>
+    <button
+        id="theme-button"
+        class:list={[baseIconClasses, animationIconClasses]}
+        aria-label="Toggle dark mode"
+    >
+        <AstroIcon name="gg:dark-mode" class={svgClasses} />
+    </button>
+</nav>
 <script>
     import { loadTheme, toggleTheme } from "./client-script";
 
@@ -52,6 +44,8 @@ const svgClasses = 'text-2xl p-[2px]';
         listenClick();
     };
 
-    document.addEventListener("astro:page-load", handleTheme, { once: true });
+    document.addEventListener("astro:page-load", handleTheme, {
+        once: true,
+    });
     document.addEventListener("astro:after-swap", handleTheme);
 </script>

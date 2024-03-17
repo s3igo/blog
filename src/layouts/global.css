@@ -3,11 +3,11 @@
 @tailwind utilities;
 
 @layer utilities {
-    /* .link {
-        @apply text-maldives decoration-2 underline-offset-2 hover:underline;
-    } */
     .metadata {
-        @apply text-sm text-blue-blouse xl:text-base;
+        @apply max-xl:text-sm text-blue-blouse font-code;
+    }
+    .hover-element {
+        @apply ease-in-out duration-100 hover:border-maldives hover:bg-cyan-50 dark:hover:bg-gray-700
     }
 
     /*

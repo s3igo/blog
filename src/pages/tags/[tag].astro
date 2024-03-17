@@ -3,23 +3,23 @@ import type {
     GetStaticPaths,
     InferGetStaticParamsType,
     InferGetStaticPropsType,
-} from 'astro';
-import List from '~/components/features/List.astro';
-import Menu from '~/components/features/Menu.astro';
-import Footer from '~/features/footer/Footer.astro';
-import Navigation from '~/features/navigation/Navigation.astro';
-import Title from '~/features/title/Title.astro';
-import Layout from '~/layouts/list/Layout.astro';
-import { getPosts } from '../_posts';
+} from "astro";
+import List from "~/features/list/List.astro";
+import Menu from "~/components/features/Menu.astro";
+import Footer from "~/features/footer/Footer.astro";
+import Navigation from "~/features/navigation/Navigation.astro";
+import Title from "~/features/title/Title.astro";
+import Layout from "~/layouts/list/Layout.astro";
+import { getPosts } from "../_posts";
 
 export const getStaticPaths = (async () => {
-    const { posts, tags } = await getPosts();
+    const { tags, cards } = await getPosts();
 
     return tags.map((tag) => ({
         params: { tag },
         props: {
-            posts: posts.filter(({ data }) => data.tags.includes(tag)),
             tags,
+            cards: cards.filter(({ tags }) => tags.includes(tag)),
         },
     }));
 }) satisfies GetStaticPaths;
@@ -29,7 +29,7 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { tag } = Astro.params as Params;
 // NOTE: use assert to suppress errors from `astro check`
-const { posts, tags } = Astro.props as Props;
+const { tags, cards } = Astro.props as Props;
 ---
 
 <Layout title={`#${tag}`}>
@@ -38,6 +38,6 @@ const { posts, tags } = Astro.props as Props;
     <Title slot="title">
         #{tag}
     </Title>
-    <List slot="list" {...{posts}} />
+    <List slot="list" {...{ cards }} />
     <Footer slot="footer" />
 </Layout>
