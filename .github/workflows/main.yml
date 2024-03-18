@@ -10,21 +10,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
       - name: Setup Node
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
         with:
           node-version-file: .node-version
-          cache: pnpm
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
         env:
           HUSKY: 0
       - name: Run Astro check
-        run: pnpm run check
+        run: bun run check
       - name: Run Biome
-        run: pnpm run biome:ci
+        run: bun run biome:ci
 
   lint-text:
     name: Textlint
@@ -33,17 +32,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
       - name: Setup Node
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
         with:
           node-version-file: .node-version
-          cache: pnpm
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
       - name: Run Textlint
-        run: pnpm run lint:text
+        run: bun run lint:text
 
   test-type:
     name: Typecheck
@@ -52,19 +50,18 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
       - name: Setup Node
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
         with:
           node-version-file: .node-version
-          cache: pnpm
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
       - name: Build app
-        run: pnpm run build
+        run: bun run build
       - name: Run Vitest typecheck
-        run: pnpm run test:type
+        run: bun run test:type
 
   test-unit:
     name: Unit Test
@@ -73,17 +70,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
       - name: Setup Node
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
         with:
           node-version-file: .node-version
-          cache: pnpm
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
       - name: Run Vitest
-        run: pnpm run test:unit
+        run: bun run test:unit
 
   test-e2e:
     name: E2E Test
@@ -98,36 +94,20 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+      - name: Setup bun
+        uses: bun/action-setup@v2
       - name: Setup Node
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
         with:
           node-version-file: .node-version
-          cache: pnpm
       - name: Install dependencies
-        run: pnpm install
-      - name: Store Playwright's version
-        run: |
-          PLAYWRIGHT_VERSION=$(pnpm ls @playwright/test | grep @playwright | awk '{ print $2 }')
-          echo "Playwright's Version: $PLAYWRIGHT_VERSION"
-          echo "PLAYWRIGHT_VERSION=$PLAYWRIGHT_VERSION" >> $GITHUB_ENV
-      - name: Cache Playwright browsers for Playwright's version
-        id: cache-playwright
-        uses: actions/cache@ab5e6d0c87105b4c9c2047343972218f562e4319 # v4
-        with:
-          path: ~/.cache/ms-playwright
-          key: ${{ runner.os }}-playwright-${{ env.PLAYWRIGHT_VERSION }}-${{ matrix.browser }}
+        run: bun install
       - name: Setup Playwright
-        if: steps.cache-playwright.outputs.cache-hit != 'true'
-        run: pnpm exec playwright install --with-deps ${{ matrix.browser }}
-      - name: Install Additional Dependencies
-        if: steps.cache-playwright.outputs.cache-hit == 'true'
-        run: pnpm exec playwright install-deps ${{ matrix.browser }}
+        run: bunx playwright install --with-deps ${{ matrix.browser }}
       - name: Build app
-        run: pnpm run build
+        run: bun run build
       - name: Run Playwright tests
-        run: pnpm exec playwright test --project=${{ matrix.browser }}
+        run: bunx playwright test --project ${{ matrix.browser }}
 
   coverage:
     name: Coverage
@@ -136,17 +116,16 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v2
+      - name: Setup bun
+        uses: oven-sh/setup-bun@v1
       - name: Setup Node
         uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
         with:
           node-version-file: .node-version
-          cache: pnpm
       - name: Install dependencies
-        run: pnpm install
+        run: bun install
       - name: Generate coverage file
-        run: pnpm run coverage
+        run: bun run coverage
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@ab904c41d6ece82784817410c45d8b8c02684457 # v3
         with:

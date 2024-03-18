@@ -82,7 +82,7 @@
           let
             deps = with pkgs; [
               nodejs-slim
-              nodePackages.pnpm
+              bun
             ];
           in
           {
