@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
+import { Icon } from 'astro-icon/components';
 import Tag from '~/components/shared/Tag.astro';
 import Footer from '~/features/footer/Footer.astro';
 import Navigation from '~/features/navigation/Navigation.astro';
@@ -33,12 +34,16 @@ const dateClasses = 'metadata leading-4';
         </div>
         {
             updated && (
-                <div class={dateClasses}>
-                    ↻{updated.toISOString().substring(0, 10)}
+                <div class="metadata">
+                    <Icon
+                        name="line-md:rotate-270"
+                        class="inline pb-[2px]"
+                    />
+                    <span class="ml-[-10px]">{updated.toISOString().substring(0,10)}</span>
                 </div>
             )
         }
-        {tags.map((tag) => <Tag href={`/tags/${tag}`}>#{tag}</Tag>)}
+        {tags.map((tag) => <Tag href={`/tags/${tag}`}>{tag}</Tag>)}
     </div>
     <Content slot="content" />
     <Footer slot="footer" />

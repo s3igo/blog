@@ -21,9 +21,7 @@ export default defineConfig({
         sitemap(),
         icon({
             include: {
-                gg: ['dark-mode'],
-                lucide: ['rss'],
-                'line-md': ['rotate-270', 'hash-small', 'menu'],
+                'line-md': ['rotate-270', 'hash-small'],
             },
         }),
     ],
