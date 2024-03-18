@@ -26,10 +26,4 @@ export const toggleTheme = () => {
         'theme',
         currentTheme === 'dark' ? 'light' : 'dark',
     );
-
-    // document.dispatchEvent(
-    //     new CustomEvent('theme-changed', {
-    //         detail: currentTheme === 'dark' ? 'light' : 'dark',
-    //     }),
-    // );
 };

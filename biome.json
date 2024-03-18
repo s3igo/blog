@@ -1,7 +1,12 @@
 {
     "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
     "files": {
-        "ignore": [".direnv/", "dist/", ".astro/", "coverage/", "src/*.tsx"]
+        "ignore": [".local/"]
+    },
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true
     },
     "linter": {
         "rules": {

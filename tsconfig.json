@@ -1,9 +1,9 @@
 {
     "extends": "astro/tsconfigs/strictest",
     "compilerOptions": {
-        "baseUrl": ".",
-        "jsx": "react-jsx",
-        "jsxImportSource": "@builder.io/qwik",
+        "baseUrl": "/Users/s3igo/git/github.com/s3igo/blog",
+        "jsx": "preserve",
+        "jsxImportSource": "solid-js",
         "paths": {
             "~/*": ["./src/*"],
             "public/*": ["./public/*"]

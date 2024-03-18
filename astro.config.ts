@@ -1,6 +1,6 @@
 import sitemap from '@astrojs/sitemap';
+import solidJs from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
-import qwikdev from '@qwikdev/astro';
 import compress from 'astro-compress';
 import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
@@ -13,15 +13,17 @@ const site = 'https://blog.tsuki-yo.net';
 // https://astro.build/config
 export default defineConfig({
     integrations: [
-        qwikdev(),
-        tailwind({ applyBaseStyles: false }),
+        solidJs(),
+        tailwind({
+            applyBaseStyles: false,
+        }),
         compress(),
         sitemap(),
         icon({
             include: {
                 gg: ['dark-mode'],
                 lucide: ['rss'],
-                'line-md': ['rotate-270', 'hash', 'hash-small'],
+                'line-md': ['rotate-270', 'hash-small', 'menu'],
             },
         }),
     ],
@@ -37,7 +39,9 @@ export default defineConfig({
                 rehypeAutolinkHeadings,
                 {
                     behavior: 'wrap',
-                    properties: { class: 'anchor' },
+                    properties: {
+                        class: 'anchor',
+                    },
                 },
             ],
         ],
@@ -48,6 +52,8 @@ export default defineConfig({
             },
         },
     },
-    prefetch: { prefetchAll: true },
+    prefetch: {
+        prefetchAll: true,
+    },
     site,
 });

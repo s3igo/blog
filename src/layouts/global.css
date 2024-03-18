@@ -6,10 +6,6 @@
     .metadata {
         @apply max-xl:text-sm text-blue-blouse font-code;
     }
-    .hover-element {
-        @apply ease-in-out duration-100 hover:border-maldives hover:bg-cyan-50 dark:hover:bg-gray-700
-    }
-
     /*
     * コンテンツの最小高さが100svhに満たない場合にフッターを固定するため
     * コンテナに`min-h-svhを適用し、tailwind組み込みの`grid-rows`を使わずに
@@ -30,5 +26,11 @@
     }
     .container-rows-5 {
         grid-template-rows: auto auto auto 1fr auto;
+    }
+
+    .hover-element {
+        @media (hover: hover) {
+            @apply ease-in-out duration-100 hover:border-maldives hover:bg-cyan-50 dark:hover:bg-gray-700
+        }
     }
 }
