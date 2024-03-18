@@ -1,8 +1,8 @@
 ---
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
-import { Icon } from 'astro-icon/components';
 import Tag from '~/components/Tag.astro';
+import Updated from '~/components/Updated.astro';
 import Footer from '~/features/footer/Footer.astro';
 import Navigation from '~/features/navigation/Navigation.astro';
 import Title from '~/features/title/Title.astro';
@@ -19,8 +19,6 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 const { post } = Astro.props;
 const { title, published, updated, tags } = post.data;
 const { Content } = await post.render();
-
-const dateClasses = 'metadata leading-4';
 ---
 
 <Layout {...{ title }}>
@@ -29,21 +27,11 @@ const dateClasses = 'metadata leading-4';
         {title}
     </Title>
     <div slot="meta" class="my-4 flex flex-wrap gap-3 items-center">
-        <div class={dateClasses}>
+        <div class="metadata">
             {published.toISOString().substring(0, 10)}
         </div>
-        {
-            updated && (
-                <div class="metadata">
-                    <Icon
-                        name="line-md:rotate-270"
-                        class="inline pb-[2px]"
-                    />
-                    <span class="ml-[-10px]">{updated.toISOString().substring(0,10)}</span>
-                </div>
-            )
-        }
-        {tags.map((tag) => <Tag href={`/tags/${tag}`}>{tag}</Tag>)}
+        {updated && <Updated>{updated.toISOString().substring(0, 10)}</Updated>}
+        {tags.map((tag) => <Tag name={tag} />)}
     </div>
     <Content slot="content" />
     <Footer slot="footer" />

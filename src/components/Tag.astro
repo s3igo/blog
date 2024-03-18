@@ -1,13 +1,13 @@
 ---
 import { Icon } from 'astro-icon/components';
 
-type Props = { href: string; children: unknown };
+type Props = { name: string };
 
-const { href } = Astro.props;
+const { name } = Astro.props;
 ---
 
 <a
-    {...{ href }}
+    href={`/tags/${name}`}
     class:list={[
         "rounded-full border-2 border-transparent",
         "metadata hover-element",
@@ -16,6 +16,6 @@ const { href } = Astro.props;
 >
     <Icon name="line-md:hash-small" class="inline pb-[1px]" />
     <span class="ml-[-10px] pr-1">
-        <slot />
+        {name}
     </span>
 </a>
