@@ -10,6 +10,13 @@
     enabledManagers: ['nix', 'bun', 'github-actions'],
     timezone: 'Asia/Tokyo',
     labels: ['deps[bot]'],
+    "nix": {
+        "enabled": true,
+    },
+    lockFileMaintenance: {
+        enabled: true,
+        extends: ['schedule:daily'],
+    },
     packageRules: [
         {
             addLabels: ['deps.major[bot]'],
@@ -28,11 +35,5 @@
             matchDepTypes: 'packageManager',
             enabled: false,
         },
-        // enable nix manager
-        {
-            "nix": {
-                "enabled": true
-            }
-        }
     ],
 }
