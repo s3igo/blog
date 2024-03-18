@@ -9,5 +9,11 @@
             "public/*": ["./public/*"]
         },
         "types": ["vitest/globals", "vitest/importMeta"]
-    }
+    },
+    "include": [
+        "src/**/*.ts",
+        "src/**/*.d.ts",
+        "src/**/*.tsx",
+        "src/**/*.astro"
+    ]
 }
