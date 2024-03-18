@@ -1,7 +1,7 @@
 {
     "extends": "astro/tsconfigs/strictest",
     "compilerOptions": {
-        "baseUrl": "/Users/s3igo/git/github.com/s3igo/blog",
+        "baseUrl": ".",
         "jsx": "preserve",
         "jsxImportSource": "solid-js",
         "paths": {
@@ -9,11 +9,5 @@
             "public/*": ["./public/*"]
         },
         "types": ["vitest/globals", "vitest/importMeta"]
-    },
-    "include": [
-        "src/**/*.ts",
-        "src/**/*.d.ts",
-        "src/**/*.tsx",
-        "src/**/*.astro"
-    ]
+    }
 }
