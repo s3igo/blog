@@ -7,11 +7,8 @@
         'schedule:daily',
         ':disableRateLimiting',
     ],
-    enabledManagers: ['nix', 'npm', 'github-actions'],
+    enabledManagers: ['nix', 'bun', 'github-actions'],
     timezone: 'Asia/Tokyo',
-    nix: {
-        enabled: true,
-    },
     labels: ['deps[bot]'],
     packageRules: [
         {
@@ -31,5 +28,11 @@
             matchDepTypes: 'packageManager',
             enabled: false,
         },
+        // enable nix manager
+        {
+            "nix": {
+                "enabled": true
+            }
+        }
     ],
 }
