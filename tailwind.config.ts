@@ -25,7 +25,6 @@ const config: Config = {
             sans: ['Zen Kaku Gothic New', 'system-ui', 'sans-serif'],
         },
     },
-    plugins: [require('@tailwindcss/container-queries')],
 };
 
 export default config;

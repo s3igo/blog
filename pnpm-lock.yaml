@@ -29,9 +29,6 @@ dependencies:
   '@kobalte/core':
     specifier: ^0.12.6
     version: 0.12.6(solid-js@1.8.15)
-  '@tailwindcss/container-queries':
-    specifier: 0.1.1
-    version: 0.1.1(tailwindcss@3.4.1)
   astro:
     specifier: 4.5.2
     version: 4.5.2(typescript@5.4.2)
@@ -1413,14 +1410,6 @@ packages:
     resolution: {integrity: sha512-BVvNZhx362+l2tSwSuyEUV4h7+jk9raNdoTSdLfwTshXJSaGmYKluGRJznziCI3KX02Z19DdsQrdfrpXAU3Hfg==}
     dependencies:
       tslib: 2.6.2
-    dev: false
-
-  /@tailwindcss/container-queries@0.1.1(tailwindcss@3.4.1):
-    resolution: {integrity: sha512-p18dswChx6WnTSaJCSGx6lTmrGzNNvm2FtXmiO6AuA1V4U5REyoqwmT6kgAsIMdjo07QdAfYXHJ4hnMtfHzWgA==}
-    peerDependencies:
-      tailwindcss: '>=3.2.0'
-    dependencies:
-      tailwindcss: 3.4.1
     dev: false
 
   /@textlint-rule/textlint-rule-no-invalid-control-character@2.0.0:
