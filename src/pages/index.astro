@@ -1,11 +1,19 @@
 ---
-import { List } from '~/components/features/List';
-import ListLayout from '~/components/layouts/ListLayout.astro';
-import { Posts } from '~/domain/values/post';
+import Footer from '~/features/footer/Footer.astro';
+import List from '~/features/list/List.astro';
+import Navigation from '~/features/navigation/Navigation.astro';
+import TagList from '~/features/tag-list/TagList.astro';
+import Title from '~/features/title/Title.astro';
+import { getPosts } from '~/fetchers';
+import Layout from '~/layouts/list/Layout.astro';
 
-const posts = await Posts.fetch();
+const { tags, cards } = await getPosts();
 ---
 
-<ListLayout>
-    <List {posts} />
-</ListLayout>
+<Layout>
+    <Navigation slot="nav" />
+    <TagList slot="tags" {...{ tags }} />
+    <Title slot="title">tsukiyo-room</Title>
+    <List slot="list" {...{ cards }} />
+    <Footer slot="footer" />
+</Layout>

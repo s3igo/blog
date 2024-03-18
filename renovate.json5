@@ -7,12 +7,16 @@
         'schedule:daily',
         ':disableRateLimiting',
     ],
-    enabledManagers: ['nix', 'npm', 'github-actions'],
+    enabledManagers: ['nix', 'bun', 'github-actions'],
     timezone: 'Asia/Tokyo',
-    nix: {
-        enabled: true,
-    },
     labels: ['deps[bot]'],
+    "nix": {
+        "enabled": true,
+    },
+    lockFileMaintenance: {
+        enabled: true,
+        extends: ['schedule:daily'],
+    },
     packageRules: [
         {
             addLabels: ['deps.major[bot]'],

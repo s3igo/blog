@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets';
+import icon from 'public/icon.webp';
+import Menu from './menu';
+---
+
+<nav class="flex gap-4 items-center md:flex-col md:sticky md:top-6">
+    <a href="/">
+        <Image src={icon} width={56} height={56} alt="tsukiyo icon" />
+    </a>
+    <Menu client:load />
+</nav>
+<script>
+    import { loadTheme } from "./client-script";
+    document.addEventListener("astro:page-load", loadTheme, { once: true });
+    document.addEventListener("astro:after-swap", loadTheme);
+</script>

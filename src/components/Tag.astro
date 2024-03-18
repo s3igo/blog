@@ -1,0 +1,21 @@
+---
+import { Icon } from 'astro-icon/components';
+
+type Props = { href: string; children: unknown };
+
+const { href } = Astro.props;
+---
+
+<a
+    {...{ href }}
+    class:list={[
+        "rounded-full border-2 border-transparent",
+        "metadata hover-element",
+        "block w-max bg-white px-3 py-1 dark:bg-midnight-express",
+    ]}
+>
+    <Icon name="line-md:hash-small" class="inline pb-[1px]" />
+    <span class="ml-[-10px] pr-1">
+        <slot />
+    </span>
+</a>

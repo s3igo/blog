@@ -1,25 +1,43 @@
 ---
-import { List } from '~/components/features/List';
-import { Posts } from '~/domain/values/post';
-import { Tags } from '~/domain/values/tags';
-import ListLayout from '~/components/layouts/ListLayout.astro';
+import type {
+    GetStaticPaths,
+    InferGetStaticParamsType,
+    InferGetStaticPropsType,
+} from 'astro';
+import Footer from '~/features/footer/Footer.astro';
+import List from '~/features/list/List.astro';
+import Navigation from '~/features/navigation/Navigation.astro';
+import TagList from '~/features/tag-list/TagList.astro';
+import Title from '~/features/title/Title.astro';
+import { getPosts } from '~/fetchers';
+import Layout from '~/layouts/list/Layout.astro';
 
-export const getStaticPaths = async () => {
-    const posts = await Posts.fetch();
-    const tags = Tags.from(posts);
+export const getStaticPaths = (async () => {
+    const { tags, cards } = await getPosts();
 
     return tags.map((tag) => ({
         params: { tag },
-        props: { posts: posts.filter(({ tags }) => tags.includes(tag)) },
+        props: {
+            tags,
+            cards: cards.filter(({ tags }) => tags.includes(tag)),
+        },
     }));
-};
+}) satisfies GetStaticPaths;
 
-const { tag } = Astro.params;
-type Props = { posts: Posts };
-const { posts } = Astro.props;
+type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+
+const { tag } = Astro.params as Params;
+// NOTE: use assert to suppress errors from `astro check`
+const { tags, cards } = Astro.props as Props;
 ---
 
-<ListLayout title={`#${tag}の記事一覧`}>
-    <h2 class="pb-4 text-2xl xl:pb-6 xl:text-4xl">#{tag}</h2>
-    <List {posts} />
-</ListLayout>
+<Layout title={`#${tag}`}>
+    <Navigation slot="nav" />
+    <TagList slot="tags" {...{ tags }} />
+    <Title slot="title">
+        #{tag}
+    </Title>
+    <List slot="list" {...{ cards }} />
+    <Footer slot="footer" />
+</Layout>

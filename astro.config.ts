@@ -1,19 +1,51 @@
 import sitemap from '@astrojs/sitemap';
-import solid from '@astrojs/solid-js';
+import solidJs from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
-import { defineConfig } from 'astro/config';
 import compress from 'astro-compress';
-import { remarkStripLineBreaks } from './remark-strip-line-breaks';
+import icon from 'astro-icon';
+import { defineConfig, squooshImageService } from 'astro/config';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
+import { externalLinks, stripLineBreaks } from './plugins/remark';
 
+const site = 'https://blog.tsuki-yo.net';
+
+// https://astro.build/config
 export default defineConfig({
+    image: {
+        service: squooshImageService(),
+    },
     integrations: [
-        tailwind({ applyBaseStyles: false }),
-        solid(),
+        solidJs(),
+        tailwind({
+            applyBaseStyles: false,
+        }),
         compress(),
         sitemap(),
+        icon({
+            include: {
+                'line-md': ['rotate-270', 'hash-small'],
+            },
+        }),
     ],
     markdown: {
-        remarkPlugins: [remarkStripLineBreaks, 'remark-code-titles'],
+        remarkPlugins: [
+            stripLineBreaks,
+            externalLinks(site),
+            'remark-code-titles',
+        ],
+        rehypePlugins: [
+            rehypeSlug,
+            [
+                rehypeAutolinkHeadings,
+                {
+                    behavior: 'wrap',
+                    properties: {
+                        class: 'anchor',
+                    },
+                },
+            ],
+        ],
         shikiConfig: {
             themes: {
                 dark: 'material-theme',
@@ -21,6 +53,8 @@ export default defineConfig({
             },
         },
     },
-    prefetch: { prefetchAll: true },
-    site: 'https://blog.tsuki-yo.net',
+    prefetch: {
+        prefetchAll: true,
+    },
+    site,
 });
