@@ -1,7 +1,7 @@
 ---
 import { Icon } from 'astro-icon/components';
-// NOTE: import from ~/fetcheres.ts as Cards type cannot be exported
-import type { Cards } from '../../fetchers';
+import Updated from '~/components/Updated.astro';
+import type { Cards } from '~/fetchers';
 
 type Props = { cards: Cards };
 
@@ -24,13 +24,9 @@ const { cards } = Astro.props;
                         <div class="flex flex-wrap gap-3">
                             <div class="metadata">{published}</div>
                             {updated && (
-                                <div class="metadata">
-                                    <Icon
-                                        name="line-md:rotate-270"
-                                        class="inline pb-[2px]"
-                                    />
-                                    <span class="ml-[-10px]">{updated}</span>
-                                </div>
+                                <Updated>
+                                    {updated}
+                                </Updated>
                             )}
                             {tags.length > 0 &&
                                 tags.map((tag) => (
