@@ -21,9 +21,9 @@ jobs:
         env:
           HUSKY: 0
       - name: Run Astro check
-        run: bun run check
+        run: npm run check
       - name: Run Biome
-        run: bun run biome:ci
+        run: npm run biome:ci
 
   lint-text:
     name: Textlint
@@ -41,7 +41,7 @@ jobs:
       - name: Install dependencies
         run: bun install
       - name: Run Textlint
-        run: bun run lint:text
+        run: npm run lint:text
 
   test-type:
     name: Typecheck
@@ -59,9 +59,9 @@ jobs:
       - name: Install dependencies
         run: bun install
       - name: Build app
-        run: bun run build
+        run: npm run build
       - name: Run Vitest typecheck
-        run: bun run test:type
+        run: npm run test:type
 
   test-unit:
     if: false
@@ -80,7 +80,7 @@ jobs:
       - name: Install dependencies
         run: bun install
       - name: Run Vitest
-        run: bun run test:unit
+        run: npm run test:unit
 
   test-e2e:
     name: E2E Test
@@ -106,9 +106,9 @@ jobs:
       - name: Setup Playwright
         run: bunx playwright install --with-deps ${{ matrix.browser }}
       - name: Build app
-        run: bun run build
+        run: npm run build
       - name: Run Playwright tests
-        run: bunx playwright test --project ${{ matrix.browser }}
+        run: npx playwright test --project ${{ matrix.browser }}
 
   coverage:
     if: false
@@ -127,7 +127,7 @@ jobs:
       - name: Install dependencies
         run: bun install
       - name: Generate coverage file
-        run: bun run coverage
+        run: npm run coverage
       - name: Upload coverage reports to Codecov
         uses: codecov/codecov-action@ab904c41d6ece82784817410c45d8b8c02684457 # v3
         with:
