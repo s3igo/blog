@@ -2,13 +2,13 @@
 import { ViewTransitions } from 'astro:transitions';
 import '@fontsource/jetbrains-mono';
 import '@fontsource/zen-kaku-gothic-new';
+import { SEO } from 'astro-seo';
 import { PAGE_DESCRIPTION, PAGE_TITLE } from '~/constants';
 import './global.css';
 
 export type Props = {
     title?: string | undefined;
     description?: string | undefined;
-    children: unknown;
 };
 
 const { description = PAGE_DESCRIPTION, title } = Astro.props;
@@ -19,14 +19,27 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 <!doctype html>
 <html lang="ja" class="scroll-smooth">
     <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width" />
-        <meta name="generator" content={Astro.generator} />
-        <link rel="icon" type="image/png" href="/icon.webp" />
-        <link rel="sitemap" href="/sitemap-index.xml" />
-        <title>{title ? `${title} | ${PAGE_TITLE}` : PAGE_TITLE}</title>
-        <meta name="description" content={description} />
-        <link rel="canonical" href={canonicalURL} />
+        <SEO
+            title={title ? `${title} | ${PAGE_TITLE}` : PAGE_TITLE}
+            description={description}
+            canonical={canonicalURL.toString()}
+            charset="UTF-8"
+            extend={{
+                meta: [
+                    { name: "viewport", content: "width=device-width" },
+                    { name: "generator", content: Astro.generator },
+                ],
+                link: [
+                    { rel: "icon", type: "image/png", href: "/icon.webp" },
+                    { rel: "sitemap", href: "/sitemap-index.xml" },
+                    {
+                        rel: "alternate",
+                        type: "application/rss+xml",
+                        href: "/rss.xml",
+                    },
+                ],
+            }}
+        />
         <ViewTransitions />
     </head>
     <body
