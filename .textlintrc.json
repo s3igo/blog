@@ -1,0 +1,17 @@
+{
+    "plugins": {},
+    "filters": {
+        "allowlist": true,
+        "comments": true
+    },
+    "rules": {
+        "preset-ja-technical-writing": {
+            "sentence-length": {
+                "max": 120
+            },
+            "ja-no-weak-phrase": false,
+            "no-exclamation-question-mark": false,
+            "ja-no-mixed-period": false
+        }
+    }
+}
