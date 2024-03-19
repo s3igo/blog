@@ -11,11 +11,9 @@ const { name } = Astro.props;
     class:list={[
         "rounded-full border-2 border-transparent",
         "metadata hover-element",
-        "block w-max bg-white px-3 py-1 dark:bg-midnight-express",
+        "flex items-center w-max bg-white px-3 py-1 dark:bg-midnight-express",
     ]}
 >
-    <Icon name="line-md:hash-small" class="inline pb-[1px]" />
-    <span class="ml-[-10px] pr-1">
-        {name}
-    </span>
+    <Icon name="line-md:hash-small" />
+    <div>{name}</div>
 </a>

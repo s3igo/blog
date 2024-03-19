@@ -23,19 +23,12 @@ const { cards } = Astro.props;
                     <div class="flex max-sm:flex-col sm:items-center">
                         <div class="flex flex-wrap gap-3">
                             <div class="metadata">{published}</div>
-                            {updated && (
-                                <Updated>
-                                    {updated}
-                                </Updated>
-                            )}
+                            {updated && <Updated>{updated}</Updated>}
                             {tags.length > 0 &&
                                 tags.map((tag) => (
-                                    <div class="metadata">
-                                        <Icon
-                                            name="line-md:hash-small"
-                                            class="inline pb-[1px]"
-                                        />
-                                        <span class="ml-[-10px]">{tag}</span>
+                                    <div class="metadata flex items-center">
+                                        <Icon name="line-md:hash-small" />
+                                        <div>{tag}</div>
                                     </div>
                                 ))}
                         </div>
