@@ -40,6 +40,8 @@ jobs:
           node-version-file: .node-version
       - name: Install dependencies
         run: bun install --frozen-lockfile
+        env:
+          HUSKY: 0
       - name: Run Textlint
         run: bun run lint:text
 
@@ -58,6 +60,8 @@ jobs:
           node-version-file: .node-version
       - name: Install dependencies
         run: bun install --frozen-lockfile
+        env:
+          HUSKY: 0
       - name: Build app
         run: bun run build
       - name: Run Vitest typecheck
@@ -79,6 +83,8 @@ jobs:
           node-version-file: .node-version
       - name: Install dependencies
         run: bun install --frozen-lockfile
+        env:
+          HUSKY: 0
       - name: Run Vitest
         run: bun run test:unit
 
@@ -103,6 +109,8 @@ jobs:
           node-version-file: .node-version
       - name: Install dependencies
         run: bun install --frozen-lockfile
+        env:
+          HUSKY: 0
       - name: Setup Playwright
         run: bunx playwright install --with-deps ${{ matrix.browser }}
       - name: Build app
@@ -126,6 +134,8 @@ jobs:
           node-version-file: .node-version
       - name: Install dependencies
         run: bun install --frozen-lockfile
+        env:
+          HUSKY: 0
       - name: Generate coverage file
         run: bun run coverage
       - name: Upload coverage reports to Codecov
