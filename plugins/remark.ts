@@ -1,11 +1,11 @@
-import type { Literal, Node } from 'unist';
+import type { Node } from 'unist';
 import { visit } from 'unist-util-visit';
 
+type Text = Node & { value: string };
+
 export const stripLineBreaks = () => (tree: Node) => {
-    visit(tree, 'text', (node: Literal) => {
-        if (typeof node.value === 'string') {
-            node.value = node.value.replace(/\r?\n|\r/g, ''); // matches \r\n, \n, \r
-        }
+    visit(tree, 'text', (node: Text) => {
+        node.value = node.value.replace(/\r?\n|\r/g, ''); // matches \r\n, \n, \r
     });
 };
 

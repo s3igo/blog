@@ -6,6 +6,8 @@ import type { Cards } from '~/fetchers';
 type Props = { cards: Cards };
 
 const { cards } = Astro.props;
+
+const metadataClasses = 'flex flex-wrap gap-x-3';
 ---
 
 <main class="flex flex-col gap-4 md:gap-6">
@@ -21,23 +23,20 @@ const { cards } = Astro.props;
             >
                 <article>
                     <div class="flex max-sm:flex-col sm:items-center">
-                        <div class="flex flex-wrap gap-3">
-                            <div class="metadata">{published}</div>
-                            {updated && (
-                                <Updated>
-                                    {updated}
-                                </Updated>
-                            )}
-                            {tags.length > 0 &&
-                                tags.map((tag) => (
-                                    <div class="metadata">
-                                        <Icon
-                                            name="line-md:hash-small"
-                                            class="inline pb-[1px]"
-                                        />
-                                        <span class="ml-[-10px]">{tag}</span>
-                                    </div>
-                                ))}
+                        <div class={metadataClasses}>
+                            <div class={metadataClasses}>
+                                <div class="metadata">{published}</div>
+                                {updated && <Updated>{updated}</Updated>}
+                            </div>
+                            <div class={metadataClasses}>
+                                {tags.length > 0 &&
+                                    tags.map((tag) => (
+                                        <div class="metadata flex items-center">
+                                            <Icon name="line-md:hash-small" />
+                                            <div>{tag}</div>
+                                        </div>
+                                    ))}
+                            </div>
                         </div>
                     </div>
                     <h2 class="py-1.5 text-xl xl:text-2xl">{title}</h2>

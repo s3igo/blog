@@ -95,12 +95,15 @@ Content Collectionとは、型安全なfrontmatterスキーマのバリデーシ
 Astroは、`.md`のファイルでも、frontmatterにて適用するレイアウトを指定しておけばよしなに表示してくれるという特徴があります。
 しかし、Content Collectionはそれを犠牲にルーティングとコンテンツの執筆を分離を実現しています。
 
+<!-- textlint-disable ja-technical-writing/sentence-length -->
+
 イマイチだと感じた最大の原因は、Astroの柔軟性を犠牲にしている点です。
 Content Collectionは、`getCollection()`と`getEntryBySlug()`というコンテンツを取得するAPIを提供します。
 しかし、もともとAstroは`Astro.glob()`という似たようなことができるAPIを持っています。
 `getCollction()`のコールバック関数による絞り込みや`getEntryBySlug()`による単一記事の取得は、
 `Astro.glob()`で全件取得してから`filter`メソッドや`find`メソッドで絞り込んでもさほど実装量は変わりません。
 加えて、これはビルド時に実行されるためクライアントにおけるパフォーマンスにも影響しません。
+
 
 また、AstroはRemark PluginによってMarkdownの前処理が可能で、それらはレンダリング時のみ実行されます。
 従って、`getCollection()`や`getEntryBySlug()`によって取得した記事は、
@@ -109,6 +112,8 @@ Content Collectionは、`getCollection()`と`getEntryBySlug()`というコンテ
 これは
 [Astroのドキュメントでも言及されている](https://docs.astro.build/ja/guides/content-collections/#modifying-frontmatter-with-remark)
 注意点です。
+
+<!-- textlint-enable ja-technical-writing/sentence-length -->
 
 このように、Content Collectionは得られる恩恵とRemark Pluginとの相性が微妙でAstroの柔軟性を犠牲にするため、
 私は使っていません。
@@ -150,5 +155,9 @@ export const validateFrontmatter = () => {
 };
 ```
 
+<!-- textlint-disable ja-technical-writing/sentence-length -->
+
 この`validateFrontmatter`を`astro.config.mjs`にてRemark Pluginの配列の末尾に追加することで、
 ビルド時にはなりますが、動的に追加したプロパティを含むfrontmatterのバリデーションを行なうことができます。
+
+<!-- textlint-enable ja-technical-writing/sentence-length -->
