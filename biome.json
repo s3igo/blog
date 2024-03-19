@@ -11,9 +11,6 @@
     "linter": {
         "rules": {
             "all": true,
-            "style": {
-                "noDefaultExport": "off"
-            },
             "nursery": {
                 "useSortedClasses": {
                     "level": "warn",
@@ -43,11 +40,34 @@
             }
         },
         {
+            "include": ["*.config.ts"],
+            "linter": {
+                "rules": {
+                    "style": {
+                        "noDefaultExport": "off"
+                    }
+                }
+            }
+        },
+        {
             "include": ["*.astro"],
             "linter": {
                 "rules": {
                     "correctness": {
                         "noUnusedImports": "off"
+                    },
+                    "style": {
+                        "useFilenamingConvention": "off"
+                    }
+                }
+            }
+        },
+        {
+            "include": ["*.tsx"],
+            "linter": {
+                "rules": {
+                    "style": {
+                        "noDefaultExport": "off"
                     }
                 }
             }
