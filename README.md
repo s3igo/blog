@@ -45,7 +45,7 @@
 └── tests
     └── e2e # E2Eテスト
 ```
-packaged by featureを採用しています。
+packaged by featureに寄せています。
 
 `src/layouts/`ではコンポーネントのimportを行わず、スタイルを当てることのみを責務とします。
 `src/pages/`以下のファイルのみからimportされるコンポーネントを`src/features/`に配置し、
