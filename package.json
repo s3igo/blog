@@ -72,5 +72,5 @@
     "textlint-rule-preset-ja-technical-writing": "10.0.1",
     "vitest": "1.4.0"
   },
-  "trustedDependencies": ["sharp"]
+  "trustedDependencies": ["@biomejs/biome", "sharp"]
 }
