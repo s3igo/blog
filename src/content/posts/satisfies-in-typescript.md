@@ -1,8 +1,9 @@
 ---
 title: もうsatisfiesのないTypeScriptには戻れない
+tags: [TypeScript, programming]
 published: 2024-03-19
 updated:
-tags: [TypeScript, programming]
+draft: false
 ---
 
 [TypeScript 4.9](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html#the-satisfies-operator)
