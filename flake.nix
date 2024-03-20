@@ -42,6 +42,19 @@
                       tailwind = "lsp";
                     }
                   ];
+                  none-ls = {
+                    enable = true;
+                    sources = {
+                      diagnostics.textlint = {
+                        enable = true;
+                        package = null;
+                      };
+                      formatting.textlint = {
+                        enable = true;
+                        package = null;
+                      };
+                    };
+                  };
                   lsp.servers = {
                     biome = {
                       enable = true;
