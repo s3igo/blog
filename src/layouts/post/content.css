@@ -1,21 +1,21 @@
-.astro-code,
-.astro-code span {
-    background-color: theme("colors.white") !important;
-}
-
-html.dark {
-    .astro-code,
-    .astro-code span {
-        color: var(--shiki-dark) !important;
-        background-color: theme("colors.midnight-express") !important;
-    }
-}
-
 .blog {
-    @apply sm:text-lg;
+    @apply sm:text-lg dark:bg-midnight-express rounded-2xl p-8 mt-8 sm:p-12 sm:mt-8 bg-white;
+
+    > * {
+        &:first-child {
+            margin-top: 0 !important;
+        }
+        &:last-child {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    p, h2, h3, h4, h5 {
+        @apply my-8;
+    }
 
     p {
-        @apply my-4 rounded-2xl bg-white p-4 dark:bg-midnight-express;
+        @apply leading-8;
     }
 
     a {
@@ -34,25 +34,40 @@ html.dark {
         @apply border-l-4 border-spiced-nectarine pl-6;
     }
 
-    /* --------------------------------- header --------------------------------- */
     :is(h2, h3, h4, h5) .anchor {
         @apply after:pl-2 after:absolute after:text-maldives;
     }
 
-    h2 > .anchor {
-        @apply text-2xl hover:after:content-["##"] sm:text-3xl;
+    h2 {
+        @apply mt-28 pb-4 border-b-2 border-bellflower-blue dark:border-yamagami-blue;
+
+        > .anchor {
+            @apply text-2xl hover:after:content-["##"] sm:text-3xl;
+        }
     }
 
-    h3 > .anchor {
-        @apply text-xl hover:after:content-["###"] sm:text-2xl;
+    h3 {
+        @apply mt-28 pb-4;
+
+        > .anchor {
+            @apply text-xl hover:after:content-["###"] sm:text-2xl;
+        }
     }
 
-    h4 > .anchor {
-        @apply text-lg hover:after:content-["####"] sm:text-xl;
+    h4 {
+        @apply mt-24;
+
+        > .anchor {
+            @apply text-lg hover:after:content-["####"] sm:text-xl;
+        }
     }
 
-    h5 > .anchor {
-        @apply hover:after:content-["#####"];
+    h5 {
+        @apply mt-20;
+
+        > .anchor {
+            @apply text-base hover:after:content-["#####"] sm:text-lg;
+        }
     }
 
     /* header要素が連続する場合の余白調整 */
@@ -60,7 +75,6 @@ html.dark {
         @apply mt-4;
     }
 
-    /* ---------------------------------- list ---------------------------------- */
     :is(ul, ol) {
         @apply list-inside py-4;
     }
@@ -78,7 +92,6 @@ html.dark {
         @apply ml-7 py-0;
     }
 
-    /* ---------------------------------- code ---------------------------------- */
     code {
         @apply font-code;
 
@@ -86,16 +99,5 @@ html.dark {
         &:not(pre > *) {
             @apply mx-1 rounded-md bg-bellflower-blue px-1 text-base dark:bg-black-knight;
         }
-    }
-
-    /* block */
-    pre {
-        @apply my-4 rounded-2xl p-4 text-base;
-    }
-
-    /* filename */
-    .remark-code-title {
-        /* SEE: https://github.com/material-theme/vsc-material-theme/blob/main/scripts/generator/settings/specific/default.ts */
-        @apply -mb-3 font-code text-base text-[#263238] dark:text-[#546E7A];
     }
 }
