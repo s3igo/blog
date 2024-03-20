@@ -16,6 +16,7 @@
     "lint": "bunx @biomejs/biome lint .",
     "lint:fix": "bunx @biomejs/biome lint --apply .",
     "lint:text": "textlint ./src/content/posts/**/*.md",
+    "lint:filename": "ls-lint",
     "biome": "bunx @biomejs/biome check .",
     "biome:fix": "bunx @biomejs/biome check --apply .",
     "biome:apply": "bunx @biomejs/biome check --apply-unsafe .",
@@ -58,6 +59,7 @@
   "devDependencies": {
     "@astrojs/check": "0.5.9",
     "@biomejs/biome": "1.6.1",
+    "@ls-lint/ls-lint": "2.2.3",
     "@playwright/test": "1.42.1",
     "@types/markdown-it": "13.0.7",
     "@types/sanitize-html": "2.11.0",
