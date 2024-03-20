@@ -8,7 +8,8 @@ import Menu from './menu';
     <a href="/">
         <Image src={icon} width={56} height={56} alt="tsukiyo icon" />
     </a>
-    <Menu client:load />
+    {/* to use the `window` API */}
+    <Menu client:only="solid-js" />
 </nav>
 <script>
     import { loadTheme } from "./client-script";
