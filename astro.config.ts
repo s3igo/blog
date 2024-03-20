@@ -3,7 +3,7 @@ import solidJs from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
 import compress from 'astro-compress';
 import icon from 'astro-icon';
-import { defineConfig, squooshImageService } from 'astro/config';
+import { defineConfig } from 'astro/config';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import { externalLinks, stripLineBreaks } from './plugins/remark';
@@ -12,9 +12,6 @@ const site = 'https://blog.tsuki-yo.net';
 
 // https://astro.build/config
 export default defineConfig({
-    image: {
-        service: squooshImageService(),
-    },
     integrations: [
         solidJs(),
         tailwind({
