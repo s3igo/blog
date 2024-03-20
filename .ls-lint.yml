@@ -26,5 +26,6 @@ ignore:
   - .astro
   - .github
   - .husky
+  - .scaffdog
   - '*.config.ts'
   - .local

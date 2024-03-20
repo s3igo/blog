@@ -25,7 +25,7 @@ jobs:
       - name: Run Biome
         run: bun run biome:ci
       - name: Run ls-lint
-        run: bun run lint:filename
+        run: bun run lint:ls
       - name: Run Textlint
         run: bun run lint:text
 

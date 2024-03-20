@@ -16,7 +16,7 @@
     "lint": "bunx @biomejs/biome lint .",
     "lint:fix": "bunx @biomejs/biome lint --apply .",
     "lint:text": "textlint ./src/content/posts/**/*.md",
-    "lint:filename": "ls-lint",
+    "lint:ls": "ls-lint",
     "biome": "bunx @biomejs/biome check .",
     "biome:fix": "bunx @biomejs/biome check --apply .",
     "biome:apply": "bunx @biomejs/biome check --apply-unsafe .",
