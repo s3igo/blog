@@ -40,7 +40,7 @@
             }
         },
         {
-            "include": ["*.config.ts", "config.js"],
+            "include": ["*.config.ts", "config.ts"],
             "linter": {
                 "rules": {
                     "style": {
