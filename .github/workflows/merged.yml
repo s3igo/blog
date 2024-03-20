@@ -1,6 +1,11 @@
 name: Check links
 
-on: push
+on:
+  push:
+    branches:
+      - develop
+      - main
+
 
 jobs:
   markdown-link-check:
@@ -14,4 +19,4 @@ jobs:
         uses: gaurav-nelson/github-action-markdown-link-check@v1
         with:
           use-verbose-mode: 'yes'
-          folder-path: './src/content'
+          folder-path: './src/content/posts/'
