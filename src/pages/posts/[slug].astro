@@ -7,12 +7,17 @@ import Footer from '~/features/footer/Footer.astro';
 import Navigation from '~/features/navigation/Navigation.astro';
 import Title from '~/features/title/Title.astro';
 import Layout from '~/layouts/post/Layout.astro';
+import { toStr } from '~/utils/from-date';
+import { filterPublished } from '~/utils/from-posts';
 
-export const getStaticPaths = (async () =>
-    (await getCollection('posts')).map((post) => ({
+export const getStaticPaths = (async () => {
+    const posts = filterPublished(await getCollection('posts'));
+
+    return posts.map((post) => ({
         params: { slug: post.slug },
         props: { post },
-    }))) satisfies GetStaticPaths;
+    }));
+}) satisfies GetStaticPaths;
 
 type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
@@ -28,9 +33,9 @@ const { Content } = await post.render();
     </Title>
     <div slot="meta" class="my-4 flex flex-wrap gap-3 items-center">
         <div class="metadata">
-            {published.toISOString().substring(0, 10)}
+            {toStr(published)}
         </div>
-        {updated && <Updated>{updated.toISOString().substring(0, 10)}</Updated>}
+        {updated && <Updated>{toStr(updated)}</Updated>}
         {tags.map((tag) => <Tag name={tag} />)}
     </div>
     <Content slot="content" />

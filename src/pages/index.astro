@@ -1,19 +1,20 @@
 ---
+import { getCollection } from 'astro:content';
 import Footer from '~/features/footer/Footer.astro';
 import List from '~/features/list/List.astro';
 import Navigation from '~/features/navigation/Navigation.astro';
 import TagList from '~/features/tag-list/TagList.astro';
 import Title from '~/features/title/Title.astro';
-import { getPosts } from '~/fetchers';
 import Layout from '~/layouts/list/Layout.astro';
+import { filterPublished } from '~/utils/from-posts';
 
-const { tags, cards } = await getPosts();
+const posts = filterPublished(await getCollection('posts'));
 ---
 
 <Layout>
     <Navigation slot="nav" />
-    <TagList slot="tags" {...{ tags }} />
+    <TagList slot="tags" {...{ posts }} />
     <Title slot="title">tsukiyo-room</Title>
-    <List slot="list" {...{ cards }} />
+    <List slot="list" {...{ posts }} />
     <Footer slot="footer" />
 </Layout>
