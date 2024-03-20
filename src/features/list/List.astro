@@ -1,11 +1,22 @@
 ---
-import { Icon } from 'astro-icon/components';
-import Updated from '~/components/Updated.astro';
-import type { Cards } from '~/fetchers';
+import IconMetadata from '~/components/IconMetadata.astro';
+import { toStr } from '~/utils/from-date';
+import type { Posts } from '~/utils/from-posts';
 
-type Props = { cards: Cards };
+type Props = { posts: Posts };
 
-const { cards } = Astro.props;
+const { posts } = Astro.props;
+
+const cards = posts
+    .map(({ data, slug }) => ({
+        title: data.title,
+        href: `/posts/${slug}`,
+        published: toStr(data.published),
+        updated: data.updated && toStr(data.updated),
+        tags: data.tags,
+    }))
+    .toSorted((a, b) => a.published.localeCompare(b.published))
+    .toReversed();
 
 const metadataClasses = 'flex flex-wrap gap-x-3';
 ---
@@ -26,15 +37,18 @@ const metadataClasses = 'flex flex-wrap gap-x-3';
                         <div class={metadataClasses}>
                             <div class={metadataClasses}>
                                 <div class="metadata">{published}</div>
-                                {updated && <Updated>{updated}</Updated>}
+                                {updated && (
+                                    <IconMetadata name="line-md:rotate-270">
+                                        {updated}
+                                    </IconMetadata>
+                                )}
                             </div>
                             <div class={metadataClasses}>
                                 {tags.length > 0 &&
                                     tags.map((tag) => (
-                                        <div class="metadata flex items-center">
-                                            <Icon name="line-md:hash-small" />
-                                            <div>{tag}</div>
-                                        </div>
+                                        <IconMetadata name="line-md:hash-small">
+                                            {tag}
+                                        </IconMetadata>
                                     ))}
                             </div>
                         </div>

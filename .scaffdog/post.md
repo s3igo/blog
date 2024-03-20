@@ -12,9 +12,10 @@ questions:
 ```md
 ---
 title:
+tags: []
 published:
 updated:
-tags: []
+draft: true
 ---
 
 ```

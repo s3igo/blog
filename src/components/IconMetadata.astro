@@ -1,9 +1,13 @@
 ---
 import { Icon } from 'astro-icon/components';
+
+type Props = { name: string };
+
+const { name } = Astro.props;
 ---
 
 <div class="metadata flex items-center">
-    <Icon name="line-md:rotate-270" />
+    <Icon {...{ name }} />
     <div>
         <slot />
     </div>

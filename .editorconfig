@@ -15,5 +15,5 @@ trim_trailing_whitespace = false
 [{package.json,*.yml}]
 indent_size = 2
 
-[{Makefile,*.svg}]
+[*.svg]
 indent_style = tab

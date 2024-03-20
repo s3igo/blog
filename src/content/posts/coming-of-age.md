@@ -3,6 +3,7 @@ title: 成人式に行ってきた
 published: 2023-01-09
 updated:
 tags: [report]
+draft: false
 ---
 
 もともと参加するつもりでしたが、そこまで乗り気ではありませんでした。

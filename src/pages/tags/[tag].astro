@@ -1,4 +1,5 @@
 ---
+import { getCollection } from 'astro:content';
 import type {
     GetStaticPaths,
     InferGetStaticParamsType,
@@ -9,17 +10,17 @@ import List from '~/features/list/List.astro';
 import Navigation from '~/features/navigation/Navigation.astro';
 import TagList from '~/features/tag-list/TagList.astro';
 import Title from '~/features/title/Title.astro';
-import { getPosts } from '~/fetchers';
 import Layout from '~/layouts/list/Layout.astro';
+import { filterPublished, uniqueTags } from '~/utils/from-posts';
 
 export const getStaticPaths = (async () => {
-    const { tags, cards } = await getPosts();
+    const posts = filterPublished(await getCollection('posts'));
 
-    return tags.map((tag) => ({
+    return uniqueTags(posts).map((tag) => ({
         params: { tag },
         props: {
-            tags,
-            cards: cards.filter(({ tags }) => tags.includes(tag)),
+            posts,
+            taggedPosts: posts.filter(({ data }) => data.tags.includes(tag)),
         },
     }));
 }) satisfies GetStaticPaths;
@@ -29,15 +30,15 @@ type Props = InferGetStaticPropsType<typeof getStaticPaths>;
 
 const { tag } = Astro.params as Params;
 // NOTE: use assert to suppress errors from `astro check`
-const { tags, cards } = Astro.props as Props;
+const { posts, taggedPosts } = Astro.props as Props;
 ---
 
 <Layout title={`#${tag}`}>
     <Navigation slot="nav" />
-    <TagList slot="tags" {...{ tags }} />
+    <TagList slot="tags" {...{ posts }} />
     <Title slot="title">
         #{tag}
     </Title>
-    <List slot="list" {...{ cards }} />
+    <List slot="list" posts={taggedPosts} />
     <Footer slot="footer" />
 </Layout>

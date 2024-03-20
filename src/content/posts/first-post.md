@@ -3,6 +3,7 @@ title: ブログ作った
 published: 2023-01-01
 updated:
 tags: []
+draft: false
 ---
 
 ちょうど新年だし良い機会なのでブログを作りました。
