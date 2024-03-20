@@ -15,8 +15,6 @@ const config: Config = {
                 maldives: colors.cyan[500],
                 'midnight-express': colors.gray[800],
                 'spiced-nectarine': colors.orange[300],
-                transparent: 'transparent',
-                white: colors.white,
                 'yamagami-blue': '#384B5A',
             },
         },

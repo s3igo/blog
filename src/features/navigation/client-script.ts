@@ -10,6 +10,7 @@ export const loadTheme = () => {
 
     if (currentTheme === 'dark') {
         document.documentElement.classList.add('dark');
+        document.documentElement.setAttribute('data-theme', 'material-theme');
     }
 };
 
@@ -18,8 +19,13 @@ export const toggleTheme = () => {
 
     if (currentTheme === 'dark') {
         document.documentElement.classList.remove('dark');
+        document.documentElement.setAttribute(
+            'data-theme',
+            'material-theme-lighter',
+        );
     } else {
         document.documentElement.classList.add('dark');
+        document.documentElement.setAttribute('data-theme', 'material-theme');
     }
 
     window.localStorage.setItem(
