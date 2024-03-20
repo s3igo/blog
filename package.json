@@ -27,7 +27,7 @@
     "new": "scaffdog generate"
   },
   "dependencies": {
-    "@astrojs/partytown": "^2.0.4",
+    "@astrojs/partytown": "2.0.4",
     "@astrojs/rss": "4.0.5",
     "@astrojs/sitemap": "3.1.1",
     "@astrojs/solid-js": "4.0.1",
@@ -39,7 +39,7 @@
     "@kobalte/core": "0.12.6",
     "astro": "4.5.6",
     "astro-compress": "2.2.15",
-    "astro-expressive-code": "^0.33.5",
+    "astro-expressive-code": "0.33.5",
     "astro-icon": "1.1.0",
     "astro-seo": "0.8.3",
     "autoprefixer": "10.4.18",
