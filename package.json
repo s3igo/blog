@@ -6,7 +6,7 @@
   "browserslist": ["defaults"],
   "scripts": {
     "prepare": "husky",
-    "start": "bunx astro dev",
+    "start": "astro dev",
     "build": "astro build",
     "build:clean": "rm -rf ./dist",
     "preview": "bun run build && astro preview",

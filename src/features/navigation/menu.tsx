@@ -34,6 +34,7 @@ const Memu = () => {
             onOpenChange={setOpen}
             placement={windowWidth() >= 768 ? 'bottom' : 'right'} // lg
             gutter={12}
+            aria-label="global menu"
         >
             <HoverCard.Trigger onClick={() => setOpen((prev) => !prev)}>
                 <button type="button" class={baseIconClasses}>
