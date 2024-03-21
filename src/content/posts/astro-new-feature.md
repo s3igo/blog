@@ -130,7 +130,7 @@ Content Collectionは、`getCollection()`と`getEntryBySlug()`というコンテ
 zodのバリデーションは、remarkPluginによって実現します。
 例えば、frontmatterのスキーマをこのように定義するとします。
 
-```ts:types.ts
+```ts
 import { z } from 'astro/zod';
 
 export const frontmatterSchema = z.object({
@@ -146,7 +146,7 @@ export const frontmatterSchema = z.object({
 
 そして、Remark Pluginとして以下を実装します。
 
-```ts:remarkPlugin.ts
+```ts
 import { frontmatterSchema as schema } from './types';
 
 export const validateFrontmatter = () => {

@@ -11,7 +11,7 @@ import Navigation from '~/features/navigation/Navigation.astro';
 import TagList from '~/features/tag-list/TagList.astro';
 import Title from '~/features/title/Title.astro';
 import Layout from '~/layouts/list/Layout.astro';
-import { filterPublished, uniqueTags } from '~/utils/from-posts';
+import { filterPublished, uniqueTags } from '~/utils/posts';
 
 export const getStaticPaths = (async () => {
     const posts = filterPublished(await getCollection('posts'));

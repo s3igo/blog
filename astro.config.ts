@@ -58,11 +58,7 @@ export default defineConfig({
         }),
     ],
     markdown: {
-        remarkPlugins: [
-            stripLineBreaks,
-            externalLinks(site),
-            'remark-code-titles',
-        ],
+        remarkPlugins: [stripLineBreaks, externalLinks(site)],
         rehypePlugins: [
             rehypeSlug,
             [
