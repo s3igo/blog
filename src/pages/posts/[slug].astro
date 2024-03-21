@@ -7,8 +7,8 @@ import Footer from '~/features/footer/Footer.astro';
 import Navigation from '~/features/navigation/Navigation.astro';
 import Title from '~/features/title/Title.astro';
 import Layout from '~/layouts/post/Layout.astro';
-import { toStr } from '~/utils/from-date';
-import { filterPublished } from '~/utils/from-posts';
+import { toStr } from '~/utils/date';
+import { filterPublished } from '~/utils/posts';
 
 export const getStaticPaths = (async () => {
     const posts = filterPublished(await getCollection('posts'));

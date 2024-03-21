@@ -3,7 +3,7 @@ import rss from '@astrojs/rss';
 import type { APIContext } from 'astro';
 import MarkdownIt from 'markdown-it';
 import sanitizeHtml from 'sanitize-html';
-import { filterPublished } from '~/utils/from-posts';
+import { filterPublished } from '~/utils/posts';
 import { PAGE_DESCRIPTION, PAGE_TITLE } from '../constants';
 
 const parser = new MarkdownIt();
