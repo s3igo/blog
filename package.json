@@ -37,7 +37,7 @@
     "@iconify-icon/solid": "2.0.0",
     "@iconify-json/line-md": "1.1.37",
     "@kobalte/core": "0.12.6",
-    "astro": "4.5.8",
+    "astro": "4.5.9",
     "astro-compress": "2.2.17",
     "astro-expressive-code": "0.33.5",
     "astro-icon": "1.1.0",
