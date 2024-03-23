@@ -30,10 +30,5 @@
             addLabels: ['deps.patch[bot]'],
             matchUpdateTypes: 'patch',
         },
-        // disable `packageManager` field in `package.json`
-        {
-            matchDepTypes: 'packageManager',
-            enabled: false,
-        },
     ],
 }
