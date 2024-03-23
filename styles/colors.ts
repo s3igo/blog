@@ -1,8 +1,11 @@
 import colors from 'tailwindcss/colors';
 
-export const colorLiterals = {
+export const literals = {
     'aphrodites-pearls': colors.cyan[50],
     'bellflower-blue': colors.slate[200],
+    'liverty-blue': colors.slate[900],
+    'obsidian-shard': colors.slate[950],
+    sambucus: colors.gray[900],
     'black-knight': '#030712', // gray-950
     'blue-blouse': colors.slate[400],
     'dreamy-cloud': colors.gray[200],
@@ -12,6 +15,9 @@ export const colorLiterals = {
     'midnight-navy': colors.gray[700],
     'spiced-nectarine': colors.orange[300],
     'yamagami-blue': '#384B5A',
+    'blueberry-whip': colors.gray[300],
+    'santas-gray': colors.gray[400],
     white: colors.white,
+    // black: colors.black,
     transparent: 'transparent',
 };

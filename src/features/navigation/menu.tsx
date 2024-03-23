@@ -7,7 +7,7 @@ import { createSignal, onCleanup, onMount } from 'solid-js';
 import { toggleTheme } from './client-script';
 
 const baseIconClasses =
-    'bg-white rounded-full border-2 border-transparent p-2 dark:bg-yamagami-blue';
+    'bg-white rounded-full border-2 border-transparent p-2 dark:bg-black-knight dark:text-santas-gray';
 const animationIconClasses =
     'hover-element dark:hover:bg-gray-500 hover:scale-[120%]';
 
@@ -34,10 +34,9 @@ const Memu = () => {
             onOpenChange={setOpen}
             placement={windowWidth() >= 768 ? 'bottom' : 'right'} // lg
             gutter={12}
-            aria-label="global menu"
         >
             <HoverCard.Trigger onClick={() => setOpen((prev) => !prev)}>
-                <button type="button" class={baseIconClasses}>
+                <button type="button" class={baseIconClasses} aria-label="global menu">
                     <CgMoreAlt class="text-xl" />
                 </button>
             </HoverCard.Trigger>

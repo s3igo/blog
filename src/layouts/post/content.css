@@ -1,5 +1,5 @@
 .blog {
-    @apply sm:text-lg dark:bg-midnight-express rounded-2xl p-8 mt-8 sm:p-12 sm:mt-8 bg-white;
+    @apply sm:text-lg py-8 mt-8 sm:py-12;
 
     > * {
         &:first-child {
@@ -39,7 +39,7 @@
     }
 
     h2 {
-        @apply mt-28 pb-4 border-b-2 border-bellflower-blue dark:border-yamagami-blue;
+        @apply mt-28 pb-4 border-b-2 border-white dark:border-yamagami-blue;
 
         > .anchor {
             @apply text-2xl hover:after:content-["##"] sm:text-3xl;
@@ -97,7 +97,7 @@
 
         /* inline */
         &:not(pre > *) {
-            @apply mx-1 rounded-md bg-bellflower-blue px-1 text-base dark:bg-black-knight;
+            @apply mx-1 rounded-md bg-white px-1 text-base dark:bg-black-knight dark:text-santas-gray;
         }
     }
 }
