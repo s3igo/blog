@@ -6,7 +6,7 @@ export const literals = {
     'liverty-blue': colors.slate[900],
     'obsidian-shard': colors.slate[950],
     sambucus: colors.gray[900],
-    'black-knight': '#030712', // gray-950
+    'black-knight': colors.gray[950],
     'blue-blouse': colors.slate[400],
     'dreamy-cloud': colors.gray[200],
     encore: colors.gray[500],
