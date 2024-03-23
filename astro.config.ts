@@ -15,8 +15,8 @@ const site = 'https://blog.tsuki-yo.net';
 
 const textBg = (theme: string) =>
     theme === 'material-theme'
-        ? '#030712' // black-knight
-        : colors.slate[100];
+        ? colors.gray[950] // black-knight
+        : colors.white;
 
 // https://astro.build/config
 export default defineConfig({

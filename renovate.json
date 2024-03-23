@@ -1,0 +1,20 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:js-app",
+        "helpers:pinGitHubActionDigests",
+        "group:allNonMajor",
+        "schedule:daily",
+        ":disableRateLimiting"
+    ],
+    "enabledManagers": ["nix", "bun", "github-actions"],
+    "timezone": "Asia/Tokyo",
+    "labels": ["deps[bot]"],
+    "nix": { "enabled": true },
+    "lockFileMaintenance": { "enabled": true, "extends": ["schedule:weekly"] },
+    "packageRules": [
+        { "addLabels": ["deps.major[bot]"], "matchUpdateTypes": "major" },
+        { "addLabels": ["deps.minor[bot]"], "matchUpdateTypes": "minor" },
+        { "addLabels": ["deps.patch[bot]"], "matchUpdateTypes": "patch" }
+    ]
+}

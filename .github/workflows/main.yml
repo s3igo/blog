@@ -137,4 +137,4 @@ jobs:
       - name: Validate Renovate Config
         uses: rinchsan/renovate-config-validator@main
         with:
-          pattern: 'renovate.json5'
+          pattern: 'renovate.json'

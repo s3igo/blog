@@ -30,7 +30,7 @@
 
     .hover-element {
         @media (hover: hover) {
-            @apply ease-in-out duration-100 hover:border-maldives hover:bg-cyan-50 dark:hover:bg-gray-700
+            @apply ease-in-out duration-100 hover:border-maldives hover:bg-aphrodites-pearls dark:hover:bg-midnight-express
         }
     }
 }
