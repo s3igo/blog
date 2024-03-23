@@ -36,7 +36,11 @@ const Memu = () => {
             gutter={12}
         >
             <HoverCard.Trigger onClick={() => setOpen((prev) => !prev)}>
-                <button type="button" class={baseIconClasses} aria-label="global menu">
+                <button
+                    type="button"
+                    class={baseIconClasses}
+                    aria-label="global menu"
+                >
                     <CgMoreAlt class="text-xl" />
                 </button>
             </HoverCard.Trigger>
