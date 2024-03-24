@@ -5,13 +5,15 @@ import tailwind from '@astrojs/tailwind';
 import compress from 'astro-compress';
 import expressiveCode from 'astro-expressive-code';
 import icon from 'astro-icon';
-import { defineConfig, squooshImageService } from 'astro/config';
+import { defineConfig } from 'astro/config';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import colors from 'tailwindcss/colors';
 import { externalLinks, stripLineBreaks } from './plugins/remark';
 
-const site = 'https://blog.tsuki-yo.net';
+const site = import.meta.env.PROD
+    ? 'https://blog.tsuki-yo.net'
+    : 'http://localhost:4321';
 
 const textBg = (theme: string) =>
     theme === 'material-theme'
@@ -20,9 +22,6 @@ const textBg = (theme: string) =>
 
 // https://astro.build/config
 export default defineConfig({
-    image: {
-        service: squooshImageService(),
-    },
     integrations: [
         solidJs(),
         tailwind({

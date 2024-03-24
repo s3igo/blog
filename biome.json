@@ -44,17 +44,22 @@
             "linter": {
                 "rules": {
                     "style": {
-                        "noDefaultExport": "off"
+                        "noDefaultExport": "off",
+                        "useNamingConvention": "off"
                     }
                 }
             }
         },
         {
             "include": ["*.astro"],
+            "javascript": {
+                "globals": ["Astro"]
+            },
             "linter": {
                 "rules": {
                     "correctness": {
-                        "noUnusedImports": "off"
+                        "noUnusedImports": "off",
+                        "noUnusedVariables": "off"
                     },
                     "style": {
                         "useFilenamingConvention": "off"
@@ -68,6 +73,16 @@
                 "rules": {
                     "style": {
                         "noDefaultExport": "off"
+                    }
+                }
+            }
+        },
+        {
+            "include": ["./src/**/*.ts"],
+            "linter": {
+                "rules": {
+                    "style": {
+                        "useFilenamingConvention": "off"
                     }
                 }
             }

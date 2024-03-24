@@ -1,6 +1,7 @@
 ---
 import { getCollection } from 'astro:content';
 import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
+import { SEO } from 'astro-seo';
 import IconMetadata from '~/components/IconMetadata.astro';
 import Tag from '~/components/Tag.astro';
 import Footer from '~/features/footer/Footer.astro';
@@ -26,6 +27,19 @@ const { title, published, updated, tags } = post.data;
 const { Content } = await post.render();
 ---
 
+<SEO
+    slot="head"
+    openGraph={{
+        basic: {
+            title,
+            type: 'article',
+            image: new URL(`/og/${post.slug}.png`, Astro.site).toString(),
+        },
+        image: {
+            alt: title,
+        }
+    }}
+/>
 <Layout {...{ title }}>
     <Navigation slot="nav" />
     <Title slot="title">
