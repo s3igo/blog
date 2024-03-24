@@ -49,6 +49,8 @@
     "rehype-autolink-headings": "7.1.0",
     "rehype-slug": "6.0.0",
     "sanitize-html": "2.13.0",
+    "satori": "0.10.13",
+    "satori-html": "0.3.2",
     "sharp": "0.33.3",
     "solid-icons": "1.1.0",
     "solid-js": "1.8.16",

@@ -76,6 +76,16 @@
                     }
                 }
             }
+        },
+        {
+            "include": ["./src/**/*.ts"],
+            "linter": {
+                "rules": {
+                    "style": {
+                        "useFilenamingConvention": "off"
+                    }
+                }
+            }
         }
     ]
 }

@@ -13,7 +13,7 @@ ls:
       .md: kebab-case
 
     pages:
-      .astro: kebab-case | regex:^\[.*\]$
+      .astro: kebab-case | regex:^\[.+\]$
 
   tests:
     .ts: regex:^.*\.spec$
