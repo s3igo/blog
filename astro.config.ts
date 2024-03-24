@@ -11,7 +11,9 @@ import rehypeSlug from 'rehype-slug';
 import colors from 'tailwindcss/colors';
 import { externalLinks, stripLineBreaks } from './plugins/remark';
 
-const site = 'https://blog.tsuki-yo.net';
+const site = import.meta.env.PROD
+    ? 'https://blog.tsuki-yo.net'
+    : 'http://localhost:4321';
 
 const textBg = (theme: string) =>
     theme === 'material-theme'
