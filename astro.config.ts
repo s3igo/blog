@@ -5,7 +5,7 @@ import tailwind from '@astrojs/tailwind';
 import compress from 'astro-compress';
 import expressiveCode from 'astro-expressive-code';
 import icon from 'astro-icon';
-import { defineConfig, squooshImageService } from 'astro/config';
+import { defineConfig } from 'astro/config';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import colors from 'tailwindcss/colors';
@@ -20,9 +20,6 @@ const textBg = (theme: string) =>
 
 // https://astro.build/config
 export default defineConfig({
-    image: {
-        service: squooshImageService(),
-    },
     integrations: [
         solidJs(),
         tailwind({
