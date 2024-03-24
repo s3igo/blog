@@ -14,7 +14,7 @@ export const literals = {
     'midnight-express': colors.gray[800],
     'midnight-navy': colors.gray[700],
     'spiced-nectarine': colors.orange[300],
-    'yamagami-blue': '#384B5A',
+    'yamagami-blue': '#384b5a',
     'blueberry-whip': colors.gray[300],
     'santas-gray': colors.gray[400],
     white: colors.white,

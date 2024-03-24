@@ -19,21 +19,39 @@ export const getStaticPaths = (async () => {
 
 type Params = InferGetStaticParamsType<typeof getStaticPaths>;
 
-const getFont = async () => {
-    const url = new URL(
-        import.meta.env.PROD
-            ? '../../node_modules/@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-japanese-400-normal.woff'
-            : '../../../node_modules/@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-japanese-400-normal.woff',
+/**
+ * @param path absolute path from project root
+ */
+const composeUrl = (path: string) =>
+    new URL(
+        // NOTE: workaround for differences between dev and build environments
+        import.meta.env.PROD ? `../..${path}` : `../../..${path}`,
         import.meta.url,
     );
-    return await fs.readFile(url);
-};
 
 export const GET = async ({ params }: APIContext) => {
     const post = await getEntryBySlug('posts', params.slug as Params['slug']);
+    const { title, tags } = post.data;
 
-    const markup = html`<div tw="flex">
-        <h1>${post.data.title}</h1>
+    const markup = html`<div tw="flex bg-slate-900 text-slate-900 h-full py-8">
+        <div tw="flex w-[500px] py-12 mx-auto flex-col">
+            <img
+                src="https://icon.tsuki-yo.net/icon.png"
+                width="100"
+                height="100"
+                tw="rounded-full"
+                alt="icon"
+            />
+            <h1 tw="text-5xl text-slate-200 py-10">${title}</h1>
+            <div tw="flex" style="gap: 12px;">
+                ${tags.map(
+                    (tag) => `<p
+                        tw="text-xl text-slate-200 bg-slate-700 rounded-full px-4 pt-1 pb-2"
+                        style="font-family: 'JetBrains Mono';"
+                    >#${tag}</p>`,
+                )}
+            </div>
+        </div>
     </div>`;
 
     const svg = await satori(markup, {
@@ -42,7 +60,20 @@ export const GET = async ({ params }: APIContext) => {
         fonts: [
             {
                 name: 'Zen Kaku Gothic New',
-                data: await getFont(),
+                data: await fs.readFile(
+                    composeUrl(
+                        '/node_modules/@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-japanese-400-normal.woff',
+                    ),
+                ),
+                style: 'normal',
+            },
+            {
+                name: 'JetBrains Mono',
+                data: await fs.readFile(
+                    composeUrl(
+                        '/node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff',
+                    ),
+                ),
                 style: 'normal',
             },
         ],
