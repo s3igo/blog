@@ -12,8 +12,6 @@ export type Props = {
 };
 
 const { description = PAGE_DESCRIPTION, title } = Astro.props;
-
-const canonicalURL = new URL(Astro.url.pathname, Astro.site);
 ---
 
 <!doctype html>
@@ -22,7 +20,7 @@ const canonicalURL = new URL(Astro.url.pathname, Astro.site);
         <SEO
             title={title ? `${title} | ${PAGE_TITLE}` : PAGE_TITLE}
             description={description}
-            canonical={canonicalURL.toString()}
+            canonical={new URL(Astro.url.pathname, Astro.site).toString()}
             charset="UTF-8"
             extend={{
                 meta: [
