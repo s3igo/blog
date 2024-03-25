@@ -1,0 +1,31 @@
+---
+import { ViewTransitions } from 'astro:transitions';
+import '@fontsource/jetbrains-mono';
+import '@fontsource/zen-kaku-gothic-new';
+import './global.css';
+---
+
+<html lang="ja" class="scroll-smooth" data-theme="material-theme-lighter">
+    <head>
+        <meta charset="utf-8" />
+        <slot name="head" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).toString()} />
+        <link rel="icon" type="image/png" href="/icon.webp" />
+        <link rel="sitemap" href="/sitemap-index.xml" />
+        <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
+        <script
+            is:inline
+            defer
+            type="text/partytown"
+            src="https://analytics.eu.umami.is/script.js"
+            data-website-id="270fbc48-0e7b-4201-a405-a692d49fd936"></script>
+        <ViewTransitions />
+    </head>
+    <body
+        class="bg-bellflower-blue font-sans text-yamagami-blue dark:bg-liverty-blue dark:text-blueberry-whip"
+    >
+        <slot />
+    </body>
+</html>

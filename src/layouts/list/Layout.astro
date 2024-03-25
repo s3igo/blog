@@ -1,0 +1,62 @@
+---
+import Base from '../Base.astro';
+---
+
+<Base>
+    <slot name="head" slot="head" />
+    <div
+        class="container-grid container-rows-5 md:container-rows-4 lg:container-rows-3"
+    >
+        <div
+            class:list={[
+                "col-span-12 col-start-1 row-start-1",
+                "md:col-span-2 md:row-span-4",
+                "lg:col-span-1 lg:col-start-3 lg:row-span-3",
+                "xl:col-start-2",
+            ]}
+        >
+            <slot name="nav" />
+        </div>
+        <div
+            class:list={[
+                "col-span-12 col-start-1 row-start-2",
+                "md:col-span-8 md:col-start-3 md:row-start-1",
+                "lg:col-span-6 lg:col-start-4",
+                "xl:col-span-8 xl:col-start-3",
+            ]}
+        >
+            <slot name="title" />
+        </div>
+        <div
+            class:list={[
+                "h-min max-lg:overflow-x-auto",
+                "col-span-12 col-start-1 row-start-3",
+                "md:col-span-8 md:col-start-3 md:row-start-2",
+                "lg:col-span-2 lg:col-start-10",
+                "xl:col-start-11",
+            ]}
+        >
+            <slot name="tags" />
+        </div>
+        <div
+            class:list={[
+                "col-span-12 col-start-1 row-start-4",
+                "md:col-span-8 md:col-start-3 md:row-start-3",
+                "lg:col-span-6 lg:col-start-4 lg:row-start-2",
+                "xl:col-span-8 xl:col-start-3",
+            ]}
+        >
+            <slot name="list" />
+        </div>
+        <div
+            class:list={[
+                "col-span-12 col-start-1 row-start-5",
+                "md:col-span-8 md:col-start-3 md:row-start-4",
+                "lg:col-span-6 lg:col-start-4 lg:row-start-3",
+                "xl:col-span-8 xl:col-start-3",
+            ]}
+        >
+            <slot name="footer" />
+        </div>
+    </div>
+</Base>

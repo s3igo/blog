@@ -1,0 +1,50 @@
+---
+import IconMetadata from '~/components/IconMetadata.astro';
+import Tag from '~/components/Tag.astro';
+import Footer from '~/features/footer/Footer.astro';
+import Navigation from '~/features/navigation/Navigation.astro';
+import Title from '~/features/title/Title.astro';
+import Layout from '~/layouts/post/Layout.astro';
+import { toStr } from '~/utils/date';
+import type { Props } from './_static';
+export { getStaticPaths } from './_static';
+
+const { post } = Astro.props as Props;
+const { title, published, updated, tags } = post.data;
+const { Content } = await post.render();
+
+const baseUrl = new URL(Astro.url.pathname, Astro.site);
+const ogUrl = new URL(`${Astro.url.pathname}/og.png`, baseUrl);
+---
+
+<Layout>
+    <Fragment slot="head">
+        <title>{title}</title>
+        <meta name="description" content={title} />
+        <meta property="og:title" content={title} />
+        <meta property="og:type" content="article" />
+        <meta property="og:url" content={baseUrl.toString()} />
+        <meta property="og:image" content={ogUrl.toString()} />
+        <meta property="og:image:alt" content={title} />
+        <meta property="og:image:url" content={ogUrl.toString()} />
+    </Fragment>
+    <Navigation slot="nav" />
+    <Title slot="title">
+        {title}
+    </Title>
+    <div slot="meta" class="my-4 flex flex-wrap gap-3 items-center">
+        <div class="metadata">
+            {toStr(published)}
+        </div>
+        {
+            updated && (
+                <IconMetadata name="line-md:rotate-270">
+                    {toStr(updated)}
+                </IconMetadata>
+            )
+        }
+        {tags.map((tag) => <Tag name={tag} />)}
+    </div>
+    <Content slot="content" />
+    <Footer slot="footer" />
+</Layout>

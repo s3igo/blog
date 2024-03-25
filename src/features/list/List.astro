@@ -1,0 +1,61 @@
+---
+import IconMetadata from '~/components/IconMetadata.astro';
+import { toStr } from '~/utils/date';
+import type { Posts } from '~/utils/posts';
+
+type Props = { posts: Posts };
+
+const { posts } = Astro.props;
+
+const cards = posts
+    .map(({ data, slug }) => ({
+        title: data.title,
+        href: `/posts/${slug}`,
+        published: toStr(data.published),
+        updated: data.updated && toStr(data.updated),
+        tags: data.tags,
+    }))
+    .toSorted((a, b) => a.published.localeCompare(b.published))
+    .toReversed();
+
+const metadataClasses = 'flex flex-wrap gap-x-3';
+---
+
+<main class="flex flex-col gap-4 md:gap-6">
+    {
+        cards.map(({ tags, published, updated, href, title }) => (
+            <a
+                href={href}
+                class:list={[
+                    "rounded-2xl border-2 border-transparent bg-white px-5 py-2 sm:py-4 sm:px-6",
+                    "dark:bg-black-knight",
+                    "hover-element",
+                ]}
+            >
+                <article>
+                    <div class="flex max-sm:flex-col sm:items-center">
+                        <div class={metadataClasses}>
+                            <div class={metadataClasses}>
+                                <div class="metadata">{published}</div>
+                                {updated && (
+                                    <IconMetadata name="line-md:rotate-270">
+                                        {updated}
+                                    </IconMetadata>
+                                )}
+                            </div>
+                            <div class={metadataClasses}>
+                                {tags.length > 0 &&
+                                    tags.map((tag) => (
+                                        <IconMetadata name="line-md:hash-small">
+                                            {tag}
+                                        </IconMetadata>
+                                    ))}
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="py-1.5 text-xl xl:text-2xl">{title}</h2>
+                </article>
+            </a>
+        ))
+    }
+</main>

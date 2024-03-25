@@ -1,0 +1,32 @@
+ls:
+  .dir: kebab-case
+
+  .ts: kebab-case
+  .d.ts: kebab-case
+
+  src:
+    .tsx: kebab-case
+    .css: kebab-case
+    .astro: PascalCase
+
+    content:
+      .md: kebab-case
+
+    pages:
+      .astro: kebab-case | regex:^\[.+\]$
+
+  tests:
+    .ts: regex:^.*\.spec$
+
+ignore:
+  - node_modules
+  - dist
+  - coverage
+  - .git
+  - .direnv
+  - .astro
+  - .github
+  - .husky
+  - .scaffdog
+  - '*.config.ts'
+  - .local

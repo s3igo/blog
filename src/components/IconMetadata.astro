@@ -1,0 +1,14 @@
+---
+import { Icon } from 'astro-icon/components';
+
+type Props = { name: string };
+
+const { name } = Astro.props;
+---
+
+<div class="metadata flex items-center">
+    <Icon {...{ name }} />
+    <div>
+        <slot />
+    </div>
+</div>

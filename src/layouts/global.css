@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+    .metadata {
+        @apply max-xl:text-sm text-blue-blouse font-code;
+    }
+    /*
+    * コンテンツの最小高さが100svhに満たない場合にフッターを固定するため
+    * コンテナに`min-h-svhを適用し、tailwind組み込みの`grid-rows`を使わずに
+    * `grid-template-rows`を指定する
+    */
+    .container-grid {
+        @apply px-4 py-16 mx-auto min-h-svh max-w-7xl md:px-8 md:py-32;
+        @apply grid grid-cols-12 gap-6 max-md:gap-y-4;
+    }
+    .container-rows-2 {
+        grid-template-rows: auto 1fr;
+    }
+    .container-rows-3 {
+        grid-template-rows: auto 1fr auto;
+    }
+    .container-rows-4 {
+        grid-template-rows: auto auto 1fr auto;
+    }
+    .container-rows-5 {
+        grid-template-rows: auto auto auto 1fr auto;
+    }
+
+    .hover-element {
+        @media (hover: hover) {
+            @apply ease-in-out duration-100 hover:border-maldives hover:bg-aphrodites-pearls dark:hover:bg-midnight-express
+        }
+    }
+}

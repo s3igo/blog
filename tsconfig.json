@@ -5,7 +5,8 @@
         "jsx": "preserve",
         "jsxImportSource": "solid-js",
         "paths": {
-            "~/*": ["./src/*"]
+            "~/*": ["./src/*"],
+            "public/*": ["./public/*"]
         },
         "types": ["vitest/globals", "vitest/importMeta"]
     }

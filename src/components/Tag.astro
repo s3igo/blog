@@ -1,0 +1,19 @@
+---
+import { Icon } from 'astro-icon/components';
+
+type Props = { name: string };
+
+const { name } = Astro.props;
+---
+
+<a
+    href={`/tags/${name}`}
+    class:list={[
+        "rounded-full border-2 border-transparent",
+        "metadata hover-element",
+        "flex items-center w-max bg-white px-3 py-1 dark:bg-black-knight",
+    ]}
+>
+    <Icon name="line-md:hash-small" />
+    <div>{name}</div>
+</a>

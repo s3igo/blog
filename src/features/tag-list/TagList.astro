@@ -1,0 +1,12 @@
+---
+import Tag from '~/components/Tag.astro';
+import { type Posts, sortedUniqueTags } from '~/utils/posts';
+
+type Props = { posts: Posts };
+
+const { posts } = Astro.props;
+---
+
+<div class="flex gap-3 lg:h-full lg:flex-col">
+    {sortedUniqueTags(posts).map((tag) => <Tag name={tag}/>)}
+</div>

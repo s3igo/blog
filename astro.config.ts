@@ -1,29 +1,78 @@
+import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
-import solid from '@astrojs/solid-js';
+import solidJs from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
-import { defineConfig } from 'astro/config';
 import compress from 'astro-compress';
+import expressiveCode from 'astro-expressive-code';
+import icon from 'astro-icon';
+import { defineConfig } from 'astro/config';
+import rehypeAutolinkHeadings from 'rehype-autolink-headings';
+import rehypeSlug from 'rehype-slug';
+import colors from 'tailwindcss/colors';
+import { externalLinks, stripLineBreaks } from './plugins/remark';
 
+const site = import.meta.env.PROD
+    ? 'https://blog.tsuki-yo.net'
+    : 'http://localhost:4321';
+
+const textBg = (theme: string) =>
+    theme === 'material-theme'
+        ? colors.gray[950] // black-knight
+        : colors.white;
+
+// https://astro.build/config
 export default defineConfig({
     integrations: [
+        solidJs(),
         tailwind({
             applyBaseStyles: false,
         }),
-        solid(),
         compress(),
         sitemap(),
+        icon({
+            include: {
+                'line-md': ['rotate-270', 'hash-small'],
+            },
+        }),
+        partytown(),
+        expressiveCode({
+            themes: ['material-theme', 'material-theme-lighter'],
+            useThemedScrollbars: false,
+            styleOverrides: {
+                borderRadius: '0.5rem', // rounded-lg
+                codeBackground: ({ theme }) => textBg(theme.name),
+                frames: {
+                    editorActiveTabBackground: ({ theme }) =>
+                        textBg(theme.name),
+                    editorActiveTabBorderColor: ({ theme }) =>
+                        textBg(theme.name),
+                    editorTabBarBackground: ({ theme }) =>
+                        theme.name === 'material-theme'
+                            ? '#384B5A' // yamagami-blue
+                            : colors.slate[200], // bellflower-blue
+                    editorActiveTabIndicatorBottomColor: colors.cyan[500], // maldives
+                    shadowColor: 'transparent',
+                },
+            },
+        }),
     ],
     markdown: {
-        remarkPlugins: ['remark-code-titles'],
-        shikiConfig: {
-            themes: {
-                dark: 'material-theme',
-                light: 'material-theme-lighter',
-            },
-        },
+        remarkPlugins: [stripLineBreaks, externalLinks(site)],
+        rehypePlugins: [
+            rehypeSlug,
+            [
+                rehypeAutolinkHeadings,
+                {
+                    behavior: 'wrap',
+                    properties: {
+                        class: 'anchor',
+                    },
+                },
+            ],
+        ],
     },
     prefetch: {
         prefetchAll: true,
     },
-    site: 'https://blog.tsuki-yo.net',
+    site,
 });
