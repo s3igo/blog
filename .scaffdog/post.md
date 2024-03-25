@@ -11,9 +11,9 @@ questions:
 
 ```md
 ---
-title:
+title: {{ inputs.value | kebab }}
 tags: []
-published:
+published: {{ date "YYYY-MM-DD" }}
 updated:
 draft: true
 ---

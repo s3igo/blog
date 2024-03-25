@@ -4,12 +4,12 @@ import type {
     InferGetStaticParamsType,
     InferGetStaticPropsType,
 } from 'astro';
-import { filterPublished, uniqueTags } from '~/utils/posts';
+import { filterPublished, sortedUniqueTags } from '~/utils/posts';
 
 export const getStaticPaths = (async () => {
     const posts = filterPublished(await getCollection('posts'));
 
-    return uniqueTags(posts).map((tag) => ({
+    return sortedUniqueTags(posts).map((tag) => ({
         params: { tag },
         props: {
             posts,
