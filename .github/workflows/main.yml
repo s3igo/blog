@@ -110,7 +110,6 @@ jobs:
         run: bunx playwright test --project ${{ matrix.browser }}
 
   coverage:
-    if: false
     name: Coverage
     runs-on: ubuntu-22.04
     timeout-minutes: 60
