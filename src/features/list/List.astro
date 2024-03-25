@@ -18,7 +18,7 @@ const cards = posts
     .toSorted((a, b) => a.published.localeCompare(b.published))
     .toReversed();
 
-const metadataClasses = 'flex flex-wrap gap-x-3';
+const flexClasses = 'flex flex-wrap gap-x-3';
 ---
 
 <main class="flex flex-col gap-4 md:gap-6">
@@ -34,8 +34,8 @@ const metadataClasses = 'flex flex-wrap gap-x-3';
             >
                 <article>
                     <div class="flex max-sm:flex-col sm:items-center">
-                        <div class={metadataClasses}>
-                            <div class={metadataClasses}>
+                        <div class:list={[flexClasses, 'gap-y-1']}>
+                            <div class={flexClasses}>
                                 <div class="metadata">{published}</div>
                                 {updated && (
                                     <IconMetadata name="line-md:rotate-270">
@@ -43,7 +43,7 @@ const metadataClasses = 'flex flex-wrap gap-x-3';
                                     </IconMetadata>
                                 )}
                             </div>
-                            <div class={metadataClasses}>
+                            <div class={flexClasses}>
                                 {tags.length > 0 &&
                                     tags.map((tag) => (
                                         <IconMetadata name="line-md:hash-small">

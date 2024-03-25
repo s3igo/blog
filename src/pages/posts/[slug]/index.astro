@@ -15,6 +15,8 @@ const { Content } = await post.render();
 
 const baseUrl = new URL(Astro.url.pathname, Astro.site);
 const ogUrl = new URL(`${Astro.url.pathname}/og.png`, baseUrl);
+
+const flexClasses = 'flex flex-wrap gap-3';
 ---
 
 <Layout>
@@ -32,18 +34,22 @@ const ogUrl = new URL(`${Astro.url.pathname}/og.png`, baseUrl);
     <Title slot="title">
         {title}
     </Title>
-    <div slot="meta" class="my-4 flex flex-wrap gap-3 items-center">
-        <div class="metadata">
-            {toStr(published)}
+    <div slot="meta" class:list={[flexClasses ,"my-4 items-center"]}>
+        <div class={flexClasses}>
+            <div class="metadata">
+                {toStr(published)}
+            </div>
+            {
+                updated && (
+                    <IconMetadata name="line-md:rotate-270">
+                        {toStr(updated)}
+                    </IconMetadata>
+                )
+            }
         </div>
-        {
-            updated && (
-                <IconMetadata name="line-md:rotate-270">
-                    {toStr(updated)}
-                </IconMetadata>
-            )
-        }
-        {tags.map((tag) => <Tag name={tag} />)}
+        <div class={flexClasses}>
+            {tags.map((tag) => <Tag name={tag} />)}
+        </div>
     </div>
     <Content slot="content" />
     <Footer slot="footer" />
