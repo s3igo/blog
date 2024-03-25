@@ -2,42 +2,19 @@
 import { ViewTransitions } from 'astro:transitions';
 import '@fontsource/jetbrains-mono';
 import '@fontsource/zen-kaku-gothic-new';
-import { SEO } from 'astro-seo';
-import { PAGE_DESCRIPTION, PAGE_TITLE } from '~/constants';
 import './global.css';
-
-export type Props = {
-    title?: string | undefined;
-    description?: string | undefined;
-};
-
-const { description = PAGE_DESCRIPTION, title } = Astro.props;
 ---
 
-<!doctype html>
 <html lang="ja" class="scroll-smooth" data-theme="material-theme-lighter">
     <head>
-        <SEO
-            title={title ? `${title} | ${PAGE_TITLE}` : PAGE_TITLE}
-            description={description}
-            canonical={new URL(Astro.url.pathname, Astro.site).toString()}
-            charset="UTF-8"
-            extend={{
-                meta: [
-                    { name: "viewport", content: "width=device-width" },
-                    { name: "generator", content: Astro.generator },
-                ],
-                link: [
-                    { rel: "icon", type: "image/png", href: "/icon.webp" },
-                    { rel: "sitemap", href: "/sitemap-index.xml" },
-                    {
-                        rel: "alternate",
-                        type: "application/rss+xml",
-                        href: "/rss.xml",
-                    },
-                ],
-            }}
-        />
+        <meta charset="utf-8" />
+        <slot name="head" />
+        <meta name="viewport" content="width=device-width" />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).toString()} />
+        <link rel="icon" type="image/png" href="/icon.webp" />
+        <link rel="sitemap" href="/sitemap-index.xml" />
+        <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
         <script
             is:inline
             defer
@@ -45,7 +22,6 @@ const { description = PAGE_DESCRIPTION, title } = Astro.props;
             src="https://analytics.eu.umami.is/script.js"
             data-website-id="270fbc48-0e7b-4201-a405-a692d49fd936"></script>
         <ViewTransitions />
-        <slot name="head" />
     </head>
     <body
         class="bg-bellflower-blue font-sans text-yamagami-blue dark:bg-liverty-blue dark:text-blueberry-whip"

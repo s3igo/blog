@@ -33,7 +33,11 @@ const { tag } = Astro.params as Params;
 const { posts, taggedPosts } = Astro.props as Props;
 ---
 
-<Layout title={`#${tag}`}>
+<Layout>
+    <Fragment slot="head">
+        <title>{`#${tag}`}</title>
+        <meta name="description" content={`#${tag}の記事一覧`} />
+    </Fragment>
     <Navigation slot="nav" />
     <TagList slot="tags" {...{ posts }} />
     <Title slot="title">
