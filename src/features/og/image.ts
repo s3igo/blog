@@ -1,23 +1,8 @@
 import fs from 'node:fs/promises';
-import { getCollection, getEntryBySlug } from 'astro:content';
-import type {
-    APIContext,
-    GetStaticPaths,
-    InferGetStaticParamsType,
-} from 'astro';
 import satori from 'satori';
 import { html } from 'satori-html';
 import sharp from 'sharp';
-
-export const getStaticPaths = (async () => {
-    const posts = await getCollection('posts');
-
-    return posts.map((post) => ({
-        params: { slug: post.slug },
-    }));
-}) satisfies GetStaticPaths;
-
-type Params = InferGetStaticParamsType<typeof getStaticPaths>;
+import type { Tags } from '~/utils/posts';
 
 /**
  * @param path absolute path from project root
@@ -29,10 +14,9 @@ const composeUrl = (path: string) =>
         import.meta.url,
     );
 
-export const GET = async ({ params }: APIContext) => {
-    const post = await getEntryBySlug('posts', params.slug as Params['slug']);
-    const { title, tags } = post.data;
+type Props = { title: string; tags: Tags };
 
+export const image = async ({ title, tags }: Props) => {
     const markup = html`<div tw="flex bg-slate-900 text-slate-900 h-full py-8">
         <div tw="flex w-[500px] py-12 mx-auto flex-col">
             <img
@@ -40,7 +24,6 @@ export const GET = async ({ params }: APIContext) => {
                 width="100"
                 height="100"
                 tw="rounded-full"
-                alt="icon"
             />
             <h1 tw="text-5xl text-slate-200 py-10">${title}</h1>
             <div tw="flex" style="gap: 12px;">

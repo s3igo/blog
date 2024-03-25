@@ -1,6 +1,4 @@
 ---
-import { getCollection } from 'astro:content';
-import type { GetStaticPaths, InferGetStaticPropsType } from 'astro';
 import { SEO } from 'astro-seo';
 import IconMetadata from '~/components/IconMetadata.astro';
 import Tag from '~/components/Tag.astro';
@@ -9,22 +7,15 @@ import Navigation from '~/features/navigation/Navigation.astro';
 import Title from '~/features/title/Title.astro';
 import Layout from '~/layouts/post/Layout.astro';
 import { toStr } from '~/utils/date';
-import { filterPublished } from '~/utils/posts';
+import type { Props } from './_static';
+export { getStaticPaths } from './_static';
 
-export const getStaticPaths = (async () => {
-    const posts = filterPublished(await getCollection('posts'));
-
-    return posts.map((post) => ({
-        params: { slug: post.slug },
-        props: { post },
-    }));
-}) satisfies GetStaticPaths;
-
-type Props = InferGetStaticPropsType<typeof getStaticPaths>;
-
-const { post } = Astro.props;
+const { post } = Astro.props as Props;
 const { title, published, updated, tags } = post.data;
 const { Content } = await post.render();
+
+const baseUrl = new URL(Astro.url.pathname, Astro.site);
+const ogUrl = new URL(`${Astro.url.pathname}/og.png`, baseUrl);
 ---
 
 <SEO
@@ -33,7 +24,7 @@ const { Content } = await post.render();
         basic: {
             title,
             type: 'article',
-            image: new URL(`/og/${post.slug}.png`, Astro.site).toString(),
+            image: ogUrl.toString(),
         },
         image: {
             alt: title,
