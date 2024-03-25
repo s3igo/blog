@@ -1,42 +1,31 @@
 ---
-import { getCollection } from 'astro:content';
-import type {
-    GetStaticPaths,
-    InferGetStaticParamsType,
-    InferGetStaticPropsType,
-} from 'astro';
 import Footer from '~/features/footer/Footer.astro';
 import List from '~/features/list/List.astro';
 import Navigation from '~/features/navigation/Navigation.astro';
 import TagList from '~/features/tag-list/TagList.astro';
 import Title from '~/features/title/Title.astro';
 import Layout from '~/layouts/list/Layout.astro';
-import { filterPublished, uniqueTags } from '~/utils/posts';
-
-export const getStaticPaths = (async () => {
-    const posts = filterPublished(await getCollection('posts'));
-
-    return uniqueTags(posts).map((tag) => ({
-        params: { tag },
-        props: {
-            posts,
-            taggedPosts: posts.filter(({ data }) => data.tags.includes(tag)),
-        },
-    }));
-}) satisfies GetStaticPaths;
-
-type Params = InferGetStaticParamsType<typeof getStaticPaths>;
-type Props = InferGetStaticPropsType<typeof getStaticPaths>;
+import type { Params, Props } from './_static';
+export { getStaticPaths } from './_static';
 
 const { tag } = Astro.params as Params;
 // NOTE: use assert to suppress errors from `astro check`
 const { posts, taggedPosts } = Astro.props as Props;
+
+const baseUrl = new URL(Astro.url.pathname, Astro.site);
+const ogUrl = new URL(`${Astro.url.pathname}/og.png`, baseUrl);
 ---
 
 <Layout>
     <Fragment slot="head">
         <title>{`#${tag}`}</title>
         <meta name="description" content={`#${tag}の記事一覧`} />
+        <meta property="og:title" content={`#${tag}`} />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content={baseUrl.toString()} />
+        <meta property="og:image" content={ogUrl.toString()} />
+        <meta property="og:image:alt" content={`#${tag}`} />
+        <meta property="og:image:url" content={ogUrl.toString()} />
     </Fragment>
     <Navigation slot="nav" />
     <TagList slot="tags" {...{ posts }} />
