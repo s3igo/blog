@@ -1,12 +1,11 @@
 ---
 import '@fontsource/zen-kaku-gothic-new/700.css';
-import Base, { type Props as BaseProps } from '../Base.astro';
+import Base from '../Base.astro';
 import './content.css';
-
-type Props = Required<Pick<BaseProps, 'title'>>;
 ---
 
-<Base {...Astro.props}>
+<Base>
+    <slot name="head" slot="head" />
     <div class="container-grid container-rows-4 md:container-rows-3">
         <div
             class:list={[

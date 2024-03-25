@@ -1,8 +1,9 @@
 ---
-import Base, { type Props } from '../Base.astro';
+import Base from '../Base.astro';
 ---
 
-<Base {...Astro.props}>
+<Base>
+    <slot name="head" slot="head" />
     <div
         class="container-grid container-rows-5 md:container-rows-4 lg:container-rows-3"
     >

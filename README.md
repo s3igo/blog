@@ -60,6 +60,7 @@ Issue駆動で開発し、PRの`closes`コメントでIssueを閉じます。
 
 新規コミットを含むブランチから`develop`ブランチへは`squash and merge`を行い、
 `main`ブランチへはマージコミットを作成してマージします。
+RenovateによるPRは常にマージコミットを作成します。
 
 ## ライセンス
 
