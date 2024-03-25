@@ -70,12 +70,6 @@ export default defineConfig({
                 },
             ],
         ],
-        shikiConfig: {
-            themes: {
-                dark: 'material-theme',
-                light: 'material-theme-lighter',
-            },
-        },
     },
     prefetch: {
         prefetchAll: true,
