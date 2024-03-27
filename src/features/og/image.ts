@@ -4,6 +4,9 @@ import { html } from 'satori-html';
 import sharp from 'sharp';
 import type { Tags } from '~/utils/posts';
 
+export const width = 1200;
+export const height = 600;
+
 /**
  * @param path absolute path from project root
  */
@@ -29,7 +32,7 @@ export const image = async ({ title, tags }: Props) => {
             <div tw="flex" style="gap: 12px;">
                 ${tags.map(
                     (tag) => `<p
-                        tw="text-xl text-slate-200 bg-slate-700 rounded-full px-4 pt-1 pb-2"
+                        tw="text-xl text-slate-200 bg-slate-700 rounded-full px-4 pt-1 pb-4"
                         style="font-family: 'JetBrains Mono';"
                     >#${tag}</p>`,
                 )}
@@ -38,8 +41,8 @@ export const image = async ({ title, tags }: Props) => {
     </div>`;
 
     const svg = await satori(markup, {
-        width: 1200,
-        height: 630,
+        width,
+        height,
         fonts: [
             {
                 name: 'Zen Kaku Gothic New',

@@ -7,6 +7,7 @@ import Title from '~/features/title/Title.astro';
 import Layout from '~/layouts/list/Layout.astro';
 import type { Params, Props } from './_static';
 export { getStaticPaths } from './_static';
+import Og from '~/features/og/Og.astro';
 
 const { tag } = Astro.params as Params;
 // NOTE: use assert to suppress errors from `astro check`
@@ -20,12 +21,7 @@ const ogUrl = new URL(`${Astro.url.pathname}/og.png`, baseUrl);
     <Fragment slot="head">
         <title>{`#${tag}`}</title>
         <meta name="description" content={`#${tag}の記事一覧`} />
-        <meta property="og:title" content={`#${tag}`} />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content={baseUrl.toString()} />
-        <meta property="og:image" content={ogUrl.toString()} />
-        <meta property="og:image:alt" content={`#${tag}`} />
-        <meta property="og:image:url" content={ogUrl.toString()} />
+        <Og title={`#${tag}`} url={baseUrl} imageUrl={ogUrl} />
     </Fragment>
     <Navigation slot="nav" />
     <TagList slot="tags" {...{ posts }} />

@@ -1,0 +1,15 @@
+---
+import { height, width } from './image';
+
+type Props = { title: string; url: URL; imageUrl: URL };
+
+const { title, url, imageUrl } = Astro.props;
+---
+
+<meta property="og:title" content={title} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url.toString()} />
+<meta property="og:image" content={imageUrl.toString()} />
+<meta property="og:image:alt" content={title} />
+<meta property="og:image:width" content={width.toString()} />
+<meta property="og:image:height" content={height.toString()} />
