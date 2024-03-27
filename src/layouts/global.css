@@ -8,7 +8,7 @@
     }
     /*
     * コンテンツの最小高さが100svhに満たない場合にフッターを固定するため
-    * コンテナに`min-h-svhを適用し、tailwind組み込みの`grid-rows`を使わずに
+    * コンテナに`min-h-svh`を適用し、tailwind組み込みの`grid-rows`を使わずに
     * `grid-template-rows`を指定する
     */
     .container-grid {
@@ -30,7 +30,9 @@
 
     .hover-element {
         @media (hover: hover) {
-            @apply ease-in-out duration-100 hover:border-maldives hover:bg-aphrodites-pearls dark:hover:bg-midnight-express
+            @apply ease-in-out duration-100;
+            @apply hover:border-maldives hover:bg-aphrodites-pearls;
+            @apply dark:hover:bg-midnight-express;
         }
     }
 }

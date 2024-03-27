@@ -15,14 +15,14 @@
 
 - パッケージマネージャー: Bun
 - レンダリングフレームワーク: Astro
-- UIライブラリ: Solid
+- UIライブラリ: SolidJS
 - CSSフレームワーク: TailwindCSS
 - リンター・フォーマッター: Biome
 - ドメイン・デプロイ・CDN: Cloudflare
 - 単体テスト: Vitest
 - E2Eテスト: Playwright
 - CI/CD: GitHub Actions
-- 依存関係管理: Renovate
+- 依存関係のアップデート: Renovate
 
 ## 設計思想
 
