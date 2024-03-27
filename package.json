@@ -29,7 +29,7 @@
   "dependencies": {
     "@astrojs/partytown": "2.0.4",
     "@astrojs/rss": "4.0.5",
-    "@astrojs/sitemap": "3.1.1",
+    "@astrojs/sitemap": "3.1.2",
     "@astrojs/solid-js": "4.0.1",
     "@astrojs/tailwind": "5.1.0",
     "@fontsource/jetbrains-mono": "5.0.19",
@@ -37,8 +37,8 @@
     "@iconify-icon/solid": "2.0.0",
     "@iconify-json/line-md": "1.1.37",
     "@kobalte/core": "0.12.6",
-    "astro": "4.5.9",
-    "astro-compress": "2.2.17",
+    "astro": "4.5.10",
+    "astro-compress": "2.2.19",
     "astro-expressive-code": "0.33.5",
     "astro-icon": "1.1.0",
     "autoprefixer": "10.4.19",
@@ -59,7 +59,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.5.10",
-    "@biomejs/biome": "1.6.2",
+    "@biomejs/biome": "1.6.3",
     "@ls-lint/ls-lint": "2.2.3",
     "@playwright/test": "1.42.1",
     "@types/markdown-it": "13.0.7",
