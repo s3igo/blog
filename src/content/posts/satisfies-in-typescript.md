@@ -2,18 +2,17 @@
 title: もうsatisfiesのないTypeScriptには戻れない
 tags: [TypeScript, programming]
 published: 2024-03-19
-updated:
+updated: 2024-03-27
 draft: false
 ---
 
 [TypeScript 4.9](https://www.typescriptlang.org/docs/handbook/release-notes/typescript-4-9.html#the-satisfies-operator)
-で`satisfies`演算子が追加されて以降、もうこれなしのTypeScriptを書くなんてことは考えられなくなってしまいました。
+で`satisfies`演算子が追加されて以降、もうこれなしのTypeScriptなんては考えられなくなってしまいました。
 様々な場面で便利なので、`satisfies`演算子の使い道についてまとめてみます。
 
 ## 基本の使い方
 
-`satisfies`演算子が実装された主な目的は、
-型推論の結果を失わずに型をチェックするためです。
+`satisfies`演算子は型推論の結果を失わずに型をチェックするために実装されました。
 
 どういうことかというと、例えば、
 
@@ -37,7 +36,7 @@ type ColorName = (typeof colors)[number]['name'];
 しかし、これだと`ColorName`型は正しく得られるものの、
 以下のようなtypoに気づくことができません。
 
-```ts
+```ts {7}
 const colors = [
     {
         id: 1,
@@ -55,13 +54,14 @@ type ColorName = (typeof colors)[number]['name'];
 
 なので、`colors`変数が正しいことを保証するために型注釈を追加してみますが、
 
-```ts
+```ts ins={1-6} del={7} {19}
 type Color = {
     id: number;
     name: string;
 };
 
 const colors: Color[] = [
+const colors = [
     {
         id: 1,
         name: 'red',
@@ -77,11 +77,11 @@ type ColorName = (typeof colors)[number]['name'];
 ```
 
 これだと`colors`変数は正しいものの、
-型注釈によって型推論の結果を失うため、`ColorName`が`string`型になってしまいます。
+型注釈によってwideningが発生し、`ColorName`が`string`型になってしまいます。
 
 そこで、
 
-```ts
+```ts {15}
 type Color = {
     id: number;
     name: string;
@@ -102,11 +102,11 @@ type ColorName = (typeof colors)[number]['name'];
 // => "red" | "blue"
 ```
 
-このように`satisfies`演算子を使ってあげることで、
+こんな感じで`satisfies`演算子を使ってあげることで、
 型推論の結果を活かしながら`colors`変数の型をチェックできます。
 もちろん、typoも検出できます。
 
-```ts
+```ts {12}
 type Color = {
     id: number;
     name: string;
@@ -170,7 +170,7 @@ printLevel(subject);
 
 しかし、以下のようにして型レベルで網羅性を保証してあげることができます。
 
-```ts
+```ts ins={11-12}
 const printLevel = (subject: Subject) => {
     switch (subject.type) {
         case 'Math': {
@@ -200,13 +200,13 @@ const _assert: never = subject;
 しかし、前者の方法では`_assert is declared but its value is never read.`のエラーが出てしまい、
 後者の方法ではわざわざアサート用の関数を用意しなければいけないという欠点があります。
 
-それを考慮するとやはり`satisfies`を使って網羅性チェックをするのがキレイかなーと思います。
+それを考慮するとやはり`satisfies`を使って網羅性チェックをするのがキレイかなーと思っています。
 
 ## 最後に
 
-あらためてまとめてみたらあんまり使い道多くなかったですね。
-実際TypeScript書いているときはよく`satisfies`ってタイプしては
-`satisfies`が使える現代に生まれたことを感謝している気がするのですが、
+改めてまとめてみたらあんまり使い道多くなかったですね。
+TypeScriptを書いているときは`satisfies`ってタイプしては
+`satisfies`が使える現代に生まれたことを感謝することが頻繁にある気がするのですが、
 ただの気のせいだったようです。
 
 もし他にも便利な用途を見つけたら追記するかもしれません。
