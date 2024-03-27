@@ -21,7 +21,7 @@ type Props = { title: string; tags: Tags };
 
 export const image = async ({ title, tags }: Props) => {
     const markup = html`<div tw="flex bg-slate-900 text-slate-900 h-full py-8">
-        <div tw="flex w-[500px] py-12 mx-auto flex-col">
+        <div tw="flex w-[1000px] py-12 mx-auto flex-col">
             <img
                 src="https://icon.tsuki-yo.net/icon.png"
                 width="100"
@@ -32,7 +32,7 @@ export const image = async ({ title, tags }: Props) => {
             <div tw="flex" style="gap: 12px;">
                 ${tags.map(
                     (tag) => `<p
-                        tw="text-xl text-slate-200 bg-slate-700 rounded-full px-4 pt-1 pb-4"
+                        tw="text-xl text-slate-200 bg-slate-700 rounded-full px-3 py-1"
                         style="font-family: 'JetBrains Mono';"
                     >#${tag}</p>`,
                 )}

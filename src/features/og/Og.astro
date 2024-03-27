@@ -13,3 +13,7 @@ const { title, url, imageUrl } = Astro.props;
 <meta property="og:image:alt" content={title} />
 <meta property="og:image:width" content={width.toString()} />
 <meta property="og:image:height" content={height.toString()} />
+<meta property="twitter:image:src" content={imageUrl.toString()} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:site" content="@t5ukiyo" />
