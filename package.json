@@ -24,7 +24,7 @@
     "coverage": "vitest run --coverage",
     "coverage:clean": "rm -rf ./coverage",
     "clean": "rm -rf ./node_modules",
-    "new": "scaffdog generate"
+    "new": "scaffdog generate post"
   },
   "dependencies": {
     "@astrojs/partytown": "2.0.4",

@@ -8,6 +8,7 @@ import Layout from '~/layouts/post/Layout.astro';
 import { toStr } from '~/utils/date';
 import type { Props } from './_static';
 export { getStaticPaths } from './_static';
+import Og from '~/features/og/Og.astro';
 
 const { post } = Astro.props as Props;
 const { title, published, updated, tags } = post.data;
@@ -23,12 +24,7 @@ const flexClasses = 'flex flex-wrap gap-3';
     <Fragment slot="head">
         <title>{title}</title>
         <meta name="description" content={title} />
-        <meta property="og:title" content={title} />
-        <meta property="og:type" content="article" />
-        <meta property="og:url" content={baseUrl.toString()} />
-        <meta property="og:image" content={ogUrl.toString()} />
-        <meta property="og:image:alt" content={title} />
-        <meta property="og:image:url" content={ogUrl.toString()} />
+        <Og {...{ title }} url={baseUrl} imageUrl={ogUrl} />
     </Fragment>
     <Navigation slot="nav" />
     <Title slot="title">
