@@ -1,5 +1,5 @@
 ---
-name: 'new post'
+name: 'post'
 root: './src/content/posts/'
 output: '*'
 ignore: []
