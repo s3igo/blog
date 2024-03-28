@@ -1,26 +1,31 @@
-import { Icon } from '@iconify-icon/solid';
 import { HoverCard } from '@kobalte/core';
 import clsx from 'clsx';
-import { CgDarkMode, CgMoreAlt } from 'solid-icons/cg';
-import { FiRss } from 'solid-icons/fi';
+import { CgMoreAlt } from 'solid-icons/cg';
 import { createSignal, onCleanup, onMount } from 'solid-js';
-import { toggleTheme } from './client-script';
+import { Github, Moon, Rss, Sunny, TwitterX } from '~/components/icons/line-md';
+import { getCurrentTheme, toggleTheme } from './client-script';
 
 const baseIconClasses =
     'bg-white rounded-full border-2 border-transparent p-2 dark:bg-black-knight dark:text-santas-gray';
 const animationIconClasses =
     'hover-element dark:hover:bg-gray-500 hover:scale-[120%]';
+const portalIconClasses = clsx(baseIconClasses, animationIconClasses);
 
 const Memu = () => {
     const [open, setOpen] = createSignal(false);
-
+    const [darkMode, setDarkMode] = createSignal(false);
     const [windowWidth, setWindowWidth] = createSignal<number>();
+
     onMount(() => {
+        setDarkMode(getCurrentTheme() === 'dark');
+
         setWindowWidth(window.innerWidth);
+
         window.addEventListener('resize', () =>
             setWindowWidth(window.innerWidth),
         );
     });
+
     onCleanup(() => {
         window.removeEventListener('resize', () =>
             setWindowWidth(window.innerWidth),
@@ -36,6 +41,11 @@ const Memu = () => {
 
         // md = min-width: 768px
         return width >= 768 ? 'bottom' : 'right';
+    };
+
+    const handleToggleTheme = () => {
+        setDarkMode((prev) => !prev);
+        toggleTheme();
     };
 
     return (
@@ -57,41 +67,33 @@ const Memu = () => {
                 <CgMoreAlt class="text-xl" />
             </HoverCard.Trigger>
             <HoverCard.Portal>
-                <HoverCard.Content class="flex gap-3 md:flex-col">
+                <HoverCard.Content class="flex gap-3 text-xl md:flex-col">
                     <button
                         type="button"
-                        class={clsx(baseIconClasses, animationIconClasses)}
+                        class={portalIconClasses}
                         aria-label="Toggle dark mode"
-                        onClick={() => toggleTheme()}
+                        onClick={handleToggleTheme}
                     >
-                        <CgDarkMode class="text-xl" />
+                        {darkMode() ? <Moon /> : <Sunny />}
                     </button>
                     <a
                         href="/rss.xml"
-                        class={clsx(baseIconClasses, animationIconClasses)}
+                        class={portalIconClasses}
                         aria-label="RSS feed"
                     >
-                        <FiRss class="text-xl" />
+                        <Rss />
                     </a>
                     <a
                         href="https://twitter.com/t5ukiyo"
-                        class={clsx(
-                            baseIconClasses,
-                            animationIconClasses,
-                            'pb-1',
-                        )}
+                        class={portalIconClasses}
                     >
-                        <Icon icon="line-md:twitter-x" class="text-xl" />
+                        <TwitterX />
                     </a>
                     <a
                         href="https://github.com/s3igo"
-                        class={clsx(
-                            baseIconClasses,
-                            animationIconClasses,
-                            'pb-1',
-                        )}
+                        class={portalIconClasses}
                     >
-                        <Icon icon="line-md:github" class="text-xl" />
+                        <Github />
                     </a>
                 </HoverCard.Content>
             </HoverCard.Portal>
