@@ -14,8 +14,9 @@ const animationIconClasses =
 const Memu = () => {
     const [open, setOpen] = createSignal(false);
 
-    const [windowWidth, setWindowWidth] = createSignal(window.innerWidth);
+    const [windowWidth, setWindowWidth] = createSignal<number>();
     onMount(() => {
+        setWindowWidth(window.innerWidth);
         window.addEventListener('resize', () =>
             setWindowWidth(window.innerWidth),
         );
@@ -26,14 +27,25 @@ const Memu = () => {
         );
     });
 
+    const decidePlacement = (): 'bottom' | 'right' => {
+        const width = windowWidth();
+
+        if (width === undefined) {
+            return 'bottom';
+        }
+
+        // md = min-width: 768px
+        return width >= 768 ? 'bottom' : 'right';
+    };
+
     return (
         <HoverCard.Root
             openDelay={0}
             closeDelay={0}
             open={open()}
             onOpenChange={setOpen}
-            placement={windowWidth() >= 768 ? 'bottom' : 'right'} // lg
             gutter={12}
+            placement={decidePlacement()}
         >
             <HoverCard.Trigger onClick={() => setOpen((prev) => !prev)}>
                 <button

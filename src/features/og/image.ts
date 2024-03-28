@@ -12,7 +12,7 @@ export const height = 600;
  */
 const composeUrl = (path: string) =>
     new URL(
-        // NOTE: workaround for differences between dev and build environments
+        // NOTE: workaround for differences between DEV and PROD environments
         import.meta.env.PROD ? `../..${path}` : `../../..${path}`,
         import.meta.url,
     );
