@@ -32,7 +32,7 @@ export const image = async ({ title, tags }: Props) => {
             <div tw="flex" style="gap: 12px;">
                 ${tags.map(
                     (tag) => `<p
-                        tw="text-xl text-slate-200 bg-slate-700 rounded-full px-3 py-1"
+                        tw="text-2xl text-slate-200 bg-slate-700 rounded-full px-4 pt-1 pb-2"
                         style="font-family: 'JetBrains Mono';"
                     >#${tag}</p>`,
                 )}
