@@ -22,6 +22,26 @@ const textBg = (theme: string) =>
 
 // https://astro.build/config
 export default defineConfig({
+    site,
+    trailingSlash: 'never', // to match the DEV and PROD environment
+    prefetch: {
+        prefetchAll: true,
+    },
+    markdown: {
+        remarkPlugins: [stripLineBreaks, externalLinks(site)],
+        rehypePlugins: [
+            rehypeSlug,
+            [
+                rehypeAutolinkHeadings,
+                {
+                    behavior: 'wrap',
+                    properties: {
+                        class: 'anchor',
+                    },
+                },
+            ],
+        ],
+    },
     integrations: [
         solidJs(),
         tailwind({
@@ -56,23 +76,4 @@ export default defineConfig({
             },
         }),
     ],
-    markdown: {
-        remarkPlugins: [stripLineBreaks, externalLinks(site)],
-        rehypePlugins: [
-            rehypeSlug,
-            [
-                rehypeAutolinkHeadings,
-                {
-                    behavior: 'wrap',
-                    properties: {
-                        class: 'anchor',
-                    },
-                },
-            ],
-        ],
-    },
-    prefetch: {
-        prefetchAll: true,
-    },
-    site,
 });
