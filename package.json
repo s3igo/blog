@@ -35,7 +35,6 @@
     "@astrojs/tailwind": "5.1.0",
     "@fontsource/jetbrains-mono": "5.0.19",
     "@fontsource/zen-kaku-gothic-new": "5.0.18",
-    "@iconify-icon/solid": "2.0.0",
     "@iconify-json/line-md": "1.1.37",
     "@kobalte/core": "0.12.6",
     "astro": "4.5.10",
