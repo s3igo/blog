@@ -47,14 +47,14 @@ const Memu = () => {
             gutter={12}
             placement={decidePlacement()}
         >
-            <HoverCard.Trigger onClick={() => setOpen((prev) => !prev)}>
-                <button
-                    type="button"
-                    class={baseIconClasses}
-                    aria-label="global menu"
-                >
-                    <CgMoreAlt class="text-xl" />
-                </button>
+            <HoverCard.Trigger
+                onClick={() => setOpen((prev) => !prev)}
+                as="button"
+                type="button"
+                class={baseIconClasses}
+                aria-label="global menu"
+            >
+                <CgMoreAlt class="text-xl" />
             </HoverCard.Trigger>
             <HoverCard.Portal>
                 <HoverCard.Content class="flex gap-3 md:flex-col">
