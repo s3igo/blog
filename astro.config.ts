@@ -2,7 +2,6 @@ import partytown from '@astrojs/partytown';
 import sitemap from '@astrojs/sitemap';
 import solidJs from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
-import compress from 'astro-compress';
 import expressiveCode from 'astro-expressive-code';
 import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
@@ -47,7 +46,6 @@ export default defineConfig({
         tailwind({
             applyBaseStyles: false,
         }),
-        compress(),
         sitemap(),
         icon({
             include: {

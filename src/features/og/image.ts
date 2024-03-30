@@ -12,7 +12,7 @@ export const height = 600;
  */
 const composeUrl = (path: string) =>
     new URL(
-        // NOTE: workaround for differences between DEV and PROD environments
+        // NOTE: workaround for differences between `astro dev` and `astro build` environments
         import.meta.env.PROD ? `../..${path}` : `../../..${path}`,
         import.meta.url,
     );
