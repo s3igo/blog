@@ -58,11 +58,11 @@ const Memu = () => {
             placement={decidePlacement()}
         >
             <HoverCard.Trigger
-                onClick={() => setOpen((prev) => !prev)}
                 as="button"
                 type="button"
                 class={baseIconClasses}
                 aria-label="global menu"
+                onClick={() => setOpen((prev) => !prev)}
             >
                 <CgMoreAlt class="text-xl" />
             </HoverCard.Trigger>
