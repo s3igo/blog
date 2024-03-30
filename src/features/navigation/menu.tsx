@@ -74,7 +74,7 @@ const Memu = () => {
                         aria-label="Toggle dark mode"
                         onClick={handleToggleTheme}
                     >
-                        {darkMode() ? <Moon /> : <Sunny />}
+                        {darkMode() ? <Sunny /> : <Moon />}
                     </button>
                     <a
                         href="/rss.xml"
