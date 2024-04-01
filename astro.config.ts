@@ -3,7 +3,6 @@ import sitemap from '@astrojs/sitemap';
 import solidJs from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
 import expressiveCode from 'astro-expressive-code';
-import icon from 'astro-icon';
 import { defineConfig } from 'astro/config';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
@@ -47,11 +46,6 @@ export default defineConfig({
             applyBaseStyles: false,
         }),
         sitemap(),
-        icon({
-            include: {
-                'line-md': ['rotate-270', 'hash-small'],
-            },
-        }),
         partytown(),
         expressiveCode({
             themes: ['material-theme', 'material-theme-lighter'],

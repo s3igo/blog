@@ -15,11 +15,7 @@ type Attributes = JSX.SVGElementTags['svg'];
 type Props = Attributes & { title?: string };
 
 const Svg = (props: Props & { children: JSX.Element }) => {
-    const [{ children }, explicit, attrs] = splitProps(
-        props,
-        ['children'],
-        ['title'],
-    );
+    const [local, others] = splitProps(props, ['title', 'children']);
 
     return (
         <svg
@@ -27,10 +23,10 @@ const Svg = (props: Props & { children: JSX.Element }) => {
             width="1em"
             height="1em"
             viewBox="0 0 24 24"
-            {...attrs}
+            {...others}
         >
-            <title>{explicit.title}</title>
-            {children}
+            <title>{local.title}</title>
+            {local.children}
         </svg>
     );
 };
@@ -256,6 +252,132 @@ export const Github = (props: Props) => (
                     begin="0.525s"
                     dur="0.15s"
                     values="10;0"
+                />
+            </path>
+        </g>
+    </Svg>
+);
+
+export const HashSmall = (props: Props) => (
+    <Svg {...props}>
+        <g
+            fill="none"
+            stroke="currentColor"
+            stroke-dasharray="16"
+            stroke-dashoffset="16"
+            stroke-linecap="round"
+            stroke-width="2"
+        >
+            <path d="M6 9H19">
+                <animate
+                    fill="freeze"
+                    attributeName="stroke-dashoffset"
+                    dur="0.15s"
+                    values="16;0"
+                />
+            </path>
+            <path d="M5 15H18">
+                <animate
+                    fill="freeze"
+                    attributeName="stroke-dashoffset"
+                    begin="0.15s"
+                    dur="0.15s"
+                    values="16;0"
+                />
+            </path>
+            <path d="M10 5L8 19">
+                <animate
+                    fill="freeze"
+                    attributeName="stroke-dashoffset"
+                    begin="0.375s"
+                    dur="0.15s"
+                    values="16;0"
+                />
+            </path>
+            <path d="M16 5L14 19">
+                <animate
+                    fill="freeze"
+                    attributeName="stroke-dashoffset"
+                    begin="0.525s"
+                    dur="0.15s"
+                    values="16;0"
+                />
+            </path>
+        </g>
+    </Svg>
+);
+
+export const Rotate = (props: Props) => (
+    <Svg {...props}>
+        <g
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-width="2"
+        >
+            <path
+                stroke-dasharray="32"
+                stroke-dashoffset="32"
+                d="M12 6C15.3137 6 18 8.68629 18 12C18 15.3137 15.3137 18 12 18C8.68629 18 6 15.3137 6 12V9.5"
+            >
+                <animate
+                    fill="freeze"
+                    attributeName="stroke-dashoffset"
+                    dur="0.45s"
+                    values="32;0"
+                />
+            </path>
+            <path
+                stroke-dasharray="6"
+                stroke-dashoffset="6"
+                d="M6 9L3 12M6 9L9 12"
+            >
+                <animate
+                    fill="freeze"
+                    attributeName="stroke-dashoffset"
+                    begin="0.45s"
+                    dur="0.15s"
+                    values="6;0"
+                />
+            </path>
+        </g>
+    </Svg>
+);
+
+export const MenuIcon = (props: Props) => (
+    <Svg {...props}>
+        <g
+            fill="none"
+            stroke="currentColor"
+            stroke-dasharray="24"
+            stroke-dashoffset="24"
+            stroke-linecap="round"
+            stroke-width="2"
+        >
+            <path d="M5 5H19">
+                <animate
+                    fill="freeze"
+                    attributeName="stroke-dashoffset"
+                    dur="0.15s"
+                    values="24;0"
+                />
+            </path>
+            <path d="M5 12H19">
+                <animate
+                    fill="freeze"
+                    attributeName="stroke-dashoffset"
+                    begin="0.15s"
+                    dur="0.15s"
+                    values="24;0"
+                />
+            </path>
+            <path d="M5 19H19">
+                <animate
+                    fill="freeze"
+                    attributeName="stroke-dashoffset"
+                    begin="0.3s"
+                    dur="0.15s"
+                    values="24;0"
                 />
             </path>
         </g>

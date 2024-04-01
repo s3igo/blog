@@ -1,5 +1,7 @@
 ---
-import IconMetadata from '~/components/IconMetadata.astro';
+import { Metadata } from '~/components/metadata';
+import { Tag } from '~/components/tag';
+import { Updated } from '~/components/updated';
 import { toStr } from '~/utils/date';
 import type { Posts } from '~/utils/posts';
 
@@ -34,22 +36,14 @@ const flexClasses = 'flex flex-wrap gap-x-3';
             >
                 <article>
                     <div class="flex max-sm:flex-col sm:items-center">
-                        <div class:list={[flexClasses, 'gap-y-1']}>
+                        <div class:list={[flexClasses, "gap-y-1"]}>
                             <div class={flexClasses}>
-                                <div class="metadata">{published}</div>
-                                {updated && (
-                                    <IconMetadata name="line-md:rotate-270">
-                                        {updated}
-                                    </IconMetadata>
-                                )}
+                                <Metadata>{published}</Metadata>
+                                {updated && <Updated>{updated}</Updated>}
                             </div>
                             <div class={flexClasses}>
                                 {tags.length > 0 &&
-                                    tags.map((tag) => (
-                                        <IconMetadata name="line-md:hash-small">
-                                            {tag}
-                                        </IconMetadata>
-                                    ))}
+                                    tags.map((tag) => <Tag name={tag} />)}
                             </div>
                         </div>
                     </div>
