@@ -3,9 +3,6 @@
 @tailwind utilities;
 
 @layer utilities {
-    .metadata {
-        @apply max-xl:text-sm text-blue-blouse font-code;
-    }
     /*
     * コンテンツの最小高さが100svhに満たない場合にフッターを固定するため
     * コンテナに`min-h-svh`を適用し、tailwind組み込みの`grid-rows`を使わずに

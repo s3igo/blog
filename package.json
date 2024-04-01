@@ -11,7 +11,6 @@
     "build": "astro build",
     "preview": "astro preview",
     "check:astro": "astro check",
-    "check": "bunx @biomejs/biome check .",
     "check:fix": "bunx @biomejs/biome check --apply .",
     "check:apply": "bunx @biomejs/biome check --apply-unsafe .",
     "check:ci": "bunx @biomejs/biome ci .",

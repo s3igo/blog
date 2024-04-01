@@ -15,7 +15,7 @@ type Attributes = JSX.SVGElementTags['svg'];
 type Props = Attributes & { title?: string };
 
 const Svg = (props: Props & { children: JSX.Element }) => {
-    const [local, others] = splitProps(props, ['children', 'title']);
+    const [local, others] = splitProps(props, ['title', 'children']);
 
     return (
         <svg
