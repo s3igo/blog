@@ -1,4 +1,5 @@
 ---
+import { Metadata } from '~/components/metadata';
 import { Tag } from '~/components/tag';
 import { Updated } from '~/components/updated';
 import { toStr } from '~/utils/date';
@@ -37,7 +38,7 @@ const flexClasses = 'flex flex-wrap gap-x-3';
                     <div class="flex max-sm:flex-col sm:items-center">
                         <div class:list={[flexClasses, "gap-y-1"]}>
                             <div class={flexClasses}>
-                                <div class="metadata">{published}</div>
+                                <Metadata>{published}</Metadata>
                                 {updated && <Updated>{updated}</Updated>}
                             </div>
                             <div class={flexClasses}>

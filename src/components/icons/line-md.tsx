@@ -15,7 +15,7 @@ type Attributes = JSX.SVGElementTags['svg'];
 type Props = Attributes & { title?: string };
 
 const Svg = (props: Props & { children: JSX.Element }) => {
-    const [local, others] = splitProps(props, ['children', 'title']);
+    const [local, others] = splitProps(props, ['title', 'children']);
 
     return (
         <svg
@@ -338,6 +338,46 @@ export const Rotate = (props: Props) => (
                     begin="0.45s"
                     dur="0.15s"
                     values="6;0"
+                />
+            </path>
+        </g>
+    </Svg>
+);
+
+export const MenuIcon = (props: Props) => (
+    <Svg {...props}>
+        <g
+            fill="none"
+            stroke="currentColor"
+            stroke-dasharray="24"
+            stroke-dashoffset="24"
+            stroke-linecap="round"
+            stroke-width="2"
+        >
+            <path d="M5 5H19">
+                <animate
+                    fill="freeze"
+                    attributeName="stroke-dashoffset"
+                    dur="0.15s"
+                    values="24;0"
+                />
+            </path>
+            <path d="M5 12H19">
+                <animate
+                    fill="freeze"
+                    attributeName="stroke-dashoffset"
+                    begin="0.15s"
+                    dur="0.15s"
+                    values="24;0"
+                />
+            </path>
+            <path d="M5 19H19">
+                <animate
+                    fill="freeze"
+                    attributeName="stroke-dashoffset"
+                    begin="0.3s"
+                    dur="0.15s"
+                    values="24;0"
                 />
             </path>
         </g>

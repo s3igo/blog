@@ -24,7 +24,7 @@ export const Metadata = <T extends Element = 'div'>(
     return (
         <Dynamic
             class={clsx(
-                'metadata',
+                'font-code text-blue-blouse max-xl:text-sm',
                 local.icon && 'flex items-center',
                 component === 'a' &&
                     'hover-element w-max rounded-full border-2 border-transparent bg-white px-3 py-1 dark:bg-black-knight',

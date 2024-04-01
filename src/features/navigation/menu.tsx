@@ -1,8 +1,14 @@
 import { HoverCard } from '@kobalte/core';
 import clsx from 'clsx';
-import { CgMoreAlt } from 'solid-icons/cg';
 import { createSignal, onCleanup, onMount } from 'solid-js';
-import { Github, Moon, Rss, Sunny, TwitterX } from '~/components/icons/line-md';
+import {
+    Github,
+    MenuIcon,
+    Moon,
+    Rss,
+    Sunny,
+    TwitterX,
+} from '~/components/icons/line-md';
 import { getCurrentTheme, toggleTheme } from './client-script';
 
 const baseIconClasses =
@@ -20,7 +26,6 @@ const Memu = () => {
         setDarkMode(getCurrentTheme() === 'dark');
 
         setWindowWidth(window.innerWidth);
-
         window.addEventListener('resize', () =>
             setWindowWidth(window.innerWidth),
         );
@@ -64,7 +69,7 @@ const Memu = () => {
                 aria-label="global menu"
                 onClick={() => setOpen((prev) => !prev)}
             >
-                <CgMoreAlt class="text-xl" />
+                <MenuIcon class="text-xl" />
             </HoverCard.Trigger>
             <HoverCard.Portal>
                 <HoverCard.Content class="flex gap-3 text-xl md:flex-col">
