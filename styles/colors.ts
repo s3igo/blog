@@ -4,18 +4,12 @@ export const literals = {
     // slate
     'bellflower-blue': colors.slate[200],
     'blue-blouse': colors.slate[400],
-    'saltbox-blue': colors.slate[500],
     rainmaker: colors.slate[600],
     'liverty-blue': colors.slate[900],
-    'obsidian-shard': colors.slate[950],
     // gray
-    'dreamy-cloud': colors.gray[200],
     'blueberry-whip': colors.gray[300],
     'santas-gray': colors.gray[400],
-    encore: colors.gray[500],
-    'midnight-navy': colors.gray[700],
     'midnight-express': colors.gray[800],
-    sambucus: colors.gray[900],
     'black-knight': colors.gray[950],
     // orange
     'spiced-nectarine': colors.orange[300],

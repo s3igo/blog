@@ -99,7 +99,8 @@
 
         /* inline */
         &:not(pre > *) {
-            @apply mx-1 rounded-md bg-white px-1 text-base text-rainmaker dark:bg-black-knight dark:text-santas-gray;
+            @apply mx-1 rounded-md bg-white px-1 text-base text-rainmaker;
+            @apply dark:bg-black-knight dark:text-santas-gray;
         }
     }
 }
