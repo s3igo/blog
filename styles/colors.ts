@@ -1,23 +1,25 @@
 import colors from 'tailwindcss/colors';
 
 export const literals = {
-    'aphrodites-pearls': colors.cyan[50],
+    // slate
     'bellflower-blue': colors.slate[200],
-    'liverty-blue': colors.slate[900],
-    'obsidian-shard': colors.slate[950],
-    sambucus: colors.gray[900],
-    'black-knight': colors.gray[950],
     'blue-blouse': colors.slate[400],
-    'dreamy-cloud': colors.gray[200],
-    encore: colors.gray[500],
-    maldives: colors.cyan[500],
-    'midnight-express': colors.gray[800],
-    'midnight-navy': colors.gray[700],
-    'spiced-nectarine': colors.orange[300],
-    'yamagami-blue': '#384b5a',
+    rainmaker: colors.slate[600],
+    'liverty-blue': colors.slate[900],
+    // gray
     'blueberry-whip': colors.gray[300],
     'santas-gray': colors.gray[400],
+    'midnight-express': colors.gray[800],
+    'black-knight': colors.gray[950],
+    // orange
+    'spiced-nectarine': colors.orange[300],
+    // cyan
+    'aphrodites-pearls': colors.cyan[50],
+    maldives: colors.cyan[500],
+    'saltwater-denim': colors.cyan[800],
+    // extended colors
     white: colors.white,
-    // black: colors.black,
     transparent: 'transparent',
+    // arbitrary colors
+    'yamagami-blue': '#384b5a',
 };

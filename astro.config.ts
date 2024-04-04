@@ -60,8 +60,8 @@ export default defineConfig({
                         textBg(theme.name),
                     editorTabBarBackground: ({ theme }) =>
                         theme.name === 'material-theme'
-                            ? '#384B5A' // yamagami-blue
-                            : colors.slate[200], // bellflower-blue
+                            ? colors.slate[800]
+                            : colors.slate[100],
                     editorActiveTabIndicatorBottomColor: colors.cyan[500], // maldives
                     shadowColor: 'transparent',
                 },
