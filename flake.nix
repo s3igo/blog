@@ -56,23 +56,8 @@
                     };
                   };
                   lsp.servers = {
-                    biome = {
-                      enable = true;
-                      filetypes = [
-                        "javascript"
-                        "javascriptreact"
-                        "json"
-                        "jsonc"
-                        "typescript"
-                        "typescript.tsx"
-                        "typescriptreact"
-                        "astro"
-                      ];
-                    };
                     astro.enable = true;
-                    # astro.onAttach.function = ''
-                    #   client.server_capabilities.documentFormattingProvider = false
-                    # '';
+                    biome.enable = true;
                     tailwindcss = {
                       enable = true;
                       extraOptions.settings.tailwindCSS.classAttributes = [
