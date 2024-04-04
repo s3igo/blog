@@ -11,7 +11,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
       - name: Setup bun
-        uses: oven-sh/setup-bun@d3603274aca5625baad52ec06108517a089cdd00 # v1
+        uses: oven-sh/setup-bun@8f24390df009a496891208e5e36b8a1de1f45135 # v1
         with:
           bun-version: 1.0.1
       - name: Setup Node
@@ -39,7 +39,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
       - name: Setup bun
-        uses: oven-sh/setup-bun@d3603274aca5625baad52ec06108517a089cdd00 # v1
+        uses: oven-sh/setup-bun@8f24390df009a496891208e5e36b8a1de1f45135 # v1
         with:
           bun-version: 1.0.1
       - name: Setup Node
@@ -63,7 +63,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
       - name: Setup bun
-        uses: oven-sh/setup-bun@d3603274aca5625baad52ec06108517a089cdd00 # v1
+        uses: oven-sh/setup-bun@8f24390df009a496891208e5e36b8a1de1f45135 # v1
         with:
           bun-version: 1.0.1
       - name: Setup Node
@@ -91,7 +91,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
       - name: Setup bun
-        uses: oven-sh/setup-bun@d3603274aca5625baad52ec06108517a089cdd00 # v1
+        uses: oven-sh/setup-bun@8f24390df009a496891208e5e36b8a1de1f45135 # v1
         with:
           bun-version: 1.0.1
       - name: Setup Node
@@ -117,7 +117,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
       - name: Setup bun
-        uses: oven-sh/setup-bun@d3603274aca5625baad52ec06108517a089cdd00 # v1
+        uses: oven-sh/setup-bun@8f24390df009a496891208e5e36b8a1de1f45135 # v1
         with:
           bun-version: 1.0.1
       - name: Setup Node
