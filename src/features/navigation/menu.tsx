@@ -106,5 +106,4 @@ const Memu = () => {
     );
 };
 
-// biome-ignore lint/style/noDefaultExport: for import in `.astro` files
 export default Memu;
