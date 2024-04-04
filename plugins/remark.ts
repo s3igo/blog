@@ -23,6 +23,7 @@ export const externalLinks = (site: string) => () => (tree: Node) => {
             node.data ??= {};
             node.data.hProperties ??= {};
             node.data.hProperties.target = '_blank';
+            node.data.hProperties.rel = 'noreferrer';
         }
     });
 };

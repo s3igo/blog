@@ -1,88 +1,111 @@
 ---
 title: remarkプラグインでMarkdownをいじる
-tags: []
-published: 2024-03-25
+tags: [programming]
+published: 2024-04-04
 updated:
-draft: true
+draft: false
 ---
 
-最近このブログに大幅に手を加えました。
-そのときに作成したremarkプラグインを紹介します。
+このブログを作成するために使用している[Astro](https://astro.build/)では、
+`.md`や`.mdx`のレンダーにremark/rehypeプラグインを挟み込むことができるため、
+プラグインを作ることさえできればMarkdownを好きに処理できます。
 
-## remarkとrehype
-
-このブログは[Astro](https://astro.build/)製で、
-AstroではMarkdownファイルを直接ページとして扱えます。
-直接ページとして扱えるということは
-内部でMarkdownからHTMLに変換しているということになり、
-
-Astroはremarkとrehypeというツールを用いてMarkdownからHTMLへの変換します。
-Markdownにはmdastという抽象構文木（AST）の形式があり、
-同様にHTMLにはhastというASTの形式があります。
-remarkはmdastを、rehypeはhastを扱うためのものです。
-つまり、Markdownをmdastに変換し、mdastをhastに変換し、hastからHTMLを構築する
-処理の流れになっています。
-
-remarkとrehypeはプラグインシステムを持ち、
-それらのプラグインを作成することによって、
-変換時に任意の処理を挟み込むことができます。
+プラグインを自作するというと敷居が高そうに見えますが、
+ちょっとしたものであれば数行のコードで実現可能です。
 
 ## 困っていること
 
-ずばり、`\n`や`\r\n`などの改行(Soft line breaks)が半角スペースとして扱われてしまうことです。
-これはもともとHTMLの仕様ですが、MarkdownはHTMLを記述する際の負担を減らすことを
-目的とした形式であるため、Markdownもこの仕様を持っています。
+Markdownを使っていて、
+`\n`や`\r\n`などの改行（Soft line breaks）が半角スペースとして扱われてしまうことに困っています。
+これはもともとHTMLの仕様ですが、
+MarkdownはHTMLを筆頭とする構造化テキストを記述する際の負担を減らすための形式であるため、
+HTMLに変換した際この仕様の影響を受けます。
 
-これの何が困るかというと、 
-可読性のための改行が不自然なスペースとして表示されてしまうことです。 
-英語圏であれば単語を半角スペースで区切ることが一般的なので 
-特に問題になることはありませんが、 
-単語の区切りにスペースを使わない我々日本語圏に暮らすものとしては 
-頭を悩ませる問題です。 
+これの何が困るかというと、プレーンテキストとしての可読性のための改行が
+レンダリング後に不要なスペースとして残ってしまうことです。
+英語圏であれば単語を分かち書きすることが一般的なので、
+このスペースがないと改行前と後の単語がつながってしまうため、
+これは自然な挙動と言えます。
+しかし、分かち書きをしない我々日本語圏に暮らすものとしては頭を悩ませる問題です。
 
-視覚的にどのくらいの影響を与えるか確認するために、1つ前の段落では
-<!-- TODO: -->
+これをプラグインによって解決してみます。&nbsp;
+ちなみに、視覚的にどのくらいの影響を与えるか確認するために、&nbsp;
+この段落ではあえて今回作成したプラグインを適用しない状態を&nbsp;
+再現しています。&nbsp;
 
+上の段落について、
+
+> 解決してみます。
+
+> 確認するために、
+
+> しない状態を
+
+> 再現しています。
+
+の後に不要なスペースが表示されていることが分かります。
+句読点の後ろのスペースは違和感を感じにくいですが、
+
+> しない状態を
+
+<!-- textlint-disable ja-technical-writing/no-doubled-joshi -->
+の後のスペースはわかりやすいのではないでしょうか。
+<!-- textlint-enable -->
 
 ## 解決策
 
-改行が半角スペースとして扱われるのが問題ならば、改行をなくしてしまえば万事解決です。
-Markdownでは明示的な改行（Hard line breaks）は行末に2つのスペースやバックスラッシュを置くことで
-表現するため、改行を排除しても問題ありません。
-英語の文章を書いていて、視認性のための改行するときだけ行頭か前の行の行末に
-明示的に半角スペースを配置することを気をつければOKです。
+改行が半角スペースとして扱われるのが問題ならば、改行を消し去ってしまえばいいです。
+Markdownでは行末に2つのスペースまたはバックスラッシュを置くことで明示的な改行（Hard line breaks）を
+表現するため、`\n`や`\r\n`などの改行文字を取り除いても問題ありません。
+英語の文章で視認性のための改行するときだけ、
+改行後の行頭か改行する行の行末に明示的に`&nbsp;`を配置すればOKです。
 
-今回はもともとのMarkdownから改行をなくしてしまうというアプローチのため、
+ちなみに、Astroで使えるremarkとrehypeについて、
+remarkはMarkdownのAST(抽象構文木、英: abstract syntax tree)を扱い、
+rehypeはHTMLのASTを扱うためのものです。
+
+今回はMarkdownから改行をなくすアプローチを採るため
 remarkプラグインを作成します。
-実際のコード以下のとおりになります。
+実際のコード以下のとおりです。
 
-```js title="remark-strip-line-breaks.ts"
+```ts title="remark-strip-line-breaks.ts"
 import type { Node } from 'unist';
 import { visit } from 'unist-util-visit';
 
 type Text = Node & { value: string };
 
-export const remarkStripLineBreaks = () => (tree: Node) => {
+const remarkStripLineBreaks = () => (tree: Node) => {
     visit(tree, 'text', (node: Text) => {
         node.value = node.value.replace(/\r?\n|\r/g, ''); // matches \r\n, \n, \r
     });
 };
-```
 
-やっていることとしては文字列から正規表現で改行を探して、
-マッチしたものをすべて削除しているだけです。
-unist-util-visitを使うと、
-構文木の各ノードをたどってくれるため、簡単にテキストをいじることができます。
+export default remarkStripLineBreaks;
+```
+やっていることは単純で、
+ASTのテキストを含む全てのノードから正規表現で改行を探し、
+マッチしたものすべてを削除しているだけです。
+[unist-util-visit](https://www.npmjs.com/package/unist-util-visit)
+を使うとASTのノードをたどる処理を簡単に書くことができます。
+
+なお、remarkのAST形式であるmdastやrehypeのAST形式であるhastが基づくunistは拡張を前提とした
+型になっているため雑に`Text`型を定義して使っています。
+カリー化関数になっているところは注意です。
 
 あとは、Astroの設定ファイルに追加して完成です。
 
-```ts title="astro.config.ts"
+```ts title="astro.config.ts" ins={1,5-7}
+import remarkStripLineBreaks from './remark-strip-line-breaks';
 
+export default defineConfig({
+    // ...
+    markdown: {
+        remarkPlugins: [stripLineBreaks],
+    },
+});
 ```
-
-今回取り上げたremarkプラグインを使っている
-[このブログのコード]()はGitHubで公開しています。
 
 ## 参考
 
-https://spec.commonmark.org/0.31.2/
+- https://spec.commonmark.org/0.31.2/
+- https://unifiedjs.com/learn/guide/create-a-plugin/

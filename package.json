@@ -35,7 +35,7 @@
     "@fontsource/jetbrains-mono": "5.0.19",
     "@fontsource/zen-kaku-gothic-new": "5.0.18",
     "@kobalte/core": "0.12.6",
-    "astro": "4.5.12",
+    "astro": "4.5.13",
     "astro-expressive-code": "0.33.5",
     "autoprefixer": "10.4.19",
     "clsx": "2.1.0",
@@ -70,5 +70,5 @@
     "textlint-rule-preset-ja-technical-writing": "10.0.1",
     "vitest": "1.4.0"
   },
-  "trustedDependencies": ["@biomejs/biome", "sharp"]
+  "trustedDependencies": ["@biomejs/biome"]
 }
