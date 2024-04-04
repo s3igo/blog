@@ -2,7 +2,7 @@ import { defineCollection, z } from 'astro:content';
 
 const schema = z.object({
     title: z.string(),
-    tags: z.array(z.string()),
+    tags: z.array(z.string().toLowerCase()),
     published: z.date(),
     updated: z.date().nullable(),
     draft: z.boolean(),
