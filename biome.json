@@ -66,6 +66,26 @@
                     }
                 }
             }
+        },
+        {
+            "include": ["*.tsx"],
+            "linter": {
+                "rules": {
+                    "style": {
+                        "noDefaultExport": "off"
+                    }
+                }
+            }
+        },
+        {
+            "include": ["./src/**/*.ts"],
+            "linter": {
+                "rules": {
+                    "style": {
+                        "useFilenamingConvention": "off"
+                    }
+                }
+            }
         }
     ]
 }

@@ -1,1 +1,1 @@
-(git diff @~ @ --name-only | grep bun.lockb > /dev/null) && bun install || echo 'No difference in bun.lockb detected. Skipping bun install.'
+(git diff @~ @ --name-only | grep bun.lockb > /dev/null) && bun install

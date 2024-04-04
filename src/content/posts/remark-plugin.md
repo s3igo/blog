@@ -1,6 +1,6 @@
 ---
-title: remarkプラグインでMarkdownを操作する
-tags: [programming, Astro]
+title: remarkプラグインでMarkdownをいじる
+tags: [programming]
 published: 2024-04-04
 updated:
 draft: false
@@ -9,9 +9,6 @@ draft: false
 このブログを作成するために使用している[Astro](https://astro.build/)では、
 `.md`や`.mdx`のレンダーにremark/rehypeプラグインを挟み込むことができるため、
 プラグインを作ることさえできればMarkdownを好きに処理できます。
-
-remarkはMarkdownを、rehypeはHTMLを変換するためのツールで、
-それぞれAST（抽象構文木、英: abstract syntax tree）を扱うことで柔軟な操作を実現します。
 
 プラグインを自作するというと敷居が高そうに見えますが、
 ちょっとしたものであれば数行のコードで実現可能です。
@@ -62,6 +59,10 @@ Markdownでは行末に2つのスペースまたはバックスラッシュを�
 表現するため、`\n`や`\r\n`などの改行文字を取り除いても問題ありません。
 英語の文章で視認性のための改行するときだけ、
 改行後の行頭か改行する行の行末に明示的に`&nbsp;`を配置すればOKです。
+
+ちなみに、Astroで使えるremarkとrehypeについて、
+remarkはMarkdownのAST(抽象構文木、英: abstract syntax tree)を扱い、
+rehypeはHTMLのASTを扱うためのものです。
 
 今回はMarkdownから改行をなくすアプローチを採るため
 remarkプラグインを作成します。
