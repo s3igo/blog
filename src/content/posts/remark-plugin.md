@@ -1,5 +1,5 @@
 ---
-title: remarkプラグインでMarkdownをいじる
+title: remarkプラグインでMarkdownを操作する
 tags: [programming, Astro]
 published: 2024-04-04
 updated:
