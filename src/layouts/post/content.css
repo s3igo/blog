@@ -19,10 +19,12 @@
     }
 
     a {
-        @apply hover:underline decoration-[1.5px];
-
         &:not(.anchor) {
-            @apply text-maldives;
+            @apply text-maldives underline;
+        }
+
+        .anchor {
+            @apply hover:underline decoration-[1.5px];
         }
     }
 
