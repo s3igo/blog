@@ -10,11 +10,12 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 import { type JSX, splitProps } from 'solid-js';
 
-type Attributes = JSX.SVGElementTags['svg'];
+type Attrs = JSX.SVGElementTags['svg'];
 
-type Props = Attributes & { title?: string };
+type Props = Attrs & { title?: string };
+type SvgProps = Props & { children: JSX.Element };
 
-const Svg = (props: Props & { children: JSX.Element }) => {
+const Svg = (props: SvgProps) => {
     const [local, others] = splitProps(props, ['title', 'children']);
 
     return (
