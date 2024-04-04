@@ -5,6 +5,7 @@ export const literals = {
     'bellflower-blue': colors.slate[200],
     'blue-blouse': colors.slate[400],
     'saltbox-blue': colors.slate[500],
+    rainmaker: colors.slate[600],
     'liverty-blue': colors.slate[900],
     'obsidian-shard': colors.slate[950],
     // gray
@@ -21,6 +22,7 @@ export const literals = {
     // cyan
     'aphrodites-pearls': colors.cyan[50],
     maldives: colors.cyan[500],
+    'saltwater-denim': colors.cyan[800],
     // extended colors
     white: colors.white,
     transparent: 'transparent',
