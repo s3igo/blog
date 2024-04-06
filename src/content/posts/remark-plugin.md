@@ -12,6 +12,7 @@ draft: false
 
 remarkはMarkdownを、rehypeはHTMLを変換するためのツールで、
 それぞれAST（抽象構文木、英: abstract syntax tree）を扱うことで柔軟な操作を実現します。
+remarkで使われるAST表現をmdast、rehypeで使われるAST表現をhastと呼びます。
 
 プラグインを自作するというと敷居が高そうに見えますが、
 ちょっとしたものであれば数行のコードで実現可能です。
@@ -82,14 +83,14 @@ const remarkStripLineBreaks = () => (tree: Node) => {
 export default remarkStripLineBreaks;
 ```
 やっていることは単純で、
-ASTのテキストを含む全てのノードから正規表現で改行を探し、
+テキストを含む全てのノードから正規表現で改行を探し、
 マッチしたものすべてを削除しているだけです。
 [unist-util-visit](https://www.npmjs.com/package/unist-util-visit)
-を使うとASTのノードをたどる処理を簡単に書くことができます。
+を使うとノードをたどる処理を簡単に書くことができます。
 
-なお、remarkのAST形式であるmdastやrehypeのAST形式であるhastが基づくunistは拡張を前提とした
-型になっているため雑に`Text`型を定義して使っています。
-カリー化関数になっているところは注意です。
+なお、mdastとhastが基づくunistは拡張を前提とした型になっているため、
+雑に`Text`型を定義して使っています。
+関数がカリー化されているところに注意です。
 
 あとは、Astroの設定ファイルに追加して完成です。
 
