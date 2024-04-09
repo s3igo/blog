@@ -1,5 +1,5 @@
 import fs from 'node:fs/promises';
-import satori from 'satori';
+import satori, { type FontStyle } from 'satori';
 import { html } from 'satori-html';
 import sharp from 'sharp';
 import type { Tags } from '~/utils/posts';
@@ -40,31 +40,24 @@ export const image = async ({ title, tags }: Props) => {
         </div>
     </div>`;
 
-    const svg = await satori(markup, {
-        width,
-        height,
-        fonts: [
+    const fonts = await Promise.all(
+        [
             {
                 name: 'Zen Kaku Gothic New',
-                data: await fs.readFile(
-                    composeUrl(
-                        '/node_modules/@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-japanese-400-normal.woff',
-                    ),
-                ),
-                style: 'normal',
+                file: '/node_modules/@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-japanese-400-normal.woff',
             },
             {
                 name: 'JetBrains Mono',
-                data: await fs.readFile(
-                    composeUrl(
-                        '/node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff',
-                    ),
-                ),
-                style: 'normal',
+                file: '/node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff',
             },
-        ],
-    });
+        ].map(async ({ name, file }) => ({
+            name,
+            data: await fs.readFile(composeUrl(file)),
+            style: 'normal' as FontStyle,
+        })),
+    );
 
+    const svg = await satori(markup, { width, height, fonts });
     const pngBuffer = await sharp(Buffer.from(svg)).png().toBuffer();
 
     return new Response(pngBuffer, {
