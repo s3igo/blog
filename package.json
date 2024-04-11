@@ -71,5 +71,5 @@
     "vitest": "1.4.0",
     "wrangler": "3.49.0"
   },
-  "trustedDependencies": ["@biomejs/biome"]
+  "trustedDependencies": ["@biomejs/biome", "esbuild", "sharp", "workerd"]
 }

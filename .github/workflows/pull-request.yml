@@ -19,8 +19,8 @@ jobs:
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Dump toolchain updates
-        run: nix develop .#deps --command node --version > .node-version
-      - name: Commit files modified in devShell
+        run: nix run nixpkgs#nodejs-slim --inputs-from . -- --version > .node-version
+      - name: Commit `.node-version` file
         uses: stefanzweifel/git-auto-commit-action@8756aa072ef5b4a080af5dc8fef36c5d586e521d # v5
         with:
           commit_message: Apply toolchain updates
