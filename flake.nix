@@ -76,17 +76,15 @@
           ];
         };
 
-        devShells =
-          let
-            deps = with pkgs; [
+        devShells.default = pkgs.mkShell {
+          buildInputs =
+            with pkgs;
+            [
               nodejs-slim
               bun
-            ];
-          in
-          {
-            default = pkgs.mkShell { buildInputs = deps ++ [ self.packages.${system}.neovim ]; };
-            deps = pkgs.mkShell { buildInputs = deps; };
-          };
+            ]
+            ++ [ self.packages.${system}.neovim ];
+        };
       }
     );
 }
