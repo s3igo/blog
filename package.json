@@ -35,7 +35,7 @@
     "@fontsource/jetbrains-mono": "5.0.19",
     "@fontsource/zen-kaku-gothic-new": "5.0.18",
     "@kobalte/core": "0.12.6",
-    "astro": "4.6.0",
+    "astro": "4.6.1",
     "astro-expressive-code": "0.34.1",
     "autoprefixer": "10.4.19",
     "clsx": "2.1.0",
@@ -60,7 +60,7 @@
     "@types/markdown-it": "14.0.0",
     "@types/sanitize-html": "2.11.0",
     "@types/unist": "3.0.2",
-    "@vitest/coverage-v8": "1.4.0",
+    "@vitest/coverage-v8": "1.5.0",
     "husky": "9.0.11",
     "jsdom": "24.0.0",
     "scaffdog": "3.0.0",
@@ -68,8 +68,8 @@
     "textlint-filter-rule-allowlist": "4.0.0",
     "textlint-filter-rule-comments": "1.2.2",
     "textlint-rule-preset-ja-technical-writing": "10.0.1",
-    "vitest": "1.4.0",
-    "wrangler": "3.49.0"
+    "vitest": "1.5.0",
+    "wrangler": "3.50.0"
   },
   "trustedDependencies": ["@biomejs/biome", "esbuild", "sharp", "workerd"]
 }
