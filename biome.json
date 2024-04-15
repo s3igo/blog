@@ -11,6 +11,9 @@
     "linter": {
         "rules": {
             "all": true,
+            "suspicious": {
+                "noExportsInTest": "off"
+            },
             "nursery": {
                 "useSortedClasses": {
                     "level": "warn",
@@ -46,6 +49,16 @@
                     "style": {
                         "noDefaultExport": "off",
                         "useNamingConvention": "off"
+                    }
+                }
+            }
+        },
+        {
+            "include": ["./src/pages/**"],
+            "linter": {
+                "rules": {
+                    "performance": {
+                        "noBarrelFile": "off"
                     }
                 }
             }
