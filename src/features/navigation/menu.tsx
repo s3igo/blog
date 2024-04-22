@@ -90,12 +90,16 @@ const Memu = () => {
                     </a>
                     <a
                         href="https://twitter.com/t5ukiyo"
+                        target="_blank"
+                        rel="noreferrer"
                         class={portalIconClasses}
                     >
                         <TwitterX />
                     </a>
                     <a
                         href="https://github.com/s3igo"
+                        target="_blank"
+                        rel="noreferrer"
                         class={portalIconClasses}
                     >
                         <Github />

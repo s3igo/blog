@@ -1,7 +1,7 @@
 import type { Config } from 'tailwindcss';
 import { literals } from './styles/colors';
 
-const config: Config = {
+export default {
     content: ['./src/**/*.{astro,tsx}'],
     darkMode: 'class',
     theme: {
@@ -11,6 +11,4 @@ const config: Config = {
             sans: ['Zen Kaku Gothic New', 'system-ui', 'sans-serif'],
         },
     },
-};
-
-export default config;
+} satisfies Config;
