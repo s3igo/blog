@@ -9,7 +9,7 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout repository
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
       - name: Setup bun
         uses: oven-sh/setup-bun@8f24390df009a496891208e5e36b8a1de1f45135 # v1
       - name: Setup Node
@@ -35,7 +35,7 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout repository
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
       - name: Setup bun
         uses: oven-sh/setup-bun@8f24390df009a496891208e5e36b8a1de1f45135 # v1
       - name: Setup Node
@@ -57,7 +57,7 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout repository
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
       - name: Setup bun
         uses: oven-sh/setup-bun@8f24390df009a496891208e5e36b8a1de1f45135 # v1
       - name: Setup Node
@@ -83,7 +83,7 @@ jobs:
           - webkit
     steps:
       - name: Checkout repository
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
       - name: Setup bun
         uses: oven-sh/setup-bun@8f24390df009a496891208e5e36b8a1de1f45135 # v1
       - name: Setup Node
@@ -107,7 +107,7 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout repository
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
       - name: Setup bun
         uses: oven-sh/setup-bun@8f24390df009a496891208e5e36b8a1de1f45135 # v1
       - name: Setup Node
@@ -131,7 +131,7 @@ jobs:
     timeout-minutes: 60
     steps:
       - name: Checkout repository
-        uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+        uses: actions/checkout@1d96c772d19495a3b5c517cd2bc0cb401ea0529f # v4
       - name: Check spelling
         uses: crate-ci/typos@master
       - name: Validate Renovate Config
