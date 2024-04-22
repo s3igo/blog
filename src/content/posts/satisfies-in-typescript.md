@@ -143,7 +143,8 @@ type ColorName = (typeof colors)[number]['name'];
 こんなコードがあったとします。
 
 ```ts
-type Subject = { type: 'Math'; level: 'Basic' }
+type Subject =
+    | { type: 'Math'; level: 'Basic' }
     | { type: 'Science'; level: 'Intermediate' }
     | { type: 'History'; level: 'Advanced' };
 
@@ -205,8 +206,8 @@ const _assert: never = subject;
 ## 最後に
 
 改めてまとめてみたらあんまり使い道多くなかったですね。
-TypeScriptを書いているときは`satisfies`ってタイプしては
-`satisfies`が使える現代に生まれたことを感謝することが頻繁にある気がするのですが、
+TypeScriptを書いているときは事あるごとに`satisfies`ってタイプしては
+`satisfies`が使える現代に生まれたことを感謝していたつもりだったのですが、
 ただの気のせいだったようです。
 
 もし他にも便利な用途を見つけたら追記するかもしれません。
