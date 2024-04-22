@@ -142,6 +142,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@b4ffde65f46336ab88eb53be808477a3936bae11 # v4
+      - name: Check spelling
+        uses: crate-ci/typos@master
       - name: Validate Renovate Config
         uses: rinchsan/renovate-config-validator@main
         with:
