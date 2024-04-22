@@ -24,6 +24,7 @@
             "astro"
             "css"
             "lua"
+            "toml"
           ];
           modules = with neovim.nixosModules; [
             im-select
@@ -58,6 +59,7 @@
                   lsp.servers = {
                     astro.enable = true;
                     biome.enable = true;
+                    taplo.enable = true;
                     tailwindcss = {
                       enable = true;
                       extraOptions.settings.tailwindCSS.classAttributes = [

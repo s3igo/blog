@@ -29,14 +29,14 @@
   "dependencies": {
     "@astrojs/partytown": "2.0.4",
     "@astrojs/rss": "4.0.5",
-    "@astrojs/sitemap": "3.1.2",
+    "@astrojs/sitemap": "3.1.4",
     "@astrojs/solid-js": "4.1.0",
     "@astrojs/tailwind": "5.1.0",
-    "@fontsource/jetbrains-mono": "5.0.19",
-    "@fontsource/zen-kaku-gothic-new": "5.0.18",
+    "@fontsource/jetbrains-mono": "5.0.20",
+    "@fontsource/zen-kaku-gothic-new": "5.0.19",
     "@kobalte/core": "0.12.6",
-    "astro": "4.6.1",
-    "astro-expressive-code": "0.35.0",
+    "astro": "4.6.3",
+    "astro-expressive-code": "0.35.2",
     "autoprefixer": "10.4.19",
     "clsx": "2.1.0",
     "markdown-it": "14.1.0",
@@ -69,7 +69,7 @@
     "textlint-filter-rule-comments": "1.2.2",
     "textlint-rule-preset-ja-technical-writing": "10.0.1",
     "vitest": "1.5.0",
-    "wrangler": "3.50.0"
+    "wrangler": "3.51.2"
   },
   "trustedDependencies": ["@biomejs/biome", "esbuild", "sharp", "workerd"]
 }
