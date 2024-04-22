@@ -3,21 +3,20 @@ import {
     type Component,
     type ComponentProps,
     type JSX,
+    Show,
     splitProps,
 } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 
 type Element = 'div' | 'a' | Component<unknown>;
 
-type Props<T extends Element> = {
+type Props<T extends Element> = ComponentProps<T> & {
     as?: T;
     icon?: JSX.Element;
     children: string;
 };
 
-export const Metadata = <T extends Element = 'div'>(
-    props: ComponentProps<T> & Props<T>,
-) => {
+export const Metadata = <T extends Element = 'div'>(props: Props<T>) => {
     const [local, others] = splitProps(props, ['as', 'icon', 'children']);
     const component = local.as ?? 'div';
 
@@ -32,14 +31,10 @@ export const Metadata = <T extends Element = 'div'>(
             {...{ component }}
             {...others}
         >
-            {local.icon ? (
-                <>
-                    {local.icon}
-                    <div>{local.children}</div>
-                </>
-            ) : (
-                <>{local.children}</>
-            )}
+            <Show when={local.icon} fallback={local.children}>
+                {local.icon}
+                <div>{local.children}</div>
+            </Show>
         </Dynamic>
     );
 };
