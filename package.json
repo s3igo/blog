@@ -63,7 +63,7 @@
     "@vitest/coverage-v8": "1.5.0",
     "husky": "9.0.11",
     "jsdom": "24.0.0",
-    "scaffdog": "3.0.0",
+    "scaffdog": "4.0.0",
     "textlint": "14.0.4",
     "textlint-filter-rule-allowlist": "4.0.0",
     "textlint-filter-rule-comments": "1.2.2",
