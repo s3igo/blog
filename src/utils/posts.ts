@@ -21,7 +21,7 @@ if (import.meta.vitest) {
         ] as Posts;
 
         test('filters out drafts', () => {
-            vi.stubEnv('DEV', '');
+            vi.stubEnv('DEV', false);
             const filtered = filterPublished(posts);
 
             if (filtered[0] === undefined) {
@@ -30,7 +30,7 @@ if (import.meta.vitest) {
             expect(filtered[0].data.title).toBe('Published');
         });
         test('includes drafts in development', () => {
-            vi.stubEnv('DEV', 'true');
+            vi.stubEnv('DEV', true);
             const filtered = filterPublished(posts);
 
             if (filtered[0] === undefined) {
