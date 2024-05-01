@@ -80,12 +80,11 @@
 
         devShells.default = pkgs.mkShell {
           buildInputs =
-            with pkgs;
-            [
+            [ self.packages.${system}.neovim ]
+            ++ (with pkgs; [
               nodejs-slim
               bun
-            ]
-            ++ [ self.packages.${system}.neovim ];
+            ]);
         };
       }
     );
