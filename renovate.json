@@ -15,11 +15,6 @@
     "packageRules": [
         { "addLabels": ["deps.major[bot]"], "matchUpdateTypes": "major" },
         { "addLabels": ["deps.minor[bot]"], "matchUpdateTypes": "minor" },
-        { "addLabels": ["deps.patch[bot]"], "matchUpdateTypes": "patch" },
-        {
-            "matchManagers": ["bun"],
-            "matchPackageNames": ["vitest"],
-            "allowedVersions": "=1.5.0"
-        }
+        { "addLabels": ["deps.patch[bot]"], "matchUpdateTypes": "patch" }
     ]
 }
