@@ -53,10 +53,10 @@
     "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
-    "@astrojs/check": "0.5.10",
-    "@biomejs/biome": "1.7.2",
+    "@astrojs/check": "0.6.0",
+    "@biomejs/biome": "1.7.3",
     "@ls-lint/ls-lint": "2.2.3",
-    "@playwright/test": "1.43.1",
+    "@playwright/test": "1.44.0",
     "@types/markdown-it": "14.1.1",
     "@types/sanitize-html": "2.11.0",
     "@types/unist": "3.0.2",
