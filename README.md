@@ -1,6 +1,6 @@
 # blog
 
-[![CI](https://github.com/s3igo/blog/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/s3igo/blog/actions/workflows/main.yml)
+[![CI](https://github.com/s3igo/blog/actions/workflows/ci.yml/badge.svg)](https://github.com/s3igo/blog/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/s3igo/blog/branch/develop/graph/badge.svg?token=P01847QGIK)](https://codecov.io/gh/s3igo/blog)
 
 私の個人ブログです。
@@ -53,14 +53,13 @@ packaged by featureに寄せています。
 
 ## 開発
 
-`develop`ブランチを`main`ブランチにマージすることで本番環境に反映されます。
+ブランチ戦略はGitHub flowを採用し、
+`main`ブランチが本番環境に対応しています。
 
-Issue駆動で開発し、PRの`closes`コメントでIssueを閉じます。
-軽微な変更の場合、Issueを立てずにPRを作成することがあります。
+Issue駆動で開発し、通常PRの`closes`コメントでIssueを閉じます。
 
-新規コミットを含むブランチから`develop`ブランチへは`squash and merge`を行い、
-`main`ブランチへはマージコミットを作成してマージします。
 RenovateによるPRは常にマージコミットを作成します。
+その他のPRは通常のマージまたは`squash and merge`でマージします。
 
 ## ライセンス
 
