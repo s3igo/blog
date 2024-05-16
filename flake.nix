@@ -33,48 +33,45 @@
             json
             yaml
             markdown
-            (
-              { pkgs, ... }:
-              {
-                plugins = {
-                  nvim-colorizer.fileTypes = [
-                    {
-                      language = "astro";
-                      tailwind = "lsp";
-                    }
-                  ];
-                  none-ls = {
-                    enable = true;
-                    sources = {
-                      diagnostics.textlint = {
-                        enable = true;
-                        package = null;
-                      };
-                      formatting.textlint = {
-                        enable = true;
-                        package = null;
-                      };
-                    };
-                  };
-                  lsp.servers = {
-                    astro.enable = true;
-                    biome.enable = true;
-                    taplo.enable = true;
-                    tailwindcss = {
+            {
+              plugins = {
+                nvim-colorizer.fileTypes = [
+                  {
+                    language = "astro";
+                    tailwind = "lsp";
+                  }
+                ];
+                none-ls = {
+                  enable = true;
+                  sources = {
+                    diagnostics.textlint = {
                       enable = true;
-                      extraOptions.settings.tailwindCSS.classAttributes = [
-                        "class"
-                        "class:list"
-                        ".*Classes"
-                      ];
+                      package = null;
                     };
-                    jsonls.onAttach.function = ''
-                      client.server_capabilities.documentFormattingProvider = false
-                    '';
+                    formatting.textlint = {
+                      enable = true;
+                      package = null;
+                    };
                   };
                 };
-              }
-            )
+                lsp.servers = {
+                  astro.enable = true;
+                  biome.enable = true;
+                  taplo.enable = true;
+                  tailwindcss = {
+                    enable = true;
+                    extraOptions.settings.tailwindCSS.classAttributes = [
+                      "class"
+                      "class:list"
+                      ".*Classes"
+                    ];
+                  };
+                  jsonls.onAttach.function = ''
+                    client.server_capabilities.documentFormattingProvider = false
+                  '';
+                };
+              };
+            }
           ];
         };
 
