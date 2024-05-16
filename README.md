@@ -1,6 +1,6 @@
 # blog
 
-[![CI](https://github.com/s3igo/blog/actions/workflows/main.yml/badge.svg?event=push)](https://github.com/s3igo/blog/actions/workflows/main.yml)
+[![CI](https://github.com/s3igo/blog/actions/workflows/ci.yml/badge.svg)](https://github.com/s3igo/blog/actions/workflows/ci.yml)
 [![codecov](https://codecov.io/gh/s3igo/blog/branch/develop/graph/badge.svg?token=P01847QGIK)](https://codecov.io/gh/s3igo/blog)
 
 私の個人ブログです。
