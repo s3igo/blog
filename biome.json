@@ -65,9 +65,6 @@
         },
         {
             "include": ["*.astro"],
-            "javascript": {
-                "globals": ["Astro"]
-            },
             "linter": {
                 "rules": {
                     "correctness": {

@@ -1,3 +1,4 @@
+// biome-ignore lint/correctness/noNodejsModules: This file is used only during build time
 import fs from 'node:fs/promises';
 import satori, { type FontStyle } from 'satori';
 import { html } from 'satori-html';
