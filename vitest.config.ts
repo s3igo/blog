@@ -1,14 +1,6 @@
 /// <reference types="vitest" />
 import { getViteConfig } from 'astro/config';
-
-const defaultIncludes = ['**/*.{test,spec}.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'];
-const defaultExcludes = [
-    '**/node_modules/**',
-    '**/dist/**',
-    '**/cypress/**',
-    '**/.{idea,git,cache,output,temp}/**',
-    '**/{karma,rollup,webpack,vite,vitest,jest,ava,babel,nyc,cypress,tsup,build}.config.*',
-];
+import { configDefaults } from 'vitest/config';
 
 export default getViteConfig({
     define: {
@@ -23,9 +15,9 @@ export default getViteConfig({
             include: ['src/**'],
             reporter: ['text', 'json'],
         },
-        exclude: ['./.direnv/**', './tests/e2e/**', ...defaultExcludes],
+        exclude: [...configDefaults.exclude, './.direnv/**', './tests/e2e/**'],
         globals: true,
-        includeSource: ['src/**/*.{js,ts,jsx,tsx}', ...defaultIncludes],
+        includeSource: [...configDefaults.include, 'src/**/*.{js,ts,jsx,tsx}'],
         testTransformMode: {
             web: ['/.[jt]sx?$/'],
         },
