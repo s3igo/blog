@@ -18,9 +18,13 @@ jobs:
         uses: cachix/install-nix-action@ba0dd844c9180cbf77aa72a116d6fbc515d0e87b # v27
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Dump toolchain updates
+      - name: Put Node.js version
         run: nix run nixpkgs#nodejs-slim --inputs-from . -- --version > .node-version
-      - name: Commit `.node-version` file
+      - name: Put Bun version
+        run: |
+          BUN_VERSION=$(nix run nixpkgs#bun --inputs-from . -- --version)
+          nix run nixpkgs#dasel -- put -f wrangler.toml -v $BUN_VERSION '.vars.BUN_VERSION'
+      - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@8621497c8c39c72f3e2a999a26b4ca1b5058a842 # v5
         with:
           commit_message: Apply toolchain updates
