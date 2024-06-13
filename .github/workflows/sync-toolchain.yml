@@ -7,7 +7,7 @@ on:
 
 jobs:
   toolchain:
-    name: Sync toolchain versions
+    name: Sync
     runs-on: ubuntu-22.04
     timeout-minutes: 60
     steps:

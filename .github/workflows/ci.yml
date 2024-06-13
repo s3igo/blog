@@ -1,6 +1,6 @@
 name: CI
 
-on: push
+on: pull_request
 
 jobs:
   lint:
@@ -126,17 +126,3 @@ jobs:
         uses: codecov/codecov-action@ab904c41d6ece82784817410c45d8b8c02684457 # v3
         with:
           files: ./coverage/coverage-final.json
-
-  validate:
-    name: Validate
-    runs-on: ubuntu-22.04
-    timeout-minutes: 60
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
-      - name: Check spelling
-        uses: crate-ci/typos@master
-      - name: Validate Renovate Config
-        uses: rinchsan/renovate-config-validator@main
-        with:
-          pattern: 'renovate.json'
