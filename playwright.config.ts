@@ -4,21 +4,26 @@ export default defineConfig({
     projects: [
         {
             name: 'chromium',
-            testDir: './tests',
+            testDir: './tests/e2e',
             use: { ...devices['Desktop Chrome'] },
         },
         {
             name: 'firefox',
-            testDir: './tests',
+            testDir: './tests/e2e',
             use: { ...devices['Desktop Firefox'] },
         },
         {
             name: 'webkit',
-            testDir: './tests',
+            testDir: './tests/e2e',
             use: { ...devices['Desktop Safari'] },
         },
+        {
+            name: 'vrt',
+            testMatch: '**/vrt.spec.ts',
+            use: { ...devices['Desktop Chrome'] },
+        },
     ],
-    testDir: './tests/e2e',
+    testDir: './tests',
     use: {
         baseURL: 'http://localhost:4321',
     },

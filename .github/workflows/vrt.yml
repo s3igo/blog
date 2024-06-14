@@ -1,0 +1,100 @@
+name: VRT
+
+on: pull_request
+
+jobs:
+  expected:
+    name: Expected
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+        with:
+          ref: ${{ github.base_ref }}
+          fetch-depth: 0
+      - name: Setup bun
+        uses: oven-sh/setup-bun@f4d14e03ff726c06358e5557344e1da148b56cf7 # v1
+      - name: Setup Node
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
+        with:
+          node-version-file: .node-version
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+        env:
+          HUSKY: 0
+      - name: Setup Playwright
+        run: bunx playwright install --with-deps chromium
+      - name: Build app
+        run: bun run build
+      - name: Take screenshots
+        run: bunx playwright test --project vrt
+      - name: Upload expected screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: expected-screenshots
+          path: vrt
+          retention-days: 1
+
+  actual:
+    name: Actual
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - name: Setup bun
+        uses: oven-sh/setup-bun@f4d14e03ff726c06358e5557344e1da148b56cf7 # v1
+      - name: Setup Node
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
+        with:
+          node-version-file: .node-version
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+        env:
+          HUSKY: 0
+      - name: Setup Playwright
+        run: bunx playwright install --with-deps chromium
+      - name: Build app
+        run: bun run build
+      - name: Take screenshots
+        run: bunx playwright test --project vrt
+      - name: Upload actual screenshots
+        uses: actions/upload-artifact@v4
+        with:
+          name: actual-screenshots
+          path: vrt
+          retention-days: 1
+
+  compare:
+    name: Compare
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    needs:
+      - expected
+      - actual
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@a5ac7e51b41094c92402da3b24376905380afc29 # v4
+      - name: Setup bun
+        uses: oven-sh/setup-bun@f4d14e03ff726c06358e5557344e1da148b56cf7 # v1
+      - name: Setup Node
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
+        with:
+          node-version-file: .node-version
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+        env:
+          HUSKY: 0
+      - name: Download expected screenshots
+        uses: actions/download-artifact@v4
+        with:
+          name: expected-screenshots
+          path: .reg/expected
+      - name: Download actual screenshots
+        uses: actions/download-artifact@v4
+        with:
+          name: actual-screenshots
+          path: vrt
+      - name: Compare screenshots
+        run: bunx reg-suit run

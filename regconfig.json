@@ -1,0 +1,12 @@
+{
+    "core": {
+        "actualDir": "vrt"
+    },
+    "plugins": {
+        "reg-keygen-git-hash-plugin": {},
+        "reg-notify-github-plugin": {
+            "clientId": "M7UwNTIzNbYw10/KyU/XNzW0MDExNjHQLzbOTM8HAA==",
+            "setCommitStatus": false
+        }
+    }
+}
