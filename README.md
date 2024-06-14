@@ -21,6 +21,7 @@
 - ドメイン・デプロイ・CDN: Cloudflare
 - 単体テスト: Vitest
 - E2Eテスト: Playwright
+- VRT: Playwright + reg-suit
 - CI/CD: GitHub Actions
 - 依存関係のアップデート: Renovate
 
@@ -43,7 +44,8 @@
 │   ├── layouts # グリッドレイアウトのためのコンポーネント
 │   └── pages # ルーティング
 └── tests
-    └── e2e # E2Eテスト
+│   ├── e2e # E2Eテスト
+│   └── vrt # 回帰テスト
 ```
 packaged by featureに寄せています。
 
