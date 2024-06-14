@@ -1,29 +1,37 @@
 import { defineConfig, devices } from '@playwright/test';
+import type { TestOptions } from 'tests/vrt';
 
-export default defineConfig({
+export default defineConfig<TestOptions>({
     projects: [
         {
             name: 'chromium',
-            testDir: './tests/e2e',
             use: { ...devices['Desktop Chrome'] },
         },
         {
             name: 'firefox',
-            testDir: './tests/e2e',
             use: { ...devices['Desktop Firefox'] },
         },
         {
             name: 'webkit',
-            testDir: './tests/e2e',
             use: { ...devices['Desktop Safari'] },
         },
+        // VRT
         {
-            name: 'vrt',
-            testMatch: '**/vrt.spec.ts',
+            name: 'vrt-light',
+            testDir: './tests/vrt',
             use: { ...devices['Desktop Chrome'] },
         },
+        {
+            name: 'vrt-dark',
+            testDir: './tests/vrt',
+            use: {
+                ...devices['Desktop Chrome'],
+                mode: 'dark',
+                colorScheme: 'dark',
+            },
+        },
     ],
-    testDir: './tests',
+    testDir: './tests/e2e',
     use: {
         baseURL: 'http://localhost:4321',
     },

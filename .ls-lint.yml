@@ -16,7 +16,7 @@ ls:
       .astro: kebab-case | regex:^\[.+\]$
 
   tests:
-    .ts: regex:^.*\.spec$
+    .ts: kebab-case | regex:^.*\.spec$
 
 ignore:
   - node_modules
