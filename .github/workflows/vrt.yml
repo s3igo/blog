@@ -30,7 +30,7 @@ jobs:
       - name: Take screenshots
         run: bunx playwright test --project vrt-*
       - name: Upload expected screenshots
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4
         with:
           name: expected-screenshots
           path: vrt
@@ -60,7 +60,7 @@ jobs:
       - name: Take screenshots
         run: bunx playwright test --project vrt-*
       - name: Upload actual screenshots
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@65462800fd760344b1a7b4382951275a0abb4808 # v4
         with:
           name: actual-screenshots
           path: vrt
@@ -92,12 +92,12 @@ jobs:
         env:
           HUSKY: 0
       - name: Download expected screenshots
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4
         with:
           name: expected-screenshots
           path: .reg/expected
       - name: Download actual screenshots
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@65a9edc5881444af0b9093a5e628f2fe47ea3b2e # v4
         with:
           name: actual-screenshots
           path: vrt
