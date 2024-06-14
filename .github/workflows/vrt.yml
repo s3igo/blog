@@ -13,6 +13,9 @@ jobs:
         with:
           ref: ${{ github.base_ref }}
           fetch-depth: 0
+      - name: Workaround for detached HEAD
+        run: |
+          git checkout ${GITHUB_HEAD_REF#refs/heads/} || git checkout -b ${GITHUB_HEAD_REF#refs/heads/} && git pull
       - name: Setup bun
         uses: oven-sh/setup-bun@f4d14e03ff726c06358e5557344e1da148b56cf7 # v1
       - name: Setup Node
