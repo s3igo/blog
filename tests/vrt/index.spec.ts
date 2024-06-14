@@ -1,33 +1,37 @@
-import { test } from '@playwright/test';
-import type { Test } from './utils';
+import { test } from './index';
 
-export const run = (it: Test) => () => {
-    it('indexページのスクリーンショットを撮影', async ({ page }) => {
-        await page.goto('/');
-        await page.waitForLoadState('networkidle');
-        await page.screenshot({ path: './vrt/index.png', fullPage: true });
+test('indexページのスクリーンショットを撮影', async ({ page, mode }) => {
+    await page.goto('/');
+    await page.waitForLoadState('networkidle');
+    await page.screenshot({
+        path: `./vrt/index-${mode}.png`,
+        fullPage: true,
     });
+});
 
-    it('#astroページのスクリーンショットを撮影', async ({ page }) => {
-        await page.goto('/tags/astro');
-        await page.waitForLoadState('networkidle');
-        await page.screenshot({ path: './vrt/astro.png', fullPage: true });
+test('#astroページのスクリーンショットを撮影', async ({ page, mode }) => {
+    await page.goto('/tags/astro');
+    await page.waitForLoadState('networkidle');
+    await page.screenshot({
+        path: `./vrt/astro-${mode}.png`,
+        fullPage: true,
     });
+});
 
-    it('#programmingページのスクリーンショットを撮影', async ({ page }) => {
-        await page.goto('/tags/programming');
-        await page.waitForLoadState('networkidle');
-        await page.screenshot({
-            path: './vrt/programming.png',
-            fullPage: true,
-        });
+test('#programmingページのスクリーンショットを撮影', async ({ page, mode }) => {
+    await page.goto('/tags/programming');
+    await page.waitForLoadState('networkidle');
+    await page.screenshot({
+        path: `./vrt/programming-${mode}.png`,
+        fullPage: true,
     });
+});
 
-    it('#typescriptページのスクリーンショットを撮影', async ({ page }) => {
-        await page.goto('/tags/typescript');
-        await page.waitForLoadState('networkidle');
-        await page.screenshot({ path: './vrt/typescript.png', fullPage: true });
+test('#typescriptページのスクリーンショットを撮影', async ({ page, mode }) => {
+    await page.goto('/tags/typescript');
+    await page.waitForLoadState('networkidle');
+    await page.screenshot({
+        path: `./vrt/typescript-${mode}.png`,
+        fullPage: true,
     });
-};
-
-test.describe('ページ', run(test));
+});
