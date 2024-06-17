@@ -62,16 +62,13 @@
     "@vitest/coverage-v8": "1.6.0",
     "husky": "9.0.11",
     "jsdom": "24.1.0",
-    "reg-keygen-git-hash-plugin": "0.14.3",
-    "reg-notify-github-plugin": "0.14.4",
-    "reg-suit": "0.14.4",
+    "lost-pixel": "3.17.0",
     "scaffdog": "4.0.0",
     "textlint": "14.0.4",
     "textlint-filter-rule-allowlist": "4.0.0",
     "textlint-filter-rule-comments": "1.2.2",
     "textlint-rule-preset-ja-technical-writing": "10.0.1",
-    "vitest": "1.6.0",
-    "wrangler": "3.60.3"
+    "vitest": "1.6.0"
   },
-  "trustedDependencies": ["@biomejs/biome", "esbuild", "sharp", "workerd"]
+  "trustedDependencies": ["@biomejs/biome"]
 }
