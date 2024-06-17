@@ -35,6 +35,7 @@
 .
 ├── .github
 │   └── workflows # Github Actions
+├── .scaffdog # スキャフォールディングの設定
 ├── plugins # remark / rehype プラグイン
 ├── public # 静的なアセット
 ├── src
@@ -43,9 +44,11 @@
 │   ├── features # 機能ごとのコンポーネント
 │   ├── layouts # グリッドレイアウトのためのコンポーネント
 │   └── pages # ルーティング
+│   └── utils # ユーティリティ関数
+├── styles
 └── tests
-│   ├── e2e # E2Eテスト
-│   └── vrt # 回帰テスト
+    ├── e2e # E2Eテスト
+    └── vrt # ビジュアル回帰テスト
 ```
 packaged by featureに寄せています。
 
