@@ -103,6 +103,32 @@ jobs:
       - name: Run Playwright tests
         run: bunx playwright test --project ${{ matrix.browser }}
 
+  vrt:
+    name: VRT
+    runs-on: ubuntu-22.04
+    timeout-minutes: 60
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@692973e3d937129bcbf40652eb9f2f61becf3332 # v4
+      - name: Setup bun
+        uses: oven-sh/setup-bun@f4d14e03ff726c06358e5557344e1da148b56cf7 # v1
+      - name: Setup Node
+        uses: actions/setup-node@60edb5dd545a775178f52524783378180af0d1f8 # v4
+        with:
+          node-version-file: .node-version
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+        env:
+          HUSKY: 0
+      - name: Build app
+        run: bun run build
+      - name: Start server
+        run: bun run preview &
+      - name: Lost Pixel
+        uses: lost-pixel/lost-pixel@v3.17.0
+        env:
+          LOST_PIXEL_API_KEY: ${{ secrets.LOST_PIXEL_API_KEY }}
+
   coverage:
     name: Coverage
     runs-on: ubuntu-22.04
