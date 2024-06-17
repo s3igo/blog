@@ -1,11 +1,12 @@
 ---
 import { Image } from 'astro:assets';
+import icon from '~/assets/icon.svg';
 import Menu from './menu';
 ---
 
 <nav class="flex gap-4 items-center md:flex-col md:sticky md:top-6">
     <a href="/">
-        <Image src="/icon.webp" width={56} height={56} alt="tsukiyo icon" />
+        <Image src={icon} width={56} height={56} alt="tsukiyo icon" />
     </a>
     {/* to use the `window` API */}
     <Menu client:only="solid-js" />

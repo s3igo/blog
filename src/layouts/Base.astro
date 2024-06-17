@@ -3,6 +3,7 @@ import { ViewTransitions } from 'astro:transitions';
 import '@fontsource/jetbrains-mono';
 import '@fontsource/zen-kaku-gothic-new';
 import './global.css';
+import Favicon from './Favicon.astro';
 ---
 
 <!doctype html>
@@ -13,7 +14,7 @@ import './global.css';
         <meta name="viewport" content="width=device-width" />
         <meta name="generator" content={Astro.generator} />
         <link rel="canonical" href={new URL(Astro.url.pathname, Astro.site).toString()} />
-        <link rel="icon" type="image/png" href="/icon.webp" />
+        <Favicon />
         <link rel="sitemap" href="/sitemap-index.xml" />
         <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
         <script

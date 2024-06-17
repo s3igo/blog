@@ -29,4 +29,3 @@ ignore:
   - .husky
   - .scaffdog
   - '*.config.ts'
-  - .local
