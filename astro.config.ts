@@ -1,5 +1,4 @@
 import partytown from '@astrojs/partytown';
-import sitemap from '@astrojs/sitemap';
 import solidJs from '@astrojs/solid-js';
 import tailwind from '@astrojs/tailwind';
 import expressiveCode from 'astro-expressive-code';
@@ -45,7 +44,6 @@ export default defineConfig({
         tailwind({
             applyBaseStyles: false,
         }),
-        sitemap(),
         partytown(),
         expressiveCode({
             themes: ['material-theme', 'material-theme-lighter'],

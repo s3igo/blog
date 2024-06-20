@@ -1,4 +1,2 @@
 User-agent: *
-Allow: /
-
-Sitemap: https://blog.tsuki-yo.net/sitemap-index.xml
+Disallow: /lost-pixel.json

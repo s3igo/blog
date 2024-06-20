@@ -2,6 +2,7 @@ import type { CustomProjectConfig } from 'lost-pixel';
 
 export const config: CustomProjectConfig = {
     pageShots: {
+        pagesJsonUrl: 'http://localhost:4321/lost-pixel.json',
         pages: [
             {
                 path: '/',
@@ -25,8 +26,8 @@ export const config: CustomProjectConfig = {
             },
         ],
         mask: [{ selector: 'svg' }],
-        breakpoints: [375, 768, 1024, 1440],
-        baseUrl: 'http://172.17.0.1:4321',
+        breakpoints: [375, 768, 1024],
+        baseUrl: 'http://localhost:4321',
     },
     lostPixelProjectId: 'clxiy1du32ug0n6c9vsgtxahk',
     apiKey: process.env.LOST_PIXEL_API_KEY,
