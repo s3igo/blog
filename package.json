@@ -47,14 +47,14 @@
     "sharp": "0.33.4",
     "solid-js": "1.8.18",
     "tailwindcss": "3.4.4",
-    "typescript": "5.5.2",
+    "typescript": "5.5.3",
     "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
     "@astrojs/check": "0.7.0",
     "@biomejs/biome": "1.8.3",
     "@ls-lint/ls-lint": "2.2.3",
-    "@playwright/test": "1.45.0",
+    "@playwright/test": "1.45.1",
     "@types/markdown-it": "14.1.1",
     "@types/sanitize-html": "2.11.0",
     "@types/unist": "3.0.2",
