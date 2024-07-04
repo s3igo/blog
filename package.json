@@ -69,5 +69,5 @@
     "textlint-rule-preset-ja-technical-writing": "10.0.1",
     "vitest": "1.6.0"
   },
-  "trustedDependencies": ["@biomejs/biome"]
+  "trustedDependencies": ["@biomejs/biome", "esbuild", "odiff-bin", "sharp"]
 }
