@@ -60,7 +60,6 @@
     "@types/unist": "3.0.2",
     "@vitest/coverage-v8": "2.0.1",
     "husky": "9.0.11",
-    "jsdom": "24.1.0",
     "lost-pixel": "3.17.0",
     "scaffdog": "4.0.0",
     "textlint": "14.0.4",
