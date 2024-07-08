@@ -51,7 +51,7 @@
     "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
-    "@astrojs/check": "0.7.0",
+    "@astrojs/check": "0.8.0",
     "@biomejs/biome": "1.8.3",
     "@ls-lint/ls-lint": "2.2.3",
     "@playwright/test": "1.45.1",
