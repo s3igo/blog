@@ -43,7 +43,7 @@
 │   ├── content # 記事
 │   ├── features # 機能ごとのコンポーネント
 │   ├── layouts # グリッドレイアウトのためのコンポーネント
-│   └── pages # ルーティング
+│   ├── pages # ルーティング
 │   └── utils # ユーティリティ関数
 ├── styles
 └── tests
