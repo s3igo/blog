@@ -46,7 +46,7 @@
     "satori-html": "0.3.2",
     "sharp": "0.33.4",
     "solid-js": "1.8.18",
-    "tailwindcss": "3.4.5",
+    "tailwindcss": "3.4.6",
     "typescript": "5.5.3",
     "unist-util-visit": "5.0.0"
   },
@@ -54,7 +54,7 @@
     "@astrojs/check": "0.8.1",
     "@biomejs/biome": "1.8.3",
     "@ls-lint/ls-lint": "2.2.3",
-    "@playwright/test": "1.45.1",
+    "@playwright/test": "1.45.2",
     "@types/markdown-it": "14.1.1",
     "@types/sanitize-html": "2.11.0",
     "@types/unist": "3.0.2",
