@@ -27,7 +27,7 @@ jobs:
       - name: Run ls-lint
         run: bun run lint:ls
       - name: Check spelling
-        uses: crate-ci/typos@c7af4712eda24dd1ef54bd8212973888489eb0ce # v1.23.5
+        uses: crate-ci/typos@935271f0204ebdf61717cf6caac31d8d115f1c14 # v1.23.6
       - name: Run Textlint
         run: bun run lint:text
 
@@ -125,7 +125,7 @@ jobs:
       - name: Start server
         run: bun run preview &
       - name: Lost Pixel
-        uses: lost-pixel/lost-pixel@e3c935b461073034e8a2e2a773f8b07abf0ee858 # v3.17.0
+        uses: lost-pixel/lost-pixel@6c30db12013deca27ce30e7cce32b4fc2aee6f49 # v3.18.0
         env:
           LOST_PIXEL_API_KEY: ${{ secrets.LOST_PIXEL_API_KEY }}
 
