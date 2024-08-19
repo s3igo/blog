@@ -51,12 +51,12 @@
     "unist-util-visit": "5.0.0"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.2",
+    "@astrojs/check": "0.9.3",
     "@biomejs/biome": "1.8.3",
     "@ls-lint/ls-lint": "2.2.3",
     "@playwright/test": "1.46.1",
     "@types/markdown-it": "14.1.2",
-    "@types/sanitize-html": "2.11.0",
+    "@types/sanitize-html": "2.13.0",
     "@types/unist": "3.0.3",
     "@vitest/coverage-v8": "2.0.5",
     "husky": "9.1.4",
