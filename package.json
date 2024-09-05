@@ -33,7 +33,7 @@
     "@fontsource/jetbrains-mono": "5.0.21",
     "@fontsource/zen-kaku-gothic-new": "5.0.20",
     "@kobalte/core": "0.13.6",
-    "astro": "4.15.2",
+    "astro": "4.15.3",
     "astro-expressive-code": "0.36.1",
     "autoprefixer": "10.4.20",
     "clsx": "2.1.1",
