@@ -30,7 +30,7 @@
     "@astrojs/rss": "4.0.7",
     "@astrojs/solid-js": "4.4.1",
     "@astrojs/tailwind": "5.1.0",
-    "@fontsource/jetbrains-mono": "5.0.21",
+    "@fontsource/jetbrains-mono": "5.0.22",
     "@fontsource/zen-kaku-gothic-new": "5.0.20",
     "@kobalte/core": "0.13.6",
     "astro": "4.15.4",
