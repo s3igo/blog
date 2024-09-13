@@ -4,7 +4,7 @@ import type { APIRoute } from 'astro';
 import MarkdownIt from 'markdown-it';
 import sanitizeHtml from 'sanitize-html';
 import { filterPublished } from '~/utils/posts';
-import { PAGE_DESCRIPTION, PAGE_TITLE } from '../constants';
+import { PAGE_DESCRIPTION, PAGE_TITLE } from '../constants.ts';
 
 const parser = new MarkdownIt();
 

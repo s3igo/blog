@@ -2,7 +2,11 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     flake-utils.url = "github:numtide/flake-utils";
-    neovim.url = "github:s3igo/dotfiles?dir=neovim";
+    nixvim = {
+      url = "github:nix-community/nixvim";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+    neovim-config.url = "github:s3igo/dotfiles?dir=neovim-config";
   };
 
   outputs =
@@ -10,7 +14,8 @@
       self,
       nixpkgs,
       flake-utils,
-      neovim,
+      nixvim,
+      neovim-config,
     }:
     flake-utils.lib.eachDefaultSystem (
       system:
@@ -18,70 +23,69 @@
         pkgs = import nixpkgs { inherit system; };
       in
       {
-        packages.neovim = neovim.withModules {
-          inherit pkgs system;
-          grammars = [
-            "astro"
-            "css"
-            "lua"
-            "toml"
-          ];
-          modules = with neovim.nixosModules; [
-            im-select
-            nix
-            typescript
-            json
-            yaml
-            markdown
-            {
-              plugins = {
-                nvim-colorizer.fileTypes = [
-                  {
-                    language = "astro";
-                    tailwind = "lsp";
-                  }
-                ];
-                none-ls = {
-                  enable = true;
-                  sources = {
-                    diagnostics.textlint = {
-                      enable = true;
-                      package = null;
-                    };
-                    formatting.textlint = {
-                      enable = true;
-                      package = null;
-                    };
-                  };
-                };
-                lsp.servers = {
-                  astro.enable = true;
-                  biome.enable = true;
-                  taplo.enable = true;
-                  tailwindcss = {
+        packages.neovim = nixvim.legacyPackages.${system}.makeNixvim {
+          imports =
+            with neovim-config.nixosModules;
+            [
+              default
+              nix
+              typescript
+              json
+              yaml
+              markdown
+            ]
+            ++ [
+              {
+                plugins = {
+                  nvim-colorizer.fileTypes = [
+                    {
+                      language = "astro";
+                      tailwind = "lsp";
+                    }
+                  ];
+                  none-ls = {
                     enable = true;
-                    extraOptions.settings.tailwindCSS.classAttributes = [
-                      "class"
-                      "class:list"
-                      ".*Classes"
-                    ];
+                    sources = {
+                      diagnostics.textlint = {
+                        enable = true;
+                        package = null;
+                      };
+                      formatting.textlint = {
+                        enable = true;
+                        package = null;
+                      };
+                    };
                   };
-                  jsonls.onAttach.function = ''
-                    client.server_capabilities.documentFormattingProvider = false
-                  '';
+                  lsp.servers = {
+                    astro.enable = true;
+                    biome.enable = true;
+                    taplo.enable = true;
+                    tailwindcss = {
+                      enable = true;
+                      extraOptions.settings.tailwindCSS.classAttributes = [
+                        "class"
+                        "class:list"
+                        ".*Classes"
+                      ];
+                    };
+                    jsonls.onAttach.function = ''
+                      client.server_capabilities.documentFormattingProvider = false
+                    '';
+                  };
+
                 };
-              };
-            }
-          ];
+              }
+            ];
         };
 
         devShells.default = pkgs.mkShell {
           buildInputs =
-            [ self.packages.${system}.neovim ]
-            ++ (with pkgs; [
+            with pkgs;
+            [
               nodejs-slim
               bun
-            ]);
+            ]
+            ++ [ self.packages.${system}.neovim ];
         };
       }
     );

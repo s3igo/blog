@@ -9,7 +9,7 @@ import {
     Sunny,
     TwitterX,
 } from '~/components/icons/line-md';
-import { getCurrentTheme, toggleTheme } from './client-script';
+import { getCurrentTheme, toggleTheme } from './client-script.ts';
 
 const baseIconClasses =
     'bg-white rounded-full border-2 border-transparent p-2 dark:bg-black-knight dark:text-santas-gray';

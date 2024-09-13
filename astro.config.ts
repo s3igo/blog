@@ -6,7 +6,7 @@ import { defineConfig } from 'astro/config';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import colors from 'tailwindcss/colors';
-import { externalLinks, stripLineBreaks } from './plugins/remark';
+import { externalLinks, stripLineBreaks } from './plugins/remark.ts';
 
 const site = import.meta.env.PROD
     ? 'https://blog.tsuki-yo.net'

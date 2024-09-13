@@ -1,5 +1,5 @@
-import { HashSmall } from './icons/line-md';
-import { Metadata } from './metadata';
+import { HashSmall } from './icons/line-md.tsx';
+import { Metadata } from './metadata.tsx';
 
 type Props = { name: string; link?: boolean };
 
