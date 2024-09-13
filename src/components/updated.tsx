@@ -1,5 +1,5 @@
-import { Rotate } from './icons/line-md.ts';
-import { Metadata } from './metadata.ts';
+import { Rotate } from './icons/line-md.tsx';
+import { Metadata } from './metadata.tsx';
 
 type Props = { children: string };
 
