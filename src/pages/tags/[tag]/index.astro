@@ -5,8 +5,8 @@ import Navigation from '~/features/navigation/Navigation.astro';
 import TagList from '~/features/tag-list/TagList.astro';
 import Title from '~/features/title/Title.astro';
 import Layout from '~/layouts/list/Layout.astro';
-import type { Params, Props } from './_static';
-export { getStaticPaths } from './_static';
+import type { Params, Props } from './_static.ts';
+export { getStaticPaths } from './_static.ts';
 import Og from '~/features/og/Og.astro';
 
 const { tag } = Astro.params as Params;

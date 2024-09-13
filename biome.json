@@ -18,6 +18,9 @@
                         "attributes": ["class:list"]
                     }
                 }
+            },
+            "correctness": {
+                "noUndeclaredDependencies": "off"
             }
         }
     },

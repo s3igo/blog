@@ -23,7 +23,7 @@ export const Metadata = <T extends Element = 'div'>(props: Props<T>) => {
     return (
         <Dynamic
             class={clsx(
-                'font-code text-rainmaker dark:text-blue-blouse max-xl:text-sm',
+                'font-code text-rainmaker max-xl:text-sm dark:text-blue-blouse',
                 local.icon && 'flex items-center',
                 component === 'a' &&
                     'hover-element w-max rounded-full border-2 border-transparent bg-white px-3 py-1 dark:bg-black-knight',

@@ -1,4 +1,4 @@
-import { test } from './index';
+import { test } from './index.ts';
 
 test('indexページのスクリーンショットを撮影', async ({ page, mode }) => {
     await page.goto('/');
