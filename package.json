@@ -42,7 +42,7 @@
     "rehype-autolink-headings": "7.1.0",
     "rehype-slug": "6.0.0",
     "sanitize-html": "2.13.0",
-    "satori": "0.11.0",
+    "satori": "0.11.1",
     "satori-html": "0.3.2",
     "sharp": "0.33.5",
     "solid-js": "1.8.22",
