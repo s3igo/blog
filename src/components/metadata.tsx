@@ -8,7 +8,8 @@ import {
 } from 'solid-js';
 import { Dynamic } from 'solid-js/web';
 
-type Element = 'div' | 'a' | Component<unknown>;
+// biome-ignore lint/suspicious/noExplicitAny: any is used to allow for any element type
+type Element = 'div' | 'a' | Component<Record<string, any>>;
 
 type Props<T extends Element> = ComponentProps<T> & {
     as?: T;
