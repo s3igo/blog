@@ -33,7 +33,7 @@
     "@fontsource/jetbrains-mono": "5.1.0",
     "@fontsource/zen-kaku-gothic-new": "5.1.0",
     "@kobalte/core": "0.13.6",
-    "astro": "4.15.9",
+    "astro": "4.15.10",
     "astro-expressive-code": "0.37.0",
     "autoprefixer": "10.4.20",
     "clsx": "2.1.1",
@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.3",
-    "@biomejs/biome": "1.9.2",
+    "@biomejs/biome": "1.9.3",
     "@ls-lint/ls-lint": "2.2.3",
     "@playwright/test": "1.47.2",
     "@types/markdown-it": "14.1.2",
