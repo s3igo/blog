@@ -125,7 +125,7 @@ jobs:
       - name: Start server
         run: bun run preview &
       - name: Lost Pixel
-        uses: lost-pixel/lost-pixel@970d6018860b855f51d589e2de85339d47f3515d # v3.18.2
+        uses: lost-pixel/lost-pixel@fba132cd08a8cf4daf044dc261246b8577d738bc # v3.19.0
         env:
           LOST_PIXEL_API_KEY: ${{ secrets.LOST_PIXEL_API_KEY }}
 
