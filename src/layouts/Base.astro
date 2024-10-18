@@ -17,6 +17,11 @@ import Favicon from './Favicon.astro';
         <Favicon />
         <link rel="sitemap" href="/sitemap-index.xml" />
         <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
+        {/* `loadTheme` function in `src/features/navigation/client-script.ts` minified by https://try.terser.org/ */}
+        {/* execute the function on initial page load */}
+        <script is:inline>
+            "dark"===(window.localStorage.getItem("theme")??(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))&&document.documentElement.setAttribute("data-theme","dark");
+        </script>
         <script
             is:inline
             defer

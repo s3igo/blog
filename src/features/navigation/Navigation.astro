@@ -12,7 +12,8 @@ import Menu from './menu.tsx';
     <Menu client:only="solid-js" />
 </nav>
 <script>
+    // load theme on navigation
+    // see: https://docs.astro.build/en/guides/view-transitions/#astroafter-swap
     import { loadTheme } from "./client-script";
-    document.addEventListener("astro:page-load", loadTheme, { once: true });
     document.addEventListener("astro:after-swap", loadTheme);
 </script>
