@@ -7,27 +7,13 @@ export const getCurrentTheme = (): Theme =>
 
 export const loadTheme = () => {
     if (getCurrentTheme() === 'dark') {
-        document.documentElement.classList.add('dark');
-        document.documentElement.setAttribute('data-theme', 'material-theme');
+        document.documentElement.setAttribute('data-theme', 'dark');
     }
 };
 
 export const toggleTheme = () => {
-    const currentTheme = getCurrentTheme();
+    const nextTheme = getCurrentTheme() === 'dark' ? 'light' : 'dark';
 
-    if (currentTheme === 'dark') {
-        document.documentElement.classList.remove('dark');
-        document.documentElement.setAttribute(
-            'data-theme',
-            'material-theme-lighter',
-        );
-    } else {
-        document.documentElement.classList.add('dark');
-        document.documentElement.setAttribute('data-theme', 'material-theme');
-    }
-
-    window.localStorage.setItem(
-        'theme',
-        currentTheme === 'dark' ? 'light' : 'dark',
-    );
+    document.documentElement.setAttribute('data-theme', nextTheme);
+    window.localStorage.setItem('theme', nextTheme);
 };
