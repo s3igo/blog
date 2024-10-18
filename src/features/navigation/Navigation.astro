@@ -11,9 +11,3 @@ import Menu from './menu.tsx';
     {/* to use the `window` API */}
     <Menu client:only="solid-js" />
 </nav>
-<script>
-    // load theme on navigation
-    // see: https://docs.astro.build/en/guides/view-transitions/#astroafter-swap
-    import { loadTheme } from "./client-script";
-    document.addEventListener("astro:after-swap", loadTheme);
-</script>

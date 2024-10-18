@@ -9,7 +9,7 @@ import {
     Sunny,
     TwitterX,
 } from '~/components/icons/line-md';
-import { getCurrentTheme, toggleTheme } from './client-script.ts';
+import { getCurrentTheme } from '~/utils/client';
 
 const baseIconClasses =
     'bg-white rounded-full border-2 border-transparent p-2 dark:bg-black-knight dark:text-santas-gray';
@@ -50,7 +50,11 @@ const Memu = () => {
 
     const handleToggleTheme = () => {
         setDarkMode((prev) => !prev);
-        toggleTheme();
+
+        const next = getCurrentTheme() === 'dark' ? 'light' : 'dark';
+
+        document.documentElement.setAttribute('data-theme', next);
+        window.localStorage.setItem('theme', next);
     };
 
     return (
