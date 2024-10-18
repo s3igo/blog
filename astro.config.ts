@@ -47,6 +47,8 @@ export default defineConfig({
         partytown(),
         expressiveCode({
             themes: ['material-theme', 'material-theme-lighter'],
+            themeCssSelector: ({ type }) => `[data-theme='${type}']`,
+            useDarkModeMediaQuery: false,
             useThemedScrollbars: false,
             styleOverrides: {
                 borderRadius: '0.5rem', // rounded-lg

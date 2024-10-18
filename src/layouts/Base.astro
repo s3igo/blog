@@ -7,7 +7,7 @@ import Favicon from './Favicon.astro';
 ---
 
 <!doctype html>
-<html lang="ja" class="scroll-smooth" data-theme="material-theme-lighter">
+<html lang="ja" class="scroll-smooth" data-theme="light">
     <head>
         <meta charset="utf-8" />
         <slot name="head" />
@@ -17,6 +17,24 @@ import Favicon from './Favicon.astro';
         <Favicon />
         <link rel="sitemap" href="/sitemap-index.xml" />
         <link rel="alternate" type="application/rss+xml" href="/rss.xml" />
+        {/* `loadTheme` function minified by https://try.terser.org/ */}
+        {/* execute the function on initial page load */}
+        <script is:inline>
+            "dark"===(window.localStorage.getItem("theme")??(window.matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light"))&&document.documentElement.setAttribute("data-theme","dark");
+        </script>
+        {/* load theme on navigation */}
+        {/* see: https://docs.astro.build/en/guides/view-transitions/#astroafter-swap */}
+        <script>
+            import { getCurrentTheme } from "~/utils/client";
+
+            const loadTheme = () => {
+                if (getCurrentTheme() === 'dark') {
+                    document.documentElement.setAttribute('data-theme', 'dark');
+                }
+            };
+
+            document.addEventListener("astro:after-swap", loadTheme);
+        </script>
         <script
             is:inline
             defer

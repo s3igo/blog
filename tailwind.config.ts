@@ -3,7 +3,7 @@ import { literals } from './styles/colors.ts';
 
 export default {
     content: ['./src/**/*.{astro,tsx}'],
-    darkMode: 'class',
+    darkMode: ['selector', '[data-theme="dark"]'],
     theme: {
         colors: literals,
         fontFamily: {
