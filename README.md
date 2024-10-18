@@ -18,7 +18,7 @@
 - UIライブラリ: SolidJS
 - CSSフレームワーク: TailwindCSS
 - リンター・フォーマッター: Biome
-- ドメイン・デプロイ・CDN: Cloudflare
+- ドメイン・ホスティング・CDN: Cloudflare
 - 単体テスト: Vitest
 - E2Eテスト: Playwright
 - VRT: Playwright + reg-suit
