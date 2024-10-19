@@ -21,9 +21,9 @@ jobs:
         env:
           HUSKY: 0
       - name: Run Astro check
-        run: bun run check:astro
+        run: bun run check
       - name: Run Biome
-        run: bun run check:ci
+        run: bun run biome:ci
       - name: Run ls-lint
         run: bun run lint:ls
       - name: Check spelling
