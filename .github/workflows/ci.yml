@@ -21,15 +21,17 @@ jobs:
         env:
           HUSKY: 0
       - name: Run Astro check
-        run: bun run check:astro
+        run: bun run check
       - name: Run Biome
-        run: bun run check:ci
+        run: bun run biome:ci
       - name: Run ls-lint
         run: bun run lint:ls
       - name: Check spelling
         uses: crate-ci/typos@6802cc60d4e7f78b9d5454f6cf3935c042d5e1e3 # v1.26.0
       - name: Run Textlint
         run: bun run lint:text
+      - name: Run knip
+        run: bun run lint:knip
 
   test-type:
     name: Typecheck
