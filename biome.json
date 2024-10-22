@@ -8,9 +8,6 @@
     "linter": {
         "rules": {
             "all": true,
-            "suspicious": {
-                "noExportsInTest": "off"
-            },
             "nursery": {
                 "useSortedClasses": {
                     "level": "warn",
@@ -18,9 +15,6 @@
                         "attributes": ["class:list"]
                     }
                 }
-            },
-            "correctness": {
-                "noUndeclaredDependencies": "off"
             }
         }
     },
@@ -33,14 +27,6 @@
         }
     },
     "overrides": [
-        {
-            "include": ["package.json"],
-            "json": {
-                "formatter": {
-                    "indentWidth": 2
-                }
-            }
-        },
         {
             "include": ["*.config.ts", "config.ts"],
             "linter": {
