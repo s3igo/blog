@@ -3,64 +3,50 @@
     "vcs": {
         "enabled": true,
         "clientKind": "git",
-        "useIgnoreFile": true
+        "useIgnoreFile": true,
     },
     "linter": {
         "rules": {
             "all": true,
-            "suspicious": {
-                "noExportsInTest": "off"
-            },
             "nursery": {
                 "useSortedClasses": {
                     "level": "warn",
                     "options": {
-                        "attributes": ["class:list"]
-                    }
-                }
+                        "attributes": ["class:list"],
+                    },
+                },
             },
-            "correctness": {
-                "noUndeclaredDependencies": "off"
-            }
-        }
+        },
     },
     "formatter": {
-        "useEditorconfig": true
+        "useEditorconfig": true,
     },
     "javascript": {
         "formatter": {
-            "quoteStyle": "single"
-        }
+            "quoteStyle": "single",
+        },
     },
     "overrides": [
-        {
-            "include": ["package.json"],
-            "json": {
-                "formatter": {
-                    "indentWidth": 2
-                }
-            }
-        },
         {
             "include": ["*.config.ts", "config.ts"],
             "linter": {
                 "rules": {
                     "style": {
                         "noDefaultExport": "off",
-                        "useNamingConvention": "off"
-                    }
-                }
-            }
+                        "useNamingConvention": "off",
+                    },
+                },
+            },
         },
         {
             "include": ["./src/pages/**"],
             "linter": {
                 "rules": {
                     "performance": {
-                        "noBarrelFile": "off"
-                    }
-                }
-            }
+                        "noBarrelFile": "off",
+                    },
+                },
+            },
         },
         {
             "include": ["*.astro"],
@@ -68,13 +54,21 @@
                 "rules": {
                     "correctness": {
                         "noUnusedImports": "off",
-                        "noUnusedVariables": "off"
+                        "noUnusedVariables": "off",
                     },
                     "style": {
-                        "useFilenamingConvention": "off"
-                    }
-                }
-            }
-        }
-    ]
+                        "useFilenamingConvention": "off",
+                    },
+                },
+            },
+        },
+        {
+            "include": ["*.jsonc"],
+            "json": {
+                "formatter": {
+                    "trailingCommas": "all",
+                },
+            },
+        },
+    ],
 }
