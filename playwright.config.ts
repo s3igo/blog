@@ -1,5 +1,5 @@
 import { defineConfig, devices } from '@playwright/test';
-import type { TestOptions } from './tests/vrt/index.ts';
+import type { TestOptions } from 'tests/vrt';
 
 export default defineConfig<TestOptions>({
     projects: [
