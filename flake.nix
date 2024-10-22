@@ -1,7 +1,7 @@
 {
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
-    flake-utils.url = "github:numtide/flake-utils";
+    systems.url = "github:nix-systems/default";
     nixvim = {
       url = "github:nix-community/nixvim";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -13,17 +13,19 @@
     {
       self,
       nixpkgs,
-      flake-utils,
+      systems,
       nixvim,
       neovim-config,
     }:
-    flake-utils.lib.eachDefaultSystem (
-      system:
-      let
-        pkgs = import nixpkgs { inherit system; };
-      in
-      {
-        packages.neovim = nixvim.legacyPackages.${system}.makeNixvim {
+
+    let
+      eachSystem = nixpkgs.lib.genAttrs (import systems);
+      pkgsFor = eachSystem (system: import nixpkgs { inherit system; });
+    in
+
+    {
+      packages = eachSystem (system: {
+        neovim = nixvim.legacyPackages.${system}.makeNixvim {
           imports =
             with neovim-config.nixosModules;
             [
@@ -77,16 +79,29 @@
               }
             ];
         };
+      });
 
-        devShells.default = pkgs.mkShell {
-          buildInputs =
-            with pkgs;
-            [
-              nodejs-slim
-              bun
-            ]
-            ++ [ self.packages.${system}.neovim ];
-        };
-      }
-    );
+      devShells = eachSystem (
+        system:
+        let
+          pkgs = pkgsFor.${system};
+        in
+        {
+          default = pkgs.mkShellNoCC {
+            buildInputs =
+              with pkgs;
+              [
+                nodejs-slim
+                bun
+              ]
+              ++ [
+                (neovim-config.lib.customName {
+                  inherit pkgs;
+                  nvim = self.packages.${system}.neovim;
+                })
+              ];
+          };
+        }
+      );
+    };
 }
