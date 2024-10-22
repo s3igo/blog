@@ -3,7 +3,7 @@
     "vcs": {
         "enabled": true,
         "clientKind": "git",
-        "useIgnoreFile": true
+        "useIgnoreFile": true,
     },
     "linter": {
         "rules": {
@@ -12,19 +12,19 @@
                 "useSortedClasses": {
                     "level": "warn",
                     "options": {
-                        "attributes": ["class:list"]
-                    }
-                }
-            }
-        }
+                        "attributes": ["class:list"],
+                    },
+                },
+            },
+        },
     },
     "formatter": {
-        "useEditorconfig": true
+        "useEditorconfig": true,
     },
     "javascript": {
         "formatter": {
-            "quoteStyle": "single"
-        }
+            "quoteStyle": "single",
+        },
     },
     "overrides": [
         {
@@ -33,20 +33,20 @@
                 "rules": {
                     "style": {
                         "noDefaultExport": "off",
-                        "useNamingConvention": "off"
-                    }
-                }
-            }
+                        "useNamingConvention": "off",
+                    },
+                },
+            },
         },
         {
             "include": ["./src/pages/**"],
             "linter": {
                 "rules": {
                     "performance": {
-                        "noBarrelFile": "off"
-                    }
-                }
-            }
+                        "noBarrelFile": "off",
+                    },
+                },
+            },
         },
         {
             "include": ["*.astro"],
@@ -54,13 +54,21 @@
                 "rules": {
                     "correctness": {
                         "noUnusedImports": "off",
-                        "noUnusedVariables": "off"
+                        "noUnusedVariables": "off",
                     },
                     "style": {
-                        "useFilenamingConvention": "off"
-                    }
-                }
-            }
-        }
-    ]
+                        "useFilenamingConvention": "off",
+                    },
+                },
+            },
+        },
+        {
+            "include": ["*.jsonc"],
+            "json": {
+                "formatter": {
+                    "trailingCommas": "all",
+                },
+            },
+        },
+    ],
 }
