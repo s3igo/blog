@@ -1,5 +1,5 @@
 ---
-title: Macのおすすめ設定
+title: Macを買ったら最初にすること
 tags: []
 published: 2024-04-02
 updated:
