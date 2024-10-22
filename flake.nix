@@ -88,18 +88,14 @@
         in
         {
           default = pkgs.mkShellNoCC {
-            buildInputs =
-              with pkgs;
-              [
-                nodejs-slim
-                bun
-              ]
-              ++ [
-                (neovim-config.lib.customName {
-                  inherit pkgs;
-                  nvim = self.packages.${system}.neovim;
-                })
-              ];
+            buildInputs = [
+              pkgs.nodejs-slim
+              pkgs.bun
+              (neovim-config.lib.customName {
+                inherit pkgs;
+                nvim = self.packages.${system}.neovim;
+              })
+            ];
           };
         }
       );
