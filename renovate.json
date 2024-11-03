@@ -13,8 +13,9 @@
     "nix": { "enabled": true },
     "lockFileMaintenance": { "enabled": true, "extends": ["schedule:weekly"] },
     "packageRules": [
-        { "addLabels": ["deps.major[bot]"], "matchUpdateTypes": "major" },
-        { "addLabels": ["deps.minor[bot]"], "matchUpdateTypes": "minor" },
-        { "addLabels": ["deps.patch[bot]"], "matchUpdateTypes": "patch" }
+        { "matchUpdateTypes": "major", "addLabels": ["deps.major[bot]"] },
+        { "matchUpdateTypes": "minor", "addLabels": ["deps.minor[bot]"] },
+        { "matchUpdateTypes": "patch", "addLabels": ["deps.patch[bot]"] },
+        { "matchPackageNames": ["@types/node"], "versioning": "node" }
     ]
 }
