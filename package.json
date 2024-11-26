@@ -34,7 +34,7 @@
     "@fontsource/jetbrains-mono": "5.1.1",
     "@fontsource/zen-kaku-gothic-new": "5.1.0",
     "@kobalte/core": "0.13.7",
-    "astro": "4.16.14",
+    "astro": "4.16.15",
     "astro-expressive-code": "0.38.3",
     "autoprefixer": "10.4.20",
     "clsx": "2.1.1",
@@ -57,19 +57,19 @@
     "@ls-lint/ls-lint": "2.2.3",
     "@playwright/test": "1.49.0",
     "@types/markdown-it": "14.1.2",
-    "@types/node": "20.17.7",
+    "@types/node": "20.17.8",
     "@types/sanitize-html": "2.13.0",
     "@types/unist": "3.0.3",
-    "@vitest/coverage-v8": "2.1.5",
+    "@vitest/coverage-v8": "2.1.6",
     "husky": "9.1.7",
-    "knip": "5.37.2",
+    "knip": "5.38.1",
     "lost-pixel": "3.22.0",
     "scaffdog": "4.1.0",
     "textlint": "14.3.0",
     "textlint-filter-rule-allowlist": "4.0.0",
     "textlint-filter-rule-comments": "1.2.2",
     "textlint-rule-preset-ja-technical-writing": "10.0.1",
-    "vitest": "2.1.5"
+    "vitest": "2.1.6"
   },
   "trustedDependencies": ["@biomejs/biome", "esbuild", "odiff-bin", "sharp"]
 }
