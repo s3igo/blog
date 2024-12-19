@@ -29,7 +29,7 @@
   "dependencies": {
     "@astrojs/partytown": "2.1.2",
     "@astrojs/rss": "4.0.9",
-    "@astrojs/solid-js": "4.4.4",
+    "@astrojs/solid-js": "5.0.0",
     "@astrojs/tailwind": "5.1.2",
     "@fontsource/jetbrains-mono": "5.1.1",
     "@fontsource/zen-kaku-gothic-new": "5.1.0",
