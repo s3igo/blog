@@ -16,6 +16,10 @@
         { "matchUpdateTypes": "major", "addLabels": ["deps.major[bot]"] },
         { "matchUpdateTypes": "minor", "addLabels": ["deps.minor[bot]"] },
         { "matchUpdateTypes": "patch", "addLabels": ["deps.patch[bot]"] },
-        { "matchPackageNames": ["@types/node"], "versioning": "node" }
+        {
+            "matchManagers": ["bun"],
+            "matchPackageNames": ["@types/node"],
+            "versioning": "node"
+        }
     ]
 }

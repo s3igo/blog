@@ -26,53 +26,49 @@
     {
       packages = eachSystem (system: {
         neovim = nixvim.legacyPackages.${system}.makeNixvim {
-          imports =
-            with neovim-config.nixosModules;
-            [
-              default
-              nix
-              typescript
-              json
-              yaml
-              markdown
-            ]
-            ++ [
-              {
-                plugins = {
-                  colorizer.settings.user_default_options.tailwind = "lsp";
-                  none-ls = {
-                    enable = true;
-                    sources = {
-                      diagnostics.textlint = {
-                        enable = true;
-                        package = null;
-                      };
-                      formatting.textlint = {
-                        enable = true;
-                        package = null;
-                      };
-                    };
-                  };
-                  lsp.servers = {
-                    astro.enable = true;
-                    biome.enable = true;
-                    taplo.enable = true;
-                    tailwindcss = {
+          imports = with neovim-config.nixosModules; [
+            default
+            nix
+            typescript
+            json
+            yaml
+            markdown
+            {
+              plugins = {
+                colorizer.settings.user_default_options.tailwind = "lsp";
+                none-ls = {
+                  enable = true;
+                  sources = {
+                    diagnostics.textlint = {
                       enable = true;
-                      extraOptions.settings.tailwindCSS.classAttributes = [
-                        "class"
-                        "class:list"
-                        ".*Classes"
-                      ];
+                      package = null;
                     };
-                    jsonls.onAttach.function = ''
-                      client.server_capabilities.documentFormattingProvider = false
-                    '';
+                    formatting.textlint = {
+                      enable = true;
+                      package = null;
+                    };
                   };
-
                 };
-              }
-            ];
+                lsp.servers = {
+                  astro.enable = true;
+                  biome.enable = true;
+                  taplo.enable = true;
+                  tailwindcss = {
+                    enable = true;
+                    extraOptions.settings.tailwindCSS.classAttributes = [
+                      "class"
+                      "class:list"
+                      ".*Classes"
+                    ];
+                  };
+                  # BiomeでJSONをフォーマットするためjsonlsのフォーマット機能を無効化
+                  jsonls.onAttach.function = ''
+                    client.server_capabilities.documentFormattingProvider = false
+                  '';
+                };
+              };
+            }
+          ];
         };
       });
 
