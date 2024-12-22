@@ -1,3 +1,4 @@
+'$schema' = 'https://www.unpkg.com/wrangler/config-schema.json'
 compatibility_date = '2023-02-15'
 name = 'blog'
 pages_build_output_dir = './dist'
