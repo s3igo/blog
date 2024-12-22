@@ -39,12 +39,7 @@
             ++ [
               {
                 plugins = {
-                  nvim-colorizer.fileTypes = [
-                    {
-                      language = "astro";
-                      tailwind = "lsp";
-                    }
-                  ];
+                  colorizer.settings.user_default_options.tailwind = "lsp";
                   none-ls = {
                     enable = true;
                     sources = {
