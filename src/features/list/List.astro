@@ -10,9 +10,9 @@ type Props = { posts: Posts };
 const { posts } = Astro.props;
 
 const cards = posts
-    .map(({ data, slug }) => ({
+    .map(({ data, id }) => ({
         title: data.title,
-        href: `/posts/${slug}`,
+        href: `/posts/${id}`,
         published: toStr(data.published),
         updated: data.updated && toStr(data.updated),
         tags: data.tags,
