@@ -20,10 +20,10 @@ const tags = sortedUniqueTags(data).map((tag) =>
     }),
 );
 
-const posts = data.map(({ slug }) =>
+const posts = data.map(({ id }) =>
     Schema.parse({
-        path: `/posts/${slug}`,
-        name: `posts-${slug}`,
+        path: `/posts/${id}`,
+        name: `posts-${id}`,
     }),
 );
 

@@ -7,13 +7,14 @@ import Layout from '~/layouts/post/Layout.astro';
 import { toStr } from '~/utils/date';
 import type { Props } from './_static.ts';
 export { getStaticPaths } from './_static.ts';
+import { render } from 'astro:content';
 import { Metadata } from '~/components/metadata';
 import { Updated } from '~/components/updated';
 import Og from '~/features/og/Og.astro';
 
 const { post } = Astro.props as Props;
 const { title, published, updated, tags } = post.data;
-const { Content } = await post.render();
+const { Content } = await render(post);
 
 const baseUrl = new URL(Astro.url.pathname, Astro.site);
 const ogUrl = new URL(`${Astro.url.pathname}/og.png`, baseUrl);

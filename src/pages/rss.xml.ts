@@ -16,11 +16,17 @@ export const GET: APIRoute = async ({ site }) => {
         site: site?.toString() ?? '',
         customData: '<language>ja</language>',
         description: PAGE_DESCRIPTION,
-        items: posts.map(({ body, data, slug }) => ({
-            title: data.title,
-            link: `/posts/${slug}`,
-            pubDate: data.published,
-            content: sanitizeHtml(parser.render(body)),
-        })),
+        items: posts.map(({ body, data, id }) => {
+            if (!body) {
+                throw new Error(`Post ${id} has no body`);
+            }
+
+            return {
+                title: data.title,
+                link: `/posts/${id}`,
+                pubDate: data.published,
+                content: sanitizeHtml(parser.render(body)),
+            };
+        }),
     });
 };
