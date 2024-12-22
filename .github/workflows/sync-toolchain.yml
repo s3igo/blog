@@ -3,6 +3,7 @@ name: Sync toolchain versions
 on:
   pull_request:
     paths:
+      - '.github/workflows/sync-toolchain.yml'
       - 'flake.lock'
 
 jobs:
@@ -18,11 +19,23 @@ jobs:
         with:
           github_access_token: ${{ secrets.GITHUB_TOKEN }}
       - name: Put Node.js version
-        run: nix run nixpkgs#nodejs-slim --inputs-from . -- --version > .node-version
+        run: |
+          NODE_VERSION=$(nix run nixpkgs#nodejs-slim --inputs-from . -- --version)
+          echo $NODE_VERSION > .node-version
+          nix run nixpkgs#dasel --inputs-from . -- put \
+            --file renovate.json \
+            --value ${NODE_VERSION:1} \
+            'packageRules.all().property(matchPackageNames?).filter(equal(type(),array)).first().filter(equal(.,@types/node)).parent().parent().allowedVersions'
+          BIOME_VERSION=$(nix run nixpkgs#dasel --inputs-from . -- --file package.json 'devDependencies.@biomejs/biome')
+          # BIOME_VERSIONはダブルクォートで囲まれた文字列なので、それを取り除く
+          nix shell nixpkgs#bun --inputs-from . --command bunx @biomejs/biome@${BIOME_VERSION//\"/} check --write renovate.json
       - name: Put Bun version
         run: |
           BUN_VERSION=$(nix run nixpkgs#bun --inputs-from . -- --version)
-          nix run nixpkgs#dasel -- put -f wrangler.toml -v $BUN_VERSION '.vars.BUN_VERSION'
+          nix run nixpkgs#dasel --inputs-from . -- put \
+            --file wrangler.toml \
+            --value $BUN_VERSION \
+            'vars.BUN_VERSION'
       - name: Commit changes
         uses: stefanzweifel/git-auto-commit-action@8621497c8c39c72f3e2a999a26b4ca1b5058a842 # v5
         with:

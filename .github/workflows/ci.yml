@@ -99,11 +99,11 @@ jobs:
         env:
           HUSKY: 0
       - name: Setup Playwright
-        run: bunx playwright install --with-deps ${{ matrix.browser }}
+        run: bun playwright install --with-deps ${{ matrix.browser }}
       - name: Build app
         run: bun run build
       - name: Run Playwright tests
-        run: bunx playwright test --project ${{ matrix.browser }}
+        run: bun playwright test --project ${{ matrix.browser }}
 
   vrt:
     name: VRT
