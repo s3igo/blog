@@ -28,6 +28,14 @@
     },
     "overrides": [
         {
+            "include": ["*.jsonc"],
+            "json": {
+                "formatter": {
+                    "trailingCommas": "all",
+                },
+            },
+        },
+        {
             "include": ["*.config.ts", "config.ts"],
             "linter": {
                 "rules": {
@@ -59,14 +67,6 @@
                     "style": {
                         "useFilenamingConvention": "off",
                     },
-                },
-            },
-        },
-        {
-            "include": ["*.jsonc"],
-            "json": {
-                "formatter": {
-                    "trailingCommas": "all",
                 },
             },
         },
