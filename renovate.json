@@ -32,7 +32,7 @@
         },
         {
             "matchPackageNames": ["@types/node"],
-            "allowedVersions": "^20"
+            "allowedVersions": "20.18.1"
         }
     ]
 }
