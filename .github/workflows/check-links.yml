@@ -14,7 +14,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Check Markdown links
-        uses: gaurav-nelson/github-action-markdown-link-check@5c5dfc0ac2e225883c0e5f03a85311ec2830d368 # v1
+        uses: lycheeverse/lychee-action@v2
         with:
-          use-verbose-mode: 'yes'
-          folder-path: './src/content/posts/'
+          args: --verbose --no-progress './src/content/posts/*.md'
