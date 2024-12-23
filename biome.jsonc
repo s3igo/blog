@@ -5,7 +5,12 @@
         "clientKind": "git",
         "useIgnoreFile": true,
     },
+    "formatter": {
+        "enabled": true,
+        "useEditorconfig": true,
+    },
     "linter": {
+        "enabled": true,
         "rules": {
             "all": true,
             "nursery": {
@@ -19,9 +24,6 @@
                 },
             },
         },
-    },
-    "formatter": {
-        "useEditorconfig": true,
     },
     "javascript": {
         "formatter": {
