@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+    paths:
+      - '.github/workflows/check-links.yml'
+      - 'src/content/posts/*.md'
+  schedule:
+    - cron: '0 0 * * 0' # 毎週
 
 jobs:
   markdown-link-check:
