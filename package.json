@@ -1,4 +1,5 @@
 {
+  "$schema": "https://json.schemastore.org/package.json",
   "name": "blog",
   "type": "module",
   "version": "0.1.0",
