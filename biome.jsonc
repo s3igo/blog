@@ -5,21 +5,25 @@
         "clientKind": "git",
         "useIgnoreFile": true,
     },
+    "formatter": {
+        "enabled": true,
+        "useEditorconfig": true,
+    },
     "linter": {
+        "enabled": true,
         "rules": {
             "all": true,
             "nursery": {
                 "useSortedClasses": {
                     "level": "warn",
+                    "fix": "safe",
                     "options": {
                         "attributes": ["class:list"],
+                        "functions": ["clsx"],
                     },
                 },
             },
         },
-    },
-    "formatter": {
-        "useEditorconfig": true,
     },
     "javascript": {
         "formatter": {

@@ -1,0 +1,2 @@
+[default.extend-words]
+edn = "edn" # Clojureで使われる"extensible data notation"の略
