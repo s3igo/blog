@@ -12,7 +12,7 @@
     "build:clean": "rm -rf ./dist",
     "preview": "astro preview",
     "check": "astro check",
-    "biome:fix": "biome check --write .",
+    "biome:write": "biome check --write .",
     "biome:unsafe": "biome check --write --unsafe .",
     "biome:ci": "biome ci .",
     "lint:text": "textlint ./src/content/posts/**/*.md",
