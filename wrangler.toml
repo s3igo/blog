@@ -4,4 +4,4 @@ name = 'blog'
 pages_build_output_dir = './dist'
 
 [vars]
-  BUN_VERSION = '1.1.38'
+  BUN_VERSION = '1.1.42'
