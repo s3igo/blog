@@ -69,7 +69,7 @@
     "textlint": "14.4.2",
     "textlint-filter-rule-allowlist": "4.0.0",
     "textlint-filter-rule-comments": "1.2.2",
-    "textlint-rule-preset-ja-technical-writing": "10.0.2",
+    "textlint-rule-preset-ja-technical-writing": "12.0.2",
     "vitest": "3.0.0-beta.3"
   },
   "trustedDependencies": ["@biomejs/biome", "esbuild", "odiff-bin", "sharp"]
