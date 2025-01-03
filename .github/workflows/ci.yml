@@ -27,7 +27,7 @@ jobs:
       - name: Run ls-lint
         run: bun run lint:ls
       - name: Check spelling
-        uses: crate-ci/typos@3265cef783c98e382e561f6089c2179a7d91bf0d # v1.29.1
+        uses: crate-ci/typos@685eb3d55be2f85191e8c84acb9f44d7756f84ab # v1.29.4
       - name: Run Textlint
         run: bun run lint:text
       - name: Run knip
