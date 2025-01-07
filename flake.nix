@@ -90,5 +90,7 @@
           };
         }
       );
+
+      meta.package = nixpkgs.lib.importJSON ./package.json;
     };
 }
