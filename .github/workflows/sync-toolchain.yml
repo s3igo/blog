@@ -24,11 +24,10 @@ jobs:
           echo $NODE_VERSION > .node-version
           nix run nixpkgs#dasel --inputs-from . -- put \
             --file renovate.json \
-            --value ${NODE_VERSION:1} \
+            --value "<=${NODE_VERSION:1}" \
             'packageRules.all().property(matchPackageNames?).filter(equal(type(),array)).first().filter(equal(.,@types/node)).parent().parent().allowedVersions'
-          BIOME_VERSION=$(nix run nixpkgs#dasel --inputs-from . -- --file package.json 'devDependencies.@biomejs/biome')
-          # BIOME_VERSIONはダブルクォートで囲まれた文字列なので、それを取り除く
-          nix shell nixpkgs#bun --inputs-from . --command bunx @biomejs/biome@${BIOME_VERSION//\"/} check --write renovate.json
+          BIOME_VERSION=$(nix eval .#meta.package.devDependencies."@biomejs/biome" --raw)
+          nix shell nixpkgs#bun --inputs-from . --command bunx @biomejs/biome@$BIOME_VERSION check --write renovate.json
       - name: Put Bun version
         run: |
           BUN_VERSION=$(nix run nixpkgs#bun --inputs-from . -- --version)

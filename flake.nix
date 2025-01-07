@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     systems.url = "github:nix-systems/default";
     nixvim = {
       url = "github:nix-community/nixvim";
@@ -90,5 +90,7 @@
           };
         }
       );
+
+      meta.package = nixpkgs.lib.importJSON ./package.json;
     };
 }
