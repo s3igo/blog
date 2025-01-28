@@ -13,6 +13,7 @@
     "build:clean": "rm -rf ./dist",
     "preview": "astro preview",
     "check": "astro check",
+    "astro:clean": "rm -rf ./.astro",
     "biome:write": "biome check --write .",
     "biome:unsafe": "biome check --write --unsafe .",
     "biome:ci": "biome ci .",
@@ -25,7 +26,7 @@
     "coverage": "vitest run --coverage",
     "coverage:clean": "rm -rf ./coverage",
     "clean": "rm -rf ./node_modules",
-    "clean:astro": "rm -rf ./.astro"
+    "clean:all": "bun run clean && bun run astro:clean && bun run build:clean && bun run coverage:clean"
   },
   "dependencies": {
     "@astrojs/partytown": "2.1.3",
