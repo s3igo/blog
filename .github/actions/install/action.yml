@@ -1,5 +1,5 @@
 name: Install Dependencies
-description: Install repository dependencies
+description: Install project dependencies and optionally build the application
 
 inputs:
   build:
@@ -11,20 +11,17 @@ inputs:
 runs:
   using: 'composite'
   steps:
-    - name: Checkout repository
-      uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-    - name: Setup bun
-      uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5 # v2
+    - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+    - uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5 # v2
       with:
         bun-version-file: .bun-version
-    - name: Setup Node
-      uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4
+    - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4
       with:
         node-version-file: .node-version
-    - name: Install dependencies
+    - name: Install Dependencies
       run: bun install --frozen-lockfile
       shell: bash
-    - name: Build app
+    - name: Build
       if: ${{ inputs.build == 'true' }}
       run: bun run build
       shell: bash

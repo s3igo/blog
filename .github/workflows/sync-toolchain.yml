@@ -1,4 +1,4 @@
-name: Sync toolchain versions
+name: Sync Toolchain Versions
 
 on:
   pull_request:
@@ -7,18 +7,18 @@ on:
       - 'flake.lock'
 
 jobs:
-  toolchain:
-    name: Sync
+  sync-toolchain-versions:
+    name: Sync Toolchain Versions
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@v16
-      - name: Enable Nix cache
+      - name: Setup Nix Cache
         uses: DeterminateSystems/magic-nix-cache-action@v8
-      - name: Put Node.js version
+      - name: Get the Node.js version and update .node-version and renovate.json
         run: |
           NODE_VERSION=$(nix develop --command node --version)
           echo ${NODE_VERSION:1} > .node-version
@@ -28,11 +28,11 @@ jobs:
           mv tmp.json renovate.json
           BIOME_VERSION=$(nix eval .#meta.package.devDependencies."@biomejs/biome" --raw)
           nix develop --command bunx @biomejs/biome@$BIOME_VERSION check --write renovate.json
-      - name: Put Bun version
+      - name: Get the Bun version and update .bun-version
         run: |
           BUN_VERSION=$(nix develop --command bun --version)
           echo $BUN_VERSION > .bun-version
-      - name: Commit changes
+      - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@e348103e9026cc0eee72ae06630dbe30c8bf7a79 # v5
         with:
-          commit_message: Apply toolchain updates
+          commit_message: 'chore(deps): Apply toolchain updates'
