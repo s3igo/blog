@@ -17,16 +17,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Setup bun
-        uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5 # v2
-        with:
-          bun-version-file: .bun-version
-      - name: Setup Node
-        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4
-        with:
-          node-version-file: .node-version
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
+      - uses: ./.github/actions/install
       - name: Run Astro check
         run: bun run check
       - name: Run Biome
@@ -47,18 +38,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Setup bun
-        uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5 # v2
+      - uses: ./.github/actions/install
         with:
-          bun-version-file: .bun-version
-      - name: Setup Node
-        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4
-        with:
-          node-version-file: .node-version
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-      - name: Build app
-        run: bun run build
+          build: 'true'
       - name: Run Vitest typecheck
         run: bun run test:type
 
@@ -69,16 +51,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Setup bun
-        uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5 # v2
-        with:
-          bun-version-file: .bun-version
-      - name: Setup Node
-        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4
-        with:
-          node-version-file: .node-version
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
+      - uses: ./.github/actions/install
       - name: Run Vitest
         run: bun run test:unit
 
@@ -95,20 +68,11 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Setup bun
-        uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5 # v2
+      - uses: ./.github/actions/install
         with:
-          bun-version-file: .bun-version
-      - name: Setup Node
-        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4
-        with:
-          node-version-file: .node-version
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
+          build: 'true'
       - name: Setup Playwright
         run: bun playwright install --with-deps ${{ matrix.browser }}
-      - name: Build app
-        run: bun run build
       - name: Run Playwright tests
         run: bun playwright test --project ${{ matrix.browser }}
 
@@ -119,18 +83,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Setup bun
-        uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5 # v2
+      - uses: ./.github/actions/install
         with:
-          bun-version-file: .bun-version
-      - name: Setup Node
-        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4
-        with:
-          node-version-file: .node-version
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-      - name: Build app
-        run: bun run build
+          build: 'true'
       - name: Start server
         run: bun run preview &
       - name: Lost Pixel
@@ -146,16 +101,7 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Setup bun
-        uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5 # v2
-        with:
-          bun-version-file: .bun-version
-      - name: Setup Node
-        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4
-        with:
-          node-version-file: .node-version
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
+      - uses: ./.github/actions/install
       - name: Generate coverage file
         run: bun run coverage
       - name: Upload coverage reports to Codecov
@@ -171,18 +117,9 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Setup bun
-        uses: oven-sh/setup-bun@4bc047ad259df6fc24a6c9b0f9a0cb08cf17fbe5 # v2
+      - uses: ./.github/actions/install
         with:
-          bun-version-file: .bun-version
-      - name: Setup Node
-        uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4
-        with:
-          node-version-file: .node-version
-      - name: Install dependencies
-        run: bun install --frozen-lockfile
-      - name: Build app
-        run: bun run build
+          build: 'true'
       # https://github.com/cloudflare/wrangler-action?tab=readme-ov-file#deploy-your-pages-site-production--preview
       - name: Deploy to Cloudflare Pages
         uses: cloudflare/wrangler-action@v3
