@@ -118,7 +118,7 @@ jobs:
           build: 'true'
       # https://github.com/cloudflare/wrangler-action?tab=readme-ov-file#deploy-your-pages-site-production--preview
       - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@v3
+        uses: cloudflare/wrangler-action@7a5f8bbdfeedcde38e6777a50fe685f89259d4ca # v3
         with:
           command: pages deploy
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
