@@ -1,3 +1,5 @@
+@reference "../global.css";
+
 .blog {
     @apply sm:text-lg py-8 mt-8 sm:py-12;
 
