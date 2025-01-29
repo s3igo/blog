@@ -1,7 +1,4 @@
-'$schema' = 'https://www.unpkg.com/wrangler/config-schema.json'
-compatibility_date = '2023-02-15'
-name = 'blog'
-pages_build_output_dir = './dist'
-
-[vars]
-  BUN_VERSION = '1.1.43'
+#:schema https://www.unpkg.com/wrangler/config-schema.json
+name = "blog"
+compatibility_date = "2024-11-11"
+pages_build_output_dir = "./dist"

@@ -6,16 +6,19 @@ on:
       - 'renovate.json'
 
 jobs:
-  validate:
-    name: Validate
+  validate-renovate-config:
+    name: Validate Renovate Config
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Check spelling
-        uses: crate-ci/typos@master
-      - name: Validate Renovate Config
-        uses: rinchsan/renovate-config-validator@main
-        with:
-          pattern: 'renovate.json'
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@v16
+      - name: Setup Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v8
+      - name: Validate
+        run: |
+          nix shell nixpkgs#nodejs --inputs-from . \
+            --command npx --yes --package renovate \
+            -c 'renovate-config-validator --strict'

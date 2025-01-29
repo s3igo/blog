@@ -1,4 +1,4 @@
-name: Sync toolchain versions
+name: Sync Toolchain Versions
 
 on:
   pull_request:
@@ -7,35 +7,32 @@ on:
       - 'flake.lock'
 
 jobs:
-  toolchain:
-    name: Sync
+  sync-toolchain-versions:
+    name: Sync Toolchain Versions
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
       - name: Install Nix
-        uses: cachix/install-nix-action@08dcb3a5e62fa31e2da3d490afc4176ef55ecd72 # v30
-        with:
-          github_access_token: ${{ secrets.GITHUB_TOKEN }}
-      - name: Put Node.js version
+        uses: DeterminateSystems/nix-installer-action@v16
+      - name: Setup Nix Cache
+        uses: DeterminateSystems/magic-nix-cache-action@v8
+      - name: Get the Node.js version and update .node-version and renovate.json
         run: |
-          NODE_VERSION=$(nix run nixpkgs#nodejs-slim --inputs-from . -- --version)
-          echo $NODE_VERSION > .node-version
-          nix run nixpkgs#dasel --inputs-from . -- put \
-            --file renovate.json \
-            --value "<=${NODE_VERSION:1}" \
-            'packageRules.all().property(matchPackageNames?).filter(equal(type(),array)).first().filter(equal(.,@types/node)).parent().parent().allowedVersions'
+          NODE_VERSION=$(nix develop --command node --version)
+          echo ${NODE_VERSION:1} > .node-version
+          nix run nixpkgs#jq --inputs-from . -- \
+            "walk(if type == \"object\" and has(\"allowedVersions\") then .allowedVersions = \"<=${NODE_VERSION:1}\" else . end)" \
+            renovate.json > tmp.json
+          mv tmp.json renovate.json
           BIOME_VERSION=$(nix eval .#meta.package.devDependencies."@biomejs/biome" --raw)
-          nix shell nixpkgs#bun --inputs-from . --command bunx @biomejs/biome@$BIOME_VERSION check --write renovate.json
-      - name: Put Bun version
+          nix develop --command bunx @biomejs/biome@$BIOME_VERSION check --write renovate.json
+      - name: Get the Bun version and update .bun-version
         run: |
-          BUN_VERSION=$(nix run nixpkgs#bun --inputs-from . -- --version)
-          nix run nixpkgs#dasel --inputs-from . -- put \
-            --file wrangler.toml \
-            --value $BUN_VERSION \
-            'vars.BUN_VERSION'
-      - name: Commit changes
+          BUN_VERSION=$(nix develop --command bun --version)
+          echo $BUN_VERSION > .bun-version
+      - name: Commit Changes
         uses: stefanzweifel/git-auto-commit-action@e348103e9026cc0eee72ae06630dbe30c8bf7a79 # v5
         with:
-          commit_message: Apply toolchain updates
+          commit_message: 'chore(deps): Apply toolchain updates'

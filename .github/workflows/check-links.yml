@@ -1,4 +1,4 @@
-name: Check links
+name: Check Broken Links
 
 on:
   push:
@@ -8,17 +8,17 @@ on:
       - '.github/workflows/check-links.yml'
       - 'src/content/posts/*.md'
   schedule:
-    - cron: '0 0 * * 0' # 毎週
+    - cron: '0 0 * * 0' # weekly
 
 jobs:
-  markdown-link-check:
-    name: Check links
+  check-links:
+    name: Check Broken Links
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
-      - name: Checkout repository
+      - name: Checkout Repository
         uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Check Markdown links
+      - name: Check Article Links
         uses: lycheeverse/lychee-action@f796c8b7d468feb9b8c0a46da3fac0af6874d374 # v2
         with:
           args: --verbose --no-progress './src/content/posts/*.md'
