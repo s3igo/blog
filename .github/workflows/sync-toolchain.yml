@@ -21,7 +21,7 @@ jobs:
       - name: Put Node.js version
         run: |
           NODE_VERSION=$(nix develop --command node --version)
-          echo $NODE_VERSION > .node-version
+          echo ${NODE_VERSION:1} > .node-version
           nix run nixpkgs#jq --inputs-from . -- \
             "walk(if type == \"object\" and has(\"allowedVersions\") then .allowedVersions = \"<=${NODE_VERSION:1}\" else . end)" \
             renovate.json > tmp.json
