@@ -1,8 +1,10 @@
 import partytown from '@astrojs/partytown';
 import solidJs from '@astrojs/solid-js';
-import tailwind from '@astrojs/tailwind';
+import tailwindcss from '@tailwindcss/vite';
 import expressiveCode from 'astro-expressive-code';
 import { defineConfig } from 'astro/config';
+import browserslist from 'browserslist';
+import { browserslistToTargets } from 'lightningcss';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import colors from 'tailwindcss/colors';
@@ -41,9 +43,6 @@ export default defineConfig({
     },
     integrations: [
         solidJs(),
-        tailwind({
-            applyBaseStyles: false,
-        }),
         partytown(),
         expressiveCode({
             themes: ['material-theme', 'material-theme-lighter'],
@@ -68,4 +67,16 @@ export default defineConfig({
             },
         }),
     ],
+    vite: {
+        css: {
+            transformer: 'lightningcss',
+            lightningcss: {
+                targets: browserslistToTargets(browserslist('defaults')),
+            },
+        },
+        build: {
+            cssMinify: 'lightningcss',
+        },
+        plugins: [tailwindcss()],
+    },
 });
