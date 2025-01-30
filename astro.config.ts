@@ -8,6 +8,7 @@ import { browserslistToTargets } from 'lightningcss';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import colors from 'tailwindcss/colors';
+import arraybuffer from 'vite-plugin-arraybuffer';
 import { externalLinks, stripLineBreaks } from './plugins/remark.ts';
 
 const site = import.meta.env.PROD
@@ -77,6 +78,11 @@ export default defineConfig({
         build: {
             cssMinify: 'lightningcss',
         },
-        plugins: [tailwindcss()],
+        plugins: [
+            tailwindcss(),
+            // https://github.com/tachibana-shin/vite-plugin-arraybuffer
+            // https://github.com/vitejs/vite/issues/12366 が解決されたら不要になる
+            arraybuffer(),
+        ],
     },
 });

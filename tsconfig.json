@@ -8,6 +8,10 @@
         "paths": {
             "~/*": ["./src/*"]
         },
-        "types": ["vitest/globals", "vitest/importMeta"]
+        "types": [
+            "vite-plugin-arraybuffer/types",
+            "vitest/globals",
+            "vitest/importMeta"
+        ]
     }
 }

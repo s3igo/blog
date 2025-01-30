@@ -1,22 +1,12 @@
-// biome-ignore lint/correctness/noNodejsModules: This file is used only during build time
-import fs from 'node:fs/promises';
-import satori, { type FontStyle } from 'satori';
+import jetbrainsMono from '@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff?arraybuffer';
+import zenKakuGothicNew from '@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-japanese-400-normal.woff?arraybuffer';
+import satori from 'satori';
 import { html } from 'satori-html';
 import sharp from 'sharp';
 import type { Tags } from '~/utils/posts';
 
 export const width = 1200;
 export const height = 600;
-
-/**
- * @param path absolute path from project root
- */
-const composeUrl = (path: string) =>
-    new URL(
-        // NOTE: workaround for differences between `astro dev` and `astro build` environments
-        import.meta.env.PROD ? `../..${path}` : `../../..${path}`,
-        import.meta.url,
-    );
 
 type Props = { title: string; tags: Tags };
 
@@ -41,24 +31,22 @@ export const image = async ({ title, tags }: Props) => {
         </div>
     </div>`;
 
-    const fonts = await Promise.all(
-        [
+    const svg = await satori(markup, {
+        width,
+        height,
+        fonts: [
             {
                 name: 'Zen Kaku Gothic New',
-                file: '/node_modules/@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-japanese-400-normal.woff',
+                data: zenKakuGothicNew,
+                style: 'normal',
             },
             {
                 name: 'JetBrains Mono',
-                file: '/node_modules/@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff',
+                data: jetbrainsMono,
+                style: 'normal',
             },
-        ].map(async ({ name, file }) => ({
-            name,
-            data: await fs.readFile(composeUrl(file)),
-            style: 'normal' as FontStyle,
-        })),
-    );
-
-    const svg = await satori(markup, { width, height, fonts });
+        ],
+    });
     const pngBuffer = await sharp(Buffer.from(svg)).png().toBuffer();
 
     return new Response(pngBuffer, {
