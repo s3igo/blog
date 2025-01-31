@@ -11,14 +11,11 @@ env:
 
 jobs:
   lint:
-    name: Lint
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Install Dependencies
-        uses: ./.github/actions/install
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: ./.github/actions/install
       - run: bun run check
       - run: bun run biome:ci
       - run: bun run lint:ls
@@ -27,98 +24,73 @@ jobs:
       - uses: crate-ci/typos@685eb3d55be2f85191e8c84acb9f44d7756f84ab # v1.29.4
 
   typecheck:
-    name: Typecheck
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Install Dependencies
-        uses: ./.github/actions/install
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: ./.github/actions/install
         with:
           build: 'true'
       - run: bun run test:type
 
   unit-test:
-    name: Unit Test
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Install Dependencies
-        uses: ./.github/actions/install
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: ./.github/actions/install
       - run: bun run test:unit
 
   e2e-test:
-    name: E2E Test
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     strategy:
       matrix:
         browser: [chromium, firefox, webkit]
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Install Dependencies
-        uses: ./.github/actions/install
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: ./.github/actions/install
         with:
           build: 'true'
-      - name: Setup Playwright
-        run: bun run playwright install --with-deps ${{ matrix.browser }}
-      - name: Run Playwright Tests
-        run: bun run playwright test --project ${{ matrix.browser }}
+      - run: bun run playwright install --with-deps ${{ matrix.browser }}
+      - run: bun run playwright test --project ${{ matrix.browser }}
 
   vrt:
-    name: VRT
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Install Dependencies
-        uses: ./.github/actions/install
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: ./.github/actions/install
         with:
           build: 'true'
-      - name: Start Server
-        run: bun run preview &
-      - name: Run VRT
-        uses: lost-pixel/lost-pixel@41055d71dea42eb5fa5c27dabd2a90722f376e33 # v3.22.0
+      - run: bun run preview &
+      - uses: lost-pixel/lost-pixel@41055d71dea42eb5fa5c27dabd2a90722f376e33 # v3.22.0
         env:
           LOST_PIXEL_API_KEY: ${{ secrets.LOST_PIXEL_API_KEY }}
 
   coverage:
-    name: Coverage
     runs-on: ubuntu-24.04
     needs: unit-test
     timeout-minutes: 60
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Install Dependencies
-        uses: ./.github/actions/install
-      - name: Generate Coverage Report
-        run: bun run coverage
-      - name: Upload Coverage Report
-        uses: codecov/codecov-action@13ce06bfc6bbe3ecf90edbbf1bc32fe5978ca1d3 # v5
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: ./.github/actions/install
+      - run: bun run coverage
+      - uses: codecov/codecov-action@13ce06bfc6bbe3ecf90edbbf1bc32fe5978ca1d3 # v5
         with:
           files: ./coverage/coverage-final.json
 
   deploy:
-    name: Deploy to Production
     runs-on: ubuntu-24.04
     needs: [lint, typecheck, unit-test, e2e-test, vrt]
     timeout-minutes: 60
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Install Dependencies
-        uses: ./.github/actions/install
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: ./.github/actions/install
         with:
           build: 'true'
-      # https://github.com/cloudflare/wrangler-action?tab=readme-ov-file#deploy-your-pages-site-production--preview
-      - name: Deploy to Cloudflare Pages
-        uses: cloudflare/wrangler-action@7a5f8bbdfeedcde38e6777a50fe685f89259d4ca # v3
+      # https://github.com/cloudflare/wrangler-action/blob/main/README.md#deploy-your-pages-site-production--preview
+      - uses: cloudflare/wrangler-action@7a5f8bbdfeedcde38e6777a50fe685f89259d4ca # v3
         with:
           command: pages deploy
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}

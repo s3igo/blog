@@ -8,16 +8,12 @@ on:
 
 jobs:
   sync-toolchain-versions:
-    name: Sync Toolchain Versions
     runs-on: ubuntu-24.04
     timeout-minutes: 60
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - name: Install Nix
-        uses: DeterminateSystems/nix-installer-action@e50d5f73bfe71c2dd0aa4218de8f4afa59f8f81d # v16
-      - name: Setup Nix Cache
-        uses: DeterminateSystems/magic-nix-cache-action@6221693898146dc97e38ad0e013488a16477a4c4 # v9
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: DeterminateSystems/nix-installer-action@e50d5f73bfe71c2dd0aa4218de8f4afa59f8f81d # v16
+      - uses: DeterminateSystems/magic-nix-cache-action@6221693898146dc97e38ad0e013488a16477a4c4 # v9
       - name: Get the Node.js version and update .node-version and renovate.json
         run: |
           NODE_VERSION=$(nix develop --command node --version)
@@ -32,7 +28,6 @@ jobs:
         run: |
           BUN_VERSION=$(nix develop --command bun --version)
           echo $BUN_VERSION > .bun-version
-      - name: Commit Changes
-        uses: stefanzweifel/git-auto-commit-action@e348103e9026cc0eee72ae06630dbe30c8bf7a79 # v5
+      - uses: stefanzweifel/git-auto-commit-action@e348103e9026cc0eee72ae06630dbe30c8bf7a79 # v5
         with:
           commit_message: 'chore(deps): Apply toolchain updates'
