@@ -1,0 +1,32 @@
+---
+import { Image } from 'astro:assets';
+import Contrast from '../../../../../vendor/lucide/contrast.svg';
+import icon from '../../../shared/assets/icon.svg';
+import Theme from './theme/Theme.astro';
+---
+
+<Theme />
+<nav class="flex gap-4 items-center md:flex-col md:sticky md:top-6">
+    <a href="/">
+        <Image src={icon} width={56} height={56} alt="tsukiyo icon" />
+    </a>
+    <div class="relative">
+        <button
+            type="button"
+            class="bg-white rounded-full border-2 border-transparent p-2 dark:bg-black-knight dark:text-santas-gray hover-element dark:hover:bg-gray-500 cursor-pointer"
+            aria-label="Toggle theme"
+        >
+            <Contrast />
+        </button>
+    </div>
+</nav>
+
+<script>
+    const registerToggle = () => {
+        document.querySelector('button')?.addEventListener('click', () => {
+            window.theme.toggle();
+        });
+    };
+    registerToggle();
+    document.addEventListener('astro:after-swap', registerToggle);
+</script>

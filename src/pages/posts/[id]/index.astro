@@ -1,54 +1,17 @@
 ---
-import { Tag } from '~/components/tag';
-import Footer from '~/features/footer/Footer.astro';
-import Navigation from '~/features/navigation/Navigation.astro';
-import Title from '~/features/title/Title.astro';
-import Layout from '~/layouts/post/Layout.astro';
-import { toStr } from '~/utils/date';
-import type { Props } from './_static.ts';
-export { getStaticPaths } from './_static.ts';
-import { render } from 'astro:content';
-import { Metadata } from '~/components/metadata';
-import { Updated } from '~/components/updated';
-import Og from '~/features/og/Og.astro';
+import PostPage from '../../../layers/pages/post/PostPage.astro';
+export { getStaticPaths } from '../../../layers/pages/post/index.ts';
+import {
+    pathnames,
+    tagPathnameBuilder,
+} from '../../../layers/app/routes/index.ts';
+import type { Props } from '../../../layers/pages/post/index.ts';
 
-const { post } = Astro.props as Props;
-const { title, published, updated, tags } = post.data;
-const { Content } = await render(post);
-
-const baseUrl = new URL(Astro.url.pathname, Astro.site);
-const ogUrl = new URL(`${Astro.url.pathname}/og.png`, baseUrl);
-
-const flexClasses = 'flex flex-wrap gap-3';
+const props = {
+    staticProps: Astro.props,
+    tagPathnameBuilder,
+    ...pathnames,
+};
 ---
 
-<Layout>
-    <Fragment slot="head">
-        <title>{title}</title>
-        <meta name="description" content={title} />
-        <Og {...{ title }} url={baseUrl} imageUrl={ogUrl} />
-    </Fragment>
-    <Navigation slot="nav" />
-    <Title slot="title">
-        {title}
-    </Title>
-    <div slot="meta" class:list={[flexClasses ,"my-4 items-center"]}>
-        <div class={flexClasses}>
-            <Metadata>
-                {toStr(published)}
-            </Metadata>
-            {
-                updated && (
-                    <Updated>
-                        {toStr(updated)}
-                    </Updated>
-                )
-            }
-        </div>
-        <div class={flexClasses}>
-            {tags.map((tag) => <Tag name={tag} link />)}
-        </div>
-    </div>
-    <Content slot="content" />
-    <Footer slot="footer" />
-</Layout>
+<PostPage { ...props } />

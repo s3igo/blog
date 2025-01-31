@@ -1,0 +1,133 @@
+---
+import type { ComponentProps } from 'astro/types';
+import Card from '../../entities/card/Card.astro';
+import { type CardModel, postsToCards } from '../../entities/card/index.ts';
+import {
+    type Post,
+    getPublishedPosts,
+    getSortedUniqueTags,
+} from '../../shared/api/index.ts';
+import type { PathnameBuilder } from '../../shared/lib/index.ts';
+import Head from '../../widgets/head/Head.astro';
+import PageTitle from '../../widgets/page-title/PageTitle.astro';
+import Tag from '../../widgets/tag/Tag.astro';
+// biome-ignore lint/style/useImportType: 偽陽性
+import BaseLayout from '../base/BaseLayout.astro';
+import Footer from '../base/footer/Footer.astro';
+import Navigation from '../base/navigation/Navigation.astro';
+
+type CardsMaterial = {
+    posts?: Post[];
+    cardPathnameBuilder: PathnameBuilder;
+};
+type Cards = CardModel[];
+type FallbackProps = Partial<{
+    main: CardsMaterial | Cards;
+    side: {
+        tags?: string[];
+        tagPathnameBuilder: PathnameBuilder;
+    };
+}>;
+type Rest = ComponentProps<typeof BaseLayout>;
+
+type Props = FallbackProps & Rest;
+
+const { main, side, ...rest } = Astro.props;
+
+let cards: Cards | undefined;
+if (main) {
+    if (Array.isArray(main) /* mainがCardsの場合 */) {
+        cards = main;
+    } else {
+        main.posts ??= await getPublishedPosts();
+        cards = postsToCards(main.posts, {
+            cardPathnameBuilder: main.cardPathnameBuilder,
+        });
+    }
+}
+
+if (side) {
+    side.tags ??= await getSortedUniqueTags();
+}
+---
+
+<BaseLayout { ...rest }>
+    <slot name="head" slot="head">
+        <Head { ...rest } />
+    </slot>
+    <div
+        class="container-grid container-rows-5 md:container-rows-4 lg:container-rows-3"
+    >
+        <div
+            class:list={[
+                "col-span-12 col-start-1 row-start-1",
+                "md:col-span-2 md:row-span-4",
+                "lg:col-span-1 lg:col-start-3 lg:row-span-3",
+                "xl:col-start-2",
+            ]}
+        >
+            <Navigation />
+        </div>
+        <div
+            class:list={[
+                "col-span-12 col-start-1 row-start-2",
+                "md:col-span-8 md:col-start-3 md:row-start-1",
+                "lg:col-span-6 lg:col-start-4",
+                "xl:col-span-8 xl:col-start-3",
+            ]}
+        >
+            <slot name="header">
+                <PageTitle />
+            </slot>
+        </div>
+        <div
+            class:list={[
+                "h-min max-lg:overflow-x-auto",
+                "col-span-12 col-start-1 row-start-3",
+                "md:col-span-8 md:col-start-3 md:row-start-2",
+                "lg:col-span-2 lg:col-start-10",
+                "xl:col-start-11",
+            ]}
+        >
+            <slot name="sub">
+                <div class="flex gap-3 lg:h-full lg:flex-col">
+                    {side?.tags?.map((tag) => (
+                        <Tag
+                            as="a"
+                            href={side.tagPathnameBuilder(tag)}
+                            class="chip"
+                        >
+                            {tag}
+                        </Tag>
+                    ))}
+                </div>
+            </slot>
+        </div>
+        <div
+            class:list={[
+                "col-span-12 col-start-1 row-start-4",
+                "md:col-span-8 md:col-start-3 md:row-start-3",
+                "lg:col-span-6 lg:col-start-4 lg:row-start-2",
+                "xl:col-span-8 xl:col-start-3",
+            ]}
+        >
+            <slot>
+                <main class="flex flex-col gap-4 md:gap-6">
+                    {cards?.map((card) => (
+                        <Card { ...card } />
+                    ))}
+                </main>
+            </slot>
+        </div>
+        <div
+            class:list={[
+                "col-span-12 col-start-1 row-start-5",
+                "md:col-span-8 md:col-start-3 md:row-start-4",
+                "lg:col-span-6 lg:col-start-4 lg:row-start-3",
+                "xl:col-span-8 xl:col-start-3",
+            ]}
+        >
+            <Footer rssPathname={rest.rssPathname}  />
+        </div>
+    </div>
+</BaseLayout>

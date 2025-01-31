@@ -1,0 +1,57 @@
+---
+import type { ComponentProps } from 'astro/types';
+import '@fontsource/zen-kaku-gothic-new/700.css';
+import Head from '../../widgets/head/Head.astro';
+// biome-ignore lint/style/useImportType: 偽陽性
+import BaseLayout from '../base/BaseLayout.astro';
+import Footer from '../base/footer/Footer.astro';
+import Navigation from '../base/navigation/Navigation.astro';
+import './styles/content.css';
+
+type Props = ComponentProps<typeof BaseLayout>;
+---
+
+<BaseLayout { ...Astro.props }>
+    <slot name="head" slot="head">
+        <Head { ...Astro.props } />
+    </slot>
+    <div class="container-grid container-rows-4 md:container-rows-3">
+        <div
+            class:list={[
+                "col-span-12 col-start-1 row-start-1",
+                "md:col-span-2 md:row-span-3",
+                "lg:col-span-1",
+            ]}
+        >
+            <Navigation />
+        </div>
+        <div
+            class:list={[
+                "col-span-12 col-start-1 row-start-2",
+                "md:col-span-8 md:col-start-3 md:row-start-1",
+                "lg:col-span-10 lg:col-start-2",
+            ]}
+        >
+            <slot name="header" />
+        </div>
+        <main
+            class:list={[
+                "blog",
+                "col-span-12 col-start-1 row-start-3",
+                "md:col-span-8 md:col-start-3 md:row-start-2",
+                "lg:col-span-10 lg:col-start-2",
+            ]}
+        >
+            <slot />
+        </main>
+        <div
+            class:list={[
+                "col-span-12 col-start-1 row-start-4",
+                "md:col-span-8 md:col-start-3 md:row-start-3",
+                "lg:col-span-10 lg:col-start-2",
+            ]}
+        >
+            <Footer rssPathname={Astro.props.rssPathname} />
+        </div>
+    </div>
+</BaseLayout>

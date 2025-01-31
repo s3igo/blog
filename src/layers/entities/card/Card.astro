@@ -1,0 +1,39 @@
+---
+import History from '../../../../vendor/lucide/history.svg';
+import Tag from '../../widgets/tag/Tag.astro';
+import type { Card as Props } from './model/types.ts';
+
+const { title, tags, published, updated, url } = Astro.props;
+
+const flexClasses = 'flex flex-wrap gap-x-3';
+---
+
+<a
+    href={url}
+    class:list={[
+        "rounded-2xl border-2 border-transparent bg-white px-5 py-2 sm:py-4 sm:px-6",
+        "dark:bg-black-knight",
+        "hover-element",
+    ]}
+>
+    <article>
+        <div class="flex max-sm:flex-col sm:items-center">
+            <div class:list={[flexClasses, "gap-y-1"]}>
+                <div class={flexClasses}>
+                    <div class="metadata">{published}</div>
+                    {updated && (
+                        <Tag>
+                            <History slot="icon" size={16} />
+                            {updated}
+                        </Tag>
+                    )}
+                </div>
+                <div class={flexClasses}>
+                    {tags.length > 0 &&
+                        tags.map((tag) => <Tag>{tag}</Tag>)}
+                </div>
+            </div>
+        </div>
+        <h2 class="py-1.5 text-xl xl:text-2xl">{title}</h2>
+    </article>
+</a>

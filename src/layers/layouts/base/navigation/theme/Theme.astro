@@ -1,0 +1,60 @@
+---
+// 参考: https://astro-tips.dev/recipes/dark-mode/
+type Props = {
+    defaultTheme?: 'auto' | 'light' | 'dark' | undefined;
+};
+
+const { defaultTheme = 'auto' } = Astro.props;
+---
+
+{/* data-default-themeは、コードフェンス内の変数はis:inlineを付与した
+scriptタグ内で利用できないので、これを回避するためのワークアラウンド
+https://docs.astro.build/en/reference/directives-reference/#isinline */}
+<script is:inline data-default-theme={defaultTheme}>
+    const defaultTheme =
+        document.currentScript.getAttribute("data-default-theme");
+    const storeKey = "theme";
+    const store = window.localStorage
+        ?? { getItem: () => null, setItem: () => {} };
+
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)');
+    let systemTheme = prefersDark.matches ? 'dark' : 'light';
+    prefersDark.addEventListener('change', (e) => {
+        systemTheme = e.matches ? 'dark' : 'light';
+    });
+
+    const resolveTheme = (theme) => theme === 'auto' ? systemTheme : theme;
+    const applyTheme = (theme) => {
+        const resolvedTheme = resolveTheme(theme);
+        document.documentElement.dataset.theme = resolvedTheme;
+        // https://developer.mozilla.org/ja/docs/Web/CSS/color-scheme
+        document.documentElement.style.colorScheme = resolvedTheme;
+        document.dispatchEvent(
+            new CustomEvent('theme-changed', {
+                detail: { theme, systemTheme, defaultTheme },
+            })
+        )
+    }
+
+    window.theme ??= {
+        get: () => store.getItem(storeKey) ?? defaultTheme,
+        set: (theme = defaultTheme) => {
+            store.setItem(storeKey, theme);
+            applyTheme(theme);
+        },
+        toggle: () => {
+            const current = store.getItem(storeKey) ?? defaultTheme;
+            const next = resolveTheme(current) === 'dark' ? 'light' : 'dark';
+            store.setItem(storeKey, next);
+            applyTheme(next);
+        },
+    }
+
+    window.theme.set(window.theme.get());
+</script>
+
+<script>
+    document.addEventListener('astro:after-swap', () => {
+        window.theme.set(window.theme.get());
+    })
+</script>

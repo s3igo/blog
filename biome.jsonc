@@ -19,7 +19,6 @@
                     "fix": "safe",
                     "options": {
                         "attributes": ["class:list"],
-                        "functions": ["clsx"],
                     },
                 },
             },
@@ -40,7 +39,7 @@
             },
         },
         {
-            "include": ["*.config.ts", "config.ts"],
+            "include": ["*.config.ts", "config.ts", "svelte.config.js"],
             "linter": {
                 "rules": {
                     "style": {
@@ -60,8 +59,9 @@
                 },
             },
         },
+        // https://biomejs.dev/internals/language-support/#html-super-languages-support
         {
-            "include": ["*.astro"],
+            "include": ["*.astro", "*.svelte"],
             "linter": {
                 "rules": {
                     "correctness": {
@@ -70,6 +70,21 @@
                     },
                     "style": {
                         "useFilenamingConvention": "off",
+                    },
+                },
+            },
+        },
+        // Feature-Sliced Designの規約でBarrelファイルを使用するため
+        // NOTE: 精神衛生上tree-shakableにしておきたいものの、
+        // FSDの規約通りに各sliceをモジュール化するメリットが大きいと判断したため採用。
+        // もしパフォーマンスに有意な影響が出る場合は再検討する。
+        // see: https://feature-sliced.design/docs/reference/public-api
+        {
+            "include": ["./src/layers/**/index.ts"],
+            "linter": {
+                "rules": {
+                    "performance": {
+                        "noBarrelFile": "off",
                     },
                 },
             },

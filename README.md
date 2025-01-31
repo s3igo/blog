@@ -67,4 +67,5 @@ RenovateによるPRは常にマージコミットを作成します。
 
 ## ライセンス
 
-[MIT](LICENSE)
+- [NOTICE](NOTICE.md)
+- [MIT](LICENSE)

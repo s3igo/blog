@@ -1,0 +1,30 @@
+---
+import type { ComponentProps } from 'astro/types';
+// biome-ignore lint/style/useImportType: 偽陽性
+import ListLayout from '../../layouts/list/ListLayout.astro';
+
+type ListLayoutProps = ComponentProps<typeof ListLayout>;
+type Main = Pick<
+    Extract<
+        Required<ListLayoutProps>['main'],
+        { cardPathnameBuilder: unknown }
+    >,
+    'cardPathnameBuilder'
+>;
+type Side = Pick<Required<ListLayoutProps>['side'], 'tagPathnameBuilder'>;
+type Rest = Omit<ListLayoutProps, 'side'>;
+
+type Props = Main & Side & Rest;
+
+const {
+    cardPathnameBuilder, // Main
+    tagPathnameBuilder, // Side
+    ...rest // Rest
+} = Astro.props;
+---
+
+<ListLayout
+    main={{ cardPathnameBuilder }}
+    side={{ tagPathnameBuilder }}
+    { ...rest }
+/>

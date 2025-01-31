@@ -1,0 +1,19 @@
+---
+import { height, width } from '../lib/og-image.ts';
+
+type Props = { title: string; url: string; imageUrl: string };
+
+const { title, url, imageUrl } = Astro.props;
+---
+
+<meta property="og:title" content={title} />
+<meta property="og:type" content="website" />
+<meta property="og:url" content={url} />
+<meta property="og:image" content={imageUrl} />
+<meta property="og:image:alt" content={title} />
+<meta property="og:image:width" content={width.toString()} />
+<meta property="og:image:height" content={height.toString()} />
+<meta property="twitter:image:src" content={imageUrl} />
+<meta property="twitter:title" content={title} />
+<meta property="twitter:card" content="summary_large_image" />
+<meta property="twitter:site" content="@t5ukiyo" />

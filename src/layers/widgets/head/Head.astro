@@ -1,0 +1,56 @@
+---
+import { ClientRouter } from 'astro:transitions';
+import type { ComponentProps } from 'astro/types';
+import { PAGE_DESCRIPTION, PAGE_TITLE } from '../../shared/config/index.ts';
+// biome-ignore lint/style/useImportType: 偽陽性
+import Favicon from './ui/Favicon.astro';
+import OgImage from './ui/OgImage.astro';
+
+// https://docs.astro.build/en/guides/upgrade-to/v2/#what-should-i-do-14
+const canonicalUrl = new URL(Astro.url.pathname, Astro.site);
+
+type Props = {
+    title?: string;
+    description?: string;
+    url?: string;
+    sitemapPathname: string;
+    rssPathname: string;
+} & ComponentProps<typeof Favicon>;
+
+const {
+    title = PAGE_TITLE,
+    description = PAGE_DESCRIPTION,
+    url = '/',
+    sitemapPathname,
+    rssPathname,
+    ...rest
+} = Astro.props;
+
+const ogUrl = new URL(url, Astro.site);
+const ogImageUrl = new URL(ogUrl);
+
+// 末尾が`/`で終わることを保証する
+if (!ogImageUrl.pathname.endsWith('/')) {
+    ogImageUrl.pathname += '/';
+}
+
+ogImageUrl.pathname += 'og.png';
+---
+
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<OgImage title={title} url={ogUrl.toString()} imageUrl={ogImageUrl.toString()} />
+<meta name="generator" content={Astro.generator} />
+<link rel="canonical" href={canonicalUrl.toString()} />
+<Favicon { ...rest } />
+<link rel="sitemap" href={sitemapPathname} />
+<link rel="alternate" type="application/rss+xml" href={rssPathname} />
+<script
+    is:inline
+    defer
+    type="text/partytown"
+    src="https://analytics.eu.umami.is/script.js"
+    data-website-id="270fbc48-0e7b-4201-a405-a692d49fd936"></script>
+<ClientRouter />

@@ -1,6 +1,5 @@
 {
     "$schema": "./node_modules/knip/schema.json",
-    "ignoreDependencies": ["@biomejs/biome", "textlint-.+"],
-    "ignore": [".scaffdog/config.ts"],
-    "postcss": true,
+    "ignoreDependencies": ["textlint-.+"],
+    "entry": [".scaffdog/config.ts", "svelte.config.js"],
 }

@@ -1,0 +1,24 @@
+---
+import type { ComponentProps } from 'astro/types';
+// biome-ignore lint/style/useImportType: 偽陽性
+import Head from '../../widgets/head/Head.astro';
+import '@fontsource/jetbrains-mono';
+import '@fontsource/zen-kaku-gothic-new';
+import '../../shared/styles/global.css';
+
+type Props = ComponentProps<typeof Head>;
+---
+
+<!doctype html>
+<html lang="ja" class="scroll-smooth">
+    <head>
+        <slot name="head">
+            <Head { ...Astro.props } />
+        </slot>
+    </head>
+    <body
+        class="bg-bellflower-blue font-sans text-yamagami-blue dark:bg-liverty-blue dark:text-blueberry-whip"
+    >
+        <slot />
+    </body>
+</html>
