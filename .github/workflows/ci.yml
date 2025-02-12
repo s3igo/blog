@@ -96,7 +96,7 @@ jobs:
         with:
           build: 'true'
       # https://github.com/cloudflare/wrangler-action/blob/main/README.md#deploy-your-pages-site-production--preview
-      - uses: cloudflare/wrangler-action@7a5f8bbdfeedcde38e6777a50fe685f89259d4ca # v3
+      - uses: cloudflare/wrangler-action@392082e81ffbcb9ebdde27400634aa004b35ea37 # v3
         with:
           command: pages deploy
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
