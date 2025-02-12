@@ -1,0 +1,24 @@
+---
+import Rss from '../../../../../vendor/lucide/rss.svg';
+import Github from '../../../../../vendor/simple-icons/github.svg';
+import TwitterX from '../../../../../vendor/simple-icons/x.svg';
+
+const year = new Date().getFullYear();
+
+type Props = { rssPathname: string };
+
+const { rssPathname } = Astro.props;
+---
+
+<div class="mt-12 text-right flex items-center gap-4 justify-end">
+    <a href={rssPathname}>
+        <Rss />
+    </a>
+    <a href="https://x.com/t5ukiyo" target="_blank" rel="noreferrer">
+        <TwitterX size={24} fill="currentColor"/>
+    </a>
+    <a href="https://github.com/s3igo" target="_blank" rel="noreferrer">
+        <Github size={24} fill="currentColor"/>
+    </a>
+    <small>&copy; <span id="footer-year">{year}</span> tsukiyo</small>
+</div>

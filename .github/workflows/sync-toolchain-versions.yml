@@ -1,0 +1,36 @@
+name: Sync Toolchain Versions
+
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/sync-toolchain.yml'
+      - 'flake.lock'
+
+jobs:
+  sync-toolchain-versions:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
+      - uses: DeterminateSystems/nix-installer-action@e50d5f73bfe71c2dd0aa4218de8f4afa59f8f81d # v16
+      # GitHub Actions側のAPIの変更によりMagic Nix Cacheが使えなくなった
+      # 将来的には復活させるか代替案を用意する予定らしいが、現状は未定
+      # https://determinate.systems/posts/magic-nix-cache-free-tier-eol/
+      # - uses: DeterminateSystems/magic-nix-cache-action@6221693898146dc97e38ad0e013488a16477a4c4 # v9
+      - name: Get the Node.js version and update .node-version and renovate.json
+        run: |
+          NODE_VERSION=$(nix develop --command node --version)
+          echo ${NODE_VERSION:1} > .node-version
+          nix run nixpkgs#jq --inputs-from . -- \
+            "walk(if type == \"object\" and has(\"allowedVersions\") then .allowedVersions = \"<=${NODE_VERSION:1}\" else . end)" \
+            renovate.json > tmp.json
+          mv tmp.json renovate.json
+          BIOME_VERSION=$(nix eval .#meta.package.devDependencies."@biomejs/biome" --raw)
+          nix develop --command bunx @biomejs/biome@$BIOME_VERSION check --write renovate.json
+      - name: Get the Bun version and update .bun-version
+        run: |
+          BUN_VERSION=$(nix develop --command bun --version)
+          echo $BUN_VERSION > .bun-version
+      - uses: stefanzweifel/git-auto-commit-action@e348103e9026cc0eee72ae06630dbe30c8bf7a79 # v5
+        with:
+          commit_message: 'chore(deps): Apply toolchain updates'

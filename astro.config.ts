@@ -1,5 +1,5 @@
 import partytown from '@astrojs/partytown';
-import solidJs from '@astrojs/solid-js';
+import svelte from '@astrojs/svelte';
 import tailwindcss from '@tailwindcss/vite';
 import expressiveCode from 'astro-expressive-code';
 import { defineConfig } from 'astro/config';
@@ -8,6 +8,7 @@ import { browserslistToTargets } from 'lightningcss';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 import rehypeSlug from 'rehype-slug';
 import colors from 'tailwindcss/colors';
+import arraybuffer from 'vite-plugin-arraybuffer';
 import { externalLinks, stripLineBreaks } from './plugins/remark.ts';
 
 const site = import.meta.env.PROD
@@ -22,7 +23,6 @@ const textBg = (theme: string) =>
 // https://astro.build/config
 export default defineConfig({
     site,
-    trailingSlash: 'never', // to match the DEV and PROD environment
     prefetch: {
         prefetchAll: true,
     },
@@ -42,7 +42,7 @@ export default defineConfig({
         ],
     },
     integrations: [
-        solidJs(),
+        svelte(),
         partytown(),
         expressiveCode({
             themes: ['material-theme', 'material-theme-lighter'],
@@ -77,6 +77,14 @@ export default defineConfig({
         build: {
             cssMinify: 'lightningcss',
         },
-        plugins: [tailwindcss()],
+        plugins: [
+            tailwindcss(),
+            // https://github.com/tachibana-shin/vite-plugin-arraybuffer
+            // https://github.com/vitejs/vite/issues/12366 が解決されたら不要になる
+            arraybuffer(),
+        ],
+    },
+    experimental: {
+        svg: true,
     },
 });

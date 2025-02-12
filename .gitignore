@@ -1,16 +1,18 @@
-# nix
+# Nix
 .direnv/
+result
 
-# build output
-dist/
-.output/
-
-# dependencies
+# Dependencies
 node_modules/
 
-# content collection metadata
+# -- Astro --
+# Build output
+dist/
+
+# Generated types
 .astro/
 
+# -- Testing --
 # Vitest
 coverage/
 

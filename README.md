@@ -45,7 +45,6 @@
 │   ├── layouts # グリッドレイアウトのためのコンポーネント
 │   ├── pages # ルーティング
 │   └── utils # ユーティリティ関数
-├── styles
 └── tests
     ├── e2e # E2Eテスト
     └── vrt # ビジュアル回帰テスト
@@ -68,4 +67,5 @@ RenovateによるPRは常にマージコミットを作成します。
 
 ## ライセンス
 
-[MIT](LICENSE)
+- [NOTICE](NOTICE.md)
+- [MIT](LICENSE)

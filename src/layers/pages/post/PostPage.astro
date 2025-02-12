@@ -1,0 +1,72 @@
+---
+import { render } from 'astro:content';
+import type { ComponentProps } from 'astro/types';
+import History from '../../../../vendor/lucide/history.svg';
+// biome-ignore lint/style/useImportType: 偽陽性
+import PostLayout from '../../layouts/post/PostLayout.astro';
+import { dateToStr } from '../../shared/lib/index.ts';
+import type { PathnameBuilder } from '../../shared/lib/index.ts';
+import Head from '../../widgets/head/Head.astro';
+import PageTitle from '../../widgets/page-title/PageTitle.astro';
+import Tag from '../../widgets/tag/Tag.astro';
+import type { Props as StaticProps } from './api/generate-static-routes.ts';
+
+type Static = { staticProps: StaticProps };
+type TagOptions = { tagPathnameBuilder: PathnameBuilder };
+type Rest = ComponentProps<typeof PostLayout>;
+type Props = Static & TagOptions & Rest;
+
+const {
+    staticProps: { post }, // Static
+    tagPathnameBuilder, // TagOptions
+    ...rest // Rest
+} = Astro.props;
+const { title, published, updated, tags } = post.data;
+
+const { Content } = await render(post);
+
+const headProps = {
+    ...rest,
+    title,
+    description: title,
+    url: Astro.url.pathname,
+};
+
+const flexClasses = 'flex flex-wrap gap-3';
+---
+
+<PostLayout { ...rest }>
+    <Head slot="head" { ...headProps } />
+    <Fragment slot="header">
+        <PageTitle>
+            {title}
+        </PageTitle>
+        <div class:list={[flexClasses ,"my-4 items-center"]}>
+            <div class={flexClasses}>
+                <div class="metadata">
+                    {dateToStr(published)}
+                </div>
+                {
+                    updated && (
+                        <Tag>
+                            <History slot="icon" size={16} />
+                            {dateToStr(updated)}
+                        </Tag>
+                    )
+                }
+            </div>
+            <div class={flexClasses}>
+                {tags.map((tag) => (
+                    <Tag
+                        as="a"
+                        href={tagPathnameBuilder(tag)}
+                        class="chip"
+                    >
+                        {tag}
+                    </Tag>
+                ))}
+            </div>
+        </div>
+    </Fragment>
+    <Content />
+</PostLayout>

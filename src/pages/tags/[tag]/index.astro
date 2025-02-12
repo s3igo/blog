@@ -1,33 +1,20 @@
 ---
-import Footer from '~/features/footer/Footer.astro';
-import List from '~/features/list/List.astro';
-import Navigation from '~/features/navigation/Navigation.astro';
-import TagList from '~/features/tag-list/TagList.astro';
-import Title from '~/features/title/Title.astro';
-import Layout from '~/layouts/list/Layout.astro';
-import type { Params, Props } from './_static.ts';
-export { getStaticPaths } from './_static.ts';
-import Og from '~/features/og/Og.astro';
+import TagPage from '../../../layers/pages/tag/TagPage.astro';
+import type { Params, Props } from '../../../layers/pages/tag/index.ts';
+export { getStaticPaths } from '../../../layers/pages/tag/index.ts';
+import {
+    pathnames,
+    postPathnameBuilder,
+    tagPathnameBuilder,
+} from '../../../layers/app/routes/index.ts';
 
-const { tag } = Astro.params as Params;
-// NOTE: use assert to suppress errors from `astro check`
-const { posts, taggedPosts } = Astro.props as Props;
-
-const baseUrl = new URL(Astro.url.pathname, Astro.site);
-const ogUrl = new URL(`${Astro.url.pathname}/og.png`, baseUrl);
+const props = {
+    params: Astro.params as Params,
+    staticProps: Astro.props,
+    ...pathnames,
+    tagPathnameBuilder,
+    cardPathnameBuilder: postPathnameBuilder,
+};
 ---
 
-<Layout>
-    <Fragment slot="head">
-        <title>{`#${tag}`}</title>
-        <meta name="description" content={`#${tag}の記事一覧`} />
-        <Og title={`#${tag}`} url={baseUrl} imageUrl={ogUrl} />
-    </Fragment>
-    <Navigation slot="nav" />
-    <TagList slot="tags" {...{ posts }} />
-    <Title slot="title">
-        #{tag}
-    </Title>
-    <List slot="list" posts={taggedPosts} />
-    <Footer slot="footer" />
-</Layout>
+<TagPage { ...props } />

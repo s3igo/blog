@@ -12,6 +12,9 @@ ls:
     content:
       .md: kebab-case
 
+    layers:
+      .astro: PascalCase | kebab-case
+
     pages:
       .astro: kebab-case | regex:^\[.+\]$
 

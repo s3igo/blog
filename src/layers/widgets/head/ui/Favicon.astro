@@ -1,0 +1,16 @@
+---
+import svg from '../../../shared/assets/icon.svg';
+import apple from '../assets/apple-touch-icon.png';
+
+type Props = {
+    manifestPathname: string;
+    faviconPathname: string;
+};
+
+const { manifestPathname, faviconPathname } = Astro.props;
+---
+
+<link rel="manifest" href={manifestPathname} />
+<link rel="icon" href={faviconPathname} sizes="32x32" />
+<link rel="icon" href={svg.src} type="image/svg+xml" />
+<link rel="apple-touch-icon" href={apple.src} />

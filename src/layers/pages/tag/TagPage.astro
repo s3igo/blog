@@ -1,0 +1,54 @@
+---
+import type { ComponentProps } from 'astro/types';
+// biome-ignore lint/style/useImportType: 偽陽性
+import ListLayout from '../../layouts/list/ListLayout.astro';
+import Head from '../../widgets/head/Head.astro';
+import PageTitle from '../../widgets/page-title/PageTitle.astro';
+import type {
+    Params,
+    Props as StaticProps,
+} from './api/generate-static-routes.ts';
+
+type Static = {
+    params: Params;
+    staticProps: StaticProps;
+};
+type ListLayoutProps = ComponentProps<typeof ListLayout>;
+type Main = Pick<
+    Extract<
+        Required<ListLayoutProps>['main'],
+        { cardPathnameBuilder: unknown }
+    >,
+    'cardPathnameBuilder'
+>;
+type Side = Pick<Required<ListLayoutProps>['side'], 'tagPathnameBuilder'>;
+type Rest = Omit<ListLayoutProps, 'side'>;
+
+type Props = Static & Main & Side & Rest;
+
+const {
+    params, // Static
+    staticProps, // Static
+    cardPathnameBuilder, // Main
+    tagPathnameBuilder, // Side
+    ...rest // Rest
+} = Astro.props;
+
+const headProps = {
+    ...rest,
+    title: `#${params.tag}`,
+    description: `#${params.tag}の記事一覧`,
+    url: Astro.url.pathname,
+};
+---
+
+<ListLayout
+    main={{ posts: staticProps.taggedPosts, cardPathnameBuilder }}
+    side={{ tagPathnameBuilder }}
+    { ...rest }
+>
+    <Head slot="head" { ...headProps } />
+    <PageTitle slot="header">
+        #{params.tag}
+    </PageTitle>
+</ListLayout>

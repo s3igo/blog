@@ -9,8 +9,6 @@ const schema = z.object({
     draft: z.boolean(),
 });
 
-export type Schema = z.infer<typeof schema>;
-
 const posts = defineCollection({
     loader: glob({ pattern: '**/[^_]*.md', base: './src/content/posts' }),
     schema,

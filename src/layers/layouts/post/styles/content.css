@@ -1,0 +1,122 @@
+@reference "../../../shared/styles/global.css";
+
+.blog {
+    @apply sm:text-lg py-8 mt-8 sm:py-12;
+
+    > * {
+        &:first-child {
+            margin-top: 0 !important;
+        }
+
+        &:last-child {
+            margin-bottom: 0 !important;
+        }
+    }
+
+    p,
+    h2,
+    h3,
+    h4,
+    h5 {
+        @apply my-8;
+    }
+
+    p {
+        @apply leading-8;
+    }
+
+    a {
+        &:not(.anchor) {
+            @apply text-saltwater-denim dark:text-maldives underline;
+        }
+
+        .anchor {
+            @apply hover:underline decoration-[1.5px];
+        }
+    }
+
+    em {
+        @apply px-1;
+    }
+
+    blockquote {
+        @apply border-l-4 border-spiced-nectarine/75 pl-6 text-rainmaker dark:text-santas-gray;
+    }
+
+    :is(h2, h3, h4, h5) .anchor {
+        @apply after:pl-2 after:absolute after:text-maldives;
+    }
+
+    h2 {
+        @apply mt-28 pb-4 border-b-2 border-white dark:border-yamagami-blue;
+
+        .anchor {
+            @apply text-2xl hover:after:content-["##"] sm:text-3xl;
+        }
+
+        &#footnote-label > a {
+            @apply sr-only;
+        }
+    }
+
+    h3 {
+        @apply mt-28 pb-4;
+
+        .anchor {
+            @apply text-xl hover:after:content-["###"] sm:text-2xl;
+        }
+    }
+
+    h4 {
+        @apply mt-24;
+
+        .anchor {
+            @apply text-lg hover:after:content-["####"] sm:text-xl;
+        }
+    }
+
+    h5 {
+        @apply mt-20;
+
+        .anchor {
+            @apply text-base hover:after:content-["#####"] sm:text-lg;
+        }
+    }
+
+    /* header要素が連続する場合の余白調整 */
+    :is(h2 + h3, h3 + h4, h4 + h5) {
+        @apply mt-4;
+    }
+
+    :is(ul, ol) {
+        @apply list-inside py-4;
+    }
+
+    ul {
+        @apply list-disc;
+    }
+
+    ol {
+        @apply list-decimal;
+    }
+
+    /* list要素内でのインデント */
+    :is(ul ul, ol ol) {
+        @apply ml-7 py-0;
+    }
+
+    /* 脚注のリストで::marker疑似要素が改行されるのを防ぐ */
+    .footnotes p {
+        @apply inline;
+    }
+
+    code {
+        @apply font-code;
+
+        /* インラインコード */
+        &:not(pre > *) {
+            @apply mx-1 rounded-md bg-white px-1 text-base text-rainmaker;
+            @apply dark:bg-black-knight dark:text-santas-gray;
+        }
+    }
+}

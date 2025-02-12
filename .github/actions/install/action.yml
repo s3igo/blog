@@ -18,10 +18,8 @@ runs:
     - uses: actions/setup-node@1d0ff469b7ec7b3cb9d8673fde0c81c44821de2a # v4
       with:
         node-version-file: .node-version
-    - name: Install Dependencies
-      run: bun install --frozen-lockfile
+    - run: bun install --frozen-lockfile
       shell: bash
-    - name: Build
-      if: ${{ inputs.build == 'true' }}
+    - if: ${{ inputs.build == 'true' }}
       run: bun run build
       shell: bash
