@@ -27,7 +27,7 @@ jobs:
       - run: bun run lint:ls
       - run: bun run lint:text
       - run: bun run lint:knip
-      - uses: crate-ci/typos@51f257b946f503b768e522781f56e9b7b5570d48 # v1.29.7
+      - uses: crate-ci/typos@fb78b722e9ebbabe8f4056509311c685620cd48e # v1.29.8
 
   typecheck:
     runs-on: ubuntu-24.04
