@@ -24,7 +24,7 @@
         "tailwindcss": "4.0.9",
         "typescript": "5.7.3",
         "unist-util-visit": "5.0.0",
-        "vite-plugin-arraybuffer": "0.0.8",
+        "vite-plugin-arraybuffer": "0.1.0",
       },
       "devDependencies": {
         "@astrojs/check": "0.9.4",
@@ -1987,7 +1987,7 @@
 
     "vite-node": ["vite-node@3.0.7", "", { "dependencies": { "cac": "^6.7.14", "debug": "^4.4.0", "es-module-lexer": "^1.6.0", "pathe": "^2.0.3", "vite": "^5.0.0 || ^6.0.0" }, "bin": { "vite-node": "vite-node.mjs" } }, "sha512-2fX0QwX4GkkkpULXdT1Pf4q0tC1i1lFOyseKoonavXUNlQ77KpW2XqBGGNIm/J4Ows4KxgGJzDguYVPKwG/n5A=="],
 
-    "vite-plugin-arraybuffer": ["vite-plugin-arraybuffer@0.0.8", "", {}, "sha512-F+InDQuxd93YDVRdXTjBr3lydgjyVHSpgRZS4izK/i85Anl5kmbvf2NwJ//XHAccHh1TScfX70MFJfBx/rf3cg=="],
+    "vite-plugin-arraybuffer": ["vite-plugin-arraybuffer@0.1.0", "", {}, "sha512-AhUP3FzB5ftDKBT5QPluK0l+v64GHDa+nNv6ncEQfNeOnVIbbdkYY1sMfEs9ZuAL2AULbxP9pbE3t2qLwmLdYA=="],
 
     "vitefu": ["vitefu@1.0.5", "", { "peerDependencies": { "vite": "^3.0.0 || ^4.0.0 || ^5.0.0 || ^6.0.0" }, "optionalPeers": ["vite"] }, "sha512-h4Vflt9gxODPFNGPwp4zAMZRpZR7eslzwH2c5hn5kNZ5rhnKyRJ50U+yGCdc2IRaBs8O4haIgLNGrV5CrpMsCA=="],
 
