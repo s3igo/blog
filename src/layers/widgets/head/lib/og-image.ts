@@ -1,11 +1,39 @@
-import jetbrainsMono from '@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff?arraybuffer';
-import zenKakuGothicNew from '@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-japanese-400-normal.woff?arraybuffer';
+// https://vite.dev/guide/assets.html#explicit-inline-handling
+import jetbrainsMono from '@fontsource/jetbrains-mono/files/jetbrains-mono-latin-400-normal.woff?url&inline';
+import zenKakuGothicNew from '@fontsource/zen-kaku-gothic-new/files/zen-kaku-gothic-new-japanese-400-normal.woff?url&inline';
 import satori from 'satori';
 import sharp from 'sharp';
 import { PAGE_TITLE } from '../../../shared/config/index.ts';
 
 export const width = 1200;
 export const height = 630;
+
+// https://github.com/vitejs/vite/issues/12366#issuecomment-2674191945
+const dataUrlToArrayBuffer = (dataUrl: string): ArrayBuffer => {
+    const base64StartIndex = dataUrl.indexOf('base64,');
+    if (base64StartIndex >= 0) {
+        const base64 = dataUrl.slice(base64StartIndex + 'base64,'.length);
+        const binaryString = atob(base64);
+        const bytes = new Uint8Array(binaryString.length);
+        for (let i = 0; i < binaryString.length; i++) {
+            bytes[i] = binaryString.charCodeAt(i);
+        }
+        return bytes.buffer;
+    }
+    const str = decodeURIComponent(dataUrl.slice(dataUrl.indexOf(',') + 1));
+    const enc = new TextEncoder();
+    const bytes = enc.encode(str);
+
+    if (bytes.buffer instanceof ArrayBuffer) {
+        return bytes.buffer;
+    }
+    // bytes.bufferがSharedArrayBufferの場合はArrayBufferに変換して返す
+    const arrayBuffer = new ArrayBuffer(bytes.length);
+    const sourceArray = new Uint8Array(bytes);
+    const targetArray = new Uint8Array(arrayBuffer);
+    targetArray.set(sourceArray);
+    return arrayBuffer;
+};
 
 // このプロジェクトが依存するTailwindCSS v4では色空間にoklchを利用するように変更され、
 // oklchはsatoriでサポートされないためTailwindCSS v3の色定義を利用する
@@ -110,12 +138,12 @@ export class OgImageResponse extends Response {
                     fonts: [
                         {
                             name: 'Zen Kaku Gothic New',
-                            data: zenKakuGothicNew,
+                            data: dataUrlToArrayBuffer(zenKakuGothicNew),
                             style: 'normal',
                         },
                         {
                             name: 'JetBrains Mono',
-                            data: jetbrainsMono,
+                            data: dataUrlToArrayBuffer(jetbrainsMono),
                             style: 'normal',
                         },
                     ],
