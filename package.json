@@ -35,7 +35,7 @@
     "@fontsource/jetbrains-mono": "5.2.5",
     "@fontsource/zen-kaku-gothic-new": "5.2.5",
     "@tailwindcss/vite": "4.1.4",
-    "astro": "5.7.0",
+    "astro": "5.7.2",
     "astro-expressive-code": "0.41.1",
     "browserslist": "4.24.4",
     "lightningcss": "1.29.3",
