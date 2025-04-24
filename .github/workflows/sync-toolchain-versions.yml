@@ -12,7 +12,7 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@11bd71901bbe5b1630ceea73d27597364c9af683 # v4
-      - uses: DeterminateSystems/nix-installer-action@e50d5f73bfe71c2dd0aa4218de8f4afa59f8f81d # v16
+      - uses: DeterminateSystems/nix-installer-action@21a544727d0c62386e78b4befe52d19ad12692e3 # v17
       # GitHub Actions側のAPIの変更によりMagic Nix Cacheが使えなくなった
       # 将来的には復活させるか代替案を用意する予定らしいが、現状は未定
       # https://determinate.systems/posts/magic-nix-cache-free-tier-eol/
