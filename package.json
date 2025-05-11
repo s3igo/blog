@@ -38,7 +38,7 @@
     "astro": "5.7.12",
     "astro-expressive-code": "0.41.2",
     "browserslist": "4.24.5",
-    "lightningcss": "1.29.3",
+    "lightningcss": "1.30.0",
     "markdown-it": "14.1.0",
     "rehype-autolink-headings": "7.1.0",
     "rehype-slug": "6.0.0",
