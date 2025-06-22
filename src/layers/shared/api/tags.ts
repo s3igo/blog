@@ -1,4 +1,4 @@
-import { type Post, getPosts } from './posts.ts';
+import { getPosts, type Post } from './posts.ts';
 
 const toSortedUniqueTags = (posts: Post[]): string[] => [
     ...new Set(posts.flatMap(({ data }) => data.tags).toSorted()),

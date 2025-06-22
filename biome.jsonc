@@ -11,8 +11,11 @@
     },
     "linter": {
         "enabled": true,
+        "domains": {
+            "project": "recommended",
+            "test": "all",
+        },
         "rules": {
-            "all": true,
             "nursery": {
                 "useSortedClasses": {
                     "level": "warn",
@@ -31,7 +34,7 @@
     },
     "overrides": [
         {
-            "include": ["*.jsonc"],
+            "includes": ["**/*.jsonc"],
             "json": {
                 "formatter": {
                     "trailingCommas": "all",
@@ -39,7 +42,11 @@
             },
         },
         {
-            "include": ["*.config.ts", "config.ts", "svelte.config.js"],
+            "includes": [
+                "**/*.config.ts",
+                "**/config.ts",
+                "**/svelte.config.js",
+            ],
             "linter": {
                 "rules": {
                     "style": {
@@ -50,7 +57,7 @@
             },
         },
         {
-            "include": ["./src/pages/**"],
+            "includes": ["src/pages/**"],
             "linter": {
                 "rules": {
                     "performance": {
@@ -61,7 +68,7 @@
         },
         // https://biomejs.dev/internals/language-support/#html-super-languages-support
         {
-            "include": ["*.astro", "*.svelte"],
+            "includes": ["**/*.astro", "**/*.svelte"],
             "linter": {
                 "rules": {
                     "correctness": {
@@ -80,7 +87,7 @@
         // もしパフォーマンスに有意な影響が出る場合は再検討する。
         // see: https://feature-sliced.design/docs/reference/public-api
         {
-            "include": ["./src/layers/**/index.ts"],
+            "includes": ["src/layers/**/index.ts"],
             "linter": {
                 "rules": {
                     "performance": {

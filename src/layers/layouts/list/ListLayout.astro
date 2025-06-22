@@ -3,9 +3,9 @@ import type { ComponentProps } from 'astro/types';
 import Card from '../../entities/card/Card.astro';
 import { type CardModel, postsToCards } from '../../entities/card/index.ts';
 import {
-    type Post,
     getPublishedPosts,
     getSortedUniqueTags,
+    type Post,
 } from '../../shared/api/index.ts';
 import type { PathnameBuilder } from '../../shared/lib/index.ts';
 import Head from '../../widgets/head/Head.astro';
