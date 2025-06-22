@@ -1,14 +1,13 @@
 ---
-import type { Params, Props } from '../../../layers/pages/tag/index.ts';
-import TagPage from '../../../layers/pages/tag/TagPage.astro';
-
-export { getStaticPaths } from '../../../layers/pages/tag/index.ts';
-
 import {
     pathnames,
     postPathnameBuilder,
     tagPathnameBuilder,
 } from '../../../layers/app/routes/index.ts';
+import type { Params, Props } from '../../../layers/pages/tag/index.ts';
+import TagPage from '../../../layers/pages/tag/TagPage.astro';
+
+export { getStaticPaths } from '../../../layers/pages/tag/index.ts';
 
 const props = {
     params: Astro.params as Params,

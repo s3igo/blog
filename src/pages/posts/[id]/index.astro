@@ -1,13 +1,12 @@
 ---
-import PostPage from '../../../layers/pages/post/PostPage.astro';
-
-export { getStaticPaths } from '../../../layers/pages/post/index.ts';
-
 import {
     pathnames,
     tagPathnameBuilder,
 } from '../../../layers/app/routes/index.ts';
 import type { Props } from '../../../layers/pages/post/index.ts';
+import PostPage from '../../../layers/pages/post/PostPage.astro';
+
+export { getStaticPaths } from '../../../layers/pages/post/index.ts';
 
 const props = {
     staticProps: Astro.props,

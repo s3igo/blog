@@ -1,2 +1,3 @@
 [default.extend-words]
 edn = "edn" # Clojureで使われる"extensible data notation"の略
+inferrable = "inferrable" # biome.jsonc
