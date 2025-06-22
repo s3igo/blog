@@ -1,104 +1,108 @@
 {
-	"$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
-	"vcs": {
-		"enabled": true,
-		"clientKind": "git",
-		"useIgnoreFile": true
-	},
-	"formatter": {
-		"enabled": true,
-		"useEditorconfig": true
-	},
-	"linter": {
-		"enabled": true,
-		"rules": {
-			"nursery": {
-				"useSortedClasses": {
-					"level": "warn",
-					"fix": "safe",
-					"options": {
-						"attributes": ["class:list"]
-					}
-				}
-			},
-			"style": {
-				"noParameterAssign": "error",
-				"useAsConstAssertion": "error",
-				"useDefaultParameterLast": "error",
-				"useEnumInitializers": "error",
-				"useSelfClosingElements": "error",
-				"useSingleVarDeclarator": "error",
-				"noUnusedTemplateLiteral": "error",
-				"useNumberNamespace": "error",
-				"noInferrableTypes": "error",
-				"noUselessElse": "error"
-			}
-		}
-	},
-	"javascript": {
-		"formatter": {
-			"quoteStyle": "single"
-		}
-	},
-	"overrides": [
-		{
-			"includes": ["**/*.jsonc"],
-			"json": {
-				"formatter": {
-					"trailingCommas": "all"
-				}
-			}
-		},
-		{
-			"includes": ["**/*.config.ts", "**/config.ts", "**/svelte.config.js"],
-			"linter": {
-				"rules": {
-					"style": {
-						"noDefaultExport": "off",
-						"useNamingConvention": "off"
-					}
-				}
-			}
-		},
-		{
-			"includes": ["src/pages/**"],
-			"linter": {
-				"rules": {
-					"performance": {
-						"noBarrelFile": "off"
-					}
-				}
-			}
-		},
-		// https://biomejs.dev/internals/language-support/#html-super-languages-support
-		{
-			"includes": ["**/*.astro", "**/*.svelte"],
-			"linter": {
-				"rules": {
-					"correctness": {
-						"noUnusedImports": "off",
-						"noUnusedVariables": "off"
-					},
-					"style": {
-						"useFilenamingConvention": "off"
-					}
-				}
-			}
-		},
-		// Feature-Sliced Designの規約でBarrelファイルを使用するため
-		// NOTE: 精神衛生上tree-shakableにしておきたいものの、
-		// FSDの規約通りに各sliceをモジュール化するメリットが大きいと判断したため採用。
-		// もしパフォーマンスに有意な影響が出る場合は再検討する。
-		// see: https://feature-sliced.design/docs/reference/public-api
-		{
-			"includes": ["src/layers/**/index.ts"],
-			"linter": {
-				"rules": {
-					"performance": {
-						"noBarrelFile": "off"
-					}
-				}
-			}
-		}
-	]
+    "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+    "vcs": {
+        "enabled": true,
+        "clientKind": "git",
+        "useIgnoreFile": true,
+    },
+    "formatter": {
+        "enabled": true,
+        "useEditorconfig": true,
+    },
+    "linter": {
+        "enabled": true,
+        "rules": {
+            "nursery": {
+                "useSortedClasses": {
+                    "level": "warn",
+                    "fix": "safe",
+                    "options": {
+                        "attributes": ["class:list"],
+                    },
+                },
+            },
+            "style": {
+                "noParameterAssign": "error",
+                "useAsConstAssertion": "error",
+                "useDefaultParameterLast": "error",
+                "useEnumInitializers": "error",
+                "useSelfClosingElements": "error",
+                "useSingleVarDeclarator": "error",
+                "noUnusedTemplateLiteral": "error",
+                "useNumberNamespace": "error",
+                "noInferrableTypes": "error",
+                "noUselessElse": "error",
+            },
+        },
+    },
+    "javascript": {
+        "formatter": {
+            "quoteStyle": "single",
+        },
+    },
+    "overrides": [
+        {
+            "includes": ["**/*.jsonc"],
+            "json": {
+                "formatter": {
+                    "trailingCommas": "all",
+                },
+            },
+        },
+        {
+            "includes": [
+                "**/*.config.ts",
+                "**/config.ts",
+                "**/svelte.config.js",
+            ],
+            "linter": {
+                "rules": {
+                    "style": {
+                        "noDefaultExport": "off",
+                        "useNamingConvention": "off",
+                    },
+                },
+            },
+        },
+        {
+            "includes": ["src/pages/**"],
+            "linter": {
+                "rules": {
+                    "performance": {
+                        "noBarrelFile": "off",
+                    },
+                },
+            },
+        },
+        // https://biomejs.dev/internals/language-support/#html-super-languages-support
+        {
+            "includes": ["**/*.astro", "**/*.svelte"],
+            "linter": {
+                "rules": {
+                    "correctness": {
+                        "noUnusedImports": "off",
+                        "noUnusedVariables": "off",
+                    },
+                    "style": {
+                        "useFilenamingConvention": "off",
+                    },
+                },
+            },
+        },
+        // Feature-Sliced Designの規約でBarrelファイルを使用するため
+        // NOTE: 精神衛生上tree-shakableにしておきたいものの、
+        // FSDの規約通りに各sliceをモジュール化するメリットが大きいと判断したため採用。
+        // もしパフォーマンスに有意な影響が出る場合は再検討する。
+        // see: https://feature-sliced.design/docs/reference/public-api
+        {
+            "includes": ["src/layers/**/index.ts"],
+            "linter": {
+                "rules": {
+                    "performance": {
+                        "noBarrelFile": "off",
+                    },
+                },
+            },
+        },
+    ],
 }

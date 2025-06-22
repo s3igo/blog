@@ -1,8 +1,8 @@
 import partytown from '@astrojs/partytown';
 import svelte from '@astrojs/svelte';
 import tailwindcss from '@tailwindcss/vite';
-import expressiveCode from 'astro-expressive-code';
 import { defineConfig } from 'astro/config';
+import expressiveCode from 'astro-expressive-code';
 import browserslist from 'browserslist';
 import { browserslistToTargets } from 'lightningcss';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';

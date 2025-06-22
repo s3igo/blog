@@ -1,5 +1,5 @@
-export { pathnames } from './pathnames.ts';
 export {
-    tagPathnameBuilder,
     postPathnameBuilder,
+    tagPathnameBuilder,
 } from './pathname-builders.ts';
+export { pathnames } from './pathnames.ts';

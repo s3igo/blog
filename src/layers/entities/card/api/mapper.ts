@@ -1,5 +1,5 @@
 import type { Post } from '../../../shared/api/index.ts';
-import { type PathnameBuilder, dateToStr } from '../../../shared/lib/index.ts';
+import { dateToStr, type PathnameBuilder } from '../../../shared/lib/index.ts';
 import type { Card } from '../model/types.ts';
 
 type AdaptPostOptions = {

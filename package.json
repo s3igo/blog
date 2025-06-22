@@ -72,5 +72,10 @@
     "typescript-svelte-plugin": "0.3.48",
     "vitest": "3.2.4"
   },
-  "trustedDependencies": ["@biomejs/biome", "esbuild", "odiff-bin", "sharp"]
+  "trustedDependencies": [
+    "@biomejs/biome",
+    "esbuild",
+    "odiff-bin",
+    "sharp"
+  ]
 }
