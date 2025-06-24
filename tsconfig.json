@@ -1,5 +1,5 @@
 {
-    "$schema": "https://json.schemastore.org/tsconfig",
+    "$schema": "https://www.schemastore.org/tsconfig.json",
     "extends": "astro/tsconfigs/strictest",
     "compilerOptions": {
         "types": ["vitest/globals", "vitest/importMeta"],
