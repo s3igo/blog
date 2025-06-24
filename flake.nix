@@ -20,6 +20,7 @@
             buildInputs = [
               nodejs-slim
               bun
+              vtsls
             ];
           };
       });
