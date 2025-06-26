@@ -21,7 +21,9 @@ jobs:
         run: |
           NODE_VERSION=$(nix develop --command node --version)
           echo "${NODE_VERSION:1}" > .node-version
-          jq "walk(if type == \"object\" and has(\"allowedVersions\") then .allowedVersions = \"<=${NODE_VERSION:1}\" else . end)" \
+          jq "(.packageRules[]
+            | select(.matchPackageNames and (.matchPackageNames | contains([\"@types/node\"])))
+            | .allowedVersions) = \"<=${NODE_VERSION:1}\"" \
             renovate.json > tmp.json
           mv tmp.json renovate.json
       - name: Get the Bun version and update .bun-version
