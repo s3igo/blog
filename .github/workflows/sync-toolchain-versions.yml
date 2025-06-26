@@ -24,12 +24,19 @@ jobs:
           jq "walk(if type == \"object\" and has(\"allowedVersions\") then .allowedVersions = \"<=${NODE_VERSION:1}\" else . end)" \
             renovate.json > tmp.json
           mv tmp.json renovate.json
-          BIOME_VERSION=$(nix eval .#meta.package.devDependencies."@biomejs/biome" --raw)
-          nix develop --command bunx "@biomejs/biome@$BIOME_VERSION" check --write renovate.json
       - name: Get the Bun version and update .bun-version
         run: |
           BUN_VERSION=$(nix develop --command bun --version)
           echo "$BUN_VERSION" > .bun-version
+      - name: Update `wrangler.json` "compatibility_date"
+        run: |
+          CURRENT_DATE=$(date +%Y-%m-%d)
+          jq ".compatibility_date = \"$CURRENT_DATE\"" wrangler.json > tmp.json
+          mv tmp.json wrangler.json
+      - name: Format JSON files with Biome
+        run: |
+          BIOME_VERSION=$(nix eval .#meta.package.devDependencies."@biomejs/biome" --raw)
+          nix develop --command bunx "@biomejs/biome@$BIOME_VERSION" check --write renovate.json wrangler.json
       - uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5
         with:
           commit_message: 'chore(deps): Apply toolchain updates'
