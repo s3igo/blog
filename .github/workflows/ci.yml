@@ -95,10 +95,12 @@ jobs:
       - uses: ./.github/actions/install
         with:
           build: 'true'
-      # https://github.com/cloudflare/wrangler-action/blob/main/README.md#deploy-your-pages-site-production--preview
+      # https://github.com/cloudflare/wrangler-action#deploy-your-pages-site-production--preview
       - uses: cloudflare/wrangler-action@da0e0dfe58b7a431659754fdf3f186c529afbe65 # v3
         with:
           command: pages deploy
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+          # https://github.com/cloudflare/wrangler-action/pull/363
+          wranglerVersion: "3.91.0"

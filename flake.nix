@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
     systems.url = "github:nix-systems/default";
   };
 
@@ -9,19 +9,18 @@
 
     let
       eachSystem = inputs.nixpkgs.lib.genAttrs (import inputs.systems);
-      pkgsFor = eachSystem (system: import inputs.nixpkgs { inherit system; });
+      eachSystem' = f: eachSystem (system: f (import inputs.nixpkgs { inherit system; }));
     in
 
     {
-      devShells = eachSystem (system: {
-        default =
-          with pkgsFor.${system};
-          mkShellNoCC {
-            buildInputs = [
-              nodejs-slim
-              bun
-            ];
-          };
+      devShells = eachSystem' (pkgs: {
+        default = pkgs.mkShellNoCC {
+          buildInputs = with pkgs; [
+            nodejs-slim
+            bun
+            vtsls
+          ];
+        };
       });
 
       meta.package = inputs.nixpkgs.lib.importJSON ./package.json;

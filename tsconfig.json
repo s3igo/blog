@@ -1,7 +1,8 @@
 {
-    "$schema": "https://json.schemastore.org/tsconfig",
+    "$schema": "https://www.schemastore.org/tsconfig.json",
     "extends": "astro/tsconfigs/strictest",
     "compilerOptions": {
+        "erasableSyntaxOnly": true,
         "types": ["vitest/globals", "vitest/importMeta"],
         "plugins": [
             {
