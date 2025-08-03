@@ -1,6 +1,6 @@
 {
     "$schema": "https://www.unpkg.com/wrangler/config-schema.json",
     "name": "blog",
-    "compatibility_date": "2025-07-27",
+    "compatibility_date": "2025-08-03",
     "pages_build_output_dir": "./dist"
 }
