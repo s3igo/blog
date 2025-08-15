@@ -16,6 +16,10 @@
             "test": "all",
         },
         "rules": {
+            "suspicious": {
+                // TODO: https://github.com/biomejs/biome/pull/7164
+                "noUnknownAtRules": "off",
+            },
             "nursery": {
                 "useSortedClasses": {
                     "level": "warn",

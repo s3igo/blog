@@ -5,10 +5,12 @@
 
     > * {
         &:first-child {
+            /* biome-ignore lint/complexity/noImportantStyles: スタイルを強制 */
             margin-top: 0 !important;
         }
 
         &:last-child {
+            /* biome-ignore lint/complexity/noImportantStyles: スタイルを強制 */
             margin-bottom: 0 !important;
         }
     }
