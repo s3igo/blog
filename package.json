@@ -74,8 +74,10 @@
   },
   "trustedDependencies": [
     "@biomejs/biome",
+    "@tailwindcss/oxide",
     "esbuild",
     "odiff-bin",
+    "oxc-resolver",
     "sharp"
   ]
 }
