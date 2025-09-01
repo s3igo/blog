@@ -32,7 +32,7 @@
         },
         {
             "matchPackageNames": ["@types/node"],
-            "allowedVersions": "<=22.17.0"
+            "allowedVersions": "<=22.18.0"
         },
         {
             "matchPackageNames": ["stefanzweifel/git-auto-commit-action"],
