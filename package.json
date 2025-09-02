@@ -43,7 +43,7 @@
     "rehype-autolink-headings": "7.1.0",
     "rehype-slug": "6.0.0",
     "sanitize-html": "2.17.0",
-    "satori": "0.18.1",
+    "satori": "0.18.2",
     "sharp": "0.34.3",
     "svelte": "5.38.6",
     "tailwindcss": "4.1.12",
