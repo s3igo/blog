@@ -82,7 +82,7 @@ jobs:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
       - uses: ./.github/actions/install
       - run: bun run coverage
-      - uses: codecov/codecov-action@fdcc8476540edceab3de004e990f80d881c6cc00 # v5
+      - uses: codecov/codecov-action@5a1091511ad55cbe89839c7260b706298ca349f7 # v5
         with:
           files: ./coverage/coverage-final.json
 
