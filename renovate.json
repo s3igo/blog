@@ -13,6 +13,7 @@
     "nix": {
         "enabled": true
     },
+    "minimumReleaseAge": "7 days",
     "lockFileMaintenance": {
         "enabled": true,
         "extends": ["schedule:weekly"]
