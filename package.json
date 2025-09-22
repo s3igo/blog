@@ -32,7 +32,7 @@
     "@astrojs/partytown": "2.1.4",
     "@astrojs/rss": "4.0.12",
     "@astrojs/svelte": "7.1.1",
-    "@fontsource/jetbrains-mono": "5.2.6",
+    "@fontsource/jetbrains-mono": "5.2.7",
     "@fontsource/zen-kaku-gothic-new": "5.2.6",
     "@tailwindcss/vite": "4.1.13",
     "astro": "5.13.7",
