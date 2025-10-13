@@ -1,5 +1,5 @@
 {
     "$schema": "./node_modules/knip/schema.json",
     "ignoreDependencies": ["textlint-.+"],
-    "entry": [".scaffdog/config.ts", "svelte.config.js"],
+    "entry": [".scaffdog/config.ts", "svelte.config.js"]
 }
