@@ -12,11 +12,7 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
-      - uses: DeterminateSystems/nix-installer-action@786fff0690178f1234e4e1fe9b536e94f5433196 # v20
-      # GitHub Actions側のAPIの変更によりMagic Nix Cacheが使えなくなった
-      # 将来的には復活させるか代替案を用意する予定らしいが、現状は未定
-      # https://determinate.systems/posts/magic-nix-cache-free-tier-eol/
-      # - uses: DeterminateSystems/magic-nix-cache-action@6221693898146dc97e38ad0e013488a16477a4c4 # v9
+      - uses: cachix/install-nix-action@v31
       - name: Get the Node.js version and update .node-version and renovate.json
         run: |
           NODE_VERSION=$(nix develop --command node --version)
