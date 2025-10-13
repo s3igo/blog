@@ -11,7 +11,7 @@ jobs:
     timeout-minutes: 60
     steps:
       - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5
-      - uses: cachix/install-nix-action@v31
+      - uses: cachix/install-nix-action@9280e7aca88deada44c930f1e2c78e21c3ae3edd # v31
       - name: Validate
         run: >-
           nix shell --inputs-from . nixpkgs#nodejs
