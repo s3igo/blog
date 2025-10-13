@@ -3,8 +3,8 @@ name: Sync Toolchain Versions
 on:
   pull_request:
     paths:
-      - '.github/workflows/sync-toolchain.yml'
-      - 'flake.lock'
+      - .github/workflows/sync-toolchain.yml
+      - flake.lock
 
 jobs:
   sync-toolchain-versions:
@@ -39,6 +39,6 @@ jobs:
         run: |
           BIOME_VERSION=$(nix eval .#meta.package.devDependencies."@biomejs/biome" --raw)
           nix develop --command bunx "@biomejs/biome@$BIOME_VERSION" check --write renovate.json wrangler.json
-      - uses: stefanzweifel/git-auto-commit-action@b863ae1933cb653a53c021fe36dbb774e1fb9403 # v5
+      - uses: stefanzweifel/git-auto-commit-action@v7
         with:
-          commit_message: 'chore(deps): Apply toolchain updates'
+          commit_message: "chore(config): sync config files with flake.lock"

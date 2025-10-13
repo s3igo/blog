@@ -34,10 +34,6 @@
         {
             "matchPackageNames": ["@types/node"],
             "allowedVersions": "<=22.19.0"
-        },
-        {
-            "matchPackageNames": ["stefanzweifel/git-auto-commit-action"],
-            "allowedVersions": "<6"
         }
     ]
 }
