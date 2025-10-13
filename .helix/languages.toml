@@ -1,0 +1,27 @@
+[[language]]
+name = "astro"
+language-servers = [
+    "astro-ls",
+    "tailwindcss-ls",
+    "typos",
+]
+
+# https://biomejs.dev/guides/editors/third-party-extensions/#helix
+[[language]]
+name = "typescript"
+language-servers = [
+    { name = "typescript-language-server", except-features = [ "format" ] },
+    "biome",
+]
+[[language]]
+name = "json"
+language-servers = [
+    { name = "vscode-json-language-server", except-features = [ "format" ] },
+    "biome"
+]
+[[language]]
+name = "jsonc"
+language-servers = [
+    { name = "vscode-json-language-server", except-features = [ "format" ] },
+    "biome"
+]

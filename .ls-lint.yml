@@ -31,4 +31,5 @@ ignore:
   - .github
   - .husky
   - .scaffdog
+  - .helix
   - '*.config.ts'

@@ -3,72 +3,64 @@
     "vcs": {
         "enabled": true,
         "clientKind": "git",
-        "useIgnoreFile": true,
+        "useIgnoreFile": true
     },
     "formatter": {
         "enabled": true,
-        "useEditorconfig": true,
+        "useEditorconfig": true
     },
     "linter": {
         "enabled": true,
         "domains": {
             "project": "recommended",
-            "test": "all",
+            "test": "all"
         },
         "rules": {
             "suspicious": {
                 // TODO: https://github.com/biomejs/biome/pull/7164
-                "noUnknownAtRules": "off",
+                "noUnknownAtRules": "off"
             },
             "nursery": {
                 "useSortedClasses": {
                     "level": "warn",
                     "fix": "safe",
                     "options": {
-                        "attributes": ["class:list"],
-                    },
-                },
-            },
-        },
+                        "attributes": ["class:list"]
+                    }
+                }
+            }
+        }
     },
     "javascript": {
         "formatter": {
-            "quoteStyle": "single",
-        },
+            "quoteStyle": "single"
+        }
     },
     "overrides": [
-        {
-            "includes": ["**/*.jsonc"],
-            "json": {
-                "formatter": {
-                    "trailingCommas": "all",
-                },
-            },
-        },
         {
             "includes": [
                 "**/*.config.ts",
                 "**/config.ts",
-                "**/svelte.config.js",
+                "**/svelte.config.js"
             ],
             "linter": {
                 "rules": {
                     "style": {
                         "noDefaultExport": "off",
-                        "useNamingConvention": "off",
-                    },
-                },
-            },
+                        "useNamingConvention": "off"
+                    }
+                }
+            }
         },
         {
             "includes": ["src/pages/**"],
             "linter": {
                 "rules": {
                     "performance": {
-                        "noBarrelFile": "off",
-                    },
-                },
-            },
+                        "noBarrelFile": "off"
+                    }
+                }
+            }
         },
         // https://biomejs.dev/internals/language-support/#html-super-languages-support
         {
@@ -77,13 +69,13 @@
                 "rules": {
                     "correctness": {
                         "noUnusedImports": "off",
-                        "noUnusedVariables": "off",
+                        "noUnusedVariables": "off"
                     },
                     "style": {
-                        "useFilenamingConvention": "off",
-                    },
-                },
-            },
+                        "useFilenamingConvention": "off"
+                    }
+                }
+            }
         },
         // Feature-Sliced Designの規約でBarrelファイルを使用するため
         // NOTE: 精神衛生上tree-shakableにしておきたいものの、
@@ -95,10 +87,10 @@
             "linter": {
                 "rules": {
                     "performance": {
-                        "noBarrelFile": "off",
-                    },
-                },
-            },
-        },
-    ],
+                        "noBarrelFile": "off"
+                    }
+                }
+            }
+        }
+    ]
 }
