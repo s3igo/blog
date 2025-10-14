@@ -1,6 +1,6 @@
 {
   inputs = {
-    nixpkgs.url = "https://channels.nixos.org/nixos-unstable/nixexprs.tar.xz";
+    nixpkgs.url = "https://channels.nixos.org/nixpkgs-unstable/nixexprs.tar.xz";
     systems.url = "github:nix-systems/default";
   };
 
