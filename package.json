@@ -45,7 +45,7 @@
     "sanitize-html": "2.17.0",
     "satori": "0.18.3",
     "sharp": "0.34.4",
-    "svelte": "5.39.10",
+    "svelte": "5.39.11",
     "tailwindcss": "4.1.14",
     "typescript": "5.9.3",
     "unist-util-visit": "5.0.0"
@@ -64,7 +64,7 @@
     "knip": "5.64.2",
     "lost-pixel": "3.22.0",
     "scaffdog": "4.1.0",
-    "svelte-check": "4.3.2",
+    "svelte-check": "4.3.3",
     "textlint": "15.2.2",
     "textlint-filter-rule-allowlist": "4.0.0",
     "textlint-filter-rule-comments": "1.2.2",
