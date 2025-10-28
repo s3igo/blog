@@ -71,13 +71,5 @@
     "textlint-rule-preset-ja-technical-writing": "12.0.2",
     "typescript-svelte-plugin": "0.3.50",
     "vitest": "3.2.4"
-  },
-  "trustedDependencies": [
-    "@biomejs/biome",
-    "@tailwindcss/oxide",
-    "esbuild",
-    "odiff-bin",
-    "oxc-resolver",
-    "sharp"
-  ]
+  }
 }
