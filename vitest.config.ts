@@ -11,16 +11,12 @@ export default getViteConfig({
     },
     test: {
         coverage: {
-            all: true,
             include: ['src/**'],
             reporter: ['text', 'json'],
         },
         exclude: [...configDefaults.exclude, './.direnv/**', './tests/**'],
         globals: true,
         includeSource: [...configDefaults.include, 'src/**/*.{js,ts,jsx,tsx}'],
-        testTransformMode: {
-            web: ['/.[jt]sx?$/'],
-        },
         typecheck: {
             include: ['src/**/*.{js,ts,jsx,tsx}'],
         },
