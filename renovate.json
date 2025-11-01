@@ -20,6 +20,11 @@
     },
     "packageRules": [
         {
+            "matchPackageNames": ["@biomejs/biome"],
+            "matchUpdateTypes": ["minor"],
+            "groupName": "biome"
+        },
+        {
             "matchUpdateTypes": "major",
             "addLabels": ["deps.major[bot]"]
         },
