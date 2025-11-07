@@ -70,6 +70,6 @@
     "textlint-filter-rule-comments": "1.2.2",
     "textlint-rule-preset-ja-technical-writing": "12.0.2",
     "typescript-svelte-plugin": "0.3.50",
-    "vitest": "4.0.5"
+    "vitest": "4.0.8"
   }
 }
