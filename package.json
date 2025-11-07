@@ -59,7 +59,7 @@
     "@types/node": "22.18.13",
     "@types/sanitize-html": "2.16.0",
     "@types/unist": "3.0.3",
-    "@vitest/coverage-v8": "4.0.5",
+    "@vitest/coverage-v8": "4.0.6",
     "husky": "9.1.7",
     "knip": "5.66.4",
     "lost-pixel": "3.22.0",
