@@ -76,6 +76,8 @@ export default defineConfig({
         build: {
             cssMinify: 'lightningcss',
         },
+        // TODO: Astro v6でVite v7が搭載されたら削除
+        // @ts-expect-error: https://github.com/withastro/astro/issues/14030
         plugins: [tailwindcss()],
     },
 });

@@ -9,6 +9,8 @@ export default getViteConfig({
     resolve: {
         conditions: ['development', 'browser'],
     },
+    // TODO: Astro v6でVite v7が搭載されたら削除
+    // @ts-expect-error
     test: {
         coverage: {
             all: true,
