@@ -1,4 +1,4 @@
 #:schema https://www.schemastore.org/bunfig.json
+
 [install]
 linker = "isolated"
-minimumReleaseAge = 604800 # 7 days
