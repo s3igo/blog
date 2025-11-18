@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.5",
-    "@biomejs/biome": "2.3.4",
+    "@biomejs/biome": "2.3.5",
     "@ls-lint/ls-lint": "2.3.1",
     "@playwright/test": "1.56.1",
     "@types/markdown-it": "14.1.2",
@@ -64,7 +64,7 @@
     "knip": "5.69.0",
     "lost-pixel": "3.22.0",
     "scaffdog": "4.1.0",
-    "svelte-check": "4.3.3",
+    "svelte-check": "4.3.4",
     "textlint": "15.3.0",
     "textlint-filter-rule-allowlist": "4.0.0",
     "textlint-filter-rule-comments": "1.2.2",
