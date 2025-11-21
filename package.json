@@ -59,7 +59,7 @@
     "@types/node": "22.19.1",
     "@types/sanitize-html": "2.16.0",
     "@types/unist": "3.0.3",
-    "@vitest/coverage-v8": "4.0.8",
+    "@vitest/coverage-v8": "4.0.9",
     "husky": "9.1.7",
     "knip": "5.69.1",
     "lost-pixel": "3.22.0",
@@ -70,6 +70,6 @@
     "textlint-filter-rule-comments": "1.2.2",
     "textlint-rule-preset-ja-technical-writing": "12.0.2",
     "typescript-svelte-plugin": "0.3.50",
-    "vitest": "4.0.8"
+    "vitest": "4.0.9"
   }
 }
