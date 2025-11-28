@@ -39,6 +39,12 @@
         {
             "matchPackageNames": ["@types/node"],
             "allowedVersions": "<=22.21.1"
+        },
+        {
+            "matchManagers": ["bun"],
+            "lockFileMaintenance": {
+                "enabled": false
+            }
         }
     ]
 }
