@@ -45,7 +45,7 @@
     "sanitize-html": "2.17.0",
     "satori": "0.18.3",
     "sharp": "0.34.5",
-    "svelte": "5.45.9",
+    "svelte": "5.45.10",
     "tailwindcss": "4.1.18",
     "typescript": "5.9.3",
     "unist-util-visit": "5.0.0"
@@ -61,7 +61,7 @@
     "@types/unist": "3.0.3",
     "@vitest/coverage-v8": "4.0.15",
     "husky": "9.1.7",
-    "knip": "5.73.3",
+    "knip": "5.73.4",
     "lost-pixel": "3.22.0",
     "scaffdog": "4.1.0",
     "svelte-check": "4.3.4",
