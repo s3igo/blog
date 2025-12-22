@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.6",
-    "@biomejs/biome": "2.3.8",
+    "@biomejs/biome": "2.3.9",
     "@ls-lint/ls-lint": "2.3.1",
     "@playwright/test": "1.57.0",
     "@types/markdown-it": "14.1.2",
