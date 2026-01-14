@@ -31,11 +31,11 @@
   "dependencies": {
     "@astrojs/partytown": "2.1.4",
     "@astrojs/rss": "4.0.14",
-    "@astrojs/svelte": "7.2.4",
+    "@astrojs/svelte": "7.2.5",
     "@fontsource/jetbrains-mono": "5.2.8",
     "@fontsource/zen-kaku-gothic-new": "5.2.7",
     "@tailwindcss/vite": "4.1.18",
-    "astro": "5.16.6",
+    "astro": "5.16.7",
     "astro-expressive-code": "0.41.5",
     "browserslist": "4.28.1",
     "lightningcss": "1.30.2",
