@@ -15,7 +15,7 @@ runs:
     - uses: oven-sh/setup-bun@b7a1c7ccf290d58743029c4f6903da283811b979 # v2
       with:
         bun-version-file: .bun-version
-    - uses: actions/setup-node@395ad3262231945c25e8478fd5baf05154b1d79f # v6
+    - uses: actions/setup-node@6044e13b5dc448c55e2357c09f80417699197238 # v6
       with:
         node-version-file: .node-version
     - run: bun install --frozen-lockfile
