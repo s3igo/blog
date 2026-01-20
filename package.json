@@ -35,7 +35,7 @@
     "@fontsource/jetbrains-mono": "5.2.8",
     "@fontsource/zen-kaku-gothic-new": "5.2.7",
     "@tailwindcss/vite": "4.1.18",
-    "astro": "5.16.8",
+    "astro": "5.16.9",
     "astro-expressive-code": "0.41.5",
     "browserslist": "4.28.1",
     "lightningcss": "1.30.2",
@@ -59,7 +59,7 @@
     "@types/node": "24.10.7",
     "@types/sanitize-html": "2.16.0",
     "@types/unist": "3.0.3",
-    "@vitest/coverage-v8": "4.0.16",
+    "@vitest/coverage-v8": "4.0.17",
     "husky": "9.1.7",
     "knip": "5.80.2",
     "lost-pixel": "3.22.0",
@@ -70,6 +70,6 @@
     "textlint-filter-rule-comments": "1.3.0",
     "textlint-rule-preset-ja-technical-writing": "12.0.2",
     "typescript-svelte-plugin": "0.3.50",
-    "vitest": "4.0.16"
+    "vitest": "4.0.17"
   }
 }
