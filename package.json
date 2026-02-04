@@ -35,7 +35,7 @@
     "@fontsource/jetbrains-mono": "5.2.8",
     "@fontsource/zen-kaku-gothic-new": "5.2.7",
     "@tailwindcss/vite": "4.1.18",
-    "astro": "5.16.15",
+    "astro": "5.16.16",
     "astro-expressive-code": "0.41.6",
     "browserslist": "4.28.1",
     "lightningcss": "1.31.1",
@@ -45,7 +45,7 @@
     "sanitize-html": "2.17.0",
     "satori": "0.19.1",
     "sharp": "0.34.5",
-    "svelte": "5.48.4",
+    "svelte": "5.48.5",
     "tailwindcss": "4.1.18",
     "typescript": "5.9.3",
     "unist-util-visit": "5.1.0"
