@@ -38,7 +38,7 @@
         },
         {
             "matchPackageNames": ["@types/node"],
-            "allowedVersions": "<=24.12.0"
+            "allowedVersions": "<=24.13.0"
         },
         {
             "matchManagers": ["bun"],
