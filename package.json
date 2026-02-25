@@ -52,7 +52,7 @@
   },
   "devDependencies": {
     "@astrojs/check": "0.9.6",
-    "@biomejs/biome": "2.4.0",
+    "@biomejs/biome": "2.4.2",
     "@ls-lint/ls-lint": "2.3.1",
     "@playwright/test": "1.58.2",
     "@types/markdown-it": "14.1.2",
@@ -61,7 +61,7 @@
     "@types/unist": "3.0.3",
     "@vitest/coverage-v8": "4.0.18",
     "husky": "9.1.7",
-    "knip": "5.83.1",
+    "knip": "5.84.0",
     "lost-pixel": "3.22.0",
     "scaffdog": "4.1.0",
     "svelte-check": "4.4.0",
