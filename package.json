@@ -29,13 +29,13 @@
     "clean:all": "bun run clean && bun run astro:clean && bun run build:clean && bun run coverage:clean"
   },
   "dependencies": {
-    "@astrojs/partytown": "2.1.4",
-    "@astrojs/rss": "4.0.15",
+    "@astrojs/partytown": "2.1.5",
+    "@astrojs/rss": "4.0.17",
     "@astrojs/svelte": "7.2.5",
     "@fontsource/jetbrains-mono": "5.2.8",
     "@fontsource/zen-kaku-gothic-new": "5.2.7",
     "@tailwindcss/vite": "4.2.1",
-    "astro": "5.18.0",
+    "astro": "5.18.1",
     "astro-expressive-code": "0.41.7",
     "browserslist": "4.28.1",
     "lightningcss": "1.32.0",
@@ -45,13 +45,13 @@
     "sanitize-html": "2.17.1",
     "satori": "0.25.0",
     "sharp": "0.34.5",
-    "svelte": "5.53.8",
+    "svelte": "5.53.10",
     "tailwindcss": "4.2.1",
     "typescript": "5.9.3",
     "unist-util-visit": "5.1.0"
   },
   "devDependencies": {
-    "@astrojs/check": "0.9.6",
+    "@astrojs/check": "0.9.7",
     "@biomejs/biome": "2.4.6",
     "@ls-lint/ls-lint": "2.3.1",
     "@playwright/test": "1.58.2",
