@@ -31,7 +31,7 @@
   "dependencies": {
     "@astrojs/partytown": "2.1.6",
     "@astrojs/rss": "4.0.18",
-    "@astrojs/svelte": "7.2.5",
+    "@astrojs/svelte": "8.1.0",
     "@fontsource/jetbrains-mono": "5.2.8",
     "@fontsource/zen-kaku-gothic-new": "5.2.7",
     "@tailwindcss/vite": "4.2.2",
