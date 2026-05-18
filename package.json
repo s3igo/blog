@@ -45,7 +45,7 @@
     "sanitize-html": "2.17.3",
     "satori": "0.26.0",
     "sharp": "0.34.5",
-    "svelte": "5.55.0",
+    "svelte": "5.55.7",
     "tailwindcss": "4.2.2",
     "typescript": "5.9.3",
     "unist-util-visit": "5.1.0"
